@@ -91,21 +91,11 @@
                     <!-- ACCOUNT -->
                     <div class="col-md-3 clearfix">
                         <div class="header-ctn">
-                            <!-- Wishlist -->
-                            <div>
-                                <a href="#">
-                                    <i class="fa fa-heart-o"></i>
-                                    <span>Your Wishlist</span>
-                                    <div class="qty">2</div>
-                                </a>
-                            </div>
-                            <!-- /Wishlist -->
-
                             <!-- Cart -->
                             <div class="dropdown">
                                 <a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
                                     <i class="fa fa-shopping-cart"></i>
-                                    <span>Your Cart</span>
+                                    <span>Giỏ Hàng</span>
                                     <div class="qty">3</div>
                                 </a>
                                 <div class="cart-dropdown">
@@ -144,6 +134,16 @@
                             </div>
                             <!-- /Cart -->
 
+                            <!-- Wishlist -->
+                            <div>
+                                <a href="index.php?act=login">
+                                    <i class="fa fa-user-circle"></i>
+                                    <span>Đăng Nhập</span>
+                                    <div class="qty">2</div>
+                                </a>
+                            </div>
+                            <!-- /Wishlist -->
+
                             <!-- Menu Toogle -->
                             <div class="menu-toggle">
                                 <a href="#">
@@ -172,10 +172,10 @@
             <div id="responsive-nav">
                 <!-- NAV -->
                 <ul class="main-nav nav navbar-nav">
-                    <li ><a href="index.php">Trang Chủ</a></li>
-                    <li ><a href="index.php?act=products">Sản Phẩm</a></li>
-                    <li ><a href="index.php?act=about">Thông Tin</a></li>
-                    <li ><a href="index.php?act=contact">Liên Hệ</a></li>
+                    <li><a href="index.php">Trang Chủ</a></li>
+                    <li><a href="index.php?act=products">Sản Phẩm</a></li>
+                    <li><a href="index.php?act=about">Thông Tin</a></li>
+                    <li><a href="index.php?act=contact">Liên Hệ</a></li>
                 </ul>
                 <!-- /NAV -->
             </div>

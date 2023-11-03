@@ -12,6 +12,19 @@ if (isset($_REQUEST['act'])) {
         case 'products':
             include 'view/products.php';
             break;
+
+        case 'about':
+            include 'view/about.php';
+            break;
+
+        case 'contact':
+            include 'view/contact.php';
+            break;
+
+        case 'login':
+            include 'view/login.php';
+            break;
+
         default:
             include 'view/home.php';
             break;
