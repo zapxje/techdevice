@@ -130,16 +130,16 @@
   var priceInputMax = document.getElementById("price-max"),
     priceInputMin = document.getElementById("price-min");
 
-    if(priceInputMax){
-      priceInputMax.addEventListener("change", function () {
-        updatePriceSlider($(this).parent(), this.value);
-      });
-      }
-    if(priceInputMin){
-      priceInputMin.addEventListener("change", function () {
+  if (priceInputMax) {
+    priceInputMax.addEventListener("change", function () {
       updatePriceSlider($(this).parent(), this.value);
-      });
-    }
+    });
+  }
+  if (priceInputMin) {
+    priceInputMin.addEventListener("change", function () {
+      updatePriceSlider($(this).parent(), this.value);
+    });
+  }
 
   function updatePriceSlider(elem, value) {
     if (elem.hasClass("price-min")) {
@@ -170,4 +170,59 @@
     });
   }
 })(jQuery);
+const hotDealCountdown = document.querySelector(".hot-deal-countdown");
+if (hotDealCountdown) {
+  (function () {
+    const second = 1000,
+      minute = second * 60,
+      hour = minute * 60,
+      day = hour * 24;
 
+    //I'm adding this section so I don't have to keep updating this pen every year :-)
+    //remove this if you don't need it
+    let today = new Date(),
+      dd = String(today.getDate()).padStart(2, "0"),
+      mm = String(today.getMonth() + 1).padStart(2, "0"),
+      yyyy = today.getFullYear(),
+      nextYear = yyyy + 1,
+      dayMonth = "11/11/",
+      saleday = dayMonth + yyyy;
+
+    today = mm + "/" + dd + "/" + yyyy;
+    if (today == saleday) {
+      (document.getElementById("days").innerText = "00"),
+        (document.getElementById("hours").innerText = "00"),
+        (document.getElementById("minutes").innerText = "00"),
+        (document.getElementById("seconds").innerText = "00");
+      clearInterval(x);
+    }
+    console.log(saleday);
+    console.log(today);
+    //end
+
+    const countDown = new Date(saleday).getTime(),
+      x = setInterval(function () {
+        const now = new Date().getTime(),
+          distance = countDown - now;
+
+        (document.getElementById("days").innerText = Math.floor(
+          distance / day
+        )),
+          (document.getElementById("hours").innerText = Math.floor(
+            (distance % day) / hour
+          )),
+          (document.getElementById("minutes").innerText = Math.floor(
+            (distance % hour) / minute
+          )),
+          (document.getElementById("seconds").innerText = Math.floor(
+            (distance % minute) / second
+          ));
+
+        //do something later when date is reached
+        if (distance <= 0) {
+          clearInterval(x);
+        }
+        //seconds
+      }, 0);
+  })();
+}
