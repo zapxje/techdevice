@@ -5,6 +5,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="view/assets/img/Black Gold Illustration Gear Logo.png">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
     <title>Electro - HTML Ecommerce Template</title>
@@ -14,7 +15,7 @@
 
     <!-- Bootstrap -->
     <link type="text/css" rel="stylesheet" href="view/assets/css/bootstrap.min.css" />
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <!-- Slick -->
     <link type="text/css" rel="stylesheet" href="view/assets/css/slick.css" />
     <link type="text/css" rel="stylesheet" href="view/assets/css/slick-theme.css" />
