@@ -138,8 +138,8 @@
 		<script src="view/assets/js/slick.min.js"></script>
 		<script src="view/assets/js/nouislider.min.js"></script>
 		<script src="view/assets/js/jquery.zoom.min.js"></script>
-		<script src="view/assets/js/main.js"></script>
-
+		<!-- <script src="view/assets/js/main.js"></script> -->
+		<?php include 'view/assets/js/main.js'?>
 		</body>
 
 		</html>
