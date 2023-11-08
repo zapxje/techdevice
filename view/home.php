@@ -93,7 +93,7 @@
                                     </div>
                                     <div class="product-body">
                                         <p class="product-category">Category</p>
-                                        <h3 class="product-name"><a href="#">product name goes here</a></h3>
+                                        <h3 class="product-name"><a href="index.php?act=singleProduct">product name goes here</a></h3>
                                         <h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
                                         <div class="product-rating">
                                             <i class="fa fa-star"></i>
@@ -252,29 +252,30 @@
                     <ul class="hot-deal-countdown">
                         <li>
                             <div>
-                                <h3 id="days"></h3>
+                                <h3 class="countdown-days">00</h3>
                                 <span>Days</span>
                             </div>
                         </li>
                         <li>
                             <div>
-                                <h3 id="hours"></h3>
+                                <h3 class="countdown-hours">00</h3>
                                 <span>Hours</span>
                             </div>
                         </li>
                         <li>
                             <div>
-                                <h3 id="minutes"></h3>
+                                <h3 class="countdown-minutes">00</h3>
                                 <span>Mins</span>
                             </div>
                         </li>
                         <li>
                             <div>
-                                <h3 id="seconds"></h3>
+                                <h3 class="countdown-seconds">00</h3>
                                 <span>Secs</span>
                             </div>
                         </li>
                     </ul>
+                    <b class="countdown-nofitication text-danger text-uppercase"></b>
                     <h2 class="text-uppercase">hot deal this week</h2>
                     <p>New Collection Up to 50% OFF</p>
                     <a class="primary-btn cta-btn" href="#">Shop now</a>

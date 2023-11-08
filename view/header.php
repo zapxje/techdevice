@@ -174,7 +174,7 @@
                 <!-- NAV -->
                 <ul class="main-nav nav navbar-nav">
                     <li><a href="index.php">Trang Chủ</a></li>
-                    <li><a href="index.php?act=products">Sản Phẩm</a></li>
+                    <li><a href="index.php?act=store">Sản Phẩm</a></li>
                     <li><a href="index.php?act=about">Thông Tin</a></li>
                     <li><a href="index.php?act=contact">Liên Hệ</a></li>
                 </ul>

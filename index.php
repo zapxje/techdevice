@@ -9,8 +9,12 @@ include 'view/header.php';
 // include the content file
 if (isset($_REQUEST['act'])) {
     switch ($_GET['act']) {
-        case 'products':
-            include 'view/products.php';
+        case 'store':
+            include 'view/store.php';
+            break;
+
+        case 'singleProduct':
+            include 'view/singleProduct.php';
             break;
 
         case 'about':
