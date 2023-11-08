@@ -186,7 +186,6 @@ if (hotDealCountdown) {
       dd = String(today.getDate()).padStart(2, "0"),
       mm = String(today.getMonth() + 1).padStart(2, "0"),
       yyyy = today.getFullYear(),
-      nextYear = yyyy + 1,
       dayMonth = "11/11/",
       saleday = dayMonth + yyyy;
 
@@ -355,6 +354,16 @@ if (hotDealCountdown) {
   }
 
 })();
+
+const messenger = document.querySelector('.messenger-logo');
+
+if(messenger){
+  messenger.onclick=()=>{
+    const show= messenger.querySelector('.messenger-main');
+    show.classList.toggle('show');
+  }
+}
+
 if ( window.history.replaceState ) {
   window.history.replaceState( null, null, window.location.href );
   }
