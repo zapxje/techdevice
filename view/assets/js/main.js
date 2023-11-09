@@ -200,9 +200,9 @@ function countDown() {
       );
       const seconds = Math.floor((timeRemaining % (1000 * 60)) / 1000);
       scanDays.innerHTML = days == 0 ? "00" : days;
-      scanHours.innerHTML = (hours / 10) > 2 ? hours : `0${hours}`;
-      scanMinutes.innerHTML = (minutes / 10) > 2 ? minutes : `0${minutes}`;
-      scanSeconds.innerHTML = (seconds / 10) > 2 ? seconds : `0${seconds}`;
+      scanHours.innerHTML = (hours / 10) > 1 ? hours : `0${hours}`;
+      scanMinutes.innerHTML = (minutes / 10) > 1 ? minutes : `0${minutes}`;
+      scanSeconds.innerHTML = (seconds / 10) > 1 ? seconds : `0${seconds}`;
     }
   }, 1000);
 }
@@ -342,7 +342,7 @@ const messenger = document.querySelector('.messenger-logo');
 
 if(messenger){
   messenger.onclick=()=>{
-    const show= messenger.querySelector('.messenger-main');
+    const show= messenger.querySelector('.messenger-main'); 
     show.classList.toggle('show');
   }
 }
