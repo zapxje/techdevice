@@ -29,8 +29,8 @@ if (isset($_REQUEST['act'])) {
             include 'view/login.php';
             break;
 
-        case 'cart':
-            include 'view/cart.php';
+        case 'viewCart':
+            include 'view/viewCart.php';
             break;
             
         default:
