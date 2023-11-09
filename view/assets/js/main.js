@@ -170,83 +170,8 @@
   }
 
 })(jQuery);
-<<<<<<< HEAD
-// const hotDealCountdown = document.querySelector(".hot-deal-countdown");
-// if (hotDealCountdown) {
-//   (function () {
-//     const second = 1000,
-//       minute = second * 60,
-//       hour = minute * 60,
-//       day = hour * 24;
-
-//     //I'm adding this section so I don't have to keep updating this pen every year :-)
-//     //remove this if you don't need it
-//     let today = new Date(),
-//       dd = String(today.getDate()).padStart(2, "0"),
-//       mm = String(today.getMonth() + 1).padStart(2, "0"),
-//       yyyy = today.getFullYear(),
-//       nextYear = yyyy + 1,
-//       dayMonth = "11/11/",
-//       saleday = dayMonth + yyyy;
-=======
 
 
-const hotDealCountdown = document.querySelector(".hot-deal-countdown");
-if (hotDealCountdown) {
-  (function () {
-    const second = 1000,
-      minute = second * 60,
-      hour = minute * 60,
-      day = hour * 24;
-
-    //I'm adding this section so I don't have to keep updating this pen every year :-)
-    //remove this if you don't need it
-    let today = new Date(),
-      dd = String(today.getDate()).padStart(2, "0"),
-      mm = String(today.getMonth() + 1).padStart(2, "0"),
-      yyyy = today.getFullYear(),
-      dayMonth = "11/11/",
-      saleday = dayMonth + yyyy;
->>>>>>> 19265a166a42c64d2f6fd551ffff4c9cb1491d4f
-
-//     today = mm + "/" + dd + "/" + yyyy;
-//     if (today == saleday) {
-//       (document.getElementById("days").innerText = "00"),
-//         (document.getElementById("hours").innerText = "00"),
-//         (document.getElementById("minutes").innerText = "00"),
-//         (document.getElementById("seconds").innerText = "00");
-//       clearInterval(x);
-//     }
-//     console.log(saleday);
-//     console.log(today);
-//     //end
-
-//     const countDown = new Date(saleday).getTime(),
-//       x = setInterval(function () {
-//         const now = new Date().getTime(),
-//           distance = countDown - now;
-
-//         (document.getElementById("days").innerText = Math.floor(
-//           distance / day
-//         )),
-//           (document.getElementById("hours").innerText = Math.floor(
-//             (distance % day) / hour
-//           )),
-//           (document.getElementById("minutes").innerText = Math.floor(
-//             (distance % hour) / minute
-//           )),
-//           (document.getElementById("seconds").innerText = Math.floor(
-//             (distance % minute) / second
-//           ));
-
-//         //do something later when date is reached
-//         if (distance <= 0) {
-//           clearInterval(x);
-//         }
-//         //seconds
-//       }, 0);
-//   })();
-// }
 
 //Countdown Times
 const targetDate = "2023-11-20T00:00:00";
@@ -278,40 +203,9 @@ function countDown() {
       scanMinutes.innerHTML = (minutes / 10) > 2 ? minutes : `0${minutes}`;
       scanSeconds.innerHTML = (seconds / 10) > 2 ? seconds : `0${seconds}`;
     }
-<<<<<<< HEAD
   }, 1000);
 }
 countDown();
-=======
-    
-    //end
-
-    const countDown = new Date(saleday).getTime(),
-      x = setInterval(function () {
-        const now = new Date().getTime(),
-          distance = countDown - now;
-
-        (document.getElementById("days").innerText = Math.floor(
-          distance / day
-        )),
-          (document.getElementById("hours").innerText = Math.floor(
-            (distance % day) / hour
-          )),
-          (document.getElementById("minutes").innerText = Math.floor(
-            (distance % hour) / minute
-          )),
-          (document.getElementById("seconds").innerText = Math.floor(
-            (distance % minute) / second
-          ));
-
-        //do something later when date is reached
-        if (distance <= 0) {
-          clearInterval(x);
-        }
-        //seconds
-      }, 0);
-  })();
-}
 //function handle CART
 (function(){
   var sitePlusMinus = function () {
@@ -453,4 +347,3 @@ if(messenger){
 if ( window.history.replaceState ) {
   window.history.replaceState( null, null, window.location.href );
   }
->>>>>>> 19265a166a42c64d2f6fd551ffff4c9cb1491d4f
