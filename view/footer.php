@@ -36,6 +36,28 @@
 
 		<!-- FOOTER -->
 		<footer id="footer">
+			<div class="messenger">
+				<div class="messenger-logo">
+					<img src="view/assets/img/messenger.png" alt="">
+					<div class="messenger-main ">
+						<div class="messenger-head">
+							<img src="view/assets/img/Black Gold Illustration Gear Logo.png" alt="">
+							<div class="icon">
+								<i class="fa-solid fa-ellipsis"></i>
+								<i class="fa-solid fa-minus"></i>
+							</div>
+						</div>
+						<div class="messenger-body">
+							<h5 class="h5">Chat với chúng tôi</h5>
+							<p>Xin chào! Chúng tôi ở đây để giúp bạn. Cần gì hôm nay?</p>
+						</div>
+						<div class="messenger-last">
+							<button class="btn">Bắt đầu chat</button>
+						</div>
+					</div>
+				</div>
+					
+			</div>
 		    <!-- top footer -->
 		    <div class="section">
 		        <!-- container -->
@@ -138,8 +160,8 @@
 		<script src="view/assets/js/slick.min.js"></script>
 		<script src="view/assets/js/nouislider.min.js"></script>
 		<script src="view/assets/js/jquery.zoom.min.js"></script>
-		<script src="view/assets/js/main.js"></script>
-
+		<!-- <script src="view/assets/js/main.js"></script> -->
+		<?php include 'view/assets/js/main.js'?>
 		</body>
 
 		</html>
