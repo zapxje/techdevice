@@ -1,3 +1,4 @@
+// ==================== Js Main Start ==================== //
 (function ($) {
   "use strict";
 
@@ -170,10 +171,10 @@
   }
 
 })(jQuery);
+// ==================== Js Main End ==================== //
 
 
-
-//Countdown Times
+// ==================== Function Countdown Start ==================== //
 const targetDate = "2023-11-20T00:00:00";
 function countDown() {
   const targetTime = new Date(targetDate).getTime();
@@ -206,7 +207,9 @@ function countDown() {
   }, 1000);
 }
 countDown();
-//function handle CART
+// ==================== Function Countdown End ==================== //
+
+// ==================== Function View Cart Start ==================== //
 (function(){
   var sitePlusMinus = function () {
     var value,
@@ -347,3 +350,4 @@ if(messenger){
 if ( window.history.replaceState ) {
   window.history.replaceState( null, null, window.location.href );
   }
+// ==================== Function View Cart End ==================== //
