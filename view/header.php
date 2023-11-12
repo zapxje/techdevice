@@ -92,6 +92,15 @@
                     <!-- ACCOUNT -->
                     <div class="col-md-3 clearfix">
                         <div class="header-ctn">
+                            <!-- Login -->
+                            <div>
+                                <a href="index.php?act=login">
+                                    <i class="fa fa-user-circle"></i>
+                                    <span>Đăng Nhập</span>
+                                    <div class="qty">2</div>
+                                </a>
+                            </div>
+                            <!-- /Login -->
                             <!-- Cart -->
                             <div class="dropdown">
                                 <a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
@@ -129,21 +138,13 @@
                                     </div>
                                     <div class="cart-btns">
                                         <a href="index.php?act=viewCart">View Cart</a>
-                                        <a href="#">Checkout <i class="fa fa-arrow-circle-right"></i></a>
+                                        <a href="index.php?act=checkout">Checkout <i class="fa fa-arrow-circle-right"></i></a>
                                     </div>
                                 </div>
                             </div>
                             <!-- /Cart -->
 
-                            <!-- Wishlist -->
-                            <div>
-                                <a href="index.php?act=login">
-                                    <i class="fa fa-user-circle"></i>
-                                    <span>Đăng Nhập</span>
-                                    <div class="qty">2</div>
-                                </a>
-                            </div>
-                            <!-- /Wishlist -->
+
 
                             <!-- Menu Toogle -->
                             <div class="menu-toggle">

@@ -29,10 +29,18 @@ if (isset($_REQUEST['act'])) {
             include 'view/login.php';
             break;
 
+        case 'register':
+            include 'view/register.php';
+            break;
+
         case 'viewCart':
             include 'view/viewCart.php';
             break;
-            
+
+        case 'checkout':
+            include 'view/checkout.php';
+            break;
+
         default:
             include 'view/home.php';
             break;
