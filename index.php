@@ -5,6 +5,7 @@ session_start();
 include 'view/header.php';
 
 // include model file
+include 'model/connDatabase.php';
 
 // include the content file
 if (isset($_REQUEST['act'])) {

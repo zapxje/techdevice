@@ -1,27 +1,27 @@
 $.noConflict();
 
-jQuery(document).ready(function($) {
+jQuery(document).ready(function ($) {
 
 	"use strict";
 
-	[].slice.call( document.querySelectorAll( 'select.cs-select' ) ).forEach( function(el) {
+	[].slice.call(document.querySelectorAll('select.cs-select')).forEach(function (el) {
 		new SelectFx(el);
-	} );
+	});
 
 	jQuery('.selectpicker').selectpicker;
 
 
-	$('#menuToggle').on('click', function(event) {
+	$('#menuToggle').on('click', function (event) {
 		$('body').toggleClass('open');
 	});
 
-	$('.search-trigger').on('click', function(event) {
+	$('.search-trigger').on('click', function (event) {
 		event.preventDefault();
 		event.stopPropagation();
 		$('.search-trigger').parent('.header-left').addClass('open');
 	});
 
-	$('.search-close').on('click', function(event) {
+	$('.search-close').on('click', function (event) {
 		event.preventDefault();
 		event.stopPropagation();
 		$('.search-trigger').parent('.header-left').removeClass('open');
@@ -33,6 +33,10 @@ jQuery(document).ready(function($) {
 	// 	$('.user-menu').parent().removeClass('open');
 	// 	$('.user-menu').parent().toggleClass('open');
 	// });
-
-
 });
+
+function showSuggestions() {
+	var inputValue = document.getElementById('inputField').value;
+	var suggestionList = document.getElementById('suggestionList');
+	suggestionList.innerHTML = '<li>(0) -> Ẩn danh mục</li><li>(1, 2,...) -> Tương ứng thứ tự</li>';
+}

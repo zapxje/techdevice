@@ -1,0 +1,153 @@
+<!-- Tiêu Đề -->
+<div class="breadcrumbs">
+    <div class="col-sm-4">
+        <div class="page-header float-left">
+            <div class="page-title">
+                <h1>Danh mục sản phẩm</h1>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-8">
+        <div class="page-header float-right">
+            <div class="page-title">
+                <ol class="breadcrumb text-right">
+                    <li><a href="index.php">Bảng điều khiển</a></li>
+                    <li class="active">Danh mục sản phẩm</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Tiêu Đề -->
+
+<!-- Nội Dung -->
+<div class="col-12">
+    <div class="card">
+        <div class="card-header">
+            <strong class="card-title"></strong>
+        </div>
+        <div class="card-body">
+            <div class="float-right my-2">
+                <button type="button" class="btn btn-secondary mb-1" data-toggle="modal" data-target="#mediumModal">
+                    Thêm
+                </button>
+            </div>
+            <!-- Thông báo  -->
+            <div>
+                <?php
+                if (isset($notification) && $notification == "successAdd") {
+                ?>
+                    <div class="sufee-alert alert with-close alert-success alert-dismissible fade show">
+                        <span class="badge badge-pill badge-success">Success</span>
+                        Thêm danh mục thành công !
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">×</span>
+                        </button>
+                    </div>
+                <?php
+                } else if (isset($notification) && $notification == "successDel") {
+                ?>
+                    <div class="sufee-alert alert with-close alert-warning alert-dismissible fade show">
+                        <span class="badge badge-pill badge-warning">Success</span>
+                        Xóa danh mục thành công !
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">×</span>
+                        </button>
+                    </div>
+                <?php
+                } elseif (isset($notification) && $notification == "failedDel") {
+                ?>
+                    <div class="sufee-alert alert with-close alert-danger alert-dismissible fade show">
+                        <span class="badge badge-pill badge-danger">Failed</span>
+                        Danh mục hiện có sản phẩm !
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">×</span>
+                        </button>
+                    </div>
+                <?php
+                } elseif (isset($notification) && $notification == "successUpdate") {
+                ?>
+                    <div class="sufee-alert alert with-close alert-success alert-dismissible fade show">
+                        <span class="badge badge-pill badge-success">Success</span>
+                        Cập nhật danh mục thành công !
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">×</span>
+                        </button>
+                    </div>
+                <?php
+                }
+                ?>
+            </div>
+            <!-- Thông báo  -->
+            <table class="table table-striped table-bordered">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Tên danh mục</th>
+                        <th scope="col">Thứ tự</th>
+                        <th scope="col">Mô tả</th>
+                        <th scope="col">Thao tác</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php
+                    $i = 1;
+                    foreach ($listCategories as $category) {
+                    ?>
+                        <tr>
+                            <th scope="row"><?= $i ?></th>
+                            <td><?= $category['name'] ?></td>
+                            <td><?= $category['ordinal_number'] ?></td>
+                            <td><?= $category['description'] ?></td>
+                            <td>
+                                <a href="index.php?act=updateCategory&id=<?= $category['id'] ?>">Sửa</a>
+                                <a href="index.php?act=delCategory&id=<?= $category['id'] ?>">Xóa</a>
+                            </td>
+                        </tr>
+                    <?php
+                        $i++;
+                    }
+                    ?>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<!-- Nội Dung -->
+<!-- Modal -->
+<div class="modal fade" id="mediumModal" tabindex="-1" role="dialog" aria-labelledby="mediumModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="mediumModalLabel">Thêm mới danh mục</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form action="index.php?act=addCategory" method="post">
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="" class="control-label mb-1">Tên danh mục</label>
+                        <input name="name" type="text" class="form-control" required oninvalid="this.setCustomValidity('Nhập tên danh mục')" oninput="setCustomValidity('')">
+                    </div>
+                    <div class="form-group">
+                        <label for="" class="control-label mb-1">Thứ tự danh mục</label>
+                        <input id="inputField" name="ordinal_number" type="number" class="form-control">
+                        <!-- onfocus="showSuggestions()" -->
+                        <ul id="suggestionList" class="list-unstyled"></ul>
+                    </div>
+                    <div class="form-group has-success">
+                        <label for="" class="control-label mb-1">Mô tả</label>
+                        <textarea name="description" rows="5" placeholder="Mô tả danh mục" class="form-control"></textarea>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Quay lại</button>
+                    <button type="submit" class="btn btn-primary">Thêm mới</button>
+                </div>
+            </form>
+
+        </div>
+    </div>
+</div>
+<!-- Modal -->
