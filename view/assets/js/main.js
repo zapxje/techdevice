@@ -186,23 +186,24 @@ function countDown() {
     const scanSeconds = document.querySelector(".countdown-seconds");
     const currentTime = new Date().getTime();
     const timeRemaining = targetTime - currentTime;
-
-    if (timeRemaining <= 0) {
-      clearInterval(timeInterval);
-      scanNofitication.innerHTML = "Đã hết thời gian giảm giá !";
-    } else {
-      const days = Math.floor(timeRemaining / (1000 * 60 * 60 * 24));
-      const hours = Math.floor(
-        (timeRemaining % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
-      );
-      const minutes = Math.floor(
-        (timeRemaining % (1000 * 60 * 60)) / (1000 * 60)
-      );
-      const seconds = Math.floor((timeRemaining % (1000 * 60)) / 1000);
-      scanDays.innerHTML = days == 0 ? "00" : days;
-      scanHours.innerHTML = (hours / 10) > 1 ? hours : `0${hours}`;
-      scanMinutes.innerHTML = (minutes / 10) > 1 ? minutes : `0${minutes}`;
-      scanSeconds.innerHTML = (seconds / 10) > 1 ? seconds : `0${seconds}`;
+    if(scanNofitication){
+      if (timeRemaining <= 0) {
+        clearInterval(timeInterval);
+        scanNofitication.innerHTML = "Đã hết thời gian giảm giá !";
+      } else {
+        const days = Math.floor(timeRemaining / (1000 * 60 * 60 * 24));
+        const hours = Math.floor(
+          (timeRemaining % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+        );
+        const minutes = Math.floor(
+          (timeRemaining % (1000 * 60 * 60)) / (1000 * 60)
+        );
+        const seconds = Math.floor((timeRemaining % (1000 * 60)) / 1000);
+        scanDays.innerHTML = days == 0 ? "00" : days;
+        scanHours.innerHTML = (hours / 10) > 1 ? hours : `0${hours}`;
+        scanMinutes.innerHTML = (minutes / 10) > 1 ? minutes : `0${minutes}`;
+        scanSeconds.innerHTML = (seconds / 10) > 1 ? seconds : `0${seconds}`;
+      }
     }
   }, 1000);
 }
