@@ -180,9 +180,9 @@
                 <!-- NAV -->
                 <ul class="main-nav nav navbar-nav">
                     <li><a href="index.php">Trang Chủ</a></li>
-                    <li><a href="index.php?act=store">Sản Phẩm</a></li>
-                    <li><a href="index.php?act=about">Thông Tin</a></li>
-                    <li><a href="index.php?act=contact">Liên Hệ</a></li>
+                    <li><a href="?act=store">Sản Phẩm</a></li>
+                    <li><a href="?act=about">Thông Tin</a></li>
+                    <li><a href="?act=contact">Liên Hệ</a></li>
                 </ul>
                 <!-- /NAV -->
             </div>

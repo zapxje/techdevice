@@ -43,7 +43,6 @@ if (isset($_REQUEST['act'])) {
         case 'checkout':
             include 'view/checkout.php';
             break;
-
         default:
             include 'view/home.php';
             break;
