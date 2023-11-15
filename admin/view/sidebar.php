@@ -21,6 +21,9 @@
                     <a href="index.php?act=categories"> <i class="menu-icon ti-view-list-alt"></i>Danh mục sản phẩm (<?= count(getAllCategories()) ?>) </a>
                 </li>
                 <li>
+                    <a href="index.php?act=brands"> <i class="menu-icon fa fa-html5"></i>Thương hiệu sản phẩm (<?= count(getAllBrands()) ?>) </a>
+                </li>
+                <li>
                     <a href="index.php?act=products"> <i class="menu-icon ti-layout-grid2-thumb"></i>Danh sách sản phẩm </a>
                 </li>
                 <li class="menu-item-has-children dropdown">

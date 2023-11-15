@@ -2,6 +2,7 @@
 //include the model file
 include_once("../model/connectDB.php");
 include_once("../model/categories.php");
+include_once("../model/brands.php");
 include_once("../model/products.php");
 
 //include the header file
@@ -16,19 +17,40 @@ if (isset($_REQUEST["act"])) {
             $listCategories = getAllCategories();
             include_once("view/categoriesAd.php");
             break;
+
         case 'addCategory':
             include_once("../model/xl_categories.php");
             $listCategories = getAllCategories();
             include_once("view/categoriesAd.php");
             break;
+
         case 'delCategory':
             include_once("../model/xl_categories.php");
             $listCategories = getAllCategories();
             include_once("view/categoriesAd.php");
             break;
+
         case 'updateCategory':
             include_once("../model/xl_categories.php");
             break;
+
+        case 'brands':
+            $listBrands = getAllBrands();
+            include_once("view/brandsAd.php");
+            break;
+
+        case 'addBrand':
+            include_once("../model/xl_brands.php");
+            $listBrands = getAllBrands();
+            include_once("view/brandsAd.php");
+            break;
+
+        case 'delBrand':
+            include_once("../model/xl_brands.php");
+            $listBrands = getAllBrands();
+            include_once("view/brandsAd.php");
+            break;
+
         default:
             include_once("view/main.php");
             break;
