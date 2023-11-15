@@ -45,7 +45,7 @@
                     <label for="">Số điện thoại</label>
                     <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Số điện thoại">
                 </div>
-                <button type="submit" class="btn btn-danger">Đăng Ký</button>
+                <button type="submit" class="btn btn-main">Đăng Ký</button>
             </form>
         </div>
         <!-- /row -->

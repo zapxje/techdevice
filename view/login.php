@@ -39,7 +39,7 @@
                     <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Mật khẩu" required>
                 </div>
                 <p class="text-left">Chưa có tài khoản?<a class="text-primary" href="index.php?act=register">Đăng ký</a></p>
-                <button type="submit" class="btn btn-default">Đăng Nhập</button>
+                <button type="submit" class="btn btn-main">Đăng Nhập</button>
             </form>
         </div>
         <!-- /row -->

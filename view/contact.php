@@ -22,41 +22,44 @@
     <!-- container -->
     <div class="container">
         <!-- row -->
-        <div class="row ">
-            <div class="contact ">
-                <div class="row col-lg-10">
-                    <div class="address col-lg-4">
-                        <i class="fa-solid fa-location-dot"></i>
-                        <p>Công viên phần mềm Quang Trung, Q12</p>
-                    </div>
-                    <div class="address col-lg-4">
-                        <i class="fa-regular fa-envelope"></i>
-                        <p>infor@example.com</p>
-                    </div>
-                    <div class="address col-lg-4">
-                        <i class="fa-solid fa-phone"></i>
-                        <p>+12314553</p>
-                    </div>
-                </div>
-                 <div class="col-lg-10 ">
-                    <form action="">
-                        <div class="row form col-lg-12">
-                            <label for="fullname">Họ và tên</label><br>
-                            <input type="text" id="fullname">
+        <div class="contact row">
+            <div class="col-lg-12">
+                <div class="contact-send col-lg-7">
+                    <div class="contact-infor">
+                        <div class="address col-lg-4">
+                            <i class="fa-solid fa-location-dot"></i>
+                            <p>Công viên phần mềm Quang Trung, Q12</p>
                         </div>
-                        <div class="row form col-lg-12">
-                            <label for="email">Email </label><br>
-                            <input type="text" id="email">
+                        <div class="address col-lg-4">
+                            <i class="fa-solid fa-envelope"></i>
+                            <p>infor@example.com</p>
                         </div>
-                        <div class="row form col-lg-12">
+                        <div class="address col-lg-4">
+                            <i class="fa-solid fa-phone"></i>
+                            <p>+80 333.666.999</p>
+                        </div>
+                    </div>
+                    <form class="form-ct">
+                        <div class="form-group">
+                            <label for="">Họ và tên</label>
+                            <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Họ và tên">
+                        </div>
+                        <div class="form-group">
+                            <label for="">Email</label>
+                            <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Địa chỉ email">
+                        </div>
+                        <div class="form-group">
                             <label for="message">Tin nhắn</label><br>
-                            <textarea name="message" id="message"  ></textarea>
+                            <textarea name="massage" rows="5" placeholder="" class="form-control"></textarea>
                         </div>
-                        <button type="submit" class="btn send">Gửi tin nhắn</button>
+                        <button type="submit" class="btn btn-main">Gửi Tin Nhắn</button>
                     </form>
                 </div>
-           
+                <div class="contact-map col-lg-5">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3918.4435924064937!2d106.62525347481906!3d10.85382635776171!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31752bee0b0ef9e5%3A0x5b4da59e47aa97a8!2zQ8O0bmcgVmnDqm4gUGjhuqduIE3hu4FtIFF1YW5nIFRydW5n!5e0!3m2!1svi!2s!4v1700020813640!5m2!1svi!2s" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
             </div>
+
         </div>
         <!-- /row -->
     </div>
