@@ -130,13 +130,13 @@
 
   var priceInputMax = document.getElementById("price-max"),
     priceInputMin = document.getElementById("price-min");
-    
-  if(priceInputMax){
-  priceInputMax.addEventListener("change", function () {
-    updatePriceSlider($(this).parent(), this.value);
-  });
+
+  if (priceInputMax) {
+    priceInputMax.addEventListener("change", function () {
+      updatePriceSlider($(this).parent(), this.value);
+    });
   }
-  if(priceInputMin){
+  if (priceInputMin) {
     priceInputMin.addEventListener("change", function () {
       updatePriceSlider($(this).parent(), this.value);
     });
@@ -199,10 +199,10 @@ function countDown() {
         (timeRemaining % (1000 * 60 * 60)) / (1000 * 60)
       );
       const seconds = Math.floor((timeRemaining % (1000 * 60)) / 1000);
-      scanDays.innerHTML = days == 0 ? "00" : days;
-      scanHours.innerHTML = (hours / 10) > 1 ? hours : `0${hours}`;
-      scanMinutes.innerHTML = (minutes / 10) > 1 ? minutes : `0${minutes}`;
-      scanSeconds.innerHTML = (seconds / 10) > 1 ? seconds : `0${seconds}`;
+      scanDays.innerHTML = (days / 10) >= 1 ? days : `0${days}`;
+      scanHours.innerHTML = (hours / 10) >= 1 ? hours : `0${hours}`;
+      scanMinutes.innerHTML = (minutes / 10) >= 1 ? minutes : `0${minutes}`;
+      scanSeconds.innerHTML = (seconds / 10) >= 1 ? seconds : `0${seconds}`;
     }
   }, 1000);
 }
@@ -210,7 +210,7 @@ countDown();
 // ==================== Function Countdown End ==================== //
 
 // ==================== Function View Cart Start ==================== //
-(function(){
+(function () {
   var sitePlusMinus = function () {
     var value,
       quantity = document.getElementsByClassName("quantity-container");
@@ -340,14 +340,14 @@ countDown();
 
 const messenger = document.querySelector('.messenger-logo');
 
-if(messenger){
-  messenger.onclick=()=>{
-    const show= messenger.querySelector('.messenger-main'); 
+if (messenger) {
+  messenger.onclick = () => {
+    const show = messenger.querySelector('.messenger-main');
     show.classList.toggle('show');
   }
 }
 
-if ( window.history.replaceState ) {
-  window.history.replaceState( null, null, window.location.href );
-  }
+if (window.history.replaceState) {
+  window.history.replaceState(null, null, window.location.href);
+}
 // ==================== Function View Cart End ==================== //

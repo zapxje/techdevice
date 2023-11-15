@@ -1,11 +1,13 @@
 <?php
 session_start();
+// include model file
+include 'model/connectDB.php';
+include 'model/categories.php';
+$listCategories = getAllCategories();
 
 // include the header file
 include 'view/header.php';
 
-// include model file
-include 'model/connDatabase.php';
 
 // include the content file
 if (isset($_REQUEST['act'])) {

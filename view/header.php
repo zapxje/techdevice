@@ -5,10 +5,10 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="shortcut icon" href="view/assets/img/Black Gold Illustration Gear Logo.png">
+    <link rel="shortcut icon" href="view/assets/img/logo/logo_y.png">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
-    <title>Electro - HTML Ecommerce Template</title>
+    <title>Tech Device</title>
 
     <!-- Google font -->
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,700" rel="stylesheet">
@@ -64,10 +64,10 @@
                 <!-- row -->
                 <div class="row">
                     <!-- LOGO -->
-                    <div class="col-md-3">
+                    <div class="col-md-3 col-sm-12">
                         <div class="header-logo">
-                            <a href="#" class="logo">
-                                <img src="view/assets/img/logo.png" alt="">
+                            <a href="index.php" class="logo">
+                                <img src="view/assets/img/logo/logo_x.png" alt="">
                             </a>
                         </div>
                     </div>
@@ -79,8 +79,13 @@
                             <form>
                                 <select class="input-select">
                                     <option value="0">All Categories</option>
-                                    <option value="1">Category 01</option>
-                                    <option value="1">Category 02</option>
+                                    <?php
+                                    foreach ($listCategories as $category) {
+                                    ?>
+                                        <option value="<?=$category['id']?>"><?=$category['name']?></option>
+                                    <?php
+                                    }
+                                    ?>
                                 </select>
                                 <input class="input" placeholder="Search here">
                                 <button class="search-btn">Search</button>
