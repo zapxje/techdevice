@@ -13,7 +13,14 @@ include 'view/header.php';
 if (isset($_REQUEST['act'])) {
     switch ($_GET['act']) {
         case 'store':
+            include_once 'model/products.php';
+            
+            $getProducts= getProducts();
+            $jsonProducts = json_encode($getProducts);
+
+           
             include 'view/store.php';
+            
             break;
 
         case 'singleProduct':

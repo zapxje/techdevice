@@ -12,3 +12,7 @@ function getProductByBrand($id)
     $sql = "SELECT * FROM products WHERE id_brand = " . $id;
     return getAll($sql);
 }
+function getProducts(){
+    $sql="SELECT * FROM products";
+    return getAll($sql);
+}
