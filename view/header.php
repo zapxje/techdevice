@@ -76,8 +76,8 @@
                     <!-- SEARCH BAR -->
                     <div class="col-md-6">
                         <div class="header-search">
-                            <form>
-                                <select class="input-select">
+                            <form class="filter">
+                                <select class="input-select" name="category">
                                     <option value="0">All Categories</option>
                                     <?php
                                     foreach ($listCategories as $category) {
@@ -87,8 +87,8 @@
                                     }
                                     ?>
                                 </select>
-                                <input class="input" placeholder="Search here">
-                                <button class="search-btn">Search</button>
+                                <input class="input" placeholder="Search here" name="name">
+                                <button class="search-btn" >Search</button>
                             </form>
                         </div>
                     </div>
