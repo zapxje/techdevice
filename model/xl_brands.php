@@ -50,26 +50,27 @@ switch ($_REQUEST["act"]) {
                     $old_image = $_REQUEST['old_image'];
                     // Kiểm tra dữ liệu
                     if (!isset($_FILES['new_image']) || $_FILES['new_image']['error'] != UPLOAD_ERR_OK) {
+                        // Nếu không tồn tại ảnh mới thì vẫn update và lấy ảnh cũ
                         updateBrand($id, $name, $old_image);
                     } else {
                         // Lấy tên file mới
                         $new_image = $_FILES['new_image']['name'];
-                        // Lấy định dạng file
-                        $extension = pathinfo($new_image, PATHINFO_EXTENSION);
                         // Tạo một thư mục để lưu ảnh
                         $dir = '../view/assets/img/brand_image';
                         // Kiểm tra đã tồn tại chưa
                         if (file_exists($dir . '/' . $new_image)) {
-                            // Thực hiện hàm thêm thương hiệu lấy ảnh cũ
-                            updateBrand($id, $name, $old_image);
+                            // Thực hiện hàm thêm dtb nhưng không thêm ảnh
+                            updateBrand($id, $name, $new_image);
                         } else {
-                            // Di chuyển file ảnh sang thư mục mới
+                            // Thêm file ảnh vào thư mục
                             move_uploaded_file($_FILES['new_image']['tmp_name'], $dir . '/' . $new_image);
-                            // Thực hiện hàm thêm thương hiệu lấy ảnh mới
+                            // Xóa ảnh cũ
+                            unlink('../view/assets/img/brand_image/' . $old_image);
+                            // Thực hiện thêm dtb
                             updateBrand($id, $name, $new_image);
                         }
-                        $notification = "successAdd";
                     }
+                    $notification = "successUpdate";
                 }
                 $listBrands = getAllBrands();
                 include_once("../admin/view/brandsAd.php");

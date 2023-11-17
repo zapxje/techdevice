@@ -30,8 +30,8 @@ switch ($_REQUEST["act"]) {
                     $ordinal_number = $_REQUEST['ordinal_number'];
                     $description = $_REQUEST['description'];
                     updateCategory($id, $name, $ordinal_number, $description);
-                    $notification = "successUpdate";
                 }
+                $notification = "successUpdate";
                 $listCategories = getAllCategories();
                 include_once("../admin/view/categoriesAd.php");
             } else {
