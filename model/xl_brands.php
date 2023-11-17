@@ -41,4 +41,45 @@ switch ($_REQUEST["act"]) {
             }
         }
         break;
+    case "updateBrand":
+        if (isset($_REQUEST['id']) && !empty($_REQUEST['id'])) {
+            $id = $_REQUEST['id'];
+            if (isset($_REQUEST['status']) && ($_REQUEST['status']) == 1) {
+                if (isset($_REQUEST['name']) && !empty($_REQUEST['name'])) {
+                    $name = $_REQUEST['name'];
+                    $old_image = $_REQUEST['old_image'];
+                    // Kiểm tra dữ liệu
+                    if (!isset($_FILES['new_image']) || $_FILES['new_image']['error'] != UPLOAD_ERR_OK) {
+                        updateBrand($id, $name, $old_image);
+                    } else {
+                        // Lấy tên file mới
+                        $new_image = $_FILES['new_image']['name'];
+                        // Lấy định dạng file
+                        $extension = pathinfo($new_image, PATHINFO_EXTENSION);
+                        // Tạo một thư mục để lưu ảnh
+                        $dir = '../view/assets/img/brand_image';
+                        // Kiểm tra đã tồn tại chưa
+                        if (file_exists($dir . '/' . $new_image)) {
+                            // Thực hiện hàm thêm thương hiệu lấy ảnh cũ
+                            updateBrand($id, $name, $old_image);
+                        } else {
+                            // Di chuyển file ảnh sang thư mục mới
+                            move_uploaded_file($_FILES['new_image']['tmp_name'], $dir . '/' . $new_image);
+                            // Thực hiện hàm thêm thương hiệu lấy ảnh mới
+                            updateBrand($id, $name, $new_image);
+                        }
+                        $notification = "successAdd";
+                    }
+                }
+                $listBrands = getAllBrands();
+                include_once("../admin/view/brandsAd.php");
+            } else {
+                $brand = getOneBrand($id);
+                include_once("../admin/view/brandsUpAd.php");
+            }
+        } else {
+            $listBrands = getAllBrands();
+            include_once("../admin/view/brandsAd.php");
+        }
+        break;
 }

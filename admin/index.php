@@ -51,6 +51,10 @@ if (isset($_REQUEST["act"])) {
             include_once("view/brandsAd.php");
             break;
 
+        case 'updateBrand':
+            include_once("../model/xl_brands.php");
+            break;
+
         default:
             include_once("view/main.php");
             break;

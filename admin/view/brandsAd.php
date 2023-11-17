@@ -107,9 +107,9 @@
                             <th scope="row"><?= $i ?></th>
                             <td><?= $brand['name'] ?></td>
                             <td><img height="50px" src="../view/assets/img/brand_image/<?= $brand['image'] ?>"></img></td>
-                            <td>
-                                <a href="index.php?act=updateBrand&id=<?= $brand['id'] ?>">Sửa</a>
-                                <a href="index.php?act=delBrand&id=<?= $brand['id'] ?>">Xóa</a>
+                            <td class="operation">
+                                <a class="text-primary" href="index.php?act=updateBrand&id=<?= $brand['id'] ?>"><i class="ti-pencil-alt"></i>Sửa</a>
+                                <a class="text-danger" href="index.php?act=delBrand&id=<?= $brand['id'] ?>"><i class="ti-trash"></i>Xóa</a>
                             </td>
                         </tr>
                     <?php

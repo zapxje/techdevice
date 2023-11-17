@@ -19,3 +19,11 @@ function delBrand($id)
     $sql = "DELETE FROM brands WHERE id=" . $id;
     return querySql($sql);
 }
+function updateBrand($id, $name, $image)
+{
+    $sql = "UPDATE brands
+    SET name = '" . $name . "', image = '" . $image . "'
+    WHERE id =" . $id;
+    echo $sql;
+    return querySql($sql);
+}

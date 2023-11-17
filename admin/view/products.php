@@ -3,7 +3,7 @@
     <div class="col-sm-4">
         <div class="page-header float-left">
             <div class="page-title">
-                <h1>Danh mục sản phẩm</h1>
+                <h1>Danh sách sản phẩm</h1>
             </div>
         </div>
     </div>
@@ -12,7 +12,7 @@
             <div class="page-title">
                 <ol class="breadcrumb text-right">
                     <li><a href="index.php">Bảng điều khiển</a></li>
-                    <li class="active">Danh mục sản phẩm</li>
+                    <li class="active">Danh sách sản phẩm</li>
                 </ol>
             </div>
         </div>
@@ -39,17 +39,27 @@
                 ?>
                     <div class="sufee-alert alert with-close alert-success alert-dismissible fade show">
                         <span class="badge badge-pill badge-success">Success</span>
-                        Thêm danh mục thành công !
+                        Thêm thương hiệu thành công !
                         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                             <span aria-hidden="true">×</span>
                         </button>
                     </div>
                 <?php
-                } else if (isset($notification) && $notification == "successDel") {
+                } elseif (isset($notification) && $notification == "failedAdd") {
                 ?>
-                    <div class="sufee-alert alert with-close alert-warning alert-dismissible fade show">
-                        <span class="badge badge-pill badge-warning">Success</span>
-                        Xóa danh mục thành công !
+                    <div class="sufee-alert alert with-close alert-danger alert-dismissible fade show">
+                        <span class="badge badge-pill badge-danger">Failed</span>
+                        Không có logo thương hiệu !
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">×</span>
+                        </button>
+                    </div>
+                <?php
+                } elseif (isset($notification) && $notification == "successDel") {
+                ?>
+                    <div class="sufee-alert alert with-close alert-success alert-dismissible fade show">
+                        <span class="badge badge-pill badge-success">Success</span>
+                        Xóa thương hiệu thành công !
                         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                             <span aria-hidden="true">×</span>
                         </button>
@@ -59,17 +69,17 @@
                 ?>
                     <div class="sufee-alert alert with-close alert-danger alert-dismissible fade show">
                         <span class="badge badge-pill badge-danger">Failed</span>
-                        Danh mục hiện có sản phẩm !
+                        Thương hiệu hiện có sản phẩm !
                         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                             <span aria-hidden="true">×</span>
                         </button>
                     </div>
                 <?php
-                } elseif (isset($notification) && $notification == "successUpdate") {
+                } elseif (isset($notification) && $notification == "is_file_true") {
                 ?>
-                    <div class="sufee-alert alert with-close alert-success alert-dismissible fade show">
-                        <span class="badge badge-pill badge-success">Success</span>
-                        Cập nhật danh mục thành công !
+                    <div class="sufee-alert alert with-close alert-danger alert-dismissible fade show">
+                        <span class="badge badge-pill badge-danger">Failed</span>
+                        Dường như logo đã tồn tại nhỉ !
                         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                             <span aria-hidden="true">×</span>
                         </button>
@@ -83,25 +93,23 @@
                 <thead>
                     <tr>
                         <th scope="col">#</th>
-                        <th scope="col">Tên danh mục</th>
-                        <th scope="col">Thứ tự</th>
-                        <th scope="col">Mô tả</th>
+                        <th scope="col">Tên thương hiệu</th>
+                        <th scope="col">Logo</th>
                         <th scope="col">Thao tác</th>
                     </tr>
                 </thead>
                 <tbody>
                     <?php
                     $i = 1;
-                    foreach ($listCategories as $category) {
+                    foreach ($listBrands as $brand) {
                     ?>
                         <tr>
                             <th scope="row"><?= $i ?></th>
-                            <td><?= $category['name'] ?></td>
-                            <td><?= $category['ordinal_number'] ?></td>
-                            <td><?= $category['description'] ?></td>
-                            <td class="operation">
-                                <a class="text-primary border-left" href="index.php?act=updateCategory&id=<?= $category['id'] ?>"><i class="ti-pencil-alt"></i>Sửa</a>
-                                <a class="text-danger" href="index.php?act=delCategory&id=<?= $category['id'] ?>"><i class="ti-trash"></i>Xóa</a>
+                            <td><?= $brand['name'] ?></td>
+                            <td><img height="50px" src="../view/assets/img/brand_image/<?= $brand['image'] ?>"></img></td>
+                            <td>
+                                <a href="index.php?act=updateBrand&id=<?= $brand['id'] ?>">Sửa</a>
+                                <a href="index.php?act=delBrand&id=<?= $brand['id'] ?>">Xóa</a>
                             </td>
                         </tr>
                     <?php
@@ -124,21 +132,15 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form action="index.php?act=addCategory" method="post">
+            <form action="index.php?act=addBrand" method="post" enctype="multipart/form-data">
                 <div class="modal-body">
                     <div class="form-group">
-                        <label for="" class="control-label mb-1">Tên danh mục</label>
-                        <input name="name" type="text" class="form-control" required oninvalid="this.setCustomValidity('Nhập tên danh mục')" oninput="setCustomValidity('')">
+                        <label for="" class="control-label mb-1">Tên thương hiệu</label>
+                        <input name="name" type="text" class="form-control" required oninvalid="this.setCustomValidity('Nhập tên thương hiệu')" oninput="setCustomValidity('')">
                     </div>
                     <div class="form-group">
-                        <label for="" class="control-label mb-1">Thứ tự danh mục</label>
-                        <input id="inputField" name="ordinal_number" type="number" class="form-control">
-                        <!-- onfocus="showSuggestions()" -->
-                        <ul id="suggestionList" class="list-unstyled"></ul>
-                    </div>
-                    <div class="form-group has-success">
-                        <label for="" class="control-label mb-1">Mô tả</label>
-                        <textarea name="description" rows="5" placeholder="Mô tả danh mục" class="form-control"></textarea>
+                        <label for="" class="control-label mb-1">Logo thương hiệu</label>
+                        <input type="file" id="file-input" name="image" class="form-control-file" required>
                     </div>
                 </div>
                 <div class="modal-footer">
