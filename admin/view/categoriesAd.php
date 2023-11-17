@@ -92,8 +92,7 @@
                 <tbody>
                     <?php
                     $i = 1;
-                    foreach ($listCategories as $category) {
-                    ?>
+                    foreach ($listCategories as $category) :  ?>
                         <tr>
                             <th scope="row"><?= $i ?></th>
                             <td><?= $category['name'] ?></td>
@@ -104,10 +103,8 @@
                                 <a class="text-danger" href="index.php?act=delCategory&id=<?= $category['id'] ?>"><i class="ti-trash"></i>Xóa</a>
                             </td>
                         </tr>
-                    <?php
-                        $i++;
-                    }
-                    ?>
+                    <?php $i++;
+                    endforeach; ?>
                 </tbody>
             </table>
         </div>

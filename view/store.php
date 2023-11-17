@@ -48,7 +48,7 @@
 						</div>
 
 						<div class="input-checkbox">
-							<input type="checkbox" id="category-3" >
+							<input type="checkbox" id="category-3">
 							<label for="category-3">
 								<span></span>
 								Cameras
@@ -57,7 +57,7 @@
 						</div>
 
 						<div class="input-checkbox">
-							<input type="checkbox" id="category-4" >
+							<input type="checkbox" id="category-4">
 							<label for="category-4">
 								<span></span>
 								Accessories
@@ -235,7 +235,8 @@
 
 				<!-- store products -->
 				<div class="row" id="products">
-					<?php foreach ($getProducts as $product) :     ?>
+					<?php foreach ($listProducts as $product) :     ?>
+						<!-- product -->
 						<div class="col-md-4 col-xs-6">
 							<div class="product">
 								<div class="product-img">
@@ -259,12 +260,7 @@
 								</div>
 							</div>
 						</div>
-
-
-						<!--  -->
-
-
-
+						<!-- /product -->
 					<?php endforeach; ?>
 					<!-- product -->
 					<div class="col-md-4 col-xs-6">
@@ -566,13 +562,13 @@
 <script>
 	// Chuỗi JSON từ PHP
 	var jsonString = '<?php echo $jsonProducts; ?>';
-	
 
-	
+
+
 	// Chuyển đổi chuỗi JSON thành mảng JavaScript
 	var productsArray = JSON.parse(jsonString);
 
-// Hiển thị mảng JavaScript trong console (để kiểm tra)
+	// Hiển thị mảng JavaScript trong console (để kiểm tra)
 </script>
 
 

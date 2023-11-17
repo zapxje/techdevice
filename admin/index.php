@@ -55,6 +55,11 @@ if (isset($_REQUEST["act"])) {
             include_once("../model/xl_brands.php");
             break;
 
+        case 'products':
+            $listProducts = getAllProducts();
+            include_once("view/productsAd.php");
+            break;
+
         default:
             include_once("view/main.php");
             break;

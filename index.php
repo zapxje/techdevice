@@ -14,13 +14,10 @@ if (isset($_REQUEST['act'])) {
     switch ($_GET['act']) {
         case 'store':
             include_once 'model/products.php';
-            
-            $getProducts= getProducts();
-            $jsonProducts = json_encode($getProducts);
-
-           
+            //cái nào danh sách thì mình để là list + với cái đó cho dể nhớ khoa ơi
+            $listProducts = getAllProducts();
+            $jsonProducts = json_encode($listProducts);
             include 'view/store.php';
-            
             break;
 
         case 'singleProduct':

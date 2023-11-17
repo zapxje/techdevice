@@ -45,11 +45,11 @@
                         </button>
                     </div>
                 <?php
-                } elseif (isset($notification) && $notification == "failedAdd") {
+                } else if (isset($notification) && $notification == "successDel") {
                 ?>
-                    <div class="sufee-alert alert with-close alert-danger alert-dismissible fade show">
-                        <span class="badge badge-pill badge-danger">Failed</span>
-                        Không có logo thương hiệu !
+                    <div class="sufee-alert alert with-close alert-warning alert-dismissible fade show">
+                        <span class="badge badge-pill badge-warning">Success</span>
+                        Xóa thương hiệu thành công !
                         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                             <span aria-hidden="true">×</span>
                         </button>
@@ -72,8 +72,7 @@
                 <tbody>
                     <?php
                     $i = 1;
-                    foreach ($listBrands as $brand) {
-                    ?>
+                    foreach ($listBrands as $brand) : ?>
                         <tr>
                             <th scope="row"><?= $i ?></th>
                             <td><?= $brand['name'] ?></td>
@@ -83,10 +82,8 @@
                                 <a class="text-danger" href="index.php?act=delBrand&id=<?= $brand['id'] ?>"><i class="ti-trash"></i>Xóa</a>
                             </td>
                         </tr>
-                    <?php
-                        $i++;
-                    }
-                    ?>
+                    <?php $i++;
+                    endforeach; ?>
                 </tbody>
             </table>
         </div>
