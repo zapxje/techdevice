@@ -155,6 +155,17 @@
 		<!-- /FOOTER -->
 
 		<!-- jQuery Plugins -->
+		<script>
+	// Chuỗi JSON từ PHP
+	var jsonString = '<?php echo $jsonProducts; ?>';
+
+
+
+	// Chuyển đổi chuỗi JSON thành mảng JavaScript
+	var productsArray = JSON.parse(jsonString);
+
+	// Hiển thị mảng JavaScript trong console (để kiểm tra)
+</script>
 		<script src="view/assets/js/jquery.min.js"></script>
 		<script src="view/assets/js/bootstrap.min.js"></script>
 		<script src="view/assets/js/slick.min.js"></script>

@@ -515,7 +515,9 @@ textarea.input {
 \*----------------------------*/
 
 .header-ctn {
-  float: right;
+  display: flex;
+  align-items: center;
+  justify-content: end;
   padding: 15px 0px;
 }
 
@@ -562,6 +564,16 @@ textarea.input {
   display: none;
 }
 
+.user .avatar i{
+  font-size: 30px;
+  color: #fff;
+  cursor: pointer;
+}
+.user .avatar img{
+  border-radius: 50%;
+  width: 40px;
+  height:40px;
+}
 .cart-dropdown {
   position: absolute;
   width: 300px;
@@ -574,7 +586,9 @@ textarea.input {
   opacity: 0;
   visibility: hidden;
 }
-
+.dropdown-toggle{
+  cursor: pointer;
+}
 .dropdown.open > .cart-dropdown {
   opacity: 1;
   visibility: visible;
