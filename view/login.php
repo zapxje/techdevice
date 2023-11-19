@@ -24,12 +24,10 @@
         <!-- row -->
         <div class="row">
             <form class="col-lg-12" method="POST" action="" >
-                <div class="alert alert-success" role="alert">
+                <!-- <div class="alert alert-success" role="alert">
                     This is a success alert—check it out!
-                </div>
-                <div class="alert alert-danger" role="alert">
-                    This is a danger alert—check it out!
-                </div>
+                </div> -->
+                <?php if($message){echo $message;} ?>
                 <div class="form-group">
                     <label for="exampleInputEmail1">Tên đăng nhập</label>
                     <input type="text" class="form-control" name="username" id="exampleInputEmail1" placeholder="Tên đăng nhập" required>
@@ -40,7 +38,9 @@
                 </div>
                 <p class="text-left">Chưa có tài khoản?<a class="text-primary" href="index.php?act=register">Đăng ký</a></p>
                 <button type="submit" class="btn btn-main" name="submit-login">Đăng Nhập</button>
+                
             </form>
+            
         </div>
         <!-- /row -->
     </div>

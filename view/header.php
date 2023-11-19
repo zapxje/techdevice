@@ -43,7 +43,7 @@ ob_start();
 </head>
 
 <body>
-  
+
     <!-- HEADER -->
     <header>
         <!-- TOP HEADER -->
@@ -84,12 +84,12 @@ ob_start();
                             <form class="filter">
                                 <select class="input-select" name="category">
                                     <option value="0">All Categories</option>
-                                    <?php foreach($listCategories as $category):?>
-                                        <option value="<?=$category['id']?>"><?=$category['name']?></option>
-                                    <?php endforeach;?>
+                                    <?php foreach ($listCategories as $category) : ?>
+                                        <option value="<?= $category['id'] ?>"><?= $category['name'] ?></option>
+                                    <?php endforeach; ?>
                                 </select>
                                 <input class="input" placeholder="Search here" name="name">
-                                <button class="search-btn" >Search</button>
+                                <button class="search-btn">Search</button>
                             </form>
                         </div>
                     </div>
@@ -98,17 +98,26 @@ ob_start();
                     <!-- ACCOUNT -->
                     <div class="col-md-3 clearfix">
                         <div class="header-ctn">
-                            <?php if(isset($_SESSION['user'])): ?>
-                                <div class="user">
-                                    <?php if($_SESSION['user']['avatar'] && !empty($_SESSION['user']['avatar'])): ?>
-                                        
-                                        <div class="avatar"><img src="<?=$_SESSION['user']['avatar']?>" alt=""></div>
-                                    <?php else:?>
-                                        <div class="avatar"><i class="fa fa-user-circle"></i></div>
-                                    <?php endif;?>
+                            <?php if (isset($_SESSION['user'])) : ?>
+                                <div class="dropdown" >
+                                    <div class="user dropdown-toggle " data-toggle="dropdown" aria-expanded="true">
+                                        <?php if ($_SESSION['user']['avatar'] && !empty($_SESSION['user']['avatar'])) : ?>
+
+                                            <div class="avatar"><img src="<?= $_SESSION['user']['avatar'] ?>" alt=""></div>
+                                        <?php else : ?>
+                                            <div class="avatar"><i class="fa fa-user-circle"></i></div>
+                                        <?php endif; ?>
+                                    </div>
+                                    <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                                        <li><a href="#">Thông tin</a></li>
+                                        <li><a href="#">chỉnh sửa</a></li>
+                                        <li role="separator" class="divider"></li>
+                                        <li><a href="?act=logout">Đăng xuất</a></li>
+                                    </ul>
                                 </div>
-                            <?php else:?>
-                            <!-- Login -->
+
+                            <?php else : ?>
+                                <!-- Login -->
                                 <div>
                                     <a href="index.php?act=login">
                                         <i class="fa fa-user-circle"></i>
@@ -116,7 +125,7 @@ ob_start();
                                         <div class="qty">2</div>
                                     </a>
                                 </div>
-                            <?php endif;?>
+                            <?php endif; ?>
                             <!-- /Login -->
                             <!-- Cart -->
                             <div class="dropdown">
@@ -202,4 +211,4 @@ ob_start();
         </div>
         <!-- /container -->
     </nav>
-    <!-- /NAVIGATION -->  
+    <!-- /NAVIGATION -->

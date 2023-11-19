@@ -515,9 +515,10 @@ textarea.input {
 \*----------------------------*/
 
 .header-ctn {
+  margin-left: 40px;
   display: flex;
   align-items: center;
-  justify-content: end;
+  justify-content: start;
   padding: 15px 0px;
 }
 

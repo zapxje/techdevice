@@ -36,15 +36,18 @@
                 break;
 
             case 'login':
+                $message='';
                 if(isset($_POST['submit-login'])){
-                    
                     $login=getOneUser($_POST['username'],$_POST['password']);
-                    
-                
                     if($login){
                         $_SESSION['user']=$login;
+                        header('location: index.php');
+                    }else{
+                        $message='<div class="alert alert-danger" role="alert">
+                        Thông tin đăng nhập không chính xác!
+                    </div>';
                     }
-                    header('location: index.php');
+                   
                 }
 
                 include 'view/login.php';
@@ -61,6 +64,12 @@
             case 'checkout':
                 include 'view/checkout.php';
                 break;
+            case 'logout':
+                // Xoá  tất cả session 
+                session_destroy();
+                header('location: index.php');
+                // Xoá 1 session
+                //unset($_SESSION['user']);
             default:
                 include 'view/home.php';
                 break;
