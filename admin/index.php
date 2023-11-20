@@ -4,6 +4,7 @@ include_once("../model/connectDB.php");
 include_once("../model/categories.php");
 include_once("../model/brands.php");
 include_once("../model/products.php");
+include_once("../model/images.php");
 
 //include the header file
 include_once("view/header.php");

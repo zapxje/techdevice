@@ -100,13 +100,18 @@ ob_start();
                     <div class="col-md-3 clearfix">
                         <div class="header-ctn">
                             <?php if (isset($_SESSION['user'])) : ?>
-                                <div class="dropdown" >
+                                <div class="dropdown">
                                     <div class="user dropdown-toggle " data-toggle="dropdown" aria-expanded="true">
                                         <?php if ($_SESSION['user']['avatar'] && !empty($_SESSION['user']['avatar'])) : ?>
-
-                                            <div class="avatar"><img src="<?= $_SESSION['user']['avatar'] ?>" alt=""></div>
+                                            <div class="avatar">
+                                                <img src="view/assets/img/avatar/<?= $_SESSION['user']['avatar'] ?>" alt="">
+                                                <span class="text-primary">Chào <?= $_SESSION['user']['username'] ?>
+                                            </div>
                                         <?php else : ?>
-                                            <div class="avatar"><i class="fa fa-user-circle"></i></div>
+                                            <div class="avatar">
+                                                <i class="fa fa-user-circle text-primary"></i>
+                                                <span class="text-primary">Chào <?= $_SESSION['user']['username'] ?>
+                                            </div>
                                         <?php endif; ?>
                                     </div>
                                     <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
