@@ -104,7 +104,7 @@ ob_start();
                                     <div class="user dropdown-toggle " data-toggle="dropdown" aria-expanded="true">
                                         <?php if ($_SESSION['user']['avatar'] && !empty($_SESSION['user']['avatar'])) : ?>
                                             <div class="avatar">
-                                                <img src="view/assets/img/avatar/<?= $_SESSION['user']['avatar'] ?>" alt="">
+                                                <img src="<?= $_SESSION['user']['avatar'] ?>" alt="">
                                                 <span class="text-primary">Chào <?= $_SESSION['user']['username'] ?>
                                             </div>
                                         <?php else : ?>
@@ -130,7 +130,7 @@ ob_start();
                                                 </div>
                                                 <div class="my__account-img">
                                                     <?php if ($_SESSION['user']['avatar'] && !empty($_SESSION['user']['avatar'])) : ?>
-                                                        <img src="<?= $_SESSION['user']['avatar'] ?>" alt="">
+                                                        <img src="<?=$_SESSION['user']['avatar']?>" alt="">
                                                     <?php else : ?>
                                                         <i class="fa fa-user-circle"></i>
                                                     <?php endif; ?>
