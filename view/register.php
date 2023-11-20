@@ -22,30 +22,32 @@
     <div class="container">
         <!-- row -->
         <div class="row">
-            <form class="col-lg-12">
+            <form class="col-lg-12" method="POST" action="">
+                <?php if($message){echo $message;} ?>
                 <div class="form-group">
-                    <label for="">Họ và tên</label>
-                    <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Họ và tên">
+                    <label for="fullname">Họ và tên</label>
+                    <input type="text" class="form-control" name="full-name" id="fullname" placeholder="Họ và tên">
                 </div>
                 <div class="row">
                     <div class="col-lg-6 form-group">
-                        <label for="">Tên đăng nhập</label>
-                        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Tên đăng nhập">
+                        <label for="username">Tên đăng nhập</label>
+                        <input type="text" class="form-control" name="username" id="username" placeholder="Tên đăng nhập">
                     </div>
                     <div class="col-lg-6 form-group">
-                        <label for="">Mật khẩu</label>
-                        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Mật khẩu">
+                        <label for="password">Mật khẩu</label>
+                        <input type="password" class="form-control" name="password" id="password" placeholder="Mật khẩu">
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="">Email</label>
-                    <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Địa chỉ email">
+                    <label for="email">Email</label>
+                    <input type="text" class="form-control" name="email" id="email" placeholder="Địa chỉ email">
                 </div>
                 <div class="form-group">
-                    <label for="">Số điện thoại</label>
-                    <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Số điện thoại">
+                    <label for="numberphone">Số điện thoại</label>
+                    <input type="text" class="form-control" name="phone" id="numberphone" placeholder="Số điện thoại">
                 </div>
-                <button type="submit" class="btn btn-main">Đăng Ký</button>
+                <p class="text-left">Quay lại ?<a class="text-primary" href="index.php?act=login">Đăng nhập</a></p>
+                <button type="submit" name="submit-register" class="btn btn-main">Đăng Ký</button>
             </form>
         </div>
         <!-- /row -->
