@@ -4,6 +4,6 @@
 */
 function getOneUser($username, $password)
 {
-    $sql = "SELECT * FROM `users` WHERE username = '" . $username . "' AND password = '" . md5($password) . "'";
+    $sql = "SELECT * FROM `users` WHERE username = '" . $username . "' AND password = '" .$password. "'";
     return getOne($sql);
 }

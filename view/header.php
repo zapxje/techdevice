@@ -1,3 +1,7 @@
+<?php
+ob_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -39,6 +43,7 @@
 </head>
 
 <body>
+
     <!-- HEADER -->
     <header>
         <!-- TOP HEADER -->
@@ -79,16 +84,12 @@
                             <form class="filter">
                                 <select class="input-select" name="category">
                                     <option value="0">All Categories</option>
-                                    <?php
-                                    foreach ($listCategories as $category) {
-                                    ?>
-                                        <option value="<?=$category['id']?>"><?=$category['name']?></option>
-                                    <?php
-                                    }
-                                    ?>
+                                    <?php foreach ($listCategories as $category) : ?>
+                                        <option value="<?= $category['id'] ?>"><?= $category['name'] ?></option>
+                                    <?php endforeach; ?>
                                 </select>
                                 <input class="input" placeholder="Search here" name="name">
-                                <button class="search-btn" >Search</button>
+                                <button class="search-btn">Search</button>
                             </form>
                         </div>
                     </div>
@@ -97,14 +98,34 @@
                     <!-- ACCOUNT -->
                     <div class="col-md-3 clearfix">
                         <div class="header-ctn">
-                            <!-- Login -->
-                            <div>
-                                <a href="index.php?act=login">
-                                    <i class="fa fa-user-circle"></i>
-                                    <span>Đăng Nhập</span>
-                                    <div class="qty">2</div>
-                                </a>
-                            </div>
+                            <?php if (isset($_SESSION['user'])) : ?>
+                                <div class="dropdown" >
+                                    <div class="user dropdown-toggle " data-toggle="dropdown" aria-expanded="true">
+                                        <?php if ($_SESSION['user']['avatar'] && !empty($_SESSION['user']['avatar'])) : ?>
+
+                                            <div class="avatar"><img src="<?= $_SESSION['user']['avatar'] ?>" alt=""></div>
+                                        <?php else : ?>
+                                            <div class="avatar"><i class="fa fa-user-circle"></i></div>
+                                        <?php endif; ?>
+                                    </div>
+                                    <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                                        <li><a href="#">Thông tin</a></li>
+                                        <li><a href="#">chỉnh sửa</a></li>
+                                        <li role="separator" class="divider"></li>
+                                        <li><a href="?act=logout">Đăng xuất</a></li>
+                                    </ul>
+                                </div>
+
+                            <?php else : ?>
+                                <!-- Login -->
+                                <div>
+                                    <a href="index.php?act=login">
+                                        <i class="fa fa-user-circle"></i>
+                                        <span>Đăng Nhập</span>
+                                        <div class="qty">2</div>
+                                    </a>
+                                </div>
+                            <?php endif; ?>
                             <!-- /Login -->
                             <!-- Cart -->
                             <div class="dropdown">

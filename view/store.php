@@ -556,20 +556,3 @@
 	<!-- /container -->
 </div>
 <!-- /SECTION -->
-
-<!-- ==================lọc product======================== -->
-
-<script>
-	// Chuỗi JSON từ PHP
-	var jsonString = '<?php echo $jsonProducts; ?>';
-
-
-
-	// Chuyển đổi chuỗi JSON thành mảng JavaScript
-	var productsArray = JSON.parse(jsonString);
-
-	// Hiển thị mảng JavaScript trong console (để kiểm tra)
-</script>
-
-
-<!-- ====================end======================= -->
