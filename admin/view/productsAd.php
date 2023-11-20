@@ -57,13 +57,16 @@
                             <tbody>
                                 <?php foreach ($listProducts as $product) :     ?>
                                     <tr role="row" class="odd">
-                                        <td class="sorting_1"><?= $product['name'] ?></td>
-                                        <td><?= $product['price'] ?></td>
-                                        <td><?= $product['price_sale'] ?></td>
+                                        <td class="sorting_1"><?= mb_strimwidth($product['name'], 0, 50, " ...") ?></td>
+                                        <td><?= number_format($product['price'], 0, ',', '.')  ?></td>
+                                        <td><?= number_format($product['price_sale'], 0, ',', '.') ?></td>
                                         <td><?= $product['quantity'] ?></td>
-                                        <td><?= mb_strimwidth($product['description'], 0, 100, " ...") ?></td>
+                                        <td><?= mb_strimwidth($product['description'], 0, 60, " ...") ?></td>
                                         <td><?= $product['number_of_purchases'] ?></td>
-                                        <td><?= $product['image'] ?></td>
+                                        <td>
+                                            <img width="50px" height="50px" src="../view/assets/img/product/<?= $product['image'] ?>" alt="">
+                                            <?= count(getImageByProduct($product['id'])) > 0 ? "có" : "không" ?>
+                                        </td>
                                         <td class="operation">
                                             <a class="text-primary" href=""><i class="ti-pencil-alt"></i>Sửa</a>
                                             <a class="text-danger" href=""><i class="ti-trash"></i>Xóa</a>
