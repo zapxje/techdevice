@@ -141,6 +141,7 @@
       updatePriceSlider($(this).parent(), this.value);
     });
   }
+
   function updatePriceSlider(elem, value) {
     if (elem.hasClass("price-min")) {
       console.log("min");
@@ -169,23 +170,12 @@
       handle ? (priceInputMax.value = value) : (priceInputMin.value = value);
     });
   }
-
-  const myAccount= document.querySelector('.my-account');
-  const wrapperAccount=document.querySelector('.wrapper-account');
-  const accountClose= document.querySelector('.my__account-close');
-  myAccount.addEventListener("click", function(){
-    wrapperAccount.classList.add('show');
-  });
-  accountClose.addEventListener("click", function(){
-    wrapperAccount.classList.remove('show');
-  });
-
 })(jQuery);
 // ==================== Js Main End ==================== //
 
 
 // ==================== Function Countdown Start ==================== //
-const targetDate = "2023-12-31T00:00:00";
+const targetDate = "2023-12-30T00:00:00";
 function countDown() {
   const targetTime = new Date(targetDate).getTime();
   const timeInterval = setInterval(() => {
@@ -196,26 +186,26 @@ function countDown() {
     const scanSeconds = document.querySelector(".countdown-seconds");
     const currentTime = new Date().getTime();
     const timeRemaining = targetTime - currentTime;
-    if(scanNofitication){
+    if (scanNofitication) {
       if (timeRemaining <= 0) {
-      clearInterval(timeInterval);
-      scanNofitication.innerHTML = "Đã hết thời gian giảm giá !";
-    } else {
-      const days = Math.floor(timeRemaining / (1000 * 60 * 60 * 24));
-      const hours = Math.floor(
-        (timeRemaining % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
-      );
-      const minutes = Math.floor(
-        (timeRemaining % (1000 * 60 * 60)) / (1000 * 60)
-      );
-      const seconds = Math.floor((timeRemaining % (1000 * 60)) / 1000);
-      scanDays.innerHTML = (days / 10) >= 1 ? days : `0${days}`;
-      scanHours.innerHTML = (hours / 10) >= 1 ? hours : `0${hours}`;
-      scanMinutes.innerHTML = (minutes / 10) >= 1 ? minutes : `0${minutes}`;
-      scanSeconds.innerHTML = (seconds / 10) >= 1 ? seconds : `0${seconds}`;
+        clearInterval(timeInterval);
+        scanNofitication.innerHTML = "Đã hết thời gian giảm giá !";
+      } else {
+        const days = Math.floor(timeRemaining / (1000 * 60 * 60 * 24));
+        const hours = Math.floor(
+          (timeRemaining % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+        );
+        const minutes = Math.floor(
+          (timeRemaining % (1000 * 60 * 60)) / (1000 * 60)
+        );
+        const seconds = Math.floor((timeRemaining % (1000 * 60)) / 1000);
+        scanDays.innerHTML = (days / 10) >= 1 ? days : `0${days}`;
+        scanHours.innerHTML = (hours / 10) >= 1 ? hours : `0${hours}`;
+        scanMinutes.innerHTML = (minutes / 10) >= 1 ? minutes : `0${minutes}`;
+        scanSeconds.innerHTML = (seconds / 10) >= 1 ? seconds : `0${seconds}`;
+      }
     }
-    }
-    
+
   }, 1000);
 }
 countDown();
@@ -269,7 +259,6 @@ countDown();
   };
   sitePlusMinus();
   const cartProducts = document.querySelectorAll(".listProduct");
-
   const priceTotal = document.getElementById("priceTotal");
   const subTotal = document.getElementById("subTotal");
 
@@ -368,35 +357,34 @@ if (window.history.replaceState) {
 
 let arrFilter = productsArray;
 
-
 const filter = document.querySelector('.filter');
 
 filter.addEventListener('submit', function (e) {
   e.preventDefault();
   let valueFilter = e.target.elements;
-    
-    arrFilter= productsArray.filter(product => {
-     
-      if(valueFilter.name.value != ''){
 
-        const filterValue = valueFilter.name.value.toUpperCase(); // Convert filter value to uppercase
-        const productName = product.name.toUpperCase();
-        if(productName.includes(filterValue)){
-          return true;
-        }
+  arrFilter = productsArray.filter(product => {
+
+    if (valueFilter.name.value != '') {
+
+      const filterValue = valueFilter.name.value.toUpperCase(); // Convert filter value to uppercase
+      const productName = product.name.toUpperCase();
+      if (productName.includes(filterValue)) {
+        return true;
       }
-      
-      if(valueFilter.category.value != ''){
-        
-        if(product.id_category != valueFilter.category.value ){
-          return false;
-        }
+    }
+
+    if (valueFilter.category.value != '') {
+
+      if (product.id_category != valueFilter.category.value) {
+        return false;
       }
-      
-      
-      return true;
-    })
-    displayProducts(arrFilter);
+    }
+
+
+    return true;
+  })
+  displayProducts(arrFilter);
 });
 var productFilter = [];
 
@@ -427,7 +415,7 @@ checkboxFilters.forEach((checkboxFilter) => {
 
 function displayProducts(products) {
   const productsHTML = products.map(product => {
-      return `<div class="col-md-4 col-xs-6">
+    return `<div class="col-md-4 col-xs-6">
                   <div class="product">
                       <div class="product-img">
                           <img src="${product.image}" alt="">

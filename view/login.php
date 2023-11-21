@@ -30,9 +30,7 @@
                 <!-- <div class="alert alert-success" role="alert">
                     This is a success alert—check it out!
                 </div> -->
-                <?php if ($message) {
-                    echo $message;
-                } ?>
+                <?= isset($message) ? $message : '' ?>
                 <div class="form-group">
                     <label for="exampleInputEmail1">Tên đăng nhập</label>
                     <input type="text" class="form-control" name="username" id="exampleInputEmail1" placeholder="Tên đăng nhập" value="<?= isset($_SESSION['register']) ? $_SESSION['register']['username'] : '' ?>" required>

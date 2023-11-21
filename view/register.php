@@ -26,9 +26,7 @@
                 <img width="100%" src="view/assets/img/banner/banner_signup.png" alt="">
             </div>
             <form class="col-md-6" method="POST" action="">
-                <?php if ($message) {
-                    echo $message;
-                } ?>
+                <?= isset($message) ? $message : '' ?>
                 <div class="form-group">
                     <label for="fullname">Họ và tên</label>
                     <input type="text" class="form-control" name="full-name" id="fullname" placeholder="Họ và tên">
