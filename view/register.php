@@ -22,11 +22,6 @@
     <div class="container">
         <!-- row -->
         <div class="row">
-            <?php
-            if (isset($_SESSION['register']) && !empty($_SESSION['register'])) {
-                print_r($_SESSION['register']);
-            }
-            ?>
             <div class="col-md-6 py-2">
                 <img width="100%" src="view/assets/img/banner/banner_signup.png" alt="">
             </div>

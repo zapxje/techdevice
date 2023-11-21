@@ -35,11 +35,11 @@
                 } ?>
                 <div class="form-group">
                     <label for="exampleInputEmail1">Tên đăng nhập</label>
-                    <input type="text" class="form-control" name="username" id="exampleInputEmail1" placeholder="Tên đăng nhập" value="<?= isset($_SESSION['register']) ? $_SESSION['register']['username'] : 0 ?> " required>
+                    <input type="text" class="form-control" name="username" id="exampleInputEmail1" placeholder="Tên đăng nhập" value="<?= isset($_SESSION['register']) ? $_SESSION['register']['username'] : '' ?>" required>
                 </div>
                 <div class="form-group">
                     <label for="exampleInputPassword1">Mật khẩu</label>
-                    <input type="password" class="form-control" name="password" id="exampleInputPassword1" placeholder="Mật khẩu" value="<?= isset($_SESSION['register']) ? $_SESSION['register']['password'] : 0 ?> " required>
+                    <input type="password" class="form-control" name="password" id="exampleInputPassword1" placeholder="Mật khẩu" value="<?= isset($_SESSION['register']) ? $_SESSION['register']['password'] : '' ?>" required>
                 </div>
                 <p class="text-left">Chưa có tài khoản?<a class="text-primary" href="index.php?act=register">Đăng ký</a></p>
                 <button type="submit" class="btn btn-main" name="submit-login">Đăng Nhập</button>
