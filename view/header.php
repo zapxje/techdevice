@@ -55,8 +55,9 @@ ob_start();
                     <li><a href="#"><i class="fa fa-map-marker"></i> 1734 Stonecoal Road</a></li>
                 </ul>
                 <ul class="header-links pull-right">
-                    <li><a href="#"><i class="fa fa-dollar"></i> USD</a></li>
-                    <li><a href="#"><i class="fa fa-user-o"></i> My Account</a></li>
+                    <?php if (isset($_SESSION['user']) && !empty($_SESSION['user'])) : ?>
+                        <li><a href="javascript:void(0)"><i class="fa fa-user-o"></i> Chào <?= $_SESSION['user']['username'] ?> !</a></li>
+                    <?php endif; ?>
                 </ul>
             </div>
         </div>
@@ -99,30 +100,25 @@ ob_start();
                     <div class="col-md-3 clearfix">
                         <div class="header-ctn">
                             <?php if (isset($_SESSION['user'])) : ?>
+                                <!-- Login -->
                                 <div class="dropdown">
-                                    <div class="user dropdown-toggle " data-toggle="dropdown" aria-expanded="true">
+                                    <a class="user-login dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
                                         <?php if ($_SESSION['user']['avatar'] && !empty($_SESSION['user']['avatar'])) : ?>
-                                            <div class="avatar">
-                                                <img src="view/assets/img/avatar/<?= $_SESSION['user']['avatar'] ?>" alt="">
-                                                <span class="text-primary">Chào <?= $_SESSION['user']['username'] ?>
-                                            </div>
+                                            <div><img src="view/assets/img/avatar/<?= $_SESSION['user']['avatar'] ?>" alt=""></div>
+                                            <span>Tài khoản</span>
                                         <?php else : ?>
-                                            <div class="avatar">
-                                                <i class="fa fa-user-circle text-primary"></i>
-                                                <span class="text-primary">Chào <?= $_SESSION['user']['username'] ?>
-                                            </div>
+                                            <i class="fa fa-user-circle"></i>
+                                            <span>Tài khoản</span>
                                         <?php endif; ?>
-                                    </div>
+                                    </a>
                                     <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
                                         <li><a href="#">Thông tin</a></li>
-                                        <li><a href="#">chỉnh sửa</a></li>
+                                        <li><a href="#">Chỉnh sửa</a></li>
                                         <li role="separator" class="divider"></li>
                                         <li><a href="?act=logout">Đăng xuất</a></li>
                                     </ul>
                                 </div>
-
                             <?php else : ?>
-                                <!-- Login -->
                                 <div>
                                     <a href="index.php?act=login">
                                         <i class="fa fa-user-circle"></i>
@@ -132,6 +128,7 @@ ob_start();
                                 </div>
                             <?php endif; ?>
                             <!-- /Login -->
+
                             <!-- Cart -->
                             <div class="dropdown">
                                 <a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
@@ -174,8 +171,6 @@ ob_start();
                                 </div>
                             </div>
                             <!-- /Cart -->
-
-
 
                             <!-- Menu Toogle -->
                             <div class="menu-toggle">

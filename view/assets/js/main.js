@@ -175,7 +175,7 @@
 
 
 // ==================== Function Countdown Start ==================== //
-const targetDate = "2023-11-20T00:00:00";
+const targetDate = "2023-12-31T00:00:00";
 function countDown() {
   const targetTime = new Date(targetDate).getTime();
   const timeInterval = setInterval(() => {

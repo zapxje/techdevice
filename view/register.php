@@ -22,7 +22,10 @@
     <div class="container">
         <!-- row -->
         <div class="row">
-            <form class="col-lg-12">
+            <div class="col-md-6 py-2">
+                <img width="100%" src="view/assets/img/banner/banner_signup.png" alt="">
+            </div>
+            <form class="col-md-6">
                 <div class="form-group">
                     <label for="">Họ và tên</label>
                     <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Họ và tên">

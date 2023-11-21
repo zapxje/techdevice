@@ -515,10 +515,7 @@ textarea.input {
 \*----------------------------*/
 
 .header-ctn {
-  margin-left: 40px;
-  display: flex;
-  align-items: center;
-  justify-content: start;
+  float: right;
   padding: 15px 0px;
 }
 
@@ -565,21 +562,21 @@ textarea.input {
   display: none;
 }
 
-.user .avatar{
+
+/* .user .avatar a {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
-}
+} */
 
-.user .avatar i{
+/* .user .avatar i {
   font-size: 20px;
   color: #fff;
   cursor: pointer;
-}
-.user .avatar img{
+} */
+.user-login img {
   border-radius: 50%;
-  width:  25px;
+  width: 25px;
   height: 25px;
   object-fit: cover;
 }
@@ -595,7 +592,7 @@ textarea.input {
   opacity: 0;
   visibility: hidden;
 }
-.dropdown-toggle{
+.dropdown-toggle {
   cursor: pointer;
 }
 .dropdown.open > .cart-dropdown {
