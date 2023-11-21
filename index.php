@@ -95,12 +95,13 @@
                             $_POST['email'],
                             $_POST['phone']
                         );
+                        $_SESSION['register']['username'] = ($_POST['username']);
+                        $_SESSION['register']['password'] = ($_POST['password']);
                         $message = '<div class="alert alert-success" role="alert">
                                     Bạn đã đăng kí thành công
                                     </div>';
                     }
                 }
-
                 include 'view/register.php';
                 break;
 

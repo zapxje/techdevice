@@ -22,6 +22,11 @@
     <div class="container">
         <!-- row -->
         <div class="row">
+            <?php
+            if (isset($_SESSION['register']) && !empty($_SESSION['register'])) {
+                print_r($_SESSION['register']);
+            }
+            ?>
             <div class="col-md-6 py-2">
                 <img width="100%" src="view/assets/img/banner/banner_signup.png" alt="">
             </div>
@@ -51,7 +56,7 @@
                     <label for="numberphone">Số điện thoại</label>
                     <input type="text" class="form-control" name="phone" id="numberphone" placeholder="Số điện thoại">
                 </div>
-                <p class="text-left">Quay lại ?<a class="text-primary" href="index.php?act=login">Đăng nhập</a></p>
+                <p class="text-left">Quay lại?<a class="text-primary" href="index.php?act=login">Đăng nhập</a></p>
                 <button type="submit" name="submit-register" class="btn btn-main">Đăng Ký</button>
             </form>
         </div>

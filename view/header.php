@@ -162,7 +162,6 @@ ob_start();
                                     <a href="index.php?act=login">
                                         <i class="fa fa-user-circle"></i>
                                         <span>Đăng Nhập</span>
-                                        <div class="qty">2</div>
                                     </a>
                                 </div>
                             <?php endif; ?>
