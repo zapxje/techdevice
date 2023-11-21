@@ -35,8 +35,7 @@
             <!-- Thông báo  -->
             <div>
                 <?php
-                if (isset($notification) && $notification == "successAdd") {
-                ?>
+                if (isset($notification) && $notification == "successAdd") : ?>
                     <div class="sufee-alert alert with-close alert-success alert-dismissible fade show">
                         <span class="badge badge-pill badge-success">Success</span>
                         Thêm danh mục thành công !
@@ -44,9 +43,7 @@
                             <span aria-hidden="true">×</span>
                         </button>
                     </div>
-                <?php
-                } else if (isset($notification) && $notification == "successDel") {
-                ?>
+                <?php elseif (isset($notification) && $notification == "successDel") : ?>
                     <div class="sufee-alert alert with-close alert-warning alert-dismissible fade show">
                         <span class="badge badge-pill badge-warning">Success</span>
                         Xóa danh mục thành công !
@@ -54,9 +51,7 @@
                             <span aria-hidden="true">×</span>
                         </button>
                     </div>
-                <?php
-                } elseif (isset($notification) && $notification == "failedDel") {
-                ?>
+                <?php elseif (isset($notification) && $notification == "failedDel") : ?>
                     <div class="sufee-alert alert with-close alert-danger alert-dismissible fade show">
                         <span class="badge badge-pill badge-danger">Failed</span>
                         Danh mục hiện có sản phẩm !
@@ -64,9 +59,7 @@
                             <span aria-hidden="true">×</span>
                         </button>
                     </div>
-                <?php
-                } elseif (isset($notification) && $notification == "successUpdate") {
-                ?>
+                <?php elseif (isset($notification) && $notification == "successUpdate") : ?>
                     <div class="sufee-alert alert with-close alert-success alert-dismissible fade show">
                         <span class="badge badge-pill badge-success">Success</span>
                         Cập nhật danh mục thành công !
@@ -74,9 +67,7 @@
                             <span aria-hidden="true">×</span>
                         </button>
                     </div>
-                <?php
-                }
-                ?>
+                <?php endif; ?>
             </div>
             <!-- Thông báo  -->
             <table class="table table-striped table-bordered">

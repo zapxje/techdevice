@@ -35,18 +35,31 @@
             <!-- Thông báo  -->
             <div>
                 <?php
-                if (isset($notification) && $notification == "successUpdate") {
-                ?>
+                if (isset($notification) && $notification == "successAdd") : ?>
                     <div class="sufee-alert alert with-close alert-success alert-dismissible fade show">
                         <span class="badge badge-pill badge-success">Success</span>
-                        Cập nhật thương hiệu thành công !
+                        Thêm thương hiệu thành công !
                         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                             <span aria-hidden="true">×</span>
                         </button>
                     </div>
-                <?php
-                } else if (isset($notification) && $notification == "successDel") {
-                ?>
+                <?php elseif (isset($notification) && $notification == "failedFormat") : ?>
+                    <div class="sufee-alert alert with-close alert-danger alert-dismissible fade show">
+                        <span class="badge badge-pill badge-danger">Failed</span>
+                        Định dạng ảnh không đúng !
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">×</span>
+                        </button>
+                    </div>
+                <?php elseif (isset($notification) && $notification == "failedAdd") : ?>
+                    <div class="sufee-alert alert with-close alert-danger alert-dismissible fade show">
+                        <span class="badge badge-pill badge-danger">Failed</span>
+                        Logo này đã tồn tại !
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">×</span>
+                        </button>
+                    </div>
+                <?php elseif (isset($notification) && $notification == "successDel") : ?>
                     <div class="sufee-alert alert with-close alert-warning alert-dismissible fade show">
                         <span class="badge badge-pill badge-warning">Success</span>
                         Xóa thương hiệu thành công !
@@ -54,9 +67,23 @@
                             <span aria-hidden="true">×</span>
                         </button>
                     </div>
-                <?php
-                }
-                ?>
+                <?php elseif (isset($notification) && $notification == "failedDel") : ?>
+                    <div class="sufee-alert alert with-close alert-danger alert-dismissible fade show">
+                        <span class="badge badge-pill badge-danger">Failed</span>
+                        Thương hiệu hiện có sản phẩm !
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">×</span>
+                        </button>
+                    </div>
+                <?php elseif (isset($notification) && $notification == "successUpdate") : ?>
+                    <div class="sufee-alert alert with-close alert-success alert-dismissible fade show">
+                        <span class="badge badge-pill badge-success">Success</span>
+                        Cập nhật thương hiệu thành công !
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">×</span>
+                        </button>
+                    </div>
+                <?php endif; ?>
 
             </div>
             <!-- Thông báo  -->

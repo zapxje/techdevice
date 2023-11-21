@@ -4,28 +4,27 @@ switch ($_REQUEST["act"]) {
     case "addBrand":
         if (isset($_REQUEST['name']) && !empty($_REQUEST['name'])) {
             $name = $_REQUEST['name'];
-            // Kiểm tra dữ liệu
-            if (!isset($_FILES['image']) || $_FILES['image']['error'] != UPLOAD_ERR_OK) {
-                $notification = "failedAdd";
-                return;
-            }
             // Lấy tên file gốc
             $filename = $_FILES['image']['name'];
             // Lấy định dạng file
             $extension = pathinfo($filename, PATHINFO_EXTENSION);
-            // Tạo một thư mục để lưu ảnh
-            $dir = '../view/assets/img/brand_image';
-            // Kiểm tra đã tồn tại chưa
-            if (file_exists($dir . '/' . $filename)) {
-                // File ảnh đã tồn tại
-                $notification = "is_file_true";
-                return;
+            if ($extension == "png" || $extension == "jpg" || $extension == "jpeg" || $extension == "svg" || $extension == "gif") {
+                // Tạo một thư mục để lưu ảnh
+                $dir = '../view/assets/img/brand_image';
+                // Kiểm tra đã tồn tại chưa
+                if (file_exists($dir . '/' . $filename)) {
+                    // File ảnh đã tồn tại
+                    $notification = "failedAdd";
+                    return;
+                }
+                // Di chuyển file ảnh sang thư mục mới
+                move_uploaded_file($_FILES['image']['tmp_name'], $dir . '/' . $filename);
+                // Thực hiện hàm thêm thương hiệu
+                addBrand($name, $filename);
+                $notification = "successAdd";
+            } else {
+                $notification = "failedFormat";
             }
-            // Di chuyển file ảnh sang thư mục mới
-            move_uploaded_file($_FILES['image']['tmp_name'], $dir . '/' . $filename);
-            // Thực hiện hàm thêm thương hiệu
-            addBrand($name, $filename);
-            $notification = "successAdd";
         }
         break;
     case "delBrand":
@@ -43,45 +42,51 @@ switch ($_REQUEST["act"]) {
         }
         break;
     case "updateBrand":
-        if (isset($_REQUEST['id']) && !empty($_REQUEST['id'])) {
-            $id = $_REQUEST['id'];
-            if (isset($_REQUEST['status']) && ($_REQUEST['status']) == 1) {
-                if (isset($_REQUEST['name']) && !empty($_REQUEST['name'])) {
-                    $name = $_REQUEST['name'];
-                    $old_image = $_REQUEST['old_image'];
-                    // Kiểm tra dữ liệu
-                    if (!isset($_FILES['new_image']) || $_FILES['new_image']['error'] != UPLOAD_ERR_OK) {
-                        // Nếu không tồn tại ảnh mới thì vẫn update và lấy ảnh cũ
-                        updateBrand($id, $name, $old_image);
-                    } else {
-                        // Lấy tên file mới
-                        $new_image = $_FILES['new_image']['name'];
-                        // Tạo một thư mục để lưu ảnh
-                        $dir = '../view/assets/img/brand_image';
-                        // Kiểm tra đã tồn tại chưa
-                        if (file_exists($dir . '/' . $new_image)) {
-                            // Thực hiện hàm thêm dtb nhưng không thêm ảnh
-                            updateBrand($id, $name, $new_image);
-                        } else {
-                            // Thêm file ảnh vào thư mục
-                            move_uploaded_file($_FILES['new_image']['tmp_name'], $dir . '/' . $new_image);
-                            // Xóa ảnh cũ
-                            unlink('../view/assets/img/brand_image/' . $old_image);
-                            // Thực hiện thêm dtb
-                            updateBrand($id, $name, $new_image);
-                        }
-                    }
-                    $notification = "successUpdate";
-                }
-                $listBrands = getAllBrands();
-                include_once("../admin/view/brandsAd.php");
-            } else {
-                $brand = getOneBrand($id);
-                include_once("../admin/view/brandsUpAd.php");
-            }
-        } else {
+        if (!isset($_REQUEST['id']) || empty($_REQUEST['id'])) {
             $listBrands = getAllBrands();
             include_once("../admin/view/brandsAd.php");
+            return; // Dừng xử lý ngay tại đây nếu không có ID
+        }
+
+        $id = $_REQUEST['id'];
+
+        if (isset($_REQUEST['status']) && $_REQUEST['status'] == 1) {
+            $name = $_REQUEST['name'];
+            $old_image = $_REQUEST['old_image'];
+
+            // Kiểm tra dữ liệu
+            if (!isset($_FILES['new_image']) || $_FILES['new_image']['error'] != UPLOAD_ERR_OK) {
+                // Nếu không tồn tại ảnh mới thì vẫn update và lấy ảnh cũ
+                updateBrand($id, $name, $old_image);
+                $notification = "successUpdate";
+            } else {
+                $new_image = $_FILES['new_image']['name'];
+                $extension = pathinfo($new_image, PATHINFO_EXTENSION);
+
+                if (!in_array($extension, ['png', 'jpg', 'jpeg', 'svg', 'gif'])) {
+                    $notification = "failedFormat";
+                    $listBrands = getAllBrands();
+                    include_once("../admin/view/brandsAd.php");
+                    return;
+                }
+
+                $dir = '../view/assets/img/brand_image';
+                $new_image_path = $dir . '/' . $new_image;
+                if (file_exists($new_image_path)) {
+                    //Thông báo logo đã tồn tại
+                    $notification = "failedAdd";
+                } else {
+                    move_uploaded_file($_FILES['new_image']['tmp_name'], $new_image_path);
+                    unlink('../view/assets/img/brand_image/' . $old_image);
+                    updateBrand($id, $name, $new_image);
+                    $notification = "successUpdate";
+                }
+            }
+            $listBrands = getAllBrands();
+            include_once("../admin/view/brandsAd.php");
+        } else {
+            $brand = getOneBrand($id);
+            include_once("../admin/view/brandsUpAd.php");
         }
         break;
 }
