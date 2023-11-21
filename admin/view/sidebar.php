@@ -7,8 +7,8 @@
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-menu" aria-controls="main-menu" aria-expanded="false" aria-label="Toggle navigation">
                 <i class="fa fa-bars"></i>
             </button>
-            <a class="navbar-brand" href="./"><img src="assets/images/logo.png" alt="Logo"></a>
-            <a class="navbar-brand hidden" href="./"><img src="assets/images/logo2.png" alt="Logo"></a>
+            <a class="navbar-brand" href="./"><img src="assets/images/logo/logo_x.png" alt="Logo"></a>
+            <a class="navbar-brand hidden" href="./"><img src="assets/images/logo/logo_y.png" alt="Logo"></a>
         </div>
 
         <div id="main-menu" class="main-menu collapse navbar-collapse">
@@ -97,7 +97,7 @@
                         <div class="dropdown-menu" aria-labelledby="message">
                             <p class="red">You have 4 Mails</p>
                             <a class="dropdown-item media bg-flat-color-1" href="#">
-                                <span class="photo media-left"><img alt="avatar" src="assets/images/avatar/1.jpg"></span>
+                                <span class="photo media-left"><img alt="avatar" src="assets/images/avatar/avatar_admin.png"></span>
                                 <span class="message media-body">
                                     <span class="name float-left">Jonathan Smith</span>
                                     <span class="time float-right">Just now</span>
@@ -136,7 +136,7 @@
             <div class="col-sm-5">
                 <div class="user-area dropdown float-right">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <img class="user-avatar rounded-circle" src="assets/images/admin.jpg" alt="User Avatar">
+                        <img class="user-avatar rounded-circle" src="assets/images/avatar/avatar_admin.png" alt="User Avatar">
                     </a>
 
                     <div class="user-menu dropdown-menu">
@@ -152,20 +152,11 @@
 
                 <div class="language-select dropdown" id="language-select">
                     <a class="dropdown-toggle" href="#" data-toggle="dropdown" id="language" aria-haspopup="true" aria-expanded="true">
-                        <i class="flag-icon flag-icon-us"></i>
+                        <i class="flag-icon flag-icon-vn"></i>
                     </a>
                     <div class="dropdown-menu" aria-labelledby="language">
                         <div class="dropdown-item">
-                            <span class="flag-icon flag-icon-fr"></span>
-                        </div>
-                        <div class="dropdown-item">
-                            <i class="flag-icon flag-icon-es"></i>
-                        </div>
-                        <div class="dropdown-item">
                             <i class="flag-icon flag-icon-us"></i>
-                        </div>
-                        <div class="dropdown-item">
-                            <i class="flag-icon flag-icon-it"></i>
                         </div>
                     </div>
                 </div>
