@@ -655,6 +655,62 @@ textarea.input {
   padding-top: 15px;
   padding-bottom: 15px;
 }
+/*=========================================================
+	 -> My acccount
+===========================================================*/
+.wrapper-account{
+  position: fixed;
+  z-index: 100;
+  top: 0;
+  bottom: 0;
+  left: -15px;
+  right: 0;
+  background-color: rgba(0,0,0,0.4);
+  display: none !important;
+  justify-content: center;
+  align-items: center;
+}
+.wrapper-account.show{
+  display: flex !important;
+}
+.my__account{
+  padding: 10px;
+ border-radius: 5px;
+  min-height: 300px;
+  background-color: #fff;
+  position: relative;
+  animation: showing ease 0.4s;
+    
+}
+@keyframes showing{
+    from{
+        transform: translateY(-100px);
+    }
+    to{
+        transform: translateY(0);
+    }
+}
+.my__account-close {
+  position: absolute;
+  font-size: 18px;
+  top: 10px;
+  right: 10px;
+  
+}
+.my__account-img img {
+  margin: 30px 0 0 20px;
+  width: 75px;
+  height: 75px;
+  border-radius: 50%;
+}
+.my__account-img i {
+  margin: 30px 0 0 20px;
+  font-size: 70px;
+  
+}
+.form-account{
+  margin-top: 20px;
+}
 
 /*=========================================================
 	03 -> Navigation
@@ -2434,7 +2490,7 @@ button.btn.decrease {
   font-size: 15px;
   font-weight: bolder;
 }
-.fa-xmark {
+.close .fa-xmark {
   color: #000000;
   line-height: 160px !important;
   font-size: 20px;
