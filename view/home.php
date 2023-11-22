@@ -87,7 +87,7 @@
                                     <div class="product-img">
                                         <img src="view/assets/img/product01.png" alt="">
                                         <div class="product-label">
-                                            <span class="sale">-30%</span>
+                                            <span class="sale">-30%</span>  
                                             <span class="new">NEW</span>
                                         </div>
                                     </div>

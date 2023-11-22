@@ -85,11 +85,11 @@
 		                    <div class="footer">
 		                        <h5 class="footer-title">hỗ trợ khách hàng</h5>
 		                        <ul class="footer-links">
-		                            <li><a href="#">Hot deals</a></li>
-		                            <li><a href="#">Laptops</a></li>
-		                            <li><a href="#">Smartphones</a></li>
-		                            <li><a href="#">Cameras</a></li>
-		                            <li><a href="#">Accessories</a></li>
+		                            <li><a href="#">Hỗ trợ trực tuyến</a></li>
+		                            <li><a href="#">Thời gian hoạt động24/7</a></li>
+		                            <li><a href="#">Đánh giá và phản hồi</a></li>
+		                            <li><a href="#">Chính sách trả góp</a></li>
+		                            <li><a href="#">Dịch vụ sửa chửa</a></li>
 		                        </ul>
 		                    </div>
 		                </div>
@@ -100,11 +100,10 @@
 		                    <div class="footer">
 		                        <h5 class="footer-title">chính sách mua hàng</h5>
 		                        <ul class="footer-links">
-		                            <li><a href="#">About Us</a></li>
-		                            <li><a href="#">Contact Us</a></li>
-		                            <li><a href="#">Privacy Policy</a></li>
-		                            <li><a href="#">Orders and Returns</a></li>
-		                            <li><a href="#">Terms & Conditions</a></li>
+		                            <li><a href="#">Chính sách bảo hành</a></li>
+		                            <li><a href="#">Chính sách đổi trả</a></li>
+		                            <li><a href="#">Chính sách giảm giá và ưu đãi</a></li>
+		                            <li><a href="#">Chính sách hoàn tiền</a></li>
 		                        </ul>
 		                    </div>
 		                </div>
@@ -113,11 +112,10 @@
 		                    <div class="footer">
 		                        <h5 class="footer-title">Dịch vụ</h5>
 		                        <ul class="footer-links">
-		                            <li><a href="#">My Account</a></li>
-		                            <li><a href="#">View Cart</a></li>
-		                            <li><a href="#">Wishlist</a></li>
-		                            <li><a href="#">Track My Order</a></li>
-		                            <li><a href="#">Help</a></li>
+		                            <li><a href="#">Giao hàng và vận chuyển</a></li>
+		                            <li><a href="#">Đóng gói cẩn thận</a></li>
+		                            <li><a href="#">Thẻ quà tặng và voucher</a></li>
+		                           
 		                        </ul>
 		                    </div>
 		                </div>
@@ -176,7 +174,8 @@
 		<script src="view/assets/js/slick.min.js"></script>
 		<script src="view/assets/js/nouislider.min.js"></script>
 		<script src="view/assets/js/jquery.zoom.min.js"></script>
-		<script src="view/assets/js/main.js"></script>
+		<script type="module" src="view/assets/js/main.js"></script>
+		
 		</body>
 
 		</html>

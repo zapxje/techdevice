@@ -176,7 +176,7 @@ ob_start();
                                     <div class="qty">3</div>
                                 </a>
                                 <div class="cart-dropdown">
-                                    <div class="cart-list">
+                                    <div class="cart-list" id="cart-list">
                                         <div class="product-widget">
                                             <div class="product-img">
                                                 <img src="view/assets/img/product01.png" alt="">
