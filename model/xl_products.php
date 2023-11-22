@@ -82,7 +82,8 @@ switch ($_REQUEST["act"]) {
                     }
                     //Nếu chưa thì upload ảnh mới 
                     move_uploaded_file($list_tmp_name[$i], $new_image_path);
-                    //Viết thêm hàm add ảnh con thôi đi ăn cơm đã :)))
+                    //Gọi hàm thêm ảnh con
+                    addImage($product['id'], $list_name[$i]);
                 }
             }
             $notification = 'successAdd';
