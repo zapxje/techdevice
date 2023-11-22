@@ -28,51 +28,12 @@
         <div class="card-body">
             <!-- Thông báo  -->
             <div>
-                <?php
-                if (isset($notification) && $notification == "successAdd") : ?>
-                    <div class="sufee-alert alert with-close alert-success alert-dismissible fade show">
-                        <span class="badge badge-pill badge-success">Success</span>
-                        Thêm sản phẩm thành công !
-                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                            <span aria-hidden="true">×</span>
-                        </button>
-                    </div>
-                <?php elseif (isset($notification) && $notification == "failedFormat") : ?>
-                    <div class="sufee-alert alert with-close alert-danger alert-dismissible fade show">
-                        <span class="badge badge-pill badge-danger">Failed</span>
-                        Định dạng ảnh không đúng !
-                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                            <span aria-hidden="true">×</span>
-                        </button>
-                    </div>
-                <?php elseif (isset($notification) && $notification == "alreadyExist") : ?>
-                    <div class="sufee-alert alert with-close alert-danger alert-dismissible fade show">
-                        <span class="badge badge-pill badge-danger">Failed</span>
-                        Ảnh sản phẩm đã tồn tại !
-                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                            <span aria-hidden="true">×</span>
-                        </button>
-                    </div>
-                <?php elseif (isset($notification) && $notification == "notExist") : ?>
-                    <div class="sufee-alert alert with-close alert-danger alert-dismissible fade show">
-                        <span class="badge badge-pill badge-danger">Failed</span>
-                        Sản phẩm không tồn tại !
-                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                            <span aria-hidden="true">×</span>
-                        </button>
-                    </div>
-                <?php elseif (isset($notification) && $notification == "successDel") : ?>
-                    <div class="sufee-alert alert with-close alert-warning alert-dismissible fade show">
-                        <span class="badge badge-pill badge-warning">Success</span>
-                        Xóa danh mục thành công !
-                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                            <span aria-hidden="true">×</span>
-                        </button>
-                    </div>
-                <?php elseif (isset($notification) && $notification == "successUpdate") : ?>
-                    <div class="sufee-alert alert with-close alert-success alert-dismissible fade show">
-                        <span class="badge badge-pill badge-success">Success</span>
-                        Cập nhật sản phẩm thành công !
+                <?php if (isset($notification)) : ?>
+                    <div class="sufee-alert alert with-close alert-<?= $notification === 'successDel' ? 'warning' : ($notification === 'notExist' || $notification === 'alreadyExist' || $notification === 'failedDel' || $notification === 'failedFormat' ? 'danger' : 'success') ?> alert-dismissible fade show">
+                        <span class="badge badge-pill badge-<?= $notification === 'successDel' ? 'warning' : ($notification === 'notExist' || $notification === 'alreadyExist' || $notification === 'failedDel' || $notification === 'failedFormat' ? 'danger' : 'success') ?>">
+                            <?= $notification === 'successDel' ? 'Warning' : ($notification === 'notExist' || $notification === 'alreadyExist' || $notification === 'failedDel' || $notification === 'failedFormat' ? 'Failed' : 'Success') ?>
+                        </span>
+                        <?= $notification === 'successAdd' ? 'Thêm sản phẩm thành công !' : ($notification === 'failedFormat' ? 'Định dạng ảnh không phù hợp !' : ($notification === 'notExist' ? 'Sản phẩm không tồn tại' : ($notification === 'alreadyExist' ? 'Ảnh sản phẩm đã tồn tại !' : ($notification === 'successDel' ? 'Xóa sản phẩm thành công !' : ($notification === 'failedDel' ? 'Thương hiệu hiện chứa sản phẩm !' : 'Cập nhật thương hiệu thành công !'))))) ?>
                         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                             <span aria-hidden="true">×</span>
                         </button>
@@ -152,9 +113,11 @@
                                         <td><?= $product['number_of_purchases'] ?></td>
                                         <td class="images-product-admin">
                                             <img width="50px" height="50px" src="../view/assets/img/product/<?= $product['image'] ?>" alt="">
-                                            <div class="count-images-product">
-                                                <a href="javascript:void(0)"><?= count(getImageByProduct($product['id'])) > 0 ? "+" . count(getImageByProduct($product['id'])) : '' ?></a>
-                                            </div>
+                                            <?php if (count(getImageByProduct($product['id']))) : ?>
+                                                <div class="count-images-product">
+                                                    <a href="javascript:void(0)">+<?= count(getImageByProduct($product['id'])) ?></a>
+                                                </div>
+                                            <?php endif; ?>
                                         </td>
                                         <td class="operation">
                                             <a class="text-primary" href=""><i class="ti-pencil-alt"></i>Sửa</a>
@@ -232,7 +195,7 @@
                         </div>
                         <div class="col-lg-6">
                             <label for="" class="control-label mb-1">Ảnh con (nếu có)</label>
-                            <input type="file" id="file-input" class="form-control-file" name="images" multiple accept="image/*">
+                            <input type="file" id="file-input" class="form-control-file" name="images[]" multiple>
                         </div>
                     </div>
                 </div>

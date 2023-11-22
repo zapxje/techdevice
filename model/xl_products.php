@@ -42,16 +42,51 @@ switch ($_REQUEST["act"]) {
                 return;
             }
             // Nếu định dạng ảnh đúng thì tạo đường dẫn lưu ảnh
-            $dir = '../view/assets/img/brand_image';
+            $dir = '../view/assets/img/product';
             //Tạo đường dẫn đầy đủ bao gồm tên ảnh
             $new_image_path = $dir . '/' . $image;
             // Nếu file ảnh tồn tại, thì thông báo 
             if (file_exists($new_image_path)) {
-                $notification = "failedAdd";
+                $notification = "alreadyExist";
                 return;
             }
             //Nếu chưa thì upload ảnh mới 
             move_uploaded_file($_FILES['image']['tmp_name'], $new_image_path);
+            addProduct($idCategory, $idBrand, $name, $price, $price_sale, $quantity, $description, $image);
+            //Lấy sản phẩm vừa thểm để get id
+            $product = getProductByImage($image);
+            //Kiểm tra có truyển ảnh con hay không
+            if (isset($_FILES['images']) || $_FILES['images']['error'] == UPLOAD_ERR_OK) {
+                $list_name = array();
+                $list_tmp_name = array();
+                foreach ($_FILES['images']['name'] as $image) {
+                    $list_name[] = $image;
+                }
+                foreach ($_FILES['images']['tmp_name'] as $tmp_image) {
+                    $list_tmp_name[] = $tmp_image;
+                }
+                for ($i = 0; $i < count($list_name); $i++) {
+                    //Lấy định dạnh file
+                    $extension = pathinfo($list_name[$i], PATHINFO_EXTENSION);
+                    //Kiểm tra định dạnh file ảnh
+                    if (!in_array($extension, ['png', 'jpg', 'jpeg', 'svg', 'gif'])) {
+                        $notification = 'failedFormat';
+                        return;
+                    }
+                    //Tạo đường dẫn đầy đủ bao gồm tên ảnh
+                    $new_image_path = $dir . '/' . $list_name[$i];
+                    // Nếu file ảnh tồn tại, thì thông báo 
+                    if (file_exists($new_image_path)) {
+                        $notification = "alreadyExist";
+                        return;
+                    }
+                    //Nếu chưa thì upload ảnh mới 
+                    move_uploaded_file($list_tmp_name[$i], $new_image_path);
+                    //Gọi hàm thêm ảnh con
+                    addImage($product['id'], $list_name[$i]);
+                }
+            }
+            $notification = 'successAdd';
         }
         break;
 }

@@ -1,7 +1,9 @@
 <?php
-/*
-* Get Product By Id Catagory
-*/
+function getProductByImage($image)
+{
+    $sql = "SELECT * FROM products WHERE image = '" . $image . "'";
+    return getOne($sql);
+}
 function getProductByCategory($id)
 {
     $sql = "SELECT * FROM products WHERE id_category = " . $id;
@@ -27,4 +29,10 @@ function getOneProduct($id)
 {
     $sql = "SELECT * FROM products WHERE id=" . $id;
     return getOne($sql);
+}
+function addProduct($idCategory, $idBrand, $name, $price, $price_sale, $quantity, $description, $image)
+{
+    $sql = "INSERT INTO products(id_category, id_brand, name, price, price_sale, quantity, description, image) 
+    VALUES(" . $idCategory . ", " . $idBrand . " , '" . $name . "'," . $price . ", " . $price_sale . ", " . $quantity . ", '" . $description . "', '" . $image . "')";
+    return querySql($sql);
 }
