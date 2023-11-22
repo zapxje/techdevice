@@ -28,7 +28,7 @@
             <strong class="card-title"></strong>
         </div>
         <div class="card-body">
-            <form action="index.php?act=updateCategory&id=<?= $category['id'] ?>&status=1" method="post">
+            <form action="index.php?act=updateCategory&id=<?= $category['id'] ?>&update" method="post">
                 <div class="modal-body">
                     <div class="form-group">
                         <label for="" class="control-label mb-1">Tên danh mục</label>

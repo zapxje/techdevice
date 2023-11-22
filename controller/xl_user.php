@@ -47,7 +47,7 @@ if($_GET['act']){
 					}
 				}
 			}
-			$_SESSION['user']=User($id);
+			$_SESSION['user']=getOneUserById($id);
 			header('location:  index.php');
 		break;
 		

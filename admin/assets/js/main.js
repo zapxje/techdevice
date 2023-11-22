@@ -34,9 +34,10 @@ jQuery(document).ready(function ($) {
 	// 	$('.user-menu').parent().toggleClass('open');
 	// });
 });
-
+//Cài này là giải thích thứ tự danh mục
 function showSuggestions() {
 	var inputValue = document.getElementById('inputField').value;
 	var suggestionList = document.getElementById('suggestionList');
 	suggestionList.innerHTML = '<li>(0) -> Ẩn danh mục</li><li>(1, 2,...) -> Tương ứng thứ tự</li>';
 }
+

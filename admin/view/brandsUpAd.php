@@ -28,7 +28,7 @@
             <strong class="card-title"></strong>
         </div>
         <div class="card-body">
-            <form action="index.php?act=updateBrand&id=<?= $brand['id'] ?>&status=1" method="post" enctype="multipart/form-data">
+            <form action="index.php?act=updateBrand&id=<?= $brand['id'] ?>&update" method="post" enctype="multipart/form-data">
                 <div class="modal-body">
                     <div class="form-group">
                         <label for="" class="control-label mb-1">Tên thương hiệu</label>

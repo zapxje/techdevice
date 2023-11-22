@@ -6382,3 +6382,20 @@ header .form-inline .search-form.close {
 .brand-image img {
   height: 250px;
 }
+/*================ Css Operation End ================*/
+/*================ Css Count Images Product ================*/
+.images-product-admin {
+  display: flex;
+  align-items: center;
+}
+.count-images-product {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 35px;
+  height: 35px;
+  background-color: #a9a9a9;
+}
+.count-images-product a {
+  color: white;
+}

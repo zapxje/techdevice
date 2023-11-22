@@ -43,6 +43,14 @@
                             <span aria-hidden="true">×</span>
                         </button>
                     </div>
+                <?php elseif (isset($notification) && $notification == "notExist") : ?>
+                    <div class="sufee-alert alert with-close alert-danger alert-dismissible fade show">
+                        <span class="badge badge-pill badge-danger">Failed</span>
+                        Danh mục không tồn tại !
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">×</span>
+                        </button>
+                    </div>
                 <?php elseif (isset($notification) && $notification == "successDel") : ?>
                     <div class="sufee-alert alert with-close alert-warning alert-dismissible fade show">
                         <span class="badge badge-pill badge-warning">Success</span>

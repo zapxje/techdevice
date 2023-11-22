@@ -57,9 +57,27 @@ if (isset($_REQUEST["act"])) {
             break;
 
         case 'products':
+            $listCategories = getAllCategories();
+            $listBrands = getAllBrands();
             $listProducts = getAllProducts();
             include_once("view/productsAd.php");
             break;
+
+        case 'filterProducts':
+            include_once("../model/xl_products.php");
+            $listCategories = getAllCategories();
+            $listBrands = getAllBrands();
+            include_once("view/productsAd.php");
+            break;
+
+        case 'addProduct':
+            include_once("../model/xl_products.php");
+            $listCategories = getAllCategories();
+            $listBrands = getAllBrands();
+            $listProducts = getAllProducts();
+            include_once("view/productsAd.php");
+            break;
+
 
         default:
             include_once("view/main.php");

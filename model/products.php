@@ -2,7 +2,7 @@
 /*
 * Get Product By Id Catagory
 */
-function getProductByCatagory($id)
+function getProductByCategory($id)
 {
     $sql = "SELECT * FROM products WHERE id_category = " . $id;
     return getAll($sql);
@@ -10,6 +10,12 @@ function getProductByCatagory($id)
 function getProductByBrand($id)
 {
     $sql = "SELECT * FROM products WHERE id_brand = " . $id;
+    return getAll($sql);
+}
+//Lấy sản phẩm theo id category và id brand
+function getProductByBoth($idCategory, $idBrand)
+{
+    $sql = "SELECT * FROM products WHERE id_category = " . $idCategory . " AND id_brand =" . $idBrand;
     return getAll($sql);
 }
 function getAllProducts()

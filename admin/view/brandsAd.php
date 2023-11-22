@@ -51,10 +51,18 @@
                             <span aria-hidden="true">×</span>
                         </button>
                     </div>
-                <?php elseif (isset($notification) && $notification == "failedAdd") : ?>
+                <?php elseif (isset($notification) && $notification == "alreadyExist") : ?>
                     <div class="sufee-alert alert with-close alert-danger alert-dismissible fade show">
                         <span class="badge badge-pill badge-danger">Failed</span>
-                        Logo này đã tồn tại !
+                        Logo thương hiệu đã tồn tại !
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">×</span>
+                        </button>
+                    </div>
+                <?php elseif (isset($notification) && $notification == "notExist") : ?>
+                    <div class="sufee-alert alert with-close alert-danger alert-dismissible fade show">
+                        <span class="badge badge-pill badge-danger">Failed</span>
+                        Thương hiệu không tồn tại !
                         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                             <span aria-hidden="true">×</span>
                         </button>
