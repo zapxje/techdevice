@@ -94,11 +94,9 @@
 		<div class="row sub-cart">
 			<div class="col-md-6 ">
 				<div class="row mb-5">
-					<div class="col-md-6 mb-3 mb-md-0">
-						<button class="btn btn-black btn-sm btn-block">Update Cart</button>
-					</div>
+					
 					<div class="col-md-6">
-						<a href="?act=products"><button class="btn btn-sm btn-block">Continue Shopping</button></a>
+						<a href="?act=products"><button class="primary-btn order-submit">Continue Shopping</button></a>
 					</div>
 				</div>
 				<div class="row coupon">
@@ -110,7 +108,7 @@
 						<input type="text" class="form-control py-3" id="coupon" placeholder="Coupon Code">
 					</div>
 					<div class="col-md-4">
-						<button class="btn btn-black " id="apply">Apply Coupon</button>
+						<button class="primary-btn order-submit" id="apply">Apply Coupon</button>
 					</div>
 				</div>
 			</div>
@@ -141,9 +139,9 @@
 
 						<div class="row">
 							<div class="col-md-12">
-								<button id="checkoutBtn" class="btn btn-black btn-lg py-3 btn-block">
+								<a href="index.php?act=checkout" id="checkoutBtn" class="primary-btn order-submit">
 									Proceed To Checkout
-								</button>
+								</a>
 							</div>
 						</div>
 					</div>

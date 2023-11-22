@@ -170,6 +170,15 @@
       handle ? (priceInputMax.value = value) : (priceInputMin.value = value);
     });
   }
+  const myAccount= document.querySelector('.my-account');
+  const wrapperAccount=document.querySelector('.wrapper-account');
+  const accountClose= document.querySelector('.my__account-close');
+  myAccount.addEventListener("click", function(){
+    wrapperAccount.classList.add('show');
+  });
+  accountClose.addEventListener("click", function(){
+    wrapperAccount.classList.remove('show');
+  });
 })(jQuery);
 // ==================== Js Main End ==================== //
 

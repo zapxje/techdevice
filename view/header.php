@@ -105,7 +105,7 @@ ob_start();
                                 <div class="dropdown">
                                     <a class="user-login dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
                                         <?php if ($_SESSION['user']['avatar'] && !empty($_SESSION['user']['avatar'])) : ?>
-                                            <div><img src="view/assets/img/avatar/<?= $_SESSION['user']['avatar'] ?>" alt=""></div>
+                                            <div><img src="<?= $_SESSION['user']['avatar'] ?>" alt=""></div>
                                             <span>Tài khoản</span>
                                         <?php else : ?>
                                             <i class="fa fa-user-circle"></i>
@@ -119,10 +119,11 @@ ob_start();
                                         <li><a href="?act=logout">Đăng xuất</a></li>
                                     </ul>
                                 </div>
-                                <!-- <div class="container">
-                                    <div class="row">
-                                        <div class="wrapper-account ">
-                                            <div class="my__account col-md-5">
+
+                                <div class="wrapper-account">
+                                    <div class="container">
+                                        <div class="row account">
+                                            <div class="my__account col-md-8">
                                                 <div class="my__account-close">
                                                     <i class="fa-solid fa-xmark"></i>
                                                 </div>
@@ -156,7 +157,7 @@ ob_start();
                                             </div>
                                         </div>
                                     </div>
-                                </div> -->
+                                </div>
                             <?php else : ?>
                                 <div>
                                     <a href="index.php?act=login">
