@@ -34,43 +34,10 @@
             </div>
             <!-- Thông báo  -->
             <div>
-                <?php
-                if (isset($notification) && $notification == "successAdd") : ?>
-                    <div class="sufee-alert alert with-close alert-success alert-dismissible fade show">
-                        <span class="badge badge-pill badge-success">Success</span>
-                        Thêm danh mục thành công !
-                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                            <span aria-hidden="true">×</span>
-                        </button>
-                    </div>
-                <?php elseif (isset($notification) && $notification == "notExist") : ?>
-                    <div class="sufee-alert alert with-close alert-danger alert-dismissible fade show">
-                        <span class="badge badge-pill badge-danger">Failed</span>
-                        Danh mục không tồn tại !
-                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                            <span aria-hidden="true">×</span>
-                        </button>
-                    </div>
-                <?php elseif (isset($notification) && $notification == "successDel") : ?>
-                    <div class="sufee-alert alert with-close alert-warning alert-dismissible fade show">
-                        <span class="badge badge-pill badge-warning">Success</span>
-                        Xóa danh mục thành công !
-                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                            <span aria-hidden="true">×</span>
-                        </button>
-                    </div>
-                <?php elseif (isset($notification) && $notification == "failedDel") : ?>
-                    <div class="sufee-alert alert with-close alert-danger alert-dismissible fade show">
-                        <span class="badge badge-pill badge-danger">Failed</span>
-                        Danh mục hiện có sản phẩm !
-                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                            <span aria-hidden="true">×</span>
-                        </button>
-                    </div>
-                <?php elseif (isset($notification) && $notification == "successUpdate") : ?>
-                    <div class="sufee-alert alert with-close alert-success alert-dismissible fade show">
-                        <span class="badge badge-pill badge-success">Success</span>
-                        Cập nhật danh mục thành công !
+                <?php if (isset($notification)) : ?>
+                    <div class="sufee-alert alert with-close alert-<?= $notification === 'successDel' ? 'warning' : ($notification === 'notExist' || $notification === 'failedDel' ? 'danger' : 'success') ?> alert-dismissible fade show">
+                        <span class="badge badge-pill badge-<?= $notification === 'successDel' ? 'warning' : ($notification === 'notExist' || $notification === 'failedDel' ? 'danger' : 'success') ?>"><?= $notification === 'successDel' ? 'Warning' : ($notification === 'notExist' || $notification === 'failedDel' ? 'Failed' : 'Success') ?></span>
+                        <?= $notification === 'successAdd' ? 'Thêm danh mục thành công !' : ($notification === 'notExist' ? 'Danh mục không tồn tại' : ($notification === 'successDel' ? 'Xóa danh mục thành công !' : ($notification === 'failedDel' ? 'Danh mục hiện chứa sản phẩm !' : 'Cập nhật danh mục thành công !'))) ?>
                         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                             <span aria-hidden="true">×</span>
                         </button>

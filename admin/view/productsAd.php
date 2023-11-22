@@ -32,15 +32,7 @@
                 if (isset($notification) && $notification == "successAdd") : ?>
                     <div class="sufee-alert alert with-close alert-success alert-dismissible fade show">
                         <span class="badge badge-pill badge-success">Success</span>
-                        Thêm danh mục thành công !
-                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                            <span aria-hidden="true">×</span>
-                        </button>
-                    </div>
-                <?php elseif (isset($notification) && $notification == "successDel") : ?>
-                    <div class="sufee-alert alert with-close alert-warning alert-dismissible fade show">
-                        <span class="badge badge-pill badge-warning">Success</span>
-                        Xóa danh mục thành công !
+                        Thêm sản phẩm thành công !
                         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                             <span aria-hidden="true">×</span>
                         </button>
@@ -53,10 +45,34 @@
                             <span aria-hidden="true">×</span>
                         </button>
                     </div>
+                <?php elseif (isset($notification) && $notification == "alreadyExist") : ?>
+                    <div class="sufee-alert alert with-close alert-danger alert-dismissible fade show">
+                        <span class="badge badge-pill badge-danger">Failed</span>
+                        Ảnh sản phẩm đã tồn tại !
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">×</span>
+                        </button>
+                    </div>
+                <?php elseif (isset($notification) && $notification == "notExist") : ?>
+                    <div class="sufee-alert alert with-close alert-danger alert-dismissible fade show">
+                        <span class="badge badge-pill badge-danger">Failed</span>
+                        Sản phẩm không tồn tại !
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">×</span>
+                        </button>
+                    </div>
+                <?php elseif (isset($notification) && $notification == "successDel") : ?>
+                    <div class="sufee-alert alert with-close alert-warning alert-dismissible fade show">
+                        <span class="badge badge-pill badge-warning">Success</span>
+                        Xóa danh mục thành công !
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">×</span>
+                        </button>
+                    </div>
                 <?php elseif (isset($notification) && $notification == "successUpdate") : ?>
                     <div class="sufee-alert alert with-close alert-success alert-dismissible fade show">
                         <span class="badge badge-pill badge-success">Success</span>
-                        Cập nhật danh mục thành công !
+                        Cập nhật sản phẩm thành công !
                         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                             <span aria-hidden="true">×</span>
                         </button>
@@ -126,7 +142,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <?php foreach ($listProducts as $product) :     ?>
+                                <?php foreach ($listProducts as $product) : ?>
                                     <tr role="row" class="odd">
                                         <td class="sorting_1"><?= mb_strimwidth($product['name'], 0, 50, "...") ?></td>
                                         <td><?= number_format($product['price'], 0, ',', '.')  ?></td>
