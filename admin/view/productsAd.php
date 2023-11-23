@@ -121,7 +121,7 @@
                                         </td>
                                         <td class="operation">
                                             <a class="text-primary" href=""><i class="ti-pencil-alt"></i>Sửa</a>
-                                            <a class="text-danger" href=""><i class="ti-trash"></i>Xóa</a>
+                                            <a class="text-danger" href="index.php?act=delProduct&id=<?= $product['id'] ?>" onclick="return confirm('Bạn có chắc chắn xóa sản phẩm này ?')"><i class="ti-trash"></i>Xóa</a>
                                         </td>
                                     </tr>
                                 <?php endforeach; ?>
@@ -134,7 +134,7 @@
     </div>
 </div>
 <!-- Nội Dung -->
-<!-- Modal -->
+<!-- Modal Add -->
 <div class="modal fade" id="mediumModal" tabindex="-1" role="dialog" aria-labelledby="mediumModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
@@ -208,4 +208,4 @@
         </div>
     </div>
 </div>
-<!-- Modal -->
+<!-- Modal Add -->

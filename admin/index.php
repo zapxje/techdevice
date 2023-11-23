@@ -78,6 +78,13 @@ if (isset($_REQUEST["act"])) {
             include_once("view/productsAd.php");
             break;
 
+        case 'delProduct':
+            include_once("../model/xl_products.php");
+            $listCategories = getAllCategories();
+            $listBrands = getAllBrands();
+            $listProducts = getAllProducts();
+            include_once("view/productsAd.php");
+            break;
 
         default:
             include_once("view/main.php");

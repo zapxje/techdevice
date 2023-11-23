@@ -89,5 +89,17 @@ switch ($_REQUEST["act"]) {
             $notification = 'successAdd';
         }
         break;
+
+    case 'delProduct':
+        if (isset($_REQUEST['id']) && !empty($_REQUEST['id'])) {
+            $id = $_REQUEST['id'];
+            $product = getOneProduct($id);
+            if ($product) {
+                echo 'Ok';
+            } else {
+                $notification = "notExist";
+            }
+        }
+        break;
 }
 /*======================================== ADMIN END======================================== */
