@@ -12,7 +12,7 @@
             <div class="page-title">
                 <ol class="breadcrumb text-right">
                     <li><a href="index.php">Bảng điều khiển</a></li>
-                    <li><a href="index.php?act=categories">Thương hiệu sản phẩm</a></li>
+                    <li><a href="index.php?act=brands">Thương hiệu sản phẩm</a></li>
                     <li class="active">Chỉnh sửa thương hiệu</li>
                 </ol>
             </div>

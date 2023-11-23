@@ -40,4 +40,3 @@ function showSuggestions() {
 	var suggestionList = document.getElementById('suggestionList');
 	suggestionList.innerHTML = '<li>(0) -> Ẩn danh mục</li><li>(1, 2,...) -> Tương ứng thứ tự</li>';
 }
-

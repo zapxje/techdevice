@@ -29,7 +29,7 @@ switch ($_REQUEST["act"]) {
             $idBrand = $_REQUEST['idBrand'];
             $name = $_REQUEST['name'];
             $price = $_REQUEST['price'];
-            $price_sale = $_REQUEST['price_sale'];
+            $price_sale = empty($_REQUEST['price_sale']) ? 0 : $_REQUEST['price_sale'];
             $quantity = $_REQUEST['quantity'];
             $description = $_REQUEST['description'];
             //Lấy tên file
@@ -56,7 +56,7 @@ switch ($_REQUEST["act"]) {
             //Lấy sản phẩm vừa thểm để get id
             $product = getProductByImage($image);
             //Kiểm tra có truyển ảnh con hay không
-            if (isset($_FILES['images']) || $_FILES['images']['error'] == UPLOAD_ERR_OK) {
+            if (isset($_FILES['images']) && !empty($_FILES['images']) || $_FILES['images']['error'] == UPLOAD_ERR_OK) {
                 $list_name = array();
                 $list_tmp_name = array();
                 foreach ($_FILES['images']['name'] as $image) {
@@ -87,6 +87,59 @@ switch ($_REQUEST["act"]) {
                 }
             }
             $notification = 'successAdd';
+        }
+        break;
+
+    case 'delProduct':
+        if (isset($_REQUEST['id']) && !empty($_REQUEST['id'])) {
+            $id = $_REQUEST['id'];
+            $product = getOneProduct($id);
+            if ($product) {
+                echo 'Ok';
+            } else {
+                $notification = "notExist";
+            }
+        }
+        break;
+
+    case 'properties':
+        if (isset($_REQUEST['id']) && !empty($_REQUEST['id'])) {
+            $idProduct = $_REQUEST['id'];
+            $product = getOneProduct($idProduct);
+            if ($product) {
+                if (isset($_REQUEST['status'])) {
+                    switch ($_REQUEST['status']) {
+                        case '1':
+                            if (isset($_REQUEST['name']) && !empty($_REQUEST['name'])) {
+                                $name = $_REQUEST['name'];
+                                $description = $_REQUEST['description'];
+                                addProperty($idProduct, $name, $description);
+                                $notification = 'successAdd';
+                            }
+                            break;
+                        case '2':
+                            if (isset($_REQUEST['idProperty']) && !empty($_REQUEST['idProperty'])) {
+                                $idProperty = $_REQUEST['idProperty'];
+                                $property = getOneProperty($idProperty);
+                                if ($property) {
+                                    delProperty($idProperty);
+                                    $notification = "successDel";
+                                } else {
+                                    $notification = "notExist";
+                                }
+                            }
+                            break;
+                    }
+                }
+                $listProperties = getPropertyByProduct($idProduct);
+                include_once("view/propertiesAd.php");
+            } else {
+                $notification = "notExist";
+                $listCategories = getAllCategories();
+                $listBrands = getAllBrands();
+                $listProducts = getAllProducts();
+                include_once("view/productsAd.php");
+            }
         }
         break;
 }

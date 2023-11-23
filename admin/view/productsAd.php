@@ -99,17 +99,18 @@
                                     <th class="sorting" tabindex="0" aria-controls="bootstrap-data-table-export" rowspan="1" colspan="1" aria-label="Salary: activate to sort column ascending" style="width: 405.2px;">Mô tả</th>
                                     <th class="sorting" tabindex="0" aria-controls="bootstrap-data-table-export" rowspan="1" colspan="1" aria-label="Salary: activate to sort column ascending" style="width: 182.2px;">Doanh số</th>
                                     <th class="sorting" tabindex="0" aria-controls="bootstrap-data-table-export" rowspan="1" colspan="1" aria-label="Salary: activate to sort column ascending" style="width: 182.2px;">Hình ảnh</th>
+                                    <th class="sorting" tabindex="0" aria-controls="bootstrap-data-table-export" rowspan="1" colspan="1" aria-label="Salary: activate to sort column ascending" style="width: 182.2px;">Thuộc tính</th>
                                     <th class="sorting" tabindex="0" aria-controls="bootstrap-data-table-export" rowspan="1" colspan="1" aria-label="Salary: activate to sort column ascending" style="width: 182.2px;">Thao tác</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <?php foreach ($listProducts as $product) : ?>
                                     <tr role="row" class="odd">
-                                        <td class="sorting_1"><?= mb_strimwidth($product['name'], 0, 50, "...") ?></td>
+                                        <td class="sorting_1"><?= mb_strimwidth($product['name'], 0, 40, "...") ?></td>
                                         <td><?= number_format($product['price'], 0, ',', '.')  ?></td>
                                         <td><?= number_format($product['price_sale'], 0, ',', '.') ?></td>
                                         <td><?= $product['quantity'] ?></td>
-                                        <td><?= mb_strimwidth($product['description'], 0, 60, "...") ?></td>
+                                        <td><?= mb_strimwidth($product['description'], 0, 50, "...") ?></td>
                                         <td><?= $product['number_of_purchases'] ?></td>
                                         <td class="images-product-admin">
                                             <img width="50px" height="50px" src="../view/assets/img/product/<?= $product['image'] ?>" alt="">
@@ -119,9 +120,12 @@
                                                 </div>
                                             <?php endif; ?>
                                         </td>
+                                        <td>
+                                            <a href="index.php?act=properties&id=<?= $product['id'] ?>"><button type="button" class="btn btn-outline-primary">Thuộc tính</button></a>
+                                        </td>
                                         <td class="operation">
                                             <a class="text-primary" href=""><i class="ti-pencil-alt"></i>Sửa</a>
-                                            <a class="text-danger" href=""><i class="ti-trash"></i>Xóa</a>
+                                            <a class="text-danger" href="index.php?act=delProduct&id=<?= $product['id'] ?>" onclick="return confirm('Bạn có chắc chắn xóa sản phẩm này ?')"><i class="ti-trash"></i>Xóa</a>
                                         </td>
                                     </tr>
                                 <?php endforeach; ?>
@@ -134,7 +138,7 @@
     </div>
 </div>
 <!-- Nội Dung -->
-<!-- Modal -->
+<!-- Modal Add -->
 <div class="modal fade" id="mediumModal" tabindex="-1" role="dialog" aria-labelledby="mediumModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
@@ -208,4 +212,4 @@
         </div>
     </div>
 </div>
-<!-- Modal -->
+<!-- Modal Add -->
