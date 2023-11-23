@@ -6392,6 +6392,7 @@ header .form-inline .search-form.close {
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-left: 5px;
   width: 35px;
   height: 35px;
   background-color: #a9a9a9;

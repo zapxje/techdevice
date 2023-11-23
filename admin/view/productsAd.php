@@ -106,11 +106,11 @@
                             <tbody>
                                 <?php foreach ($listProducts as $product) : ?>
                                     <tr role="row" class="odd">
-                                        <td class="sorting_1"><?= mb_strimwidth($product['name'], 0, 50, "...") ?></td>
+                                        <td class="sorting_1"><?= mb_strimwidth($product['name'], 0, 40, "...") ?></td>
                                         <td><?= number_format($product['price'], 0, ',', '.')  ?></td>
                                         <td><?= number_format($product['price_sale'], 0, ',', '.') ?></td>
                                         <td><?= $product['quantity'] ?></td>
-                                        <td><?= mb_strimwidth($product['description'], 0, 60, "...") ?></td>
+                                        <td><?= mb_strimwidth($product['description'], 0, 50, "...") ?></td>
                                         <td><?= $product['number_of_purchases'] ?></td>
                                         <td class="images-product-admin">
                                             <img width="50px" height="50px" src="../view/assets/img/product/<?= $product['image'] ?>" alt="">

@@ -10,7 +10,7 @@
 	});
 
 	$('#bootstrap-data-table-export').DataTable({
-		lengthMenu: [[10, 25, 50, -1], [10, 25, 50, "All"]],
+		lengthMenu: [[5, 10, 20, -1], [5, 10, 20, "All"]],
 		buttons: ['copy', 'csv', 'excel', 'pdf', 'print'],
 	});
 
