@@ -14,7 +14,7 @@
 								<th class="product-remove">Remove</th>
 							</tr>
 						</thead>
-						<tbody>
+						<tbody class="view-cart" >
 							<tr class="listProduct">
 								<td class="product-thumbnail">
 									<img src="view/assets/img/product01.png" alt="Image" class="img-fluid">
