@@ -51,6 +51,7 @@
             case 'checkout':
                 include 'view/checkout.php';
                 break;
+
             case 'logout':
                 // Xoá  tất cả session 
                 session_destroy();
@@ -58,8 +59,14 @@
                 // Xoá 1 session
                 //unset($_SESSION['user']);
                 break;
+
             case 'updateUser':
-                include_once 'controller/xl_user.php';
+                include_once 'model/xl_users.php';
+                break;
+
+            case 'topsel':
+                include 'view/checkout.php';
+
                 break;
             default:
                 include 'view/home.php';

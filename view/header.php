@@ -136,7 +136,7 @@ ob_start();
                                                 </div>
                                                 <form action="index.php?act=updateUser&id=<?= $_SESSION['user']['id'] ?>" method="POST" class="form-account" enctype="multipart/form-data">
                                                     <div class="form-group">
-                                                        <label for="">thay đổi Avatar</label>
+                                                        <label for="">Thay đổi avatar</label>
                                                         <input type="file" name="avatar" class="form-control">
                                                     </div>
                                                     <div class="form-group">
@@ -144,11 +144,11 @@ ob_start();
                                                         <input type="text" name="username" class="form-control" value="<?= $_SESSION['user']['username'] ?>">
                                                     </div>
                                                     <div class="form-group">
-                                                        <label for="">email</label>
+                                                        <label for="">Email</label>
                                                         <input type="text" name="email" class="form-control" value="<?= $_SESSION['user']['email'] ?>">
                                                     </div>
                                                     <div class="form-group">
-                                                        <label for="">phone</label>
+                                                        <label for="">Số điện thoại</label>
                                                         <input type="text" name="phone" class="form-control" value="<?= $_SESSION['user']['phone'] ?>">
                                                     </div>
                                                     <input type="hidden" name="old_image" value="<?= $_SESSION['user']['avatar'] ?>">

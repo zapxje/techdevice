@@ -91,8 +91,6 @@ if ($_GET['act']) {
                 </div>';
                     }
                 } else {
-                    // $register = 
-                    // Chỗ này không cần $register = đâu khoa ơi 
                     addUser(
                         $_POST['full-name'],
                         $_POST['username'],
