@@ -36,12 +36,13 @@
 
 		<!-- FOOTER -->
 		<footer id="footer">
+			<!-- messenger -->
 			<div class="messenger">
 				<div class="messenger-logo">
 					<img src="view/assets/img/messenger.png" alt="">
 					<div class="messenger-main ">
 						<div class="messenger-head">
-							<img src="view/assets/img/Black Gold Illustration Gear Logo.png" alt="">
+							<img src="view/assets/img/logo/logo_y.png" alt="">
 							<div class="icon">
 								<i class="fa-solid fa-ellipsis"></i>
 								<i class="fa-solid fa-minus"></i>
@@ -50,13 +51,17 @@
 						<div class="messenger-body">
 							<h5 class="h5">Chat với chúng tôi</h5>
 							<p>Xin chào! Chúng tôi ở đây để giúp bạn. Cần gì hôm nay?</p>
+						
+							<div class="messenger-last">
+								<button class="btn">Bắt đầu chat</button>
+							</div>
 						</div>
-						<div class="messenger-last">
-							<button class="btn">Bắt đầu chat</button>
+						<div class="form-messenger">
+
 						</div>
 					</div>
 				</div>
-					
+				<!-- end messeger -->
 			</div>
 		    <!-- top footer -->
 		    <div class="section">
@@ -66,8 +71,8 @@
 		            <div class="row">
 		                <div class="col-md-3 col-xs-6">
 		                    <div class="footer">
-		                        <h3 class="footer-title">About Us</h3>
-		                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut.</p>
+		                        <h5 class="footer-title">Về chúng tôi</h5>
+		                       <img id="logo-congthuong" src="view/assets/img/logo-da-thong-bao-bo-cong-thuong-mau-xanh.png" alt="">
 		                        <ul class="footer-links">
 		                            <li><a href="#"><i class="fa fa-map-marker"></i>1734 Stonecoal Road</a></li>
 		                            <li><a href="#"><i class="fa fa-phone"></i>+021-95-51-84</a></li>
@@ -78,13 +83,13 @@
 
 		                <div class="col-md-3 col-xs-6">
 		                    <div class="footer">
-		                        <h3 class="footer-title">Categories</h3>
+		                        <h5 class="footer-title">hỗ trợ khách hàng</h5>
 		                        <ul class="footer-links">
-		                            <li><a href="#">Hot deals</a></li>
-		                            <li><a href="#">Laptops</a></li>
-		                            <li><a href="#">Smartphones</a></li>
-		                            <li><a href="#">Cameras</a></li>
-		                            <li><a href="#">Accessories</a></li>
+		                            <li><a href="#">Hỗ trợ trực tuyến</a></li>
+		                            <li><a href="#">Thời gian hoạt động24/7</a></li>
+		                            <li><a href="#">Đánh giá và phản hồi</a></li>
+		                            <li><a href="#">Chính sách trả góp</a></li>
+		                            <li><a href="#">Dịch vụ sửa chửa</a></li>
 		                        </ul>
 		                    </div>
 		                </div>
@@ -93,26 +98,24 @@
 
 		                <div class="col-md-3 col-xs-6">
 		                    <div class="footer">
-		                        <h3 class="footer-title">Information</h3>
+		                        <h5 class="footer-title">chính sách mua hàng</h5>
 		                        <ul class="footer-links">
-		                            <li><a href="#">About Us</a></li>
-		                            <li><a href="#">Contact Us</a></li>
-		                            <li><a href="#">Privacy Policy</a></li>
-		                            <li><a href="#">Orders and Returns</a></li>
-		                            <li><a href="#">Terms & Conditions</a></li>
+		                            <li><a href="#">Chính sách bảo hành</a></li>
+		                            <li><a href="#">Chính sách đổi trả</a></li>
+		                            <li><a href="#">Chính sách giảm giá và ưu đãi</a></li>
+		                            <li><a href="#">Chính sách hoàn tiền</a></li>
 		                        </ul>
 		                    </div>
 		                </div>
 
 		                <div class="col-md-3 col-xs-6">
 		                    <div class="footer">
-		                        <h3 class="footer-title">Service</h3>
+		                        <h5 class="footer-title">Dịch vụ</h5>
 		                        <ul class="footer-links">
-		                            <li><a href="#">My Account</a></li>
-		                            <li><a href="#">View Cart</a></li>
-		                            <li><a href="#">Wishlist</a></li>
-		                            <li><a href="#">Track My Order</a></li>
-		                            <li><a href="#">Help</a></li>
+		                            <li><a href="#">Giao hàng và vận chuyển</a></li>
+		                            <li><a href="#">Đóng gói cẩn thận</a></li>
+		                            <li><a href="#">Thẻ quà tặng và voucher</a></li>
+		                           
 		                        </ul>
 		                    </div>
 		                </div>
@@ -171,7 +174,8 @@
 		<script src="view/assets/js/slick.min.js"></script>
 		<script src="view/assets/js/nouislider.min.js"></script>
 		<script src="view/assets/js/jquery.zoom.min.js"></script>
-		<script src="view/assets/js/main.js"></script>
+		<script type="module" src="view/assets/js/main.js"></script>
+		
 		</body>
 
 		</html>

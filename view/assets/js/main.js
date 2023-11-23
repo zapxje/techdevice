@@ -1,3 +1,4 @@
+import { createStore } from 'https://cdn.skypack.dev/redux';
 // ==================== Js Main Start ==================== //
 (function ($) {
   "use strict";
@@ -170,6 +171,17 @@
       handle ? (priceInputMax.value = value) : (priceInputMin.value = value);
     });
   }
+  const myAccount= document.querySelector('.my-account');
+  const wrapperAccount=document.querySelector('.wrapper-account');
+  const accountClose= document.querySelector('.my__account-close');
+  if(myAccount){
+    myAccount.addEventListener("click", function(){
+      wrapperAccount.classList.add('show');
+    });
+    accountClose.addEventListener("click", function(){
+      wrapperAccount.classList.remove('show');
+    });
+  }
 })(jQuery);
 // ==================== Js Main End ==================== //
 
@@ -212,7 +224,73 @@ countDown();
 // ==================== Function Countdown End ==================== //
 
 // ==================== Function View Cart Start ==================== //
-(function () {
+  
+  //thêm vào giỏ hàng
+    const initState=[];
+    function reducer(state=initState, action){
+      switch(action.type){
+        case 'addToCart':
+          return [...state, action.payload];
+
+        default :
+          return state;
+      }
+    }
+
+    const store= window.store= createStore(reducer);
+    const BtnAddtocart=document.querySelectorAll('.add-to-cart-btn');
+    BtnAddtocart.forEach(item =>{
+      item.addEventListener('click', (e)=>{
+        addToCart(e.target);
+      })
+
+    })
+
+    function addToCart(x){
+      
+      const y= x.parentElement.parentElement;
+      const name=y.children[1].children[1].innerText;
+      const element = y.querySelector('.product-price');
+    const price = element.children[0].innerText; 
+      const img=y.children[0].children[0].src;
+      
+      const product = {
+        name: name,
+        price: price,
+        img: img
+      };
+
+      store.dispatch({
+        type: 'addToCart',
+        payload: product
+      });
+
+    }
+    
+    let storedCartState = JSON.parse(localStorage.getItem('cartState'));
+    store.subscribe(() => {
+      storedCartState = store.getState();
+      localStorage.setItem('cartState', JSON.stringify(storedCartState));
+      render();
+    });
+    function render(){ 
+      const cartList = document.getElementById('cart-list');
+      let productsHTML = '';
+      storedCartState.forEach(product => {
+        productsHTML += ` <div class="product-widget">
+                    <div class="product-img">
+                        <img src="${product.img}" alt="">
+                    </div>
+                    <div class="product-body">
+                        <h3 class="product-name"><a href="#">${product.name}</a></h3>
+                        <h4 class="product-price"><span class="qty">1x</span>${product.price}</h4>
+                    </div>
+                    <button class="delete"><i class="fa fa-close"></i></button>
+                </div>`;
+      })
+      cartList.innerHTML = productsHTML;
+    }
+    render();
   var sitePlusMinus = function () {
     var value,
       quantity = document.getElementsByClassName("quantity-container");
@@ -337,7 +415,7 @@ countDown();
     return amount.toLocaleString("vi-VN");
   }
 
-})();
+
 
 const messenger = document.querySelector('.messenger-logo');
 

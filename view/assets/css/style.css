@@ -563,17 +563,17 @@ textarea.input {
 }
 
 
-/* .user .avatar a {
+.user .avatar a {
   display: flex;
   flex-direction: column;
   align-items: center;
-} */
+}
 
-/* .user .avatar i {
+.user .avatar i {
   font-size: 20px;
   color: #fff;
   cursor: pointer;
-} */
+}
 .user-login img {
   border-radius: 50%;
   width: 25px;
@@ -673,7 +673,13 @@ textarea.input {
 .wrapper-account.show{
   display: flex !important;
 }
+.account{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 .my__account{
+ 
   padding: 10px;
  border-radius: 5px;
   min-height: 300px;
@@ -696,6 +702,9 @@ textarea.input {
   top: 10px;
   right: 10px;
   
+}
+.my__account-img{
+  text-align: center;
 }
 .my__account-img img {
   margin: 30px 0 0 20px;
@@ -2222,7 +2231,7 @@ textarea.input {
 .footer .footer-title {
   color: #fff;
   text-transform: uppercase;
-  font-size: 18px;
+  font-size: 13px;
   margin: 0px 0px 30px;
 }
 
@@ -2354,6 +2363,9 @@ textarea.input {
 }
 
 @media only screen and (max-width: 991px) {
+  #apply{
+    margin-top: 15px;
+  }
   #top-header .header-links.pull-left {
     float: none !important;
   }
@@ -2549,12 +2561,11 @@ button.btn.decrease {
   transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
 #apply {
+ 
+  font-size: 12px;
   font-weight: 600;
-  padding: 12px 30px;
+  padding: 12px 29px;
   border-radius: 30px;
-  color: #ffffff;
-  background: #2f2f2f;
-  border-color: #2f2f2f;
 }
 .text-uppercase {
   text-align: center;
@@ -2657,4 +2668,7 @@ button.btn.decrease {
 }
 .reason h5 {
   color: #1d1e26;
+}
+#logo-congthuong{
+  width: 200px;
 }
