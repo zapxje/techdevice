@@ -65,10 +65,10 @@
                     <h3 class="title">New Products</h3>
                     <div class="section-nav">
                         <ul class="section-tab-nav tab-nav">
-                            <li class="active"><a data-toggle="tab" href="#tab1n">Laptops</a></li>
-                            <li><a data-toggle="tab" href="#tab2n">Smartphones</a></li>
-                            <li><a data-toggle="tab" href="#tab3n">Cameras</a></li>
-                            <li><a data-toggle="tab" href="#tab4n">Accessories</a></li>
+                            <li class="active"><a data-toggle="tab" href="#tab1n">Laptop</a></li>
+                            <li><a data-toggle="tab" href="#tab2n">Bàn phím</a></li>
+                            <li><a data-toggle="tab" href="#tab3n">Chuột</a></li>
+                            <li><a data-toggle="tab" href="#tab4n">Tai nghe</a></li>
                         </ul>
                     </div>
                 </div>
@@ -301,10 +301,10 @@
                     <h3 class="title">Top selling</h3>
                     <div class="section-nav">
                         <ul class="section-tab-nav tab-nav">
-                            <li class="active"><a data-toggle="tab" href="#tab1s">Laptops</a></li>
-                            <li><a data-toggle="tab" href="#tab2s">Smartphones</a></li>
-                            <li><a data-toggle="tab" href="#tab3s">Headphones</a></li>
-                            <li><a data-toggle="tab" href="#tab4s">Keyboard</a></li>
+                            <li class="active"><a data-toggle="tab" href="#tab1s">Laptop</a></li>
+                            <li><a data-toggle="tab" href="#tab2s">Bàn phím</a></li>
+                            <li><a data-toggle="tab" href="#tab3s">Chuột</a></li>
+                            <li><a data-toggle="tab" href="#tab4s">Tai nghe</a></li>
                         </ul>
                     </div>
                 </div>

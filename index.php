@@ -6,7 +6,6 @@
     include 'model/products.php';
     include 'model/users.php';
     $listCategories = getAllCategories();
-    //cái nào danh sách thì mình để là list + với cái đó cho dể nhớ khoa ơi
     $listProducts = getAllProducts();
     $jsonProducts = json_encode($listProducts);
 
