@@ -324,7 +324,6 @@ function render() {
 
   deleToCart.forEach((item) => {
     item.addEventListener('click', function(){
-      console.log('dhad')
       const productId = item.getAttribute('data-id');
       store.dispatch({
         type : 'deleToCart',
@@ -461,10 +460,28 @@ function formatMoney(amount) {
 const messenger = document.querySelector(".messenger-logo");
 
 if (messenger) {
-  messenger.onclick = () => {
-    const show = messenger.querySelector(".messenger-main");
+  const closeMessenger=document.getElementById('close-messenger');
+  const btnMessenger=document.querySelector('.btn-messenger');
+  const messengerBody=document.querySelector('.messenger-body');
+  const chatBox=document.querySelector('.chat-box');
+  closeMessenger.onclick = () => {  
+    const show = document.querySelector(".messenger-main");
     show.classList.toggle("show");
+    messengerBody.classList.add('show');
+    chatBox.classList.remove('show');
   };
+  messenger.onclick = () => {  
+    const show = document.querySelector(".messenger-main");
+    show.classList.toggle("show");
+    messengerBody.classList.add('show');
+    chatBox.classList.remove('show');
+  };
+  if(btnMessenger){
+    btnMessenger.onclick=() => {
+      messengerBody.classList.remove('show');
+      chatBox.classList.add('show');
+    }
+  }
 }
 
 if (window.history.replaceState) {

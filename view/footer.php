@@ -40,25 +40,53 @@
 			<div class="messenger">
 				<div class="messenger-logo">
 					<img src="view/assets/img/messenger.png" alt="">
-					<div class="messenger-main ">
-						<div class="messenger-head">
-							<img src="view/assets/img/logo/logo_y.png" alt="">
-							<div class="icon">
-								<i class="fa-solid fa-ellipsis"></i>
-								<i class="fa-solid fa-minus"></i>
-							</div>
+				</div>
+				<div class="messenger-main show ">
+					<div class="messenger-head">
+						<img src="view/assets/img/logo/logo_y.png" alt="">
+						<div class="icon">
+							<i class="fa-solid fa-ellipsis"></i>
+							<i class="fa-solid fa-minus" id="close-messenger"></i>
 						</div>
-						<div class="messenger-body">
-							<h5 class="h5">Chat với chúng tôi</h5>
-							<p>Xin chào! Chúng tôi ở đây để giúp bạn. Cần gì hôm nay?</p>
+					</div>
+					<div class="messenger-body show">
+						<h5 class="h5">Chat với chúng tôi</h5>
+						<p>Xin chào! Chúng tôi ở đây để giúp bạn. Cần gì hôm nay?</p>
 
-							<div class="messenger-last">
-								<button class="btn">Bắt đầu chat</button>
-							</div>
+						<div class="messenger-last">
+							<button class="btn-messenger">Bắt đầu chat</button>
 						</div>
+					</div>
+					<div class="chat-box">
 						<div class="form-messenger">
+							<div class="chat outgoing">
+								<div class="chat-detail">
+									<p>wwwwwwwwwwwwwwwdám,dakjdfdasiudaskjksd</p>
+								</div>
+							</div>
+							<div class="chat incoming">
+								<img src="view/assets/img/logo/logo_y.png" alt="">
+								<div class="chat-detail">
+									<p>wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww</p>
+								</div>
+							</div>
+							<div class="chat outgoing">
+								<div class="chat-detail">
+									<p>wwwwwwwwwwwwwwwdám,dakjdfdasiudaskjksd</p>
+								</div>
+							</div>
+							<div class="chat incoming">
+								<img src="view/assets/img/logo/logo_y.png" alt="">
+								<div class="chat-detail">
+									<p>wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww</p>
+								</div>
+							</div>
 
 						</div>
+						<form action="" class="send-form">
+							<input type="text">
+							<i class="fa-brands fa-telegram"></i>
+						</form>
 					</div>
 				</div>
 				<!-- end messeger -->
@@ -161,6 +189,9 @@
 
 		<!-- jQuery Plugins -->
 		<script>
+			document.querySelector(".send-form").addEventListener("click", (event) => {
+				event.stopPropagation();
+			});
 			// Chuỗi JSON từ PHP
 			var jsonString = '<?php echo $jsonProducts; ?>';
 
