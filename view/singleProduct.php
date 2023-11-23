@@ -27,20 +27,15 @@
             <div class="col-md-5 col-md-push-2">
                 <div id="product-main-img">
                     <div class="product-preview">
-                        <img src="view/assets/img/product01.png" alt="">
+                        <img src="view/assets/img/product/<?= $product['image'] ?>" alt="">
                     </div>
-
-                    <div class="product-preview">
-                        <img src="view/assets/img/product03.png" alt="">
-                    </div>
-
-                    <div class="product-preview">
-                        <img src="view/assets/img/product06.png" alt="">
-                    </div>
-
-                    <div class="product-preview">
-                        <img src="view/assets/img/product08.png" alt="">
-                    </div>
+                    <?php if (!empty($listImagesProduct)) : ?>
+                        <?php foreach ($listImagesProduct as $image) : ?>
+                            <div class="product-preview">
+                                <img src="view/assets/img/product/<?= $image['name'] ?>" alt="">
+                            </div>
+                        <?php endforeach; ?>
+                    <?php endif; ?>
                 </div>
             </div>
             <!-- /Product main img -->
@@ -49,20 +44,15 @@
             <div class="col-md-2  col-md-pull-5">
                 <div id="product-imgs">
                     <div class="product-preview">
-                        <img src="view/assets/img/product01.png" alt="">
+                        <img src="view/assets/img/product/<?= $product['image'] ?>" alt="">
                     </div>
-
-                    <div class="product-preview">
-                        <img src="view/assets/img/product03.png" alt="">
-                    </div>
-
-                    <div class="product-preview">
-                        <img src="view/assets/img/product06.png" alt="">
-                    </div>
-
-                    <div class="product-preview">
-                        <img src="view/assets/img/product08.png" alt="">
-                    </div>
+                    <?php if (!empty($listImagesProduct)) : ?>
+                        <?php foreach ($listImagesProduct as $image) : ?>
+                            <div class="product-preview">
+                                <img src="view/assets/img/product/<?= $image['name'] ?>" alt="">
+                            </div>
+                        <?php endforeach; ?>
+                    <?php endif; ?>
                 </div>
             </div>
             <!-- /Product thumb imgs -->
@@ -70,7 +60,7 @@
             <!-- Product details -->
             <div class="col-md-5">
                 <div class="product-details">
-                    <h2 class="product-name">product name goes here</h2>
+                    <h2 class="product-name"><?= $product['name'] ?></h2>
                     <div>
                         <div class="product-rating">
                             <i class="fa fa-star"></i>
@@ -82,10 +72,12 @@
                         <a class="review-link" href="#">10 Review(s) | Add your review</a>
                     </div>
                     <div>
-                        <h3 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h3>
-                        <span class="product-available">In Stock</span>
+                        <h3 class="product-price">
+                            <?= $product['price_sale'] > 0 ? number_format($product['price_sale'], 0, ',', '.') : number_format($product['price'], 0, ',', '.') ?>
+                            <del class="product-old-price"><?= $product['price_sale'] > 0 ? number_format($product['price'], 0, ',', '.') : '' ?></del>
+                            <span class="product-available">In Stock</span>
                     </div>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                    <p><?= mb_strimwidth($product['description'], 0, 170, "...") ?></p>
 
                     <div class="product-options">
                         <label>
@@ -142,9 +134,9 @@
                 <div id="product-tab">
                     <!-- product tab nav -->
                     <ul class="tab-nav">
-                        <li class="active"><a data-toggle="tab" href="#tab1">Description</a></li>
-                        <li><a data-toggle="tab" href="#tab2">Details</a></li>
-                        <li><a data-toggle="tab" href="#tab3">Reviews (3)</a></li>
+                        <li class="active"><a data-toggle="tab" href="#tab1">Thuộc tính</a></li>
+                        <li><a data-toggle="tab" href="#tab2">Mô tả</a></li>
+                        <li><a data-toggle="tab" href="#tab3">Đánh giá</a></li>
                     </ul>
                     <!-- /product tab nav -->
 
@@ -154,7 +146,28 @@
                         <div id="tab1" class="tab-pane fade in active">
                             <div class="row">
                                 <div class="col-md-12">
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                                    <?php if (!empty($listProperties)) : ?>
+                                        <table class="table table-striped table-bordered">
+                                            <thead>
+                                                <tr>
+                                                    <th class="col-4">Tên thuộc tính</th>
+                                                    <th class="col-8">Thông số</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <?php foreach ($listProperties as $property) : ?>
+                                                    <tr>
+                                                        <td><?= $property['name'] ?></td>
+                                                        <td><?= $property['description'] ?></td>
+                                                    </tr>
+                                                <?php endforeach; ?>
+                                            </tbody>
+                                        </table>
+                                    <?php else : ?>
+                                        <p>Trống</p>
+                                    <?php endif; ?>
+
+
                                 </div>
                             </div>
                         </div>
@@ -164,7 +177,7 @@
                         <div id="tab2" class="tab-pane fade in">
                             <div class="row">
                                 <div class="col-md-12">
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                                    <p><?= $product['description'] ?></p>
                                 </div>
                             </div>
                         </div>

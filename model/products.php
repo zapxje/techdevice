@@ -36,3 +36,15 @@ function addProduct($idCategory, $idBrand, $name, $price, $price_sale, $quantity
     VALUES(" . $idCategory . ", " . $idBrand . " , '" . $name . "'," . $price . ", " . $price_sale . ", " . $quantity . ", '" . $description . "', '" . $image . "')";
     return querySql($sql);
 }
+//Lấy 5 sản phẩm theo danh mục (sản phẩm mới)
+function getProductByCategoryNew($id)
+{
+    $sql = "SELECT * FROM products WHERE id_category=" . $id . " ORDER BY id desc LIMIT 5";
+    return getAll($sql);
+}
+//Lấy 5 sản phẩm theo danh mục (sản phẩm bán chạy)
+function getProductByCategoryTopselling($id)
+{
+    $sql = "SELECT * FROM products WHERE id_category=" . $id . " ORDER BY number_of_purchases desc LIMIT 5";
+    return getAll($sql);
+}

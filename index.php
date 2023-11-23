@@ -3,12 +3,17 @@
     // include model file
     include 'model/connectDB.php';
     include 'model/categories.php';
+    include 'model/brands.php';
     include 'model/products.php';
+    include 'model/images.php';
+    include 'model/properties.php';
     include 'model/users.php';
     $listCategories = getAllCategories();
+    $listBrands = getAllBrands();
     $listProducts = getAllProducts();
     $jsonProducts = json_encode($listProducts);
 
+    //Lấy sản phẩm với và topsel
 
     // include the header file
     include 'view/header.php';
@@ -22,7 +27,7 @@
                 break;
 
             case 'singleProduct':
-                include 'view/singleProduct.php';
+                include 'model/xl_products.php';
                 break;
 
             case 'about':

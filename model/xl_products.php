@@ -142,5 +142,20 @@ switch ($_REQUEST["act"]) {
             }
         }
         break;
+        /*======================================== ADMIN END======================================== */
+    case 'singleProduct':
+        if (isset($_REQUEST['id']) && !empty($_REQUEST['id'])) {
+            $idProduct = $_REQUEST['id'];
+            $product = getOneProduct($idProduct);
+            if ($product) {
+                $listImagesProduct = getImageByProduct($idProduct);
+                $listProperties = getPropertyByProduct($idProduct);
+                include 'view/singleProduct.php';
+            } else {
+                include 'view/home.php';
+            }
+        } else {
+            include 'view/home.php';
+        }
+        break;
 }
-/*======================================== ADMIN END======================================== */
