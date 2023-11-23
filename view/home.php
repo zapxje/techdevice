@@ -467,7 +467,7 @@
                         </div>
                         <!-- /tab 1 -->
                         <!-- tab 2 -->
-                        <div id="tab2s" class="tab-pane fade in active">
+                        <div id="tab2s" class="tab-pane fade in ">
                             <div class="products-slick" data-nav="#slick-nav-2">
                                 <!-- product -->
                                 <div class="product">

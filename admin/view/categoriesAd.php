@@ -91,11 +91,11 @@
                 <div class="modal-body">
                     <div class="form-group">
                         <label for="" class="control-label mb-1">Tên danh mục</label>
-                        <input name="name" type="text" class="form-control" required oninvalid="this.setCustomValidity('Nhập tên danh mục')" oninput="setCustomValidity('')">
+                        <input name="name" type="text" class="form-control" required placeholder="Nhập tên danh mục" oninvalid="this.setCustomValidity('Nhập tên danh mục')" oninput="setCustomValidity('')">
                     </div>
                     <div class="form-group">
                         <label for="" class="control-label mb-1">Thứ tự danh mục</label>
-                        <input id="inputField" name="ordinal_number" type="number" class="form-control">
+                        <input id="inputField" name="ordinal_number" type="number" class="form-control" placeholder="Nhập thứ tự danh mục">
                         <!-- onfocus="showSuggestions()" -->
                         <ul id="suggestionList" class="list-unstyled"></ul>
                     </div>

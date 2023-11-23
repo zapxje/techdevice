@@ -99,6 +99,7 @@
                                     <th class="sorting" tabindex="0" aria-controls="bootstrap-data-table-export" rowspan="1" colspan="1" aria-label="Salary: activate to sort column ascending" style="width: 405.2px;">Mô tả</th>
                                     <th class="sorting" tabindex="0" aria-controls="bootstrap-data-table-export" rowspan="1" colspan="1" aria-label="Salary: activate to sort column ascending" style="width: 182.2px;">Doanh số</th>
                                     <th class="sorting" tabindex="0" aria-controls="bootstrap-data-table-export" rowspan="1" colspan="1" aria-label="Salary: activate to sort column ascending" style="width: 182.2px;">Hình ảnh</th>
+                                    <th class="sorting" tabindex="0" aria-controls="bootstrap-data-table-export" rowspan="1" colspan="1" aria-label="Salary: activate to sort column ascending" style="width: 182.2px;">Thuộc tính</th>
                                     <th class="sorting" tabindex="0" aria-controls="bootstrap-data-table-export" rowspan="1" colspan="1" aria-label="Salary: activate to sort column ascending" style="width: 182.2px;">Thao tác</th>
                                 </tr>
                             </thead>
@@ -118,6 +119,9 @@
                                                     <a href="javascript:void(0)">+<?= count(getImageByProduct($product['id'])) ?></a>
                                                 </div>
                                             <?php endif; ?>
+                                        </td>
+                                        <td>
+                                            <a href="index.php?act=properties&id=<?= $product['id'] ?>"><button type="button" class="btn btn-outline-primary">Thuộc tính</button></a>
                                         </td>
                                         <td class="operation">
                                             <a class="text-primary" href=""><i class="ti-pencil-alt"></i>Sửa</a>

@@ -101,5 +101,46 @@ switch ($_REQUEST["act"]) {
             }
         }
         break;
+
+    case 'properties':
+        if (isset($_REQUEST['id']) && !empty($_REQUEST['id'])) {
+            $idProduct = $_REQUEST['id'];
+            $product = getOneProduct($idProduct);
+            if ($product) {
+                if (isset($_REQUEST['status'])) {
+                    switch ($_REQUEST['status']) {
+                        case '1':
+                            if (isset($_REQUEST['name']) && !empty($_REQUEST['name'])) {
+                                $name = $_REQUEST['name'];
+                                $description = $_REQUEST['description'];
+                                addProperty($idProduct, $name, $description);
+                                $notification = 'successAdd';
+                            }
+                            break;
+                        case '2':
+                            if (isset($_REQUEST['idProperty']) && !empty($_REQUEST['idProperty'])) {
+                                $idProperty = $_REQUEST['idProperty'];
+                                $property = getOneProperty($idProperty);
+                                if ($property) {
+                                    delProperty($idProperty);
+                                    $notification = "successDel";
+                                } else {
+                                    $notification = "notExist";
+                                }
+                            }
+                            break;
+                    }
+                }
+                $listProperties = getPropertyByProduct($idProduct);
+                include_once("view/propertiesAd.php");
+            } else {
+                $notification = "notExist";
+                $listCategories = getAllCategories();
+                $listBrands = getAllBrands();
+                $listProducts = getAllProducts();
+                include_once("view/productsAd.php");
+            }
+        }
+        break;
 }
 /*======================================== ADMIN END======================================== */

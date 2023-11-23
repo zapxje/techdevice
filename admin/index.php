@@ -5,6 +5,7 @@ include_once("../model/categories.php");
 include_once("../model/brands.php");
 include_once("../model/products.php");
 include_once("../model/images.php");
+include_once("../model/properties.php");
 
 //include the header file
 include_once("view/header.php");
@@ -84,6 +85,10 @@ if (isset($_REQUEST["act"])) {
             $listBrands = getAllBrands();
             $listProducts = getAllProducts();
             include_once("view/productsAd.php");
+            break;
+
+        case 'properties':
+            include_once("../model/xl_products.php");
             break;
 
         default:
