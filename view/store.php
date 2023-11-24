@@ -158,12 +158,14 @@
 						<!-- product -->
 						<div class="col-md-4 col-xs-6">
 							<div class="product">
-								<div class="product-img">
-									<img src="view/assets/img/product/<?= $product['image'] ?>" alt="">
-								</div>
+								<a href="index.php?act=singleProduct&id=<?= $product['id'] ?>">
+									<div class="product-img">
+										<img src="view/assets/img/product/<?= $product['image'] ?>" alt="">
+									</div>
+								</a>
 								<div class="product-body">
 									<p class="product-category">Category</p>
-									<h3 class="product-name"><a href="#"><?= mb_strimwidth($product['name'], 0, 40, "...") ?></a></h3>
+									<h3 class="product-name"><a href="index.php?act=singleProduct&id=<?= $product['id'] ?>"><?= mb_strimwidth($product['name'], 0, 40, "...") ?></a></h3>
 									<h4 class="product-price">
 										<?= $product['price_sale'] > 0 ? number_format($product['price_sale'], 0, ',', '.') : number_format($product['price'], 0, ',', '.') ?>
 										<del class="product-old-price"><?= $product['price_sale'] > 0 ? number_format($product['price'], 0, ',', '.') : '' ?></del>

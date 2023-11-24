@@ -48,3 +48,9 @@ function getProductByCategoryTopselling($id)
     $sql = "SELECT * FROM products WHERE id_category=" . $id . " ORDER BY number_of_purchases desc LIMIT 5";
     return getAll($sql);
 }
+//Lấy 5 sản phẩm theo danh mục (sản phẩm liên quan)
+function getProductByCategoryRelated($idCategory, $idProduct)
+{
+    $sql = "SELECT * FROM products WHERE id_category=" . $idCategory . " AND id <> " . $idProduct . " LIMIT 4";
+    return getAll($sql);
+}

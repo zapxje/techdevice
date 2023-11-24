@@ -129,6 +129,34 @@ switch ($_REQUEST["act"]) {
                                 }
                             }
                             break;
+                        case '3':
+                            if (isset($_REQUEST['idProperty']) && !empty($_REQUEST['idProperty'])) {
+                                $idProperty = $_REQUEST['idProperty'];
+                                $property = getOneProperty($idProperty);
+                                if ($property) {
+                                    include_once("view/propertiesUpAd.php");
+                                    return;
+                                } else {
+                                    $notification = "notExist";
+                                }
+                            }
+                            break;
+                        case '4':
+                            if (isset($_REQUEST['idProperty']) && !empty($_REQUEST['idProperty'])) {
+                                $idProperty = $_REQUEST['idProperty'];
+                                $property = getOneProperty($idProperty);
+                                if ($property) {
+                                    if (isset($_REQUEST['name']) && !empty($_REQUEST['name'])) {
+                                        $name = $_REQUEST['name'];
+                                        $description = $_REQUEST['description'];
+                                        updateProperty($idProperty, $name, $description);
+                                        $notification = 'successAdd';
+                                    }
+                                } else {
+                                    $notification = "notExist";
+                                }
+                            }
+                            break;
                     }
                 }
                 $listProperties = getPropertyByProduct($idProduct);
@@ -150,6 +178,7 @@ switch ($_REQUEST["act"]) {
             if ($product) {
                 $listImagesProduct = getImageByProduct($idProduct);
                 $listProperties = getPropertyByProduct($idProduct);
+                $listProductRelated = getProductByCategoryRelated($product['id_category'], $idProduct);
                 include 'view/singleProduct.php';
             } else {
                 include 'view/home.php';

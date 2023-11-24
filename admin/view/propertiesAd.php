@@ -70,8 +70,8 @@
                                 <td><?= $property['name'] ?></td>
                                 <td><?= $property['description'] ?></td>
                                 <td class="operation">
-                                    <a class="text-primary" href="index.php?act=updateProperty&id=<?= $property['id'] ?>"><i class="ti-pencil-alt"></i>Sửa</a>
-                                    <a class="text-danger" href="index.php?act=properties&id=<?= $product['id'] ?>&status=2&idProperty=<?= $property['id'] ?>"><i class="ti-trash"></i>Xóa</a>
+                                    <a class="text-primary" href="index.php?act=properties&id=<?= $product['id'] ?>&idProperty=<?= $property['id'] ?>&status=3"><i class="ti-pencil-alt"></i>Sửa</a>
+                                    <a class="text-danger" href="index.php?act=properties&id=<?= $product['id'] ?>&idProperty=<?= $property['id'] ?>&status=2"><i class="ti-trash"></i>Xóa</a>
                                 </td>
                             </tr>
                         <?php $i++;
@@ -88,7 +88,7 @@
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="mediumModalLabel">Thêm mới danh mục</h5>
+                <h5 class="modal-title" id="mediumModalLabel">Thêm mới thuộc tính</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -96,11 +96,11 @@
             <form action="index.php?act=properties&id=<?= $product['id'] ?>&status=1" method="post">
                 <div class="modal-body">
                     <div class="form-group">
-                        <label for="" class="control-label mb-1">Tên danh mục</label>
+                        <label for="" class="control-label mb-1">Tên thuộc tính</label>
                         <input name="name" type="text" class="form-control" required placeholder="Nhập tên thuộc tính" oninvalid="this.setCustomValidity('Nhập tên thuộc tính')" oninput="setCustomValidity('')">
                     </div>
                     <div class="form-group has-success">
-                        <label for="" class="control-label mb-1">Nội dung</label>
+                        <label for="" class="control-label mb-1">Nội dung thuộc tính</label>
                         <textarea name="description" rows="5" placeholder="Mô tả thuộc tính" class="form-control"></textarea>
                     </div>
                 </div>

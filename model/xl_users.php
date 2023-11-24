@@ -105,6 +105,6 @@ if ($_GET['act']) {
                     </div>';
                 }
             }
-        break;  
+            break;
     }
 }
