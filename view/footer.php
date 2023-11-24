@@ -67,7 +67,7 @@
 							<div class="chat incoming">
 								<img src="view/assets/img/logo/logo_y.png" alt="">
 								<div class="chat-detail">
-									<p>wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww</p>
+									<p>wwwwwwwwwwwwwwwwwwwwwwwwwwwww</p>
 								</div>
 							</div>
 							<div class="chat outgoing">
@@ -78,7 +78,7 @@
 							<div class="chat incoming">
 								<img src="view/assets/img/logo/logo_y.png" alt="">
 								<div class="chat-detail">
-									<p>wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww</p>
+									<p>wwwwwwwwwwwwwwwwwwwwwwwwwwwww</p>
 								</div>
 							</div>
 
@@ -194,8 +194,6 @@
 			});
 			// Chuỗi JSON từ PHP
 			var jsonString = '<?php echo $jsonProducts; ?>';
-
-
 
 			// Chuyển đổi chuỗi JSON thành mảng JavaScript
 			var productsArray = JSON.parse(jsonString);

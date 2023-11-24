@@ -210,10 +210,10 @@ function countDown() {
           (timeRemaining % (1000 * 60 * 60)) / (1000 * 60)
         );
         const seconds = Math.floor((timeRemaining % (1000 * 60)) / 1000);
-        scanDays.innerHTML = (days / 10) >= 1 ? days : `0${days}`;
-        scanHours.innerHTML = (hours / 10) >= 1 ? hours : `0${hours}`;
-        scanMinutes.innerHTML = (minutes / 10) >= 1 ? minutes : `0${minutes}`;
-        scanSeconds.innerHTML = (seconds / 10) >= 1 ? seconds : `0${seconds}`;
+        scanDays.innerHTML = days / 10 >= 1 ? days : `0${days}`;
+        scanHours.innerHTML = hours / 10 >= 1 ? hours : `0${hours}`;
+        scanMinutes.innerHTML = minutes / 10 >= 1 ? minutes : `0${minutes}`;
+        scanSeconds.innerHTML = seconds / 10 >= 1 ? seconds : `0${seconds}`;
       }
     }
   }, 1000);
@@ -230,7 +230,7 @@ function reducer(state = storedCartState, action) {
     case "addToCart":
       return [...state, action.payload];
     case "deleToCart":
-      return state.filter(item => item.id !== action.payload); 
+      return state.filter((item) => item.id !== action.payload);
     default:
       return state;
   }
@@ -248,15 +248,14 @@ function addToCart(x) {
   const y = x.parentElement.parentElement;
   const name = y.children[1].children[1].innerText;
   const element = y.querySelector(".product-price");
-  const price = element.children[0].innerText;
+const price = element.firstChild.nodeValue.trim();  
   const img = y.children[0].children[0].src;
-  
 
   const product = {
     name: name,
     price: price,
     img: img,
-    id: Math.random().toString(36)
+    id: Math.random().toString(36),
   };
 
   store.dispatch({
@@ -276,6 +275,7 @@ function render() {
   let productsHTML = "";
 
   storedCartState.forEach((product) => {
+    console.log(product);
     productsHTML += ` <div class="product-widget">x
                     <div class="product-img">
                         <img src="${product.img}" alt="">
@@ -294,6 +294,7 @@ function render() {
   if (viewCart) {
     let productCart = "";
     storedCartState.forEach((product) => {
+  
       productCart += `<tr class="listProduct">
                             <td class="product-thumbnail">
                               <img src="${product.img}" alt="Image" class="img-fluid">
@@ -314,22 +315,22 @@ function render() {
                               </div>
 
                             </td>
-                            <td class="total" class="h6">${product.price}</td>
+                            <td class="total" class="h6"></td>
                             <td><button href="#" class="btn btn-black close delete" data-id="${product.id}"><i class="fa-solid fa-xmark"></i></button></td>
                           </tr>`;
     });
     viewCart.innerHTML = productCart;
   }
-  const deleToCart= document.querySelectorAll('.delete');
+  const deleToCart = document.querySelectorAll(".delete");
 
   deleToCart.forEach((item) => {
-    item.addEventListener('click', function(){
-      const productId = item.getAttribute('data-id');
+    item.addEventListener("click", function () {
+      const productId = item.getAttribute("data-id");
       store.dispatch({
-        type : 'deleToCart',
-        payload: productId
-      })
-    })
+        type: "deleToCart",
+        payload: productId,
+      });
+    });
   });
 }
 render();
@@ -429,19 +430,17 @@ function handleCart() {
   var totalPriceProduct = 0;
 
   cartProducts.forEach((product) => {
-    let price = parseInt(
+    let price = 
       product
         .querySelector(".price")
-        .textContent.replace("đ", "")
-        .replace(",", "")
-    );
+        .textContent.replace("đ", "").replace(".", "").replace(".","")
+    ;
+
     let quantity = parseInt(product.querySelector(".quantity-amount").value);
     let total = product.querySelector(".total");
 
-    total.textContent = price * quantity + "đ";
-    totalPriceProduct += parseInt(
-      total.textContent.replace("đ", "").replace(",", "")
-    );
+    total.textContent = formatMoney(price * quantity) + "đ";
+    totalPriceProduct += price * quantity;
   });
   if (!priceTotal || !subTotal) {
     return;
@@ -450,7 +449,6 @@ function handleCart() {
   priceTotal.textContent = formatMoney(totalPriceProduct) + "đ";
   subTotal.textContent = formatMoney(totalPriceProduct) + "đ";
 }
-
 handleCart();
 
 function formatMoney(amount) {
@@ -460,27 +458,27 @@ function formatMoney(amount) {
 const messenger = document.querySelector(".messenger-logo");
 
 if (messenger) {
-  const closeMessenger=document.getElementById('close-messenger');
-  const btnMessenger=document.querySelector('.btn-messenger');
-  const messengerBody=document.querySelector('.messenger-body');
-  const chatBox=document.querySelector('.chat-box');
-  closeMessenger.onclick = () => {  
+  const closeMessenger = document.getElementById("close-messenger");
+  const btnMessenger = document.querySelector(".btn-messenger");
+  const messengerBody = document.querySelector(".messenger-body");
+  const chatBox = document.querySelector(".chat-box");
+  closeMessenger.onclick = () => {
     const show = document.querySelector(".messenger-main");
     show.classList.toggle("show");
-    messengerBody.classList.add('show');
-    chatBox.classList.remove('show');
+    messengerBody.classList.add("show");
+    chatBox.classList.remove("show");
   };
-  messenger.onclick = () => {  
+  messenger.onclick = () => {
     const show = document.querySelector(".messenger-main");
     show.classList.toggle("show");
-    messengerBody.classList.add('show');
-    chatBox.classList.remove('show');
+    messengerBody.classList.add("show");
+    chatBox.classList.remove("show");
   };
-  if(btnMessenger){
-    btnMessenger.onclick=() => {
-      messengerBody.classList.remove('show');
-      chatBox.classList.add('show');
-    }
+  if (btnMessenger) {
+    btnMessenger.onclick = () => {
+      messengerBody.classList.remove("show");
+      chatBox.classList.add("show");
+    };
   }
 }
 
@@ -546,34 +544,66 @@ checkboxFilters.forEach((checkboxFilter) => {
 });
 
 function displayProducts(products) {
-  const productsHTML = products.map((product) => {
-    return `<div class="col-md-4 col-xs-6">
-                  <div class="product">
-                      <div class="product-img">
-                          <img src="${product.image}" alt="">
-                      </div>
-                      <div class="product-body">
-                          <p class="product-category">categories</p>
-                          <h3 class="product-name"><a href="#">PRODUCT NAME GOES HERE</a></h3>
-                          <h4 class="product-price">$${product.price} <del class="product-old-price">$${product.price_sale}</del></h4>
-                          <div class="product-rating">
-                              <!-- Add code for product rating here -->
-                          </div>
-                          <div class="product-btns">
-                              <button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span class="tooltipp">add to wishlist</span></button>
-                              <button class="add-to-compare"><i class="fa fa-exchange"></i><span class="tooltipp">add to compare</span></button>
-                              <button class="quick-view"><i class="fa fa-eye"></i><span class="tooltipp">quick view</span></button>
-                          </div>
-                      </div>
-                      <div class="add-to-cart">
-                          <button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to cart</button>
-                      </div>
+  let productsHTML = "";
+  products.forEach((product) => {
+    productsHTML += `<div class="col-md-4 col-xs-6">
+              <div class="product">
+                <div class="product-img">
+                  <img src="view/assets/img/product/${product.image}" alt="">
+                </div>
+                <div class="product-body">
+                  <p class="product-category">Category</p>
+                  <h3 class="product-name"><a href="#">${product.name}</a></h3>
+                  <h4 class="product-price">
+                    ${
+                      product.price_sale
+                        ? formatMoney(product.price_sale) + "đ"
+                        : formatMoney(product.price) + "đ"
+                    }
+                    <del class="product-old-price">${
+                      product.price ? formatMoney(product.price) + "đ" : ""
+                    }</del>
+                  </h4>
+                  <div class="product-rating">
                   </div>
-              </div>`;
+                  <div class="product-btns">
+                    <button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span class="tooltipp">add to wishlist</span></button>
+                    <button class="add-to-compare"><i class="fa fa-exchange"></i><span class="tooltipp">add to compare</span></button>
+                    <button class="quick-view"><i class="fa fa-eye"></i><span class="tooltipp">quick
+                        view</span></button>
+                  </div>
+                </div>
+                <div class="add-to-cart">
+                  <button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to cart</button>
+                </div>
+              </div>
+            </div>`;
   });
 
   // ==================== Function filter end ==================== //
 
   // Join the array of HTML strings and insert into the DOM
-  document.querySelector("#products").innerHTML = productsHTML.join("");
+  document.querySelector("#products").innerHTML = productsHTML;
 }
+
+
+// Lắng nghe sự kiện change cho mỗi checkbox
+// checkboxFilters.forEach(checkbox => {
+//     checkbox.addEventListener('change', function() {
+//         // Tạo một mảng để lưu trữ giá trị của các checkbox được chọn
+//         const selectedCategories = [];
+
+//         // Lặp qua tất cả các checkbox và thêm giá trị vào mảng nếu được chọn
+//         checkboxFilters.forEach(cb => {
+//             if (cb.checked) {
+//                 selectedCategories.push(cb.value);
+//             }
+//         });
+
+//         // Tạo một URL mới với tham số query là các giá trị của checkbox được chọn
+//         const url = '/duanmau1/?act=store/' + selectedCategories.join(',');
+
+//         // Chuyển hướng đến URL mới
+//         window.location.href = url;
+//     });
+// });
