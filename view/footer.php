@@ -41,7 +41,7 @@
 				<div class="messenger-logo">
 					<img src="view/assets/img/messenger.png" alt="">
 				</div>
-				<div class="messenger-main show ">
+				<div class="messenger-main ">
 					<div class="messenger-head">
 						<img src="view/assets/img/logo/logo_y.png" alt="">
 						<div class="icon">
