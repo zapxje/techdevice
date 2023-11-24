@@ -249,7 +249,7 @@ function addToCart(x) {
   const name = y.children[1].children[1].innerText;
   const element = y.querySelector(".product-price");
 const price = element.firstChild.nodeValue.trim();  
-  const img = y.children[0].children[0].src;
+  const img = y.children[0].children[0].children[0].src;
 
   const product = {
     name: name,
