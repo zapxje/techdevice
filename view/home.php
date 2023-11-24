@@ -115,7 +115,7 @@
                                         <!-- /product -->
                                     <?php endforeach; ?>
                                 </div>
-                                <div id="slick-nav-1" class="products-slick-nav"></div>
+                                <!-- <div id="slick-nav-1" class="products-slick-nav"></div> -->
                             </div>
                             <!-- /tab -->
                         <?php endforeach; ?>
@@ -211,10 +211,7 @@
                                 <div class="products-slick" data-nav="#slick-nav-1">
                                     <?php
                                     $listProductByCategoryTop = getProductByCategoryTopselling($category['id']);
-                                    foreach ($listProductByCategoryTop as $product) :
-                                        $formattedPrice = $product['price_sale'] > 0 ? number_format($product['price_sale'], 0, ',', '.') : number_format($product['price'], 0, ',', '.');
-                                        $formattedOldPrice = $product['price_sale'] > 0 ? '<del class="product-old-price">' . number_format($product['price'], 0, ',', '.') . '</del>' : '';
-                                    ?>
+                                    foreach ($listProductByCategoryTop as $product) : ?>
                                         <!-- product -->
                                         <div class="product">
                                             <div class="product-img">
@@ -228,8 +225,8 @@
                                                 <p class="product-category">Category</p>
                                                 <h3 class="product-name"><a href="index.php?act=singleProduct&id=<?= $product['id'] ?>"><?= mb_strimwidth($product['name'], 0, 40, "...") ?></a></h3>
                                                 <h4 class=" product-price">
-                                                    <?= $formattedPrice ?>
-                                                    <?= $formattedOldPrice ?>
+                                                    <?= $product['price_sale'] > 0 ? number_format($product['price_sale'], 0, ',', '.') : number_format($product['price'], 0, ',', '.') ?>
+                                                    <del class="product-old-price"><?= $product['price_sale'] > 0 ? number_format($product['price'], 0, ',', '.') : '' ?></del>
                                                 </h4>
                                                 <div class="product-btns">
                                                     <button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span class="tooltipp">add to wishlist</span></button>
@@ -244,7 +241,7 @@
                                         <!-- /product -->
                                     <?php endforeach; ?>
                                 </div>
-                                <div id="slick-nav-1" class="products-slick-nav"></div>
+                                <!-- <div id="slick-nav-1" class="products-slick-nav"></div> -->
                             </div>
                             <!-- /tab -->
                         <?php endforeach; ?>

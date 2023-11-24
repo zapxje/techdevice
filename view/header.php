@@ -58,6 +58,9 @@ ob_start();
                 <ul class="header-links pull-right">
                     <?php if (isset($_SESSION['user']) && !empty($_SESSION['user'])) : ?>
                         <li><a href="javascript:void(0)"><i class="fa fa-user-o"></i> Chào <?= $_SESSION['user']['username'] ?> !</a></li>
+                        <?php if (isset($_SESSION['user']) && !empty($_SESSION['user']) && $_SESSION['user']['is_admin'] == 0) : ?>
+                            <li><a href="admin"><button class="btn btn-primary btn-sm">Trang quản trị</button></a></li>
+                        <?php endif; ?>
                     <?php endif; ?>
                 </ul>
             </div>
@@ -187,7 +190,7 @@ ob_start();
                                             </div>
                                             <button class="delete"><i class="fa fa-close"></i></button>
                                         </div> -->
-                                        
+
                                     </div>
                                     <div class="cart-summary">
                                         <small>3 Item(s) selected</small>

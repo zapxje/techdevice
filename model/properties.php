@@ -20,3 +20,10 @@ function delProperty($id)
     $sql = "DELETE FROM properties WHERE id=" . $id;
     return querySql($sql);
 }
+function updateProperty($id, $name, $description)
+{
+    $sql = "UPDATE properties
+    SET name = '" . $name . "', description = '" . $description . "'
+    WHERE id =" . $id;
+    return querySql($sql);
+}

@@ -14,14 +14,14 @@
         <div id="main-menu" class="main-menu collapse navbar-collapse">
             <ul class="nav navbar-nav">
                 <li class="active">
-                    <a href="index.php"> <i class="menu-icon fa fa-dashboard"></i>Dashboard </a>
+                    <a href="index.php"> <i class="menu-icon fa fa-dashboard"></i>Bảng điều khiển </a>
                 </li>
                 <h3 class="menu-title">Quản lí sản phẩm</h3><!-- /.menu-title -->
                 <li>
                     <a href="index.php?act=categories"> <i class="menu-icon ti-view-list-alt"></i>Danh mục sản phẩm (<?= count(getAllCategories()) ?>) </a>
                 </li>
                 <li>
-                    <a href="index.php?act=brands"> <i class="menu-icon fa fa-html5"></i>Thương hiệu sản phẩm (<?= count(getAllBrands()) ?>) </a>
+                    <a href="index.php?act=brands"> <i class="menu-icon fa-brands fa-html5"></i>Thương hiệu sản phẩm (<?= count(getAllBrands()) ?>) </a>
                 </li>
                 <li>
                     <a href="index.php?act=products"> <i class="menu-icon ti-layout-grid2-thumb"></i>Danh sách sản phẩm </a>
@@ -41,6 +41,9 @@
                 </li>
                 <li>
                     <a href="index.php?act=account-users"> <i class="menu-icon ti-user"></i>Tài khoản khách hàng </a>
+                </li>
+                <li>
+                    <a href="../index.php"> <i class="menu-icon fa-solid fa-door-open"></i></i>Quay lại trang chủ</a>
                 </li>
             </ul>
         </div><!-- /.navbar-collapse -->
@@ -132,7 +135,6 @@
                     </div>
                 </div>
             </div>
-
             <div class="col-sm-5">
                 <div class="user-area dropdown float-right">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
