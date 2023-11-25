@@ -28,11 +28,11 @@
 				<!-- aside Widget -->
 				<div class="aside">
 					<h3 class="aside-title">Danh mục sản phẩm</h3>
-					<div class="checkbox-filter ">		
+					<div class="checkbox-filter ">
 						<?php foreach ($listCategories as $category) : ?>
 							<div class="input-checkbox">
-								<input type="checkbox" id="<?=$category['name']?>" value="<?=$category['id']?>">
-								<label for="<?=$category['name']?>">
+								<input type="checkbox" id="<?= $category['name'] ?>" value="<?= $category['id'] ?>">
+								<label for="<?= $category['name'] ?>">
 									<span></span>
 									<?= $category['name'] ?>
 									<small>(<?= count(getProductByCategory($category['id'])) ?>)</small>
@@ -69,7 +69,7 @@
 					<div class="checkbox-filter">
 						<?php foreach ($listBrands as $brand) : ?>
 							<div class="input-checkbox">
-								<input type="checkbox" id="brand-1" >
+								<input type="checkbox" id="brand-1">
 								<label for="brand-1">
 									<span></span>
 									<?= $brand['name'] ?>
@@ -167,8 +167,8 @@
 									<p class="product-category">Category</p>
 									<h3 class="product-name"><a href="index.php?act=singleProduct&id=<?= $product['id'] ?>"><?= mb_strimwidth($product['name'], 0, 40, "...") ?></a></h3>
 									<h4 class="product-price">
-										<?= $product['price_sale'] > 0 ? number_format($product['price_sale'], 0, ',', '.').'đ' : number_format($product['price'], 0, ',', '.').'đ' ?>
-										<del class="product-old-price"><?= $product['price_sale'] > 0 ? number_format($product['price'], 0, ',', '.').'đ' : '' ?></del>
+										<?= $product['price_sale'] > 0 ? number_format($product['price_sale'], 0, ',', '.') . 'đ' : number_format($product['price'], 0, ',', '.') . 'đ' ?>
+										<del class="product-old-price"><?= $product['price_sale'] > 0 ? number_format($product['price'], 0, ',', '.') . 'đ' : '' ?></del>
 									</h4>
 									<div class="product-rating">
 									</div>

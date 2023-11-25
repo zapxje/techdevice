@@ -1,5 +1,5 @@
 <?php
-if ($_GET['act']) {
+if (isset($_GET['act']) && !empty($_GET['act'])) {
     switch ($_GET['act']) {
         case 'updateUser':
             if (isset($_GET['id'])) {
@@ -56,6 +56,25 @@ if ($_GET['act']) {
                     $message = '<div class="alert alert-danger" role="alert">
                     Thông tin đăng nhập không chính xác!
                 </div>';
+                }
+            }
+            break;
+        case 'loginPageAdmin':
+            if (isset($_REQUEST['submit-loginPageAdmin'])) {
+                $login = getOneUser($_POST['username'], $_POST['password']);
+                if ($login) {
+                    $_SESSION['user'] = $login;
+                    if ($_SESSION['user']['is_admin'] == 0) {
+                        header('location: index.php');
+                    } else {
+                        $message = '<div class="alert alert-danger" role="alert">
+                                        Bạn không phải admin!
+                                    </div>';
+                    }
+                } else {
+                    $message = '<div class="alert alert-danger" role="alert">
+                                    Thông tin đăng nhập không chính xác!
+                                </div>';
                 }
             }
             break;

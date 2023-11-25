@@ -7,10 +7,11 @@
                 </a>
             </div>
             <div class="login-form">
-                <form>
+                <form action="index.php?act=loginPageAdmin" method="post">
+                    <?= isset($message) ? $message : '' ?>
                     <div class="form-group">
                         <label>Tên đăng nhập</label>
-                        <input type="text" name="name" class="form-control" placeholder="Tên đăng nhập">
+                        <input type="text" name="username" class="form-control" placeholder="Tên đăng nhập">
                     </div>
                     <div class="form-group">
                         <label>Mặt khẩu</label>
@@ -25,7 +26,7 @@
                         </label>
 
                     </div>
-                    <button type="submit" class="btn btn-success btn-flat m-b-30 m-t-30">Sign in</button>
+                    <button type="submit" name="submit-loginPageAdmin" class="btn btn-success btn-flat m-b-30 m-t-30">Sign in</button>
                     <div class="social-login-content">
                         <!-- <div class="social-button">
                             <button type="button" class="btn social facebook btn-flat btn-addon mb-3"><i class="ti-facebook"></i>Sign in with facebook</button>
@@ -33,7 +34,7 @@
                         </div> -->
                     </div>
                     <div class="register-link m-t-15 text-center">
-                        <p>Don't have account ? <a href="#"> Sign Up Here</a></p>
+                        <a class="text-primary" href="../index.php"> Quay về trang chủ <i class="fa-solid fa-right-to-bracket"></i></a></p>
                     </div>
                 </form>
             </div>

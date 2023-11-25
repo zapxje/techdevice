@@ -248,8 +248,8 @@ function addToCart(x) {
   const y = x.parentElement.parentElement;
   const name = y.children[1].children[1].innerText;
   const element = y.querySelector(".product-price");
-const price = element.firstChild.nodeValue.trim();  
-  const img = y.children[0].children[0].src;
+  const price = element.firstChild.nodeValue.trim();
+  const img = y.children[0].children[0].children[0].src;
 
   const product = {
     name: name,
@@ -294,7 +294,7 @@ function render() {
   if (viewCart) {
     let productCart = "";
     storedCartState.forEach((product) => {
-  
+
       productCart += `<tr class="listProduct">
                             <td class="product-thumbnail">
                               <img src="${product.img}" alt="Image" class="img-fluid">
@@ -430,11 +430,11 @@ function handleCart() {
   var totalPriceProduct = 0;
 
   cartProducts.forEach((product) => {
-    let price = 
+    let price =
       product
         .querySelector(".price")
-        .textContent.replace("đ", "").replace(".", "").replace(".","")
-    ;
+        .textContent.replace("đ", "").replace(".", "").replace(".", "")
+      ;
 
     let quantity = parseInt(product.querySelector(".quantity-amount").value);
     let total = product.querySelector(".total");
@@ -555,14 +555,12 @@ function displayProducts(products) {
                   <p class="product-category">Category</p>
                   <h3 class="product-name"><a href="#">${product.name}</a></h3>
                   <h4 class="product-price">
-                    ${
-                      product.price_sale
-                        ? formatMoney(product.price_sale) + "đ"
-                        : formatMoney(product.price) + "đ"
-                    }
-                    <del class="product-old-price">${
-                      product.price ? formatMoney(product.price) + "đ" : ""
-                    }</del>
+                    ${product.price_sale
+        ? formatMoney(product.price_sale) + "đ"
+        : formatMoney(product.price) + "đ"
+      }
+                    <del class="product-old-price">${product.price ? formatMoney(product.price) + "đ" : ""
+      }</del>
                   </h4>
                   <div class="product-rating">
                   </div>

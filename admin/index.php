@@ -8,10 +8,14 @@ include_once("../model/brands.php");
 include_once("../model/products.php");
 include_once("../model/images.php");
 include_once("../model/properties.php");
+include_once("../model/users.php");
 
 //include the header file
 include_once("view/header.php");
 
+if (isset($_REQUEST["act"]) && $_REQUEST['act'] == 'logout') {
+    unset($_SESSION['user']);
+}
 
 //include the content file
 if (isset($_SESSION['user']) && !empty($_SESSION['user']) && $_SESSION['user']['is_admin'] == 0) {
@@ -97,6 +101,8 @@ if (isset($_SESSION['user']) && !empty($_SESSION['user']) && $_SESSION['user']['
                 include_once("../model/xl_products.php");
                 break;
 
+
+
             default:
                 include_once("view/main.php");
                 break;
@@ -105,6 +111,7 @@ if (isset($_SESSION['user']) && !empty($_SESSION['user']) && $_SESSION['user']['
         include_once("view/main.php");
     }
 } else {
+    include_once("../model/xl_users.php");
     include_once("view/login.php");
 }
 
