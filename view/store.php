@@ -157,7 +157,7 @@
 					<?php foreach ($listProducts as $product) :     ?>
 						<!-- product -->
 						<div class="col-md-4 col-xs-6">
-							<div class="product">
+							<div class="product" data-id="<?= $product['id'] ?>">
 								<a href="index.php?act=singleProduct&id=<?= $product['id'] ?>">
 									<div class="product-img">
 										<img src="view/assets/img/product/<?= $product['image'] ?>" alt="">
