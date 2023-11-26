@@ -379,13 +379,17 @@
             <?php foreach ($listProductRelated as $product) : ?>
                 <!-- product -->
                 <div class="col-md-3 col-xs-6">
-                    <div class="product">
-                        <div class="product-img">
-                            <img src="view/assets/img/product/<?= $product['image'] ?>" alt="">
-                            <div class="product-label">
-                                <span class="sale">-30%</span>
+                    <div class="product" data-id="<?= $product['id'] ?>">
+                        <a href="index.php?act=singleProduct&id=<?= $product['id'] ?>" class="">
+                            <div class="product-img">
+                                <img src="view/assets/img/product/<?= $product['image'] ?>" alt="">
+                                <div class="product-label">
+                                    <span class="sale">-30%</span>
+                                </div>
                             </div>
-                        </div>
+
+                        </a>
+
                         <div class="product-body">
                             <p class="product-category">Category</p>
                             <h3 class="product-name"><a href="index.php?act=singleProduct&id=<?= $product['id'] ?>"><?= mb_strimwidth($product['name'], 0, 40, "...") ?></a></h3>
