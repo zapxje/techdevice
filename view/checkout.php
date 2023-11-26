@@ -184,4 +184,5 @@
         </div>
         <!-- /container -->
     </div>
-    <!-- /SECTION -->
+</div>
+<!-- /SECTION -->

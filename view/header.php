@@ -116,14 +116,15 @@ ob_start();
                                         <?php endif; ?>
                                     </a>
                                     <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                                        <li><a href="#" class="my-account">Thông tin</a></li>
+                                        <li><a href="index.php?act=account">Thông tin</a></li>
+                                        <!-- class="my-account" -->
                                         <!-- <li><a href="#">chỉnh sửa</a></li> -->
                                         <li role="separator" class="divider"></li>
                                         <li><a href="?act=logout">Đăng xuất</a></li>
                                     </ul>
                                 </div>
 
-                                <div class="wrapper-account">
+                                <!-- <div class="wrapper-account">
                                     <div class="container">
                                         <div class="row account">
                                             <div class="my__account col-md-8">
@@ -160,7 +161,7 @@ ob_start();
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                </div> -->
                             <?php else : ?>
                                 <div>
                                     <a href="index.php?act=login">

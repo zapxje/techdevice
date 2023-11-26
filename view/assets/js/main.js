@@ -258,7 +258,7 @@ function addToCart(x) {
   if (hadProduct) {
     // Nếu đã tồn tại sp có cùng id
     const productExisted = storedCartState.find(item => item.id == id);
-    countProduct++
+    countProduct++;
     productExisted.count = countProduct;
     store.dispatch({ type: "" });
 
@@ -289,7 +289,7 @@ function render() {
   let productsHTML = "";
 
   storedCartState.forEach((product) => {
-    productsHTML += ` <div class="product-widget">x
+    productsHTML += ` <div class="product-widget">
                     <div class="product-img">
                         <img src="${product.img}" alt="">
                     </div>

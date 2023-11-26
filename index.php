@@ -68,6 +68,10 @@
                 include_once 'model/xl_users.php';
                 break;
 
+            case 'account':
+                include_once 'view/account.php';
+                break;
+
             case 'topsel':
                 include 'view/checkout.php';
 
