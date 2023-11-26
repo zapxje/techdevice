@@ -75,11 +75,30 @@
                         <h3 class="product-price">
                             <?= $product['price_sale'] > 0 ? number_format($product['price_sale'], 0, ',', '.') : number_format($product['price'], 0, ',', '.') ?>
                             <del class="product-old-price"><?= $product['price_sale'] > 0 ? number_format($product['price'], 0, ',', '.') : '' ?></del>
-                            <span class="product-available">In Stock</span>
+                            <span class="product-available"><?= $product['quantity'] > 0 ? 'Còn hàng' : 'Hết hàng' ?></span>
                     </div>
-                    <p><?= mb_strimwidth($product['description'], 0, 170, "...") ?></p>
+                    <?php if (!empty($listProperties)) : ?>
+                        <table class="table table-striped table-bordered">
+                            <thead>
+                                <tr>
+                                    <th class="col-4">Tên thuộc tính</th>
+                                    <th class="col-8">Thông số</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php foreach ($listProperties as $property) : ?>
+                                    <tr>
+                                        <td><?= $property['name'] ?></td>
+                                        <td><?= $property['description'] ?></td>
+                                    </tr>
+                                <?php endforeach; ?>
+                            </tbody>
+                        </table>
+                    <?php else : ?>
+                        <p>Trống</p>
+                    <?php endif; ?>
 
-                    <div class="product-options">
+                    <!-- <div class="product-options">
                         <label>
                             Size
                             <select class="input-select">
@@ -92,13 +111,13 @@
                                 <option value="0">Red</option>
                             </select>
                         </label>
-                    </div>
+                    </div> -->
 
                     <div class="add-to-cart">
                         <div class="qty-label">
-                            Qty
+                            Số lượng
                             <div class="input-number">
-                                <input type="number">
+                                <input type="number" value="1">
                                 <span class="qty-up">+</span>
                                 <span class="qty-down">-</span>
                             </div>
@@ -106,24 +125,27 @@
                         <button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to cart</button>
                     </div>
 
-                    <ul class="product-btns">
+                    <!-- <ul class="product-btns">
                         <li><a href="#"><i class="fa fa-heart-o"></i> add to wishlist</a></li>
                         <li><a href="#"><i class="fa fa-exchange"></i> add to compare</a></li>
-                    </ul>
+                    </ul> -->
 
                     <ul class="product-links">
-                        <li>Category:</li>
-                        <li><a href="#">Headphones</a></li>
-                        <li><a href="#">Accessories</a></li>
+                        <li>Danh mục:</li>
+                        <li><a href="#"><?= $product['category_name']?></a></li>
+                    </ul>
+                    <ul class="product-links">
+                        <li>Thương hiệu:</li>
+                        <li><a href="#"><?= $product['brand_name']?></a></li>
                     </ul>
 
-                    <ul class="product-links">
+                    <!-- <ul class="product-links">
                         <li>Share:</li>
                         <li><a href="#"><i class="fa fa-facebook"></i></a></li>
                         <li><a href="#"><i class="fa fa-twitter"></i></a></li>
                         <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
                         <li><a href="#"><i class="fa fa-envelope"></i></a></li>
-                    </ul>
+                    </ul> -->
 
                 </div>
             </div>
@@ -134,9 +156,8 @@
                 <div id="product-tab">
                     <!-- product tab nav -->
                     <ul class="tab-nav">
-                        <li class="active"><a data-toggle="tab" href="#tab1">Thuộc tính</a></li>
-                        <li><a data-toggle="tab" href="#tab2">Mô tả</a></li>
-                        <li><a data-toggle="tab" href="#tab3">Đánh giá</a></li>
+                        <li class="active"><a data-toggle="tab" href="#tab1">Mô tả</a></li>
+                        <li><a data-toggle="tab" href="#tab2">Đánh giá</a></li>
                     </ul>
                     <!-- /product tab nav -->
 
@@ -144,30 +165,9 @@
                     <div class="tab-content">
                         <!-- tab1  -->
                         <div id="tab1" class="tab-pane fade in active">
-                            <div class="row">
+                        <div class="row">
                                 <div class="col-md-12">
-                                    <?php if (!empty($listProperties)) : ?>
-                                        <table class="table table-striped table-bordered">
-                                            <thead>
-                                                <tr>
-                                                    <th class="col-4">Tên thuộc tính</th>
-                                                    <th class="col-8">Thông số</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <?php foreach ($listProperties as $property) : ?>
-                                                    <tr>
-                                                        <td><?= $property['name'] ?></td>
-                                                        <td><?= $property['description'] ?></td>
-                                                    </tr>
-                                                <?php endforeach; ?>
-                                            </tbody>
-                                        </table>
-                                    <?php else : ?>
-                                        <p>Trống</p>
-                                    <?php endif; ?>
-
-
+                                    <p><?= $product['description'] ?></p>
                                 </div>
                             </div>
                         </div>
@@ -175,16 +175,6 @@
 
                         <!-- tab2  -->
                         <div id="tab2" class="tab-pane fade in">
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <p><?= $product['description'] ?></p>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- /tab2  -->
-
-                        <!-- tab3  -->
-                        <div id="tab3" class="tab-pane fade in">
                             <div class="row">
                                 <!-- Rating -->
                                 <div class="col-md-3">
@@ -358,7 +348,7 @@
                                 <!-- /Review Form -->
                             </div>
                         </div>
-                        <!-- /tab3  -->
+                        <!-- /tab2  -->
                     </div>
                     <!-- /product tab content  -->
                 </div>

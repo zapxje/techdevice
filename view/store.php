@@ -84,41 +84,25 @@
 				<!-- aside Widget -->
 				<div class="aside">
 					<h3 class="aside-title">Top selling</h3>
-					<a href="">
-						<div class="product-widget">
-							<div class="product-img">
-								<img src="view/assets/img/product01.png" alt="">
+					<?php
+					$listProductByTop = getProductTopselling();
+					foreach ($listProductByTop as $product) : ?>
+						<a href="">
+							<div class="product-widget">
+								<div class="product-img">
+									<img src="view/assets/img/product/<?= $product['image'] ?>" alt="">
+								</div>
+								<div class="product-body">
+									<h3 class="product-name"><a href="#"><?= mb_strimwidth($product['name'], 0, 40, "...") ?></a></h3>
+									<p class="product-category"><?= $product['category_name'] ?> | <?= $product['brand_name'] ?></p>
+									<h4 class="product-price">
+										<?= $product['price_sale'] > 0 ? number_format($product['price_sale'], 0, ',', '.') : number_format($product['price'], 0, ',', '.') ?>
+										<del class="product-old-price"><?= $product['price_sale'] > 0 ? number_format($product['price'], 0, ',', '.') : '' ?></del>
+									</h4>
+								</div>
 							</div>
-							<div class="product-body">
-								<p class="product-category">Category</p>
-								<h3 class="product-name"><a href="#">product name goes here</a></h3>
-								<h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
-							</div>
-						</div>
-					</a>
-
-
-					<div class="product-widget">
-						<div class="product-img">
-							<img src="view/assets/img/product02.png" alt="">
-						</div>
-						<div class="product-body">
-							<p class="product-category">Category</p>
-							<h3 class="product-name"><a href="#">product name goes here</a></h3>
-							<h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
-						</div>
-					</div>
-
-					<div class="product-widget">
-						<div class="product-img">
-							<img src="view/assets/img/product03.png" alt="">
-						</div>
-						<div class="product-body">
-							<p class="product-category">Category</p>
-							<h3 class="product-name"><a href="#">product name goes here</a></h3>
-							<h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
-						</div>
-					</div>
+						</a>
+					<?php endforeach; ?>
 				</div>
 				<!-- /aside Widget -->
 			</div>
@@ -164,7 +148,7 @@
 									</div>
 								</a>
 								<div class="product-body">
-									<p class="product-category">Category</p>
+									<p class="product-category"><?= $product['category_name'] ?> | <?= $product['brand_name'] ?></p>
 									<h3 class="product-name"><a href="index.php?act=singleProduct&id=<?= $product['id'] ?>"><?= mb_strimwidth($product['name'], 0, 40, "...") ?></a></h3>
 									<h4 class="product-price">
 										<?= $product['price_sale'] > 0 ? number_format($product['price_sale'], 0, ',', '.') . 'đ' : number_format($product['price'], 0, ',', '.') . 'đ' ?>

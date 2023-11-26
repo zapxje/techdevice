@@ -22,12 +22,18 @@ function getProductByBoth($idCategory, $idBrand)
 }
 function getAllProducts()
 {
-    $sql = "SELECT * FROM products";
+    $sql = "SELECT p.* , ca.name AS category_name, br.name AS brand_name 
+    FROM products AS p 
+    LEFT JOIN categories AS ca ON ca.id = p.id_category 
+    LEFT JOIN brands AS br ON br.id = p.id_brand ";
     return getAll($sql);
 }
 function getOneProduct($id)
 {
-    $sql = "SELECT * FROM products WHERE id=" . $id;
+    $sql = "SELECT p.* , ca.name AS category_name, br.name AS brand_name FROM products AS p 
+    LEFT JOIN categories AS ca ON ca.id = p.id_category 
+    LEFT JOIN brands AS br ON br.id = p.id_brand 
+    WHERE p.id=" . $id;
     return getOne($sql);
 }
 function addProduct($idCategory, $idBrand, $name, $price, $price_sale, $quantity, $description, $image)
@@ -52,5 +58,15 @@ function getProductByCategoryTopselling($id)
 function getProductByCategoryRelated($idCategory, $idProduct)
 {
     $sql = "SELECT * FROM products WHERE id_category=" . $idCategory . " AND id <> " . $idProduct . " LIMIT 4";
+    return getAll($sql);
+}
+//Lấy 3 sản phẩm trong tổng (sản phẩm bán chạy)
+function getProductTopselling()
+{
+    $sql = "SELECT p.*, ca.name AS category_name, br.name AS brand_name 
+    FROM products AS p 
+    LEFT JOIN categories AS ca ON ca.id = p.id_category 
+    LEFT JOIN brands AS br ON br.id = p.id_brand 
+    ORDER BY p.number_of_purchases desc LIMIT 3";
     return getAll($sql);
 }
