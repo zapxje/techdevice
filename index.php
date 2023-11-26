@@ -1,5 +1,6 @@
     <?php
     session_start();
+    if (!isset($_SESSION['cart'])) $_SESSION['cart'] = [];
     // include model file
     include 'model/connectDB.php';
     include 'model/categories.php';
@@ -8,12 +9,11 @@
     include 'model/images.php';
     include 'model/properties.php';
     include 'model/users.php';
+    include_once 'model/xl_cart.php';
     $listCategories = getAllCategories();
     $listBrands = getAllBrands();
     $listProducts = getAllProducts();
     $jsonProducts = json_encode($listProducts);
-
-    //Lấy sản phẩm với và topsel
 
     // include the header file
     include 'view/header.php';

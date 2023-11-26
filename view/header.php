@@ -177,30 +177,39 @@ ob_start();
                                 <a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
                                     <i class="fa fa-shopping-cart"></i>
                                     <span>Giỏ Hàng</span>
-                                    <div class="qty">3</div>
+                                    <div class="qty"><?= $totalQuantity; ?></div>
                                 </a>
                                 <div class="cart-dropdown">
-                                    <div class="cart-list" id="cart-list">
-                                        <!-- <div class="product-widget">
-                                            <div class="product-img">
-                                                <img src="view/assets/img/product01.png" alt="">
-                                            </div>
-                                            <div class="product-body">
-                                                <h3 class="product-name"><a href="#">product name goes here</a></h3>
-                                                <h4 class="product-price"><span class="qty">1x</span>$980.00</h4>
-                                            </div>
-                                            <button class="delete"><i class="fa fa-close"></i></button>
-                                        </div> -->
-
-                                    </div>
-                                    <div class="cart-summary">
-                                        <small>3 Item(s) selected</small>
-                                        <h5>SUBTOTAL: $2940.00</h5>
-                                    </div>
-                                    <div class="cart-btns">
-                                        <a href="index.php?act=viewCart">View Cart</a>
-                                        <a href="index.php?act=checkout">Checkout <i class="fa fa-arrow-circle-right"></i></a>
-                                    </div>
+                                    <?php if (empty($_SESSION['cart'])) : ?>
+                                        <p>Trống</p>
+                                    <?php else : ?>
+                                        <div class="cart-list" id="cart-list">
+                                            <?php foreach ($_SESSION['cart'] as $product) : ?>
+                                                <!-- single cart  -->
+                                                <div class="product-widget">
+                                                    <div class="product-img">
+                                                        <img src="view/assets/img/product/<?= $product[3] ?>" alt="">
+                                                    </div>
+                                                    <div class="product-body">
+                                                        <h3 class="product-name"><a href="#"><?= mb_strimwidth($product[1], 0, 40, "...")  ?></a></h3>
+                                                        <h4 class="product-price"><span class="qty"><?= $product[4] ?>x</span><?= number_format($product[2], 0, ',', '.') ?>đ</h4>
+                                                    </div>
+                                                    <a href="index.php?act=delToCart&id=<?= $product[0] ?>"><button class="delete"><i class="fa fa-close"></i></button></a>
+                                                </div>
+                                                <!-- single cart  -->
+                                            <?php
+                                                $subtotal += $product[2] * $product[4];
+                                            endforeach; ?>
+                                        </div>
+                                        <div class="cart-summary">
+                                            <small><?= sizeof($_SESSION['cart']) ?> Sản phẩm</small>
+                                            <h5>TỔNG TIỀN: <?= number_format($subtotal, 0, ',', '.') ?>đ</h5>
+                                        </div>
+                                        <div class="cart-btns">
+                                            <a href="index.php?act=viewCart">View Cart</a>
+                                            <a href="index.php?act=checkout">Checkout <i class="fa fa-arrow-circle-right"></i></a>
+                                        </div>
+                                    <?php endif; ?>
                                 </div>
                             </div>
                             <!-- /Cart -->

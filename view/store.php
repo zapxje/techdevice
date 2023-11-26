@@ -141,30 +141,30 @@
 					<?php foreach ($listProducts as $product) :     ?>
 						<!-- product -->
 						<div class="col-md-4 col-xs-6">
-							<div class="product" data-id="<?= $product['id'] ?>">
+							<div class="product">
 								<a href="index.php?act=singleProduct&id=<?= $product['id'] ?>">
 									<div class="product-img">
 										<img src="view/assets/img/product/<?= $product['image'] ?>" alt="">
+										<div class="product-label">
+											<span class="sale">-30%</span>
+											<span class="new">NEW</span>
+										</div>
 									</div>
 								</a>
 								<div class="product-body">
 									<p class="product-category"><?= $product['category_name'] ?> | <?= $product['brand_name'] ?></p>
-									<h3 class="product-name"><a href="index.php?act=singleProduct&id=<?= $product['id'] ?>"><?= mb_strimwidth($product['name'], 0, 40, "...") ?></a></h3>
+									<h3 class="product-name">
+										<a href="index.php?act=singleProduct&id=<?= $product['id'] ?>">
+											<?= mb_strimwidth($product['name'], 0, 40, "...") ?>
+										</a>
+									</h3>
 									<h4 class="product-price">
 										<?= $product['price_sale'] > 0 ? number_format($product['price_sale'], 0, ',', '.') . 'đ' : number_format($product['price'], 0, ',', '.') . 'đ' ?>
 										<del class="product-old-price"><?= $product['price_sale'] > 0 ? number_format($product['price'], 0, ',', '.') . 'đ' : '' ?></del>
 									</h4>
-									<div class="product-rating">
-									</div>
-									<div class="product-btns">
-										<button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span class="tooltipp">add to wishlist</span></button>
-										<button class="add-to-compare"><i class="fa fa-exchange"></i><span class="tooltipp">add to compare</span></button>
-										<button class="quick-view"><i class="fa fa-eye"></i><span class="tooltipp">quick
-												view</span></button>
-									</div>
 								</div>
 								<div class="add-to-cart">
-									<button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to cart</button>
+									<a href="index.php?act=addToCart&id=<?= $product['id'] ?>"><button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to cart</button></a>
 								</div>
 							</div>
 						</div>
