@@ -1026,7 +1026,7 @@ textarea.input {
   text-transform: uppercase;
   font-size: 14px;
   overflow: hidden;
-  white-space: nowrap; 
+  white-space: nowrap;
   text-overflow: ellipsis;
 }
 
@@ -1265,7 +1265,6 @@ textarea.input {
   border: none;
   color: #fff;
 }
-
 
 /*----------------------------*\
 	Products slick
@@ -2155,7 +2154,7 @@ textarea.input {
   top: -380px;
   right: 0px;
   position: absolute;
-  padding: 16px;  
+  padding: 16px;
   width: 325px;
   height: 375px;
   background-color: #fff;
@@ -2207,7 +2206,7 @@ textarea.input {
   display: none;
   margin-top: 20px;
 }
-.messenger-body.show{
+.messenger-body.show {
   display: block;
 }
 .messenger-body h5 {
@@ -2233,65 +2232,61 @@ textarea.input {
   font-weight: 600;
   color: #fff;
 }
-.chat-box{
-  display:none;
+.chat-box {
+  display: none;
 }
-.chat-box.show{
+.chat-box.show {
   display: block;
 }
-.form-messenger{
+.form-messenger {
   height: 265px;
   overflow-y: auto;
   background-color: #f7f7f7;
   box-shadow: inset 0 32px 32px -32px rgb(0 0 0 /5%),
-              inset 0 32px 32px -32px rgb(0 0 0 /5%);
-
+    inset 0 32px 32px -32px rgb(0 0 0 /5%);
 }
 
-.form-messenger::-webkit-scrollbar{
+.form-messenger::-webkit-scrollbar {
   width: 0;
 }
-.outgoing{
-  padding-top: 10px ;
+.outgoing {
+  padding-top: 10px;
   margin-right: 10px;
 }
-.chat p{
+.chat p {
   word-wrap: break-word;
   padding: 8px 16px;
-   border-radius: 10px;
+  border-radius: 10px;
 }
-.outgoing .chat-detail{
+.outgoing .chat-detail {
   margin-left: auto;
   max-width: calc(100% - 50px);
 }
-.outgoing .chat-detail p{
-  
+.outgoing .chat-detail p {
   color: #fff;
   background-color: #0084ff;
- 
 }
-.incoming{
+.incoming {
   width: 10%;
   display: flex;
-  
 }
-.incoming img{
+.incoming img {
   width: 35px;
   height: 35px;
 }
-.incoming .chat-detail{
+.incoming .chat-detail {
   border-radius: 10px;
   background-color: #fff;
   color: #1d1e26;
   margin-right: auto;
   max-width: 230px;
-} 
-.send-form{
+}
+.send-form {
   margin-top: 4px;
   display: flex;
   align-items: center;
 }
-.send-form input{
+.send-form input {
   padding: 2px 4px;
   border-radius: 5px;
   color: #1d1e26;
@@ -2301,7 +2296,7 @@ textarea.input {
   width: 250px;
   height: 30px;
 }
-.send-form i{
+.send-form i {
   color: #0084ff;
   font-size: 25px;
 }
@@ -2782,4 +2777,39 @@ button.btn.decrease {
     padding: 0;
     width: 70%;
   }
+}
+
+/*=========================================================
+	17-> account
+===========================================================*/
+.sidebar-header-account{
+  height: 100px;
+  display: flex;
+  align-items: center;
+}
+.sidebar-avatar img {
+  width: 70px;
+  height: 70px;
+  border-radius: 50px;
+  object-fit: cover;
+}
+.sidebar-avatar i {
+  font-size: 70px;
+}
+.sidebar-username p{
+  margin: 0;
+  font-size: 2rem;
+  letter-spacing: 2px;
+}
+.account-nav ul li {
+  padding-left: 10px;
+  border-bottom: 1px solid #d3d3d3;
+}
+.account-nav ul li a {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 35px;
+  font-size: 1.5rem;
+  letter-spacing: 1px;
 }

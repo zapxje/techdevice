@@ -44,7 +44,7 @@ if (isset($_GET['act']) && !empty($_GET['act'])) {
                 }
             }
             $_SESSION['user'] = getOneUserById($id);
-            header('location:  index.php');
+            header('location:  index.php?act=account');
             break;
         case 'login':
             if (isset($_POST['submit-login'])) {
