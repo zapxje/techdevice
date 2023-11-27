@@ -106,7 +106,7 @@ ob_start();
                             <?php if (isset($_SESSION['user'])) : ?>
                                 <!-- Login -->
                                 <div class="dropdown">
-                                    <a class="user-login dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
+                                    <a href="index.php?act=account" class="user-login">
                                         <?php if ($_SESSION['user']['avatar'] && !empty($_SESSION['user']['avatar'])) : ?>
                                             <div><img src="<?= $_SESSION['user']['avatar'] ?>" alt=""></div>
                                             <span>Tài khoản</span>
@@ -115,51 +115,12 @@ ob_start();
                                             <span>Tài khoản</span>
                                         <?php endif; ?>
                                     </a>
-                                    <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                                    <!-- <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
                                         <li><a href="index.php?act=account">Thông tin</a></li>
                                         <li role="separator" class="divider"></li>
                                         <li><a href="?act=logout">Đăng xuất</a></li>
-                                    </ul>
+                                    </ul> -->
                                 </div>
-
-                                <!-- <div class="wrapper-account">
-                                    <div class="container">
-                                        <div class="row account">
-                                            <div class="my__account col-md-8">
-                                                <div class="my__account-close">
-                                                    <i class="fa-solid fa-xmark"></i>
-                                                </div>
-                                                <div class="my__account-img">
-                                                    <?php if ($_SESSION['user']['avatar'] && !empty($_SESSION['user']['avatar'])) : ?>
-                                                        <img src="<?= $_SESSION['user']['avatar'] ?>" alt="">
-                                                    <?php else : ?>
-                                                        <i class="fa fa-user-circle"></i>
-                                                    <?php endif; ?>
-                                                </div>
-                                                <form action="index.php?act=updateUser&id=<?= $_SESSION['user']['id'] ?>" method="POST" class="form-account" enctype="multipart/form-data">
-                                                    <div class="form-group">
-                                                        <label for="">Thay đổi avatar</label>
-                                                        <input type="file" name="avatar" class="form-control">
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label for="">Tên đăng nhập</label>
-                                                        <input type="text" name="username" class="form-control" value="<?= $_SESSION['user']['username'] ?>">
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label for="">Email</label>
-                                                        <input type="text" name="email" class="form-control" value="<?= $_SESSION['user']['email'] ?>">
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label for="">Số điện thoại</label>
-                                                        <input type="text" name="phone" class="form-control" value="<?= $_SESSION['user']['phone'] ?>">
-                                                    </div>
-                                                    <input type="hidden" name="old_image" value="<?= $_SESSION['user']['avatar'] ?>">
-                                                    <button type="submit" name="submit-updateUser" class="btn btn-main">Lưu lại</button>
-                                                </form>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div> -->
                             <?php else : ?>
                                 <div>
                                     <a href="index.php?act=login">

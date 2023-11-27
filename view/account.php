@@ -43,12 +43,14 @@
                         <li class="active">
                             <a data-toggle="tab" href="#tab1">Tài khoản</a>
                         </li>
-                        <li>
-                            <a data-toggle="tab" href="#tab2">Địa chỉ</a>
-                        </li>
-                        <li>
-                            <a data-toggle="tab" href="#tab3">Đơn hàng</a>
-                        </li>
+                        <?php if (isset($_SESSION['user']) && !empty($_SESSION['user']) && $_SESSION['user']['is_admin'] == 1) : ?>
+                            <li>
+                                <a data-toggle="tab" href="#tab2">Mật khẩu</a>
+                            </li>
+                            <li>
+                                <a data-toggle="tab" href="#tab3">Đơn hàng</a>
+                            </li>
+                        <?php endif; ?>
                         <li>
                             <a href="index.php?act=logout">Đăng xuất</a>
                         </li>
@@ -62,18 +64,30 @@
                         <div class="products-tabs">
                             <!-- tab 1 -->
                             <div id="tab1" class="tab-pane active">
+                                <div class="title-form">Thông Tin Tài Khoản</div>
                                 <form action="index.php?act=updateUser&id=<?= $_SESSION['user']['id'] ?>" method="POST" class="form-account" enctype="multipart/form-data">
-                                    <div class="form-group">
-                                        <label for="">Tên đăng nhập</label>
-                                        <input type="text" name="username" class="form-control" value="<?= $_SESSION['user']['username'] ?>">
+                                    <div class="form-group row">
+                                        <div class="col-md-6">
+                                            <label for="">Tên đăng nhập</label>
+                                            <input type="text" name="username" class="form-control" value="<?= $_SESSION['user']['username'] ?>">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label for="">Tên đầy đủ</label>
+                                            <input type="text" name="full_name" class="form-control" value="<?= $_SESSION['user']['full_name'] ?>">
+                                        </div>
                                     </div>
+
                                     <div class="form-group">
                                         <label for="">Email</label>
-                                        <input type="text" name="email" class="form-control" value="<?= $_SESSION['user']['email'] ?>">
+                                        <input type="email" name="email" class="form-control" value="<?= $_SESSION['user']['email'] ?>" required>
                                     </div>
                                     <div class="form-group">
                                         <label for="">Số điện thoại</label>
                                         <input type="text" name="phone" class="form-control" value="<?= $_SESSION['user']['phone'] ?>">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="">Địa chỉ</label>
+                                        <input type="text" name="address" class="form-control" value="<?= empty($_SESSION['user']['address']) ? '' : $_SESSION['user']['address'] ?>" placeholder="<?= empty($_SESSION['user']['address']) ? 'Trống' : '' ?>">
                                     </div>
                                     <div class="form-group">
                                         <label for="">Thay đổi avatar</label>
@@ -86,12 +100,12 @@
                             <!-- /tab 1 -->
                             <!-- tab 2 -->
                             <div id="tab2" class="tab-pane">
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero sunt modi in, fugiat illum illo facilis, animi qui magni explicabo eligendi. Illo vitae dolore temporibus mollitia, eveniet necessitatibus ab aliquid!
+                                <div class="title-form">Thay đổi mặt khẩu</div>
                             </div>
                             <!-- /tab 2 -->
                             <!-- tab 3 -->
                             <div id="tab3" class="tab-pane">
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti sit omnis dicta, illo necessitatibus quibusdam. Odio unde sint eaque eum maxime, rerum sequi ut quisquam pariatur, repellendus mollitia deserunt blanditiis!
+                            <div class="title-form">Chi tiết đơn hàng</div>
                             </div>
                             <!-- /tab 3 -->
                         </div>

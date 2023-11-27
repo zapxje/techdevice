@@ -1298,6 +1298,12 @@ textarea.input {
   padding-bottom: 60px;
   margin-bottom: -60px;
 }
+.products-tabs .title-form{
+  margin-top: 10px;
+  text-align: center;
+  font-size: 2.5rem;
+  text-transform: uppercase;
+}
 
 .products-tabs > .tab-pane.active {
   opacity: 1;

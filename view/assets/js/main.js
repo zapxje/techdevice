@@ -233,8 +233,8 @@ function reducer(state = storedCartState, action) {
       return state.filter((item) => item.id !== action.payload);
     case "updateCart":
       return state.map(item => {
-        if(item.id == action.payload.id) {
-          return action.payload; 
+        if (item.id == action.payload.id) {
+          return action.payload;
         } else {
           return item;
         }
@@ -265,12 +265,12 @@ function addToCart(x) {
 
     // Nếu đã tồn tại sp có cùng id
     const productExisted = storedCartState.find(item => item.id == id);
-    
+
     productExisted.count++;
-    store.dispatch({ 
+    store.dispatch({
       type: "updateCart",
-      payload : productExisted
-   });
+      payload: productExisted
+    });
   } else {
     const product = {
       name: name,
@@ -353,11 +353,11 @@ function render() {
         payload: productId,
       });
       cartProducts = document.querySelectorAll(".listProduct");
-    
+
       // Call handleCart to update the displayed cart information
       handleCart();
     });
-    
+
   });
 }
 render();

@@ -87,7 +87,7 @@
                                     $listProductByCategoryNew = getProductByCategoryNew($category['id']);
                                     foreach ($listProductByCategoryNew as $product) : ?>
                                         <!-- product -->
-                                        <div class="product"  data-id="<?= $product['id'] ?>">
+                                        <div class="product" data-id="<?= $product['id'] ?>">
                                             <a href="index.php?act=singleProduct&id=<?= $product['id'] ?>">
                                                 <div class="product-img">
                                                     <img src="view/assets/img/product/<?= $product['image'] ?>" alt="">
@@ -110,7 +110,7 @@
                                                 </h4>
                                             </div>
                                             <div class="add-to-cart">
-                                                <a href="index.php?act=addToCart&id=<?= $product['id'] ?>"><button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to cart</button></a>
+                                                <button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to cart</button>
                                             </div>
                                         </div>
                                         <!-- /product -->

@@ -6,12 +6,14 @@ if (isset($_GET['act']) && !empty($_GET['act'])) {
                 $id = $_GET['id'];
                 $old_image = $_POST['old_image'];
                 $username = $_POST['username'];
+                $full_name = $_POST['full_name'];
                 $email = $_POST['email'];
                 $phone = $_POST['phone'];
+                $address = $_POST['address'];
                 // Kiểm tra dữ liệu
                 if (!isset($_FILES['avatar']) || $_FILES['avatar']['error'] != UPLOAD_ERR_OK) {
                     // Nếu không tồn tại ảnh mới thì vẫn update và lấy ảnh cũ
-                    updateUser($id, $username, $email, $phone, $old_image);
+                    updateUser($id, $username, $full_name, $phone, $email, $address, $old_image);
                 } else {
                     $dir = 'view/assets/img/avatar';
                     // Lấy tên file mới
@@ -21,7 +23,7 @@ if (isset($_GET['act']) && !empty($_GET['act'])) {
                     // Kiểm tra đã tồn tại chưa
                     if (file_exists($avatar)) {
                         // Thực hiện hàm thêm dtb nhưng không thêm ảnh
-                        updateUser($id, $username, $email, $phone, $avatar);
+                        updateUser($id, $username, $full_name, $phone, $email, $address, $avatar);
                     } else {
                         // Kiểm tra và tạo thư mục nếu nó không tồn tại
                         if (!is_dir($dir)) {
@@ -36,7 +38,7 @@ if (isset($_GET['act']) && !empty($_GET['act'])) {
                             }
 
                             // Thực hiện thêm dtb
-                            updateUser($id, $username, $email, $phone, $avatar);
+                            updateUser($id, $username, $full_name, $phone, $email, $address, $avatar);
                         } else {
                             echo 'Lỗi khi di chuyển tệp tin.';
                         }
