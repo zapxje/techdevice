@@ -45,19 +45,34 @@ function addProduct($idCategory, $idBrand, $name, $price, $price_sale, $quantity
 //Lấy 5 sản phẩm theo danh mục (sản phẩm mới)
 function getProductByCategoryNew($id)
 {
-    $sql = "SELECT * FROM products WHERE id_category=" . $id . " ORDER BY id desc LIMIT 5";
+    // $sql = "SELECT * FROM products WHERE id_category=" . $id . " ORDER BY id desc LIMIT 5";
+    $sql = "SELECT p.*, ca.name as category_name, br.name as brand_name 
+    FROM products as p 
+    LEFT JOIN categories as ca ON ca.id = p.id_category 
+    LEFT JOIN brands as br ON br.id = p.id_brand
+    WHERE ca.id = " . $id . "
+    ORDER BY p.id desc LIMIT 5";
     return getAll($sql);
 }
 //Lấy 5 sản phẩm theo danh mục (sản phẩm bán chạy)
 function getProductByCategoryTopselling($id)
 {
-    $sql = "SELECT * FROM products WHERE id_category=" . $id . " ORDER BY number_of_purchases desc LIMIT 5";
+    $sql = "SELECT p.*, ca.name as category_name, br.name as brand_name 
+    FROM products as p 
+    LEFT JOIN categories as ca ON ca.id = p.id_category 
+    LEFT JOIN brands as br ON br.id = p.id_brand
+    WHERE ca.id = " . $id . "
+    ORDER BY p.number_of_purchases desc LIMIT 5";
     return getAll($sql);
 }
 //Lấy 5 sản phẩm theo danh mục (sản phẩm liên quan)
 function getProductByCategoryRelated($idCategory, $idProduct)
 {
-    $sql = "SELECT * FROM products WHERE id_category=" . $idCategory . " AND id <> " . $idProduct . " LIMIT 4";
+    $sql = "SELECT p.*, ca.name as category_name, br.name as brand_name 
+    FROM products as p 
+    LEFT JOIN categories as ca ON ca.id = p.id_category 
+    LEFT JOIN brands as br ON br.id = p.id_brand 
+    WHERE ca.id = " . $idCategory . " AND p.id <> " . $idProduct . " LIMIT 4";
     return getAll($sql);
 }
 //Lấy 3 sản phẩm trong tổng (sản phẩm bán chạy)

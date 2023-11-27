@@ -46,18 +46,19 @@
                 <div class="why-choose ">
                     <h3>Tại sao chọn chúng tôi?</h3>
                     <div class="col-md-6">
-                    <div class="reason">
+                        <div class="reason">
                             <i class="fa-solid fa-bag-shopping"></i>
                             <h5>Easy to shop</h5>
                             <p>Dễ dàng mua sắm</p>
                         </div>
                     </div>
-                    <div class="col-md-6"> <div class="reason ">
+                    <div class="col-md-6">
+                        <div class="reason ">
                             <i class="fa-solid fa-truck-fast"></i>
                             <h5>Fast & free shipping</h5>
                             <p>Được vận chuyển nhanh chóng & free ship </p>
                         </div>
-                        
+
                     </div>
                     <div class="col-md-6">
                         <div class="reason">
@@ -69,14 +70,14 @@
                     <div class="col-md-6">
                         <div class="reason">
                             <i class="fa-solid fa-retweet"></i>
-                            <h5>return support</h5>
+                            <h5>Return support</h5>
                             <p>Có thể đổi trả hàng nếu không vừa ý</p>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="col-md-6 col-sm-12">
-               
+
             </div>
         </div>
     </div>

@@ -16,6 +16,7 @@
     $jsonProducts = json_encode($listProducts);
 
     // include the header file
+    $active = isset($_REQUEST['act']) ? $_REQUEST['act'] : '';
     include 'view/header.php';
 
 

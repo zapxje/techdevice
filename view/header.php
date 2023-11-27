@@ -52,7 +52,7 @@ ob_start();
             <div class="container">
                 <ul class="header-links pull-left">
                     <li><a href="#"><i class="fa fa-phone"></i> +021-95-51-84</a></li>
-                    <li><a href="#"><i class="fa fa-envelope-o"></i> email@email.com</a></li>
+                    <li><a href="#"><i class="fa fa-envelope-o"></i> infor@techdevice.shop</a></li>
                     <li><a href="#"><i class="fa fa-map-marker"></i> 1734 Stonecoal Road</a></li>
                 </ul>
                 <ul class="header-links pull-right">
@@ -88,13 +88,13 @@ ob_start();
                         <div class="header-search">
                             <form class="filter">
                                 <select class="input-select" name="category">
-                                    <option value="0">All Categories</option>
+                                    <option value="0">Tất cả danh mục</option>
                                     <?php foreach ($listCategories as $category) : ?>
                                         <option value="<?= $category['id'] ?>"><?= $category['name'] ?></option>
                                     <?php endforeach; ?>
                                 </select>
-                                <input class="input" placeholder="Search here" name="name">
-                                <button class="search-btn">Search</button>
+                                <input class="input" placeholder="Tìm kiếm sản phẩm" name="name">
+                                <button class="search-btn"><i class="fa fa-search"></i></button>
                             </form>
                         </div>
                     </div>
@@ -117,8 +117,6 @@ ob_start();
                                     </a>
                                     <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
                                         <li><a href="index.php?act=account">Thông tin</a></li>
-                                        <!-- class="my-account" -->
-                                        <!-- <li><a href="#">chỉnh sửa</a></li> -->
                                         <li role="separator" class="divider"></li>
                                         <li><a href="?act=logout">Đăng xuất</a></li>
                                     </ul>
@@ -185,10 +183,10 @@ ob_start();
             <div id="responsive-nav">
                 <!-- NAV -->
                 <ul class="main-nav nav navbar-nav">
-                    <li><a href="index.php">Trang Chủ</a></li>
-                    <li><a href="?act=store">Sản Phẩm</a></li>
-                    <li><a href="?act=about">Thông Tin</a></li>
-                    <li><a href="?act=contact">Liên Hệ</a></li>
+                    <li class="<?= empty($active) ? 'active' : '' ?>"><a href="index.php">Trang Chủ</a></li>
+                    <li class="<?= $active == 'store' ? 'active' : '' ?>"><a href="?act=store">Sản Phẩm</a></li>
+                    <li class="<?= $active == 'about' ? 'active' : '' ?>"><a href="?act=about">Thông Tin</a></li>
+                    <li class="<?= $active == 'contact' ? 'active' : '' ?>"><a href="?act=contact">Liên Hệ</a></li>
                 </ul>
                 <!-- /NAV -->
             </div>

@@ -158,8 +158,8 @@
                 <div id="product-tab">
                     <!-- product tab nav -->
                     <ul class="tab-nav">
-                        <li class="active"><a data-toggle="tab" href="#tab1">Mô tả</a></li>
-                        <li><a data-toggle="tab" href="#tab2">Đánh giá</a></li>
+                        <li class="active"><a data-toggle="tab" href="#tab1">Mô tả sản phẩm</a></li>
+                        <li><a data-toggle="tab" href="#tab2">Đánh giá sản phẩm</a></li>
                     </ul>
                     <!-- /product tab nav -->
 
@@ -179,7 +179,7 @@
                         <div id="tab2" class="tab-pane fade in">
                             <div class="row">
                                 <!-- Rating -->
-                                <div class="col-md-3">
+                                <div class="col-md-4">
                                     <div id="rating">
                                         <div class="rating-avg">
                                             <span>4.5</span>
@@ -263,7 +263,7 @@
                                 <!-- /Rating -->
 
                                 <!-- Reviews -->
-                                <div class="col-md-6">
+                                <div class="col-md-8">
                                     <div id="reviews">
                                         <ul class="reviews">
                                             <li>
@@ -327,7 +327,7 @@
                                 <!-- /Reviews -->
 
                                 <!-- Review Form -->
-                                <div class="col-md-3">
+                                <!-- <div class="col-md-3">
                                     <div id="review-form">
                                         <form class="review-form">
                                             <input class="input" type="text" placeholder="Your Name">
@@ -346,7 +346,7 @@
                                             <button class="primary-btn">Submit</button>
                                         </form>
                                     </div>
-                                </div>
+                                </div> -->
                                 <!-- /Review Form -->
                             </div>
                         </div>
@@ -372,7 +372,7 @@
 
             <div class="col-md-12">
                 <div class="section-title text-center">
-                    <h3 class="title">Related Products</h3>
+                    <h3 class="title">Sản phẩm liên quan</h3>
                 </div>
             </div>
 
@@ -391,7 +391,7 @@
                         </a>
 
                         <div class="product-body">
-                            <p class="product-category">Category</p>
+                            <p class="product-category"><?= $product['category_name'] ?> | <?= $product['brand_name'] ?></p>
                             <h3 class="product-name"><a href="index.php?act=singleProduct&id=<?= $product['id'] ?>"><?= mb_strimwidth($product['name'], 0, 40, "...") ?></a></h3>
                             <h4 class="product-price">
                                 <?= $product['price_sale'] > 0 ? number_format($product['price_sale'], 0, ',', '.') : number_format($product['price'], 0, ',', '.') ?>
