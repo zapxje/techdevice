@@ -493,13 +493,16 @@ textarea.input {
 }
 
 .header-search form .input-select {
-  margin-right: -4px;
+  /* margin-right: -4px; */
+  padding: 10px;
   border-radius: 40px 0px 0px 40px;
+  outline: none;
 }
 
 .header-search form .input {
   width: calc(100% - 260px);
   margin-right: -4px;
+  outline: none;
 }
 
 .header-search form .search-btn {
@@ -511,7 +514,13 @@ textarea.input {
   border: none;
   border-radius: 0px 40px 40px 0px;
 }
-
+.header-search form .search-btn i {
+  font-size: 2.3rem;
+}
+.header-search form .search-btn:active i {
+  font-size: 2rem;
+  transition: all 0.1s ease;
+}
 /*----------------------------*\
 	Cart
 \*----------------------------*/
@@ -2782,7 +2791,7 @@ button.btn.decrease {
 /*=========================================================
 	17-> account
 ===========================================================*/
-.sidebar-header-account{
+.sidebar-header-account {
   height: 100px;
   display: flex;
   align-items: center;
@@ -2796,7 +2805,7 @@ button.btn.decrease {
 .sidebar-avatar i {
   font-size: 70px;
 }
-.sidebar-username p{
+.sidebar-username p {
   margin: 0;
   font-size: 2rem;
   letter-spacing: 2px;

@@ -11,8 +11,8 @@
                         <img src="view/assets/img/shop01.png" alt="">
                     </div>
                     <div class="shop-body">
-                        <h3>Laptop<br>Collection</h3>
-                        <a href="#" class="cta-btn">Shop now <i class="fa fa-arrow-circle-right"></i></a>
+                        <h3>Các sản phẩm<br>Laptop</h3>
+                        <a href="#" class="cta-btn">Mua ngay <i class="fa fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
             </div>
@@ -25,8 +25,8 @@
                         <img src="view/assets/img/19286c1f-272a-4207-a1db-5cf7310f5d59.jpg" alt="">
                     </div>
                     <div class="shop-body">
-                        <h3>Accessories<br>Collection</h3>
-                        <a href="#" class="cta-btn">Shop now <i class="fa fa-arrow-circle-right"></i></a>
+                        <h3>Chuột máy tính<br>& Bàn phím</h3>
+                        <a href="#" class="cta-btn">Mua ngay <i class="fa fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
             </div>
@@ -39,8 +39,8 @@
                         <img src="view/assets/img/shop02.png" alt="">
                     </div>
                     <div class="shop-body">
-                        <h3>Cameras<br>Collection</h3>
-                        <a href="#" class="cta-btn">Shop now <i class="fa fa-arrow-circle-right"></i></a>
+                        <h3>Các sản phẩm<br>Tai nghe</h3>
+                        <a href="#" class="cta-btn">Mua ngay <i class="fa fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
             </div>
@@ -52,7 +52,7 @@
 </div>
 <!-- /SECTION -->
 
-<!-- SECTION -->
+<!-- SECTION NEW PRODUCT -->
 <div class="section">
     <!-- container -->
     <div class="container">
@@ -98,7 +98,7 @@
                                                 </div>
                                             </a>
                                             <div class="product-body">
-                                                <p class="product-category">Category</p>
+                                                <p class="product-category"><?= $product['category_name'] ?> | <?= $product['brand_name'] ?></p>
                                                 <h3 class="product-name">
                                                     <a href="index.php?act=singleProduct&id=<?= $product['id'] ?>">
                                                         <?= mb_strimwidth($product['name'], 0, 40, "...") ?>
@@ -129,7 +129,7 @@
     </div>
     <!-- /container -->
 </div>
-<!-- /SECTION -->
+<!-- /SECTION NEW PRODUCT -->
 
 <!-- HOT DEAL SECTION -->
 <div id="hot-deal" class="section">
@@ -143,31 +143,31 @@
                         <li>
                             <div>
                                 <h3 class="countdown-days">00</h3>
-                                <span>Days</span>
+                                <span>Ngày</span>
                             </div>
                         </li>
                         <li>
                             <div>
                                 <h3 class="countdown-hours">00</h3>
-                                <span>Hours</span>
+                                <span>Giờ</span>
                             </div>
                         </li>
                         <li>
                             <div>
                                 <h3 class="countdown-minutes">00</h3>
-                                <span>Mins</span>
+                                <span>Phút</span>
                             </div>
                         </li>
                         <li>
                             <div>
                                 <h3 class="countdown-seconds">00</h3>
-                                <span>Secs</span>
+                                <span>Giây</span>
                             </div>
                         </li>
                     </ul>
                     <b class="countdown-nofitication text-danger text-uppercase"></b>
-                    <h2 class="text-uppercase">hot deal this week</h2>
-                    <p>New Collection Up to 50% OFF</p>
+                    <h2 class="text-uppercase">Tuần lễ vàng</h2>
+                    <p>Nhiều ưu đãi giảm giá lên đến 50%</p>
                     <a class="primary-btn cta-btn" href="#">Shop now</a>
                 </div>
             </div>
@@ -178,7 +178,7 @@
 </div>
 <!-- /HOT DEAL SECTION -->
 
-<!-- SECTION -->
+<!-- SECTION TOPSELLING PRODUCT -->
 <div class="section">
     <!-- container -->
     <div class="container">
@@ -225,7 +225,7 @@
                                                 </div>
                                             </a>
                                             <div class="product-body">
-                                                <p class="product-category">Category</p>
+                                                <p class="product-category"><?= $product['category_name'] ?> | <?= $product['brand_name'] ?></p>
                                                 <h3 class="product-name">
                                                     <a href="index.php?act=singleProduct&id=<?= $product['id'] ?>">
                                                         <?= mb_strimwidth($product['name'], 0, 40, "...") ?>
@@ -256,7 +256,7 @@
     </div>
     <!-- /container -->
 </div>
-<!-- /SECTION -->
+<!-- /SECTION TOPSELLING PRODUCT -->
 
 <!-- SECTION -->
 <div class="section">
