@@ -25,7 +25,7 @@
 		<div class="row sub-cart">
 			<div class="col-md-6 ">
 				<div class="row mb-5">
-					
+
 					<div class="col-md-6">
 						<a href="?act=products"><button class="primary-btn order-submit">Continue Shopping</button></a>
 					</div>

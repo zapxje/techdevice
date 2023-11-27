@@ -114,15 +114,17 @@
                     </div> -->
 
                     <div class="add-to-cart">
-                        <div class="qty-label">
-                            Số lượng
-                            <div class="input-number">
-                                <input type="number" value="1">
-                                <span class="qty-up">+</span>
-                                <span class="qty-down">-</span>
+                        <form action="index.php?act=addToCartSingle&id=<?= $product['id'] ?>" method="post">
+                            <div class="qty-label">
+                                Số lượng
+                                <div class="input-number">
+                                    <input type="number" name="count" value="1">
+                                    <span class="qty-up">+</span>
+                                    <span class="qty-down">-</span>
+                                </div>
                             </div>
-                        </div>
-                        <button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to cart</button>
+                            <button type="submit" class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to cart</button>
+                        </form>
                     </div>
 
                     <!-- <ul class="product-btns">

@@ -99,19 +99,18 @@
                                             </a>
                                             <div class="product-body">
                                                 <p class="product-category">Category</p>
-                                                <h3 class="product-name"><a href="index.php?act=singleProduct&id=<?= $product['id'] ?>"><?= mb_strimwidth($product['name'], 0, 40, "...") ?></a></h3>
+                                                <h3 class="product-name">
+                                                    <a href="index.php?act=singleProduct&id=<?= $product['id'] ?>">
+                                                        <?= mb_strimwidth($product['name'], 0, 40, "...") ?>
+                                                    </a>
+                                                </h3>
                                                 <h4 class="product-price">
                                                     <?= $product['price_sale'] > 0 ? number_format($product['price_sale'], 0, ',', '.') : number_format($product['price'], 0, ',', '.') ?>
                                                     <del class="product-old-price"><?= $product['price_sale'] > 0 ? number_format($product['price'], 0, ',', '.') : '' ?></del>
                                                 </h4>
-                                                <div class="product-btns">
-                                                    <button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span class="tooltipp">add to wishlist</span></button>
-                                                    <button class="add-to-compare"><i class="fa fa-exchange"></i><span class="tooltipp">add to compare</span></button>
-                                                    <button class="quick-view"><i class="fa fa-eye"></i><span class="tooltipp">quick view</span></button>
-                                                </div>
                                             </div>
                                             <div class="add-to-cart">
-                                                <button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to cart</button>
+                                                <a href="index.php?act=addToCart&id=<?= $product['id'] ?>"><button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to cart</button></a>
                                             </div>
                                         </div>
                                         <!-- /product -->
@@ -227,16 +226,15 @@
                                             </a>
                                             <div class="product-body">
                                                 <p class="product-category">Category</p>
-                                                <h3 class="product-name"><a href="index.php?act=singleProduct&id=<?= $product['id'] ?>"><?= mb_strimwidth($product['name'], 0, 40, "...") ?></a></h3>
-                                                <h4 class=" product-price">
+                                                <h3 class="product-name">
+                                                    <a href="index.php?act=singleProduct&id=<?= $product['id'] ?>">
+                                                        <?= mb_strimwidth($product['name'], 0, 40, "...") ?>
+                                                    </a>
+                                                </h3>
+                                                <h4 class="product-price">
                                                     <?= $product['price_sale'] > 0 ? number_format($product['price_sale'], 0, ',', '.') : number_format($product['price'], 0, ',', '.') ?>
                                                     <del class="product-old-price"><?= $product['price_sale'] > 0 ? number_format($product['price'], 0, ',', '.') : '' ?></del>
                                                 </h4>
-                                                <div class="product-btns">
-                                                    <button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span class="tooltipp">add to wishlist</span></button>
-                                                    <button class="add-to-compare"><i class="fa fa-exchange"></i><span class="tooltipp">add to compare</span></button>
-                                                    <button class="quick-view"><i class="fa fa-eye"></i><span class="tooltipp">quick view</span></button>
-                                                </div>
                                             </div>
                                             <div class="add-to-cart">
                                                 <button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to cart</button>
