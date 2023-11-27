@@ -123,45 +123,6 @@ ob_start();
                                         <li><a href="?act=logout">Đăng xuất</a></li>
                                     </ul>
                                 </div>
-
-                                <!-- <div class="wrapper-account">
-                                    <div class="container">
-                                        <div class="row account">
-                                            <div class="my__account col-md-8">
-                                                <div class="my__account-close">
-                                                    <i class="fa-solid fa-xmark"></i>
-                                                </div>
-                                                <div class="my__account-img">
-                                                    <?php if ($_SESSION['user']['avatar'] && !empty($_SESSION['user']['avatar'])) : ?>
-                                                        <img src="<?= $_SESSION['user']['avatar'] ?>" alt="">
-                                                    <?php else : ?>
-                                                        <i class="fa fa-user-circle"></i>
-                                                    <?php endif; ?>
-                                                </div>
-                                                <form action="index.php?act=updateUser&id=<?= $_SESSION['user']['id'] ?>" method="POST" class="form-account" enctype="multipart/form-data">
-                                                    <div class="form-group">
-                                                        <label for="">Thay đổi avatar</label>
-                                                        <input type="file" name="avatar" class="form-control">
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label for="">Tên đăng nhập</label>
-                                                        <input type="text" name="username" class="form-control" value="<?= $_SESSION['user']['username'] ?>">
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label for="">Email</label>
-                                                        <input type="text" name="email" class="form-control" value="<?= $_SESSION['user']['email'] ?>">
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label for="">Số điện thoại</label>
-                                                        <input type="text" name="phone" class="form-control" value="<?= $_SESSION['user']['phone'] ?>">
-                                                    </div>
-                                                    <input type="hidden" name="old_image" value="<?= $_SESSION['user']['avatar'] ?>">
-                                                    <button type="submit" name="submit-updateUser" class="btn btn-main">Lưu lại</button>
-                                                </form>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div> -->
                             <?php else : ?>
                                 <div>
                                     <a href="index.php?act=login">
@@ -177,39 +138,21 @@ ob_start();
                                 <a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
                                     <i class="fa fa-shopping-cart"></i>
                                     <span>Giỏ Hàng</span>
-                                    <div class="qty"><?= $totalQuantity; ?></div>
+                                    <div class="qty"></div>
                                 </a>
                                 <div class="cart-dropdown">
-                                    <?php if (empty($_SESSION['cart'])) : ?>
-                                        <p>Trống</p>
-                                    <?php else : ?>
-                                        <div class="cart-list" id="cart-list">
-                                            <?php foreach ($_SESSION['cart'] as $product) : ?>
-                                                <!-- single cart  -->
-                                                <div class="product-widget">
-                                                    <div class="product-img">
-                                                        <img src="view/assets/img/product/<?= $product[3] ?>" alt="">
-                                                    </div>
-                                                    <div class="product-body">
-                                                        <h3 class="product-name"><a href="#"><?= mb_strimwidth($product[1], 0, 40, "...")  ?></a></h3>
-                                                        <h4 class="product-price"><span class="qty"><?= $product[4] ?>x</span><?= number_format($product[2], 0, ',', '.') ?>đ</h4>
-                                                    </div>
-                                                    <a href="index.php?act=delToCart&id=<?= $product[0] ?>"><button class="delete"><i class="fa fa-close"></i></button></a>
-                                                </div>
-                                                <!-- single cart  -->
-                                            <?php
-                                                $subtotal += $product[2] * $product[4];
-                                            endforeach; ?>
-                                        </div>
-                                        <div class="cart-summary">
-                                            <small><?= sizeof($_SESSION['cart']) ?> Sản phẩm</small>
-                                            <h5>TỔNG TIỀN: <?= number_format($subtotal, 0, ',', '.') ?>đ</h5>
-                                        </div>
-                                        <div class="cart-btns">
-                                            <a href="index.php?act=viewCart">View Cart</a>
-                                            <a href="index.php?act=checkout">Checkout <i class="fa fa-arrow-circle-right"></i></a>
-                                        </div>
-                                    <?php endif; ?>
+                                <div class="cart-list" id="cart-list">
+                                        
+
+                                    </div>
+                                    <div class="cart-summary">
+                                        <small></small>
+                                        <h5>SUBTOTAL: $2940.00</h5>
+                                    </div>
+                                    <div class="cart-btns">
+                                        <a href="index.php?act=viewCart">View Cart</a>
+                                        <a href="index.php?act=checkout">Checkout <i class="fa fa-arrow-circle-right"></i></a>
+                                    </div>
                                 </div>
                             </div>
                             <!-- /Cart -->

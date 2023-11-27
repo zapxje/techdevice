@@ -110,7 +110,7 @@
                                                 </h4>
                                             </div>
                                             <div class="add-to-cart">
-                                                <a href="index.php?act=addToCart&id=<?= $product['id'] ?>"><button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to cart</button></a>
+                                                <button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to cart</button>
                                             </div>
                                         </div>
                                         <!-- /product -->

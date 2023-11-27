@@ -343,8 +343,20 @@ function render() {
     });
     viewCart.innerHTML = productCart;
   }
+  
+  let itemSumary= document.querySelector(".cart-summary small");
+  let qty=document.querySelector(".qty");
+  if(itemSumary){
+    itemSumary.innerText=storedCartState.length+` (items)`;
+    qty.innerHTML=storedCartState.length;
+  }
+  let subTotal=0;
+  let subTotalSummary= document.querySelector(".cart-summary h5");
+  storedCartState.map(item =>{
+    return subTotal += parseInt(item.price.replace(".", "").replace(".", ""));
+  })
+  subTotalSummary.innerHTML= "SUBTOTAL: "+ formatMoney(subTotal) +'đ';
   const deleToCart = document.querySelectorAll(".delete");
-
   deleToCart.forEach((item) => {
     item.addEventListener("click", function () {
       const productId = item.getAttribute("data-id");
@@ -470,7 +482,7 @@ if (orderTotal) {
 //===========hàm xử lí trang cart==========================
 function handleCart() {
   var totalPriceProduct = 0;
-
+  
   cartProducts.forEach((product) => {
     let price =
       product
@@ -491,6 +503,7 @@ function handleCart() {
   // Lưu mảng cập nhật vào local storage sau khi đã duyệt qua tất cả sản phẩm
   priceTotal.textContent = formatMoney(totalPriceProduct) + "đ";
   subTotal.textContent = formatMoney(totalPriceProduct) + "đ";
+  
 }
 handleCart();
 //===========END hàm xử lí trang cart==========================
