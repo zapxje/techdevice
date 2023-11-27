@@ -70,6 +70,10 @@
                 break;
 
             case 'account':
+                //bắt buộc phải đăng nhập session['user'] mới được vào
+                if(!$_SESSION['user']){
+                    header('location: index.php');
+                }
                 include_once 'view/account.php';
                 break;
 
