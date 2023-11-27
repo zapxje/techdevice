@@ -15,76 +15,7 @@
 							</tr>
 						</thead>
 						<tbody class="view-cart" >
-							<tr class="listProduct">
-								<td class="product-thumbnail">
-									<img src="view/assets/img/product01.png" alt="Image" class="img-fluid">
-								</td>
-								<td class="product-name w-50">
-									<h4 class=" text-black name">Apple MacBook Air M1 256GB 2020 I Chính hãng Apple Việt Nam</h4>
-								</td>
-								<td class="price "> 50000đ</td>
-								<td>
-									<div class="input-group mb-3 d-flex align-items-center quantity-container" style="max-width: 120px;">
-										<div class="input-group-prepend">
-											<button class="btn decrease" type="button">&minus;</button>
-										</div>
-										<input type="text" class=" text-center quantity-amount" value="1"  >
-										<div class="input-group-append">
-											<button class="btn increase" type="button">&plus;</button>
-										</div>
-									</div>
-
-								</td>
-								<td class="total" class="h6">50000</td>
-								<td><a href="#" class="btn btn-black  close"><i class="fa-solid fa-xmark"></i></a></td>
-							</tr>
-							<tr class="listProduct">
-								<td class="product-thumbnail">
-									<img src="view/assets/img/product02.png" alt="Image" class="img-fluid">
-								</td>
-								<td class="product-name w-50	">
-									<h4 class=" text-black name">Apple MacBook Air M1 256GB 2020 I Chính hãng Apple Việt Nam</h4>
-								</td>
-								<td class="price" class="h6">50000đ</td>
-								<td>
-									<div class="input-group mb-3 d-flex align-items-center quantity-container" style="max-width: 120px;">
-										<div class="input-group-prepend">
-											<button class="btn decrease" type="button">&minus;</button>
-										</div>
-										<input type="text" class=" text-center quantity-amount" value="1" >
-										<div class="input-group-append">
-											<button class="btn increase" type="button">&plus;</button>
-										</div>
-									</div>
-
-								</td>
-								<td class="total" class="h6">50000</td>
-								<td><a href="#" class="btn btn-black  close"><i class="fa-solid fa-xmark"></i></a></td>
-							</tr>
-
-							<tr class="listProduct">
-								<td class="product-thumbnail">
-									<img src="view/assets/img/product03.png" alt="Image" class="img-fluid">
-								</td>
-								<td class="product-name">
-									<h4 class=" text-black name">Apple MacBook Air M1 256GB 2020 I Chính hãng Apple Việt Nam</h4>
-								</td>
-								<td class="price" class="h6">100000đ</td>
-								<td>
-									<div class="input-group mb-3 d-flex align-items-center quantity-container" style="max-width: 120px;">
-										<div class="input-group-prepend">
-											<button class="btn decrease" type="button">&minus;</button>
-										</div>
-										<input type="text" class=" text-center quantity-amount" value="1" >
-										<div class="input-group-append">
-											<button class="btn increase" type="button">&plus;</button>
-										</div>
-									</div>
-
-								</td>
-								<td class="total" class="h6">100000</td>
-								<td><a href="#" class="btn btn-black  close"><i class="fa-solid fa-xmark "></i></a></td>
-							</tr>
+							
 						</tbody>
 					</table>
 				</div>

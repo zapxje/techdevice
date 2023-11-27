@@ -231,6 +231,14 @@ function reducer(state = storedCartState, action) {
       return [...state, action.payload];
     case "deleToCart":
       return state.filter((item) => item.id !== action.payload);
+    case "updateCart":
+      return state.map(item => {
+        if(item.id == action.payload.id) {
+          return action.payload; 
+        } else {
+          return item;
+        }
+      })
     default:
       return state;
   }
@@ -251,24 +259,25 @@ function addToCart(x) {
   const price = element.firstChild.nodeValue.trim();
   const img = y.children[0].children[0].children[0].src;
   const id = y.dataset.id
-  let countProduct = 1;
-  const hadProduct = storedCartState.some(product => product.id == id);
+  const hadProduct = storedCartState.find(product => product.id == id)
 
-  console.log(storedCartState)
   if (hadProduct) {
+
     // Nếu đã tồn tại sp có cùng id
     const productExisted = storedCartState.find(item => item.id == id);
-    countProduct++;
-    productExisted.count = countProduct;
-    store.dispatch({ type: "" });
-
+    
+    productExisted.count++;
+    store.dispatch({ 
+      type: "updateCart",
+      payload : productExisted
+   });
   } else {
     const product = {
       name: name,
       price: price,
       img: img,
       id: id,
-      count: countProduct
+      count: 1
     };
 
 
@@ -343,7 +352,12 @@ function render() {
         type: "deleToCart",
         payload: productId,
       });
+      cartProducts = document.querySelectorAll(".listProduct");
+    
+      // Call handleCart to update the displayed cart information
+      handleCart();
     });
+    
   });
 }
 render();
@@ -400,7 +414,7 @@ sitePlusMinus();
 
 
 
-const cartProducts = document.querySelectorAll(".listProduct");
+var cartProducts = document.querySelectorAll(".listProduct");
 const priceTotal = document.getElementById("priceTotal");
 //=========== hàm CHECKOUT sản phẩm==========================
 // ...
@@ -468,6 +482,7 @@ function handleCart() {
     let total = product.querySelector(".total");
 
     total.textContent = formatMoney(price * quantity) + "đ";
+    console.log(total.textContent);
     totalPriceProduct += price * quantity;
   });
   if (!priceTotal || !subTotal) {
