@@ -6,16 +6,16 @@
 					<table class="table">
 						<thead>
 							<tr>
-								<th class="product-thumbnail">Image</th>
-								<th class="product-name">Product</th>
-								<th class="product-price">Price</th>
-								<th class="product-quantity">Quantity</th>
-								<th class="product-total">Total</th>
-								<th class="product-remove">Remove</th>
+								<th class="product-thumbnail">Hình ảnh</th>
+								<th class="product-name">Sản phẩm</th>
+								<th class="product-price">Đơn giá</th>
+								<th class="product-quantity">Số lượng</th>
+								<th class="product-total">Tổng tiền</th>
+								<th class="product-remove">Xóa</th>
 							</tr>
 						</thead>
-						<tbody class="view-cart" >
-							
+						<tbody class="view-cart">
+
 						</tbody>
 					</table>
 				</div>

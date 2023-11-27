@@ -139,13 +139,13 @@ ob_start();
                                     <div class="qty"></div>
                                 </a>
                                 <div class="cart-dropdown">
-                                <div class="cart-list" id="cart-list">
-                                        
+                                    <div class="cart-list" id="cart-list">
+
 
                                     </div>
                                     <div class="cart-summary">
                                         <small></small>
-                                        <h5>SUBTOTAL: $2940.00</h5>
+                                        <h5>Tổng tiền: $2940.00</h5>
                                     </div>
                                     <div class="cart-btns">
                                         <a href="index.php?act=viewCart">View Cart</a>
