@@ -224,129 +224,143 @@ countDown();
 // ==================== Function View Cart Start ==================== //
 
 //thêm vào giỏ hàng
-// let storedCartState = JSON.parse(localStorage.getItem("cartState")) || [];
-// function reducer(state = storedCartState, action) {
-//   switch (action.type) {
-//     case "addToCart":
-//       return [...state, action.payload];
-//     case "deleToCart":
-//       return state.filter((item) => item.id !== action.payload);
-//     default:
-//       return state;
-//   }
-// }
+let storedCartState = JSON.parse(localStorage.getItem("cartState")) || [];
+function reducer(state = storedCartState, action) {
+  switch (action.type) {
+    case "addToCart":
+      return [...state, action.payload];
+    case "deleToCart":
+      return state.filter((item) => item.id !== action.payload);
+    case "updateCart":
+      return state.map(item => {
+        if(item.id == action.payload.id) {
+          return action.payload; 
+        } else {
+          return item;
+        }
+      })
+    default:
+      return state;
+  }
+}
 
-// const store = createStore(reducer);
-// const BtnAddtocart = document.querySelectorAll(".add-to-cart-btn");
-// BtnAddtocart.forEach((item) => {
-//   item.addEventListener("click", (e) => {
-//     addToCart(e.target);
-//   });
-// });
+const store = createStore(reducer);
+const BtnAddtocart = document.querySelectorAll(".add-to-cart-btn");
+BtnAddtocart.forEach((item) => {
+  item.addEventListener("click", (e) => {
+    addToCart(e.target);
+  });
+});
 
-// function addToCart(x) {
-//   const y = x.parentElement.parentElement;
-//   const name = y.children[1].children[1].innerText;
-//   const element = y.querySelector(".product-price");
-//   const price = element.firstChild.nodeValue.trim();
-//   const img = y.children[0].children[0].children[0].src;
-//   const id = y.dataset.id
-//   let countProduct = 1;
-//   const hadProduct = storedCartState.some(product => product.id == id);
+function addToCart(x) {
+  const y = x.parentElement.parentElement;
+  const name = y.children[1].children[1].innerText;
+  const element = y.querySelector(".product-price");
+  const price = element.firstChild.nodeValue.trim();
+  const img = y.children[0].children[0].children[0].src;
+  const id = y.dataset.id
+  const hadProduct = storedCartState.find(product => product.id == id)
 
-//   console.log(storedCartState)
-//   if (hadProduct) {
-//     // Nếu đã tồn tại sp có cùng id
-//     const productExisted = storedCartState.find(item => item.id == id);
-//     countProduct++;
-//     productExisted.count = countProduct;
-//     store.dispatch({ type: "" });
+  if (hadProduct) {
 
-//   } else {
-//     const product = {
-//       name: name,
-//       price: price,
-//       img: img,
-//       id: id,
-//       count: countProduct
-//     };
+    // Nếu đã tồn tại sp có cùng id
+    const productExisted = storedCartState.find(item => item.id == id);
+    
+    productExisted.count++;
+    store.dispatch({ 
+      type: "updateCart",
+      payload : productExisted
+   });
+  } else {
+    const product = {
+      name: name,
+      price: price,
+      img: img,
+      id: id,
+      count: 1
+    };
 
 
-//     store.dispatch({
-//       type: "addToCart",
-//       payload: product,
-//     });
-//   }
-// }
-// store.subscribe(() => {
-//   storedCartState = store.getState();
-//   localStorage.setItem("cartState", JSON.stringify(storedCartState));
-//   render();
-// });
-// function render() {
-//   // list cart
-//   const listCart = document.getElementById("cart-list");
-//   let productsHTML = "";
+    store.dispatch({
+      type: "addToCart",
+      payload: product,
+    });
+  }
+}
+store.subscribe(() => {
+  storedCartState = store.getState();
+  localStorage.setItem("cartState", JSON.stringify(storedCartState));
+  render();
+});
+function render() {
+  // list cart
+  const listCart = document.getElementById("cart-list");
+  let productsHTML = "";
 
-//   storedCartState.forEach((product) => {
-//     productsHTML += ` <div class="product-widget">
-//                     <div class="product-img">
-//                         <img src="${product.img}" alt="">
-//                     </div>
-//                     <div class="product-body">
-//                         <h3 class="product-name"><a href="#">${product.name}</a></h3>
-//                         <h4 class="product-price"><span class="qty">${product.count}x</span>${product.price}</h4>
-//                     </div>
-//                     <button class="delete" data-id="${product.id}"><i class="fa fa-close"></i></button>
-//                 </div>`;
-//   });
-//   listCart.innerHTML = productsHTML;
+  storedCartState.forEach((product) => {
+    productsHTML += ` <div class="product-widget">
+                    <div class="product-img">
+                        <img src="${product.img}" alt="">
+                    </div>
+                    <div class="product-body">
+                        <h3 class="product-name"><a href="#">${product.name}</a></h3>
+                        <h4 class="product-price"><span class="qty">${product.count}x</span>${product.price}</h4>
+                    </div>
+                    <button class="delete" data-id="${product.id}"><i class="fa fa-close"></i></button>
+                </div>`;
+  });
+  listCart.innerHTML = productsHTML;
 
-//   //view cart
-//   const viewCart = document.querySelector(".view-cart");
-//   if (viewCart) {
-//     let productCart = "";
-//     storedCartState.forEach((product) => {
+  //view cart
+  const viewCart = document.querySelector(".view-cart");
+  if (viewCart) {
+    let productCart = "";
+    storedCartState.forEach((product) => {
 
-//       productCart += `<tr class="listProduct">
-//                             <td class="product-thumbnail">
-//                               <img src="${product.img}" alt="Image" class="img-fluid">
-//                             </td>
-//                             <td class="product-name w-50">
-//                               <h4 class=" text-black name">${product.name}</</h4>
-//                             </td>
-//                             <td class="price ">${product.price}</td>
-//                             <td>
-//                               <div class="input-group mb-3 d-flex align-items-center quantity-container" style="max-width: 120px;">
-//                                 <div class="input-group-prepend">
-//                                   <button class="btn decrease" type="button">&minus;</button>
-//                                 </div>
-//                                 <input type="text" class=" text-center quantity-amount" value="${product.count}"  >
-//                                 <div class="input-group-append">
-//                                   <button class="btn increase" type="button">&plus;</button>
-//                                 </div>
-//                               </div>
+      productCart += `<tr class="listProduct">
+                            <td class="product-thumbnail">
+                              <img src="${product.img}" alt="Image" class="img-fluid">
+                            </td>
+                            <td class="product-name w-50">
+                              <h4 class=" text-black name">${product.name}</</h4>
+                            </td>
+                            <td class="price ">${product.price}</td>
+                            <td>
+                              <div class="input-group mb-3 d-flex align-items-center quantity-container" style="max-width: 120px;">
+                                <div class="input-group-prepend">
+                                  <button class="btn decrease" type="button">&minus;</button>
+                                </div>
+                                <input type="text" class=" text-center quantity-amount" value="${product.count}"  >
+                                <div class="input-group-append">
+                                  <button class="btn increase" type="button">&plus;</button>
+                                </div>
+                              </div>
 
-//                             </td>
-//                             <td class="total" class="h6"></td>
-//                             <td><button href="#" class="btn btn-black close delete" data-id="${product.id}"><i class="fa-solid fa-xmark"></i></button></td>
-//                           </tr>`;
-//     });
-//     viewCart.innerHTML = productCart;
-//   }
-//   const deleToCart = document.querySelectorAll(".delete");
+                            </td>
+                            <td class="total" class="h6"></td>
+                            <td><button href="#" class="btn btn-black close delete" data-id="${product.id}"><i class="fa-solid fa-xmark"></i></button></td>
+                          </tr>`;
+    });
+    viewCart.innerHTML = productCart;
+  }
+  const deleToCart = document.querySelectorAll(".delete");
 
-//   deleToCart.forEach((item) => {
-//     item.addEventListener("click", function () {
-//       const productId = item.getAttribute("data-id");
-//       store.dispatch({
-//         type: "deleToCart",
-//         payload: productId,
-//       });
-//     });
-//   });
-// }
-// render();
+  deleToCart.forEach((item) => {
+    item.addEventListener("click", function () {
+      const productId = item.getAttribute("data-id");
+      store.dispatch({
+        type: "deleToCart",
+        payload: productId,
+      });
+      cartProducts = document.querySelectorAll(".listProduct");
+    
+      // Call handleCart to update the displayed cart information
+      handleCart();
+    });
+    
+  });
+}
+render();
 
 // ====================END Function View Cart Start ==================== //
 
@@ -400,7 +414,7 @@ sitePlusMinus();
 
 
 
-const cartProducts = document.querySelectorAll(".listProduct");
+var cartProducts = document.querySelectorAll(".listProduct");
 const priceTotal = document.getElementById("priceTotal");
 //=========== hàm CHECKOUT sản phẩm==========================
 // ...
@@ -468,6 +482,7 @@ function handleCart() {
     let total = product.querySelector(".total");
 
     total.textContent = formatMoney(price * quantity) + "đ";
+    console.log(total.textContent);
     totalPriceProduct += price * quantity;
   });
   if (!priceTotal || !subTotal) {

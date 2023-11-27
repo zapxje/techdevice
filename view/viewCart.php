@@ -3,50 +3,21 @@
 		<div class="row mb-5">
 			<form class="col-md-12" method="post">
 				<div class="site-blocks-table">
-					<?php if (empty($_SESSION['cart'])) : ?>
-						<p>Trống</p>
-					<?php else : ?>
-						<table class="table">
-							<thead>
-								<tr>
-									<th class="product-thumbnail">Hình ảnh</th>
-									<th class="product-name">Sản phẩm</th>
-									<th class="product-price">Đơn giá</th>
-									<th class="product-quantity">Số lượng</th>
-									<th class="product-total">Tổng</th>
-									<th class="product-remove">Xóa</th>
-								</tr>
-							</thead>
-							<tbody class="view-cart">
-
-								<?php foreach ($_SESSION['cart'] as $product) : ?>
-									<tr class="listProduct">
-										<td class="product-thumbnail">
-											<img src="view/assets/img/product/<?= $product[3] ?>" alt="Image" class="img-fluid">
-										</td>
-										<td class="product-name w-50">
-											<h4 class=" text-black name"><?= mb_strimwidth($product[1], 0, 80, "...")  ?></h4>
-										</td>
-										<td class="price "><?= number_format($product[2], 0, ',', '.') ?>đ</td>
-										<td>
-											<div class="input-group mb-3 d-flex align-items-center quantity-container" style="max-width: 120px;">
-												<div class="input-group-prepend">
-													<button class="btn decrease" type="button">&minus;</button>
-												</div>
-												<input type="text" class=" text-center quantity-amount" value="<?= $product[4] ?>">
-												<div class="input-group-append">
-													<button class="btn increase" type="button">&plus;</button>
-												</div>
-											</div>
-
-										</td>
-										<td class="total" class="h6"><?= $product[2] * $product[4] ?></td>
-										<td><a href="index.php?act=delToViewCart&id=<?= $product[0] ?>" class="btn btn-black  close"><i class="fa-solid fa-xmark"></i></a></td>
-									</tr>
-								<?php endforeach; ?>
-							</tbody>
-						</table>
-					<?php endif; ?>
+					<table class="table">
+						<thead>
+							<tr>
+								<th class="product-thumbnail">Image</th>
+								<th class="product-name">Product</th>
+								<th class="product-price">Price</th>
+								<th class="product-quantity">Quantity</th>
+								<th class="product-total">Total</th>
+								<th class="product-remove">Remove</th>
+							</tr>
+						</thead>
+						<tbody class="view-cart" >
+							
+						</tbody>
+					</table>
 				</div>
 			</form>
 		</div>
