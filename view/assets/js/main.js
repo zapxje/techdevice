@@ -344,17 +344,23 @@ function render() {
     viewCart.innerHTML = productCart;
   }
 
-  let itemSumary = document.querySelector(".cart-summary small");
+  let itemSummary = document.querySelector(".cart-summary small");
   let qty = document.querySelector(".qty");
-  if (itemSumary) {
-    itemSumary.innerText = storedCartState.length + ` (sản phẩm)`;
-    qty.innerHTML = storedCartState.length;
+  if (itemSummary) {
+    itemSummary.innerText = storedCartState.length + ` (sản phẩm)`;
+    
   }
   let subTotal = 0;
+  let numberProduct=0;
   let subTotalSummary = document.querySelector(".cart-summary h5");
   storedCartState.map(item => {
-    return subTotal += parseInt(item.price.replace(".", "").replace(".", ""));
+    let qtyProductSummary=item.count;
+    numberProduct += qtyProductSummary;
+    let priceProductSummary=parseInt(item.price.replace(/\./g, ""));
+
+    subTotal += (qtyProductSummary *priceProductSummary);
   })
+  qty.innerHTML = numberProduct;
   subTotalSummary.innerHTML = "TỔNG TIỀN: " + formatMoney(subTotal) + 'đ';
   const deleToCart = document.querySelectorAll(".delete");
   deleToCart.forEach((item) => {
@@ -442,11 +448,10 @@ function handleCheckout() {
     let price = parseInt(
       product
         .querySelector(".price")
-        .textContent.replace("đ", "").replace(".", "").replace(".", "")
+        .textContent.replace("đ", "").replace(/\./g, "")
     );
     let quantity = parseInt(product.querySelector(".quantity-amount").value);
     let total = product.querySelector(".total");
-
     total.textContent = price * quantity + "đ";
     totalPriceProduct += parseInt(
       total.textContent.replace("đ", "").replace(",", "")
@@ -471,7 +476,7 @@ const orderTotal = document.querySelector(".order-total");
 const totalPrice = document.querySelectorAll(".priceProduct");
 let total = 0;
 totalPrice.forEach((price) => {
-  total += parseFloat(price.textContent.replace("đ", "").replace(".", ""));
+  total += parseFloat(price.textContent.replace("đ", "").replace(/\./g, ""));
 });
 if (orderTotal) {
   orderTotal.textContent = formatMoney(total) + "đ";
@@ -486,14 +491,13 @@ function handleCart() {
     let price =
       product
         .querySelector(".price")
-        .textContent.replace("đ", "").replace(".", "").replace(".", "")
+        .textContent.replace("đ", "").replace(/\./g, "")
       ;
 
     let quantity = parseInt(product.querySelector(".quantity-amount").value);
     let total = product.querySelector(".total");
 
     total.textContent = formatMoney(price * quantity) + "đ";
-    console.log(total.textContent);
     totalPriceProduct += price * quantity;
   });
   if (!priceTotal || !subTotal) {

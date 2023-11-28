@@ -149,7 +149,7 @@ ob_start();
                                     </div>
                                     <div class="cart-btns">
                                         <a href="index.php?act=viewCart">View Cart</a>
-                                        <a href="index.php?act=checkout">Checkout <i class="fa fa-arrow-circle-right"></i></a>
+                                        <!-- <a href="index.php?act=checkout">Checkout <i class="fa fa-arrow-circle-right"></i></a> -->
                                     </div>
                                 </div>
                             </div>

@@ -27,7 +27,7 @@
 				<div class="row mb-5">
 
 					<div class="col-md-6">
-						<a href="?act=products"><button class="primary-btn order-submit">Continue Shopping</button></a>
+						<a href="?act=products"><button class="primary-btn order-submit">Tiếp tục mua sắm</button></a>
 					</div>
 				</div>
 				<div class="row coupon">
@@ -39,7 +39,7 @@
 						<input type="text" class="form-control py-3" id="coupon" placeholder="Coupon Code">
 					</div>
 					<div class="col-md-4">
-						<button class="primary-btn order-submit" id="apply">Apply Coupon</button>
+						<button class="primary-btn order-submit" id="apply">Nhập mã giảm</button>
 					</div>
 				</div>
 			</div>
@@ -71,7 +71,7 @@
 						<div class="row">
 							<div class="col-md-12">
 								<a href="index.php?act=checkout" id="checkoutBtn" class="primary-btn order-submit">
-									Proceed To Checkout
+									Tiến hàng thanh toán
 								</a>
 							</div>
 						</div>
