@@ -62,7 +62,6 @@ if (isset($_REQUEST['act'])) {
                         $list_cart[] = $cart;
                     }
                     $order= getOneOrderLimit();
-                    var_dump($order);
                     if (is_array($list_cart)) {
                         for ($i = 0; $i < count($list_cart); $i++) {
                             // Kiểm tra xem $list_cart[$i] có phải là đối tượng không
@@ -73,7 +72,6 @@ if (isset($_REQUEST['act'])) {
                                 $productQuantity = $list_cart[$i]->quantity;
                     
                                 $product = getOneProduct($list_cart[$i]->id);
-                                var_dump($product);
                                 // Kiểm tra xem $product có phải là mảng không
                                 if (is_array($product) && isset($product["id"])) {
                                     addCart(
@@ -96,6 +94,7 @@ if (isset($_REQUEST['act'])) {
                         // Xử lý khi $list_cart không phải là mảng
                         echo "Lỗi: không phải là mảng.";
                     }
+
                 }
             }
 
