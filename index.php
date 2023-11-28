@@ -9,6 +9,7 @@
     include 'model/images.php';
     include 'model/properties.php';
     include 'model/users.php';
+    include 'model/orders.php';
     include_once 'model/xl_cart.php';
     $listCategories = getAllCategories();
     $listBrands = getAllBrands();
@@ -54,6 +55,11 @@
                 break;
 
             case 'checkout':
+                //bắt buộc phải đăng nhập session['user'] mới được vào
+                if(!$_SESSION['user']){
+                    header('location: index.php?act=login');
+                }
+                include_once 'model/xl_checkout.php';
                 include 'view/checkout.php';
                 break;
 
@@ -80,6 +86,9 @@
             case 'topsel':
                 include 'view/checkout.php';
 
+                break;
+            case 'order':
+                
                 break;
             default:
                 include 'view/home.php';

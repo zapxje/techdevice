@@ -36,6 +36,7 @@ function getOneProduct($id)
     WHERE p.id=" . $id;
     return getOne($sql);
 }
+
 function addProduct($idCategory, $idBrand, $name, $price, $price_sale, $quantity, $description, $image)
 {
     $sql = "INSERT INTO products(id_category, id_brand, name, price, price_sale, quantity, description, image) 
