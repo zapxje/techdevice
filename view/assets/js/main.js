@@ -232,13 +232,13 @@ function reducer(state = storedCartState, action) {
     case "deleToCart":
       return state.filter((item) => item.id !== action.payload);
     case "updateCart":
-      return state.map(item => {
+      return state.map((item) => {
         if (item.id == action.payload.id) {
           return action.payload;
         } else {
           return item;
         }
-      })
+      });
     default:
       return state;
   }
@@ -254,37 +254,53 @@ BtnAddtocart.forEach((item) => {
 
 function addToCart(x) {
   const y = x.parentElement.parentElement;
-  const name = y.children[1].children[1].innerText;
+  let isImg = y.querySelector(".product-img");
   const element = y.querySelector(".product-price");
   const price = element.firstChild.nodeValue.trim();
-  const img = y.children[0].children[0].children[0].src;
-  const id = y.dataset.id
-  const hadProduct = storedCartState.find(product => product.id == id)
+
+  const id = y.dataset.id;
+  const hadProduct = storedCartState.find((product) => product.id == id);
 
   if (hadProduct) {
-
     // Nếu đã tồn tại sp có cùng id
-    const productExisted = storedCartState.find(item => item.id == id);
+    const productExisted = storedCartState.find((item) => item.id == id);
 
     productExisted.count++;
     store.dispatch({
       type: "updateCart",
-      payload: productExisted
+      payload: productExisted,
     });
   } else {
-    const product = {
-      name: name,
-      price: price,
-      img: img,
-      id: id,
-      count: 1
-    };
-
-
-    store.dispatch({
-      type: "addToCart",
-      payload: product,
-    });
+    if (isImg) {
+      let img = y.children[0].children[0].children[0].src;
+      let name = y.children[1].children[1].innerText;
+      const product = {
+        name: name,
+        price: price,
+        img: img,
+        id: id,
+        count: 1,
+      };
+      store.dispatch({
+        type: "addToCart",
+        payload: product,
+      });
+    } else {
+      let name = document.querySelector(".product-name");
+      let img = document.querySelector(".product-preview img").src;
+      let qty = parseInt(y.querySelector('input[name="count"]').value);
+      const product = {
+        name: name,
+        price: price,
+        img: img,
+        id: id,
+        count: qty,
+      };
+      store.dispatch({
+        type: "addToCart",
+        payload: product,
+      });
+    }
   }
 }
 store.subscribe(() => {
@@ -316,7 +332,6 @@ function render() {
   if (viewCart) {
     let productCart = "";
     storedCartState.forEach((product) => {
-
       productCart += `<tr class="listProduct">
                             <td class="product-thumbnail">
                               <img src="${product.img}" alt="Image" class="img-fluid">
@@ -348,20 +363,19 @@ function render() {
   let qty = document.querySelector(".qty");
   if (itemSummary) {
     itemSummary.innerText = storedCartState.length + ` (sản phẩm)`;
-    
   }
   let subTotal = 0;
-  let numberProduct=0;
+  let numberProduct = 0;
   let subTotalSummary = document.querySelector(".cart-summary h5");
-  storedCartState.map(item => {
-    let qtyProductSummary=item.count;
+  storedCartState.map((item) => {
+    let qtyProductSummary = item.count;
     numberProduct += qtyProductSummary;
-    let priceProductSummary=parseInt(item.price.replace(/\./g, ""));
+    let priceProductSummary = parseInt(item.price.replace(/\./g, ""));
 
-    subTotal += (qtyProductSummary *priceProductSummary);
-  })
+    subTotal += qtyProductSummary * priceProductSummary;
+  });
   qty.innerHTML = numberProduct;
-  subTotalSummary.innerHTML = "TỔNG TIỀN: " + formatMoney(subTotal) + 'đ';
+  subTotalSummary.innerHTML = "TỔNG TIỀN: " + formatMoney(subTotal) + "đ";
   const deleToCart = document.querySelectorAll(".delete");
   deleToCart.forEach((item) => {
     item.addEventListener("click", function () {
@@ -374,7 +388,6 @@ function render() {
       // Call handleCart to update the displayed cart information
       handleCart();
     });
-
   });
 }
 render();
@@ -429,8 +442,6 @@ var sitePlusMinus = function () {
 sitePlusMinus();
 //=========== END hàm tăng số lượng sản phẩm==========================
 
-
-
 var cartProducts = document.querySelectorAll(".listProduct");
 const priceTotal = document.getElementById("priceTotal");
 //=========== hàm CHECKOUT sản phẩm==========================
@@ -445,41 +456,43 @@ function handleCheckout() {
   var updatedCart = [];
 
   cartProducts.forEach((product) => {
-    let price = parseInt(
-      product
-        .querySelector(".price")
-        .textContent.replace("đ", "").replace(/\./g, "")
-    );
+    let price =product.querySelector(".price").innerHTML;
+
     let quantity = parseInt(product.querySelector(".quantity-amount").value);
-    let total = product.querySelector(".total");
-    total.textContent = price * quantity + "đ";
-    totalPriceProduct += parseInt(
-      total.textContent.replace("đ", "").replace(",", "")
-    );
+    let total = parseInt(product.querySelector(".total").textContent.replace("đ", "").replace(/\./g, ""));
+    totalPriceProduct += total;
+
 
     var nameProduct = product.querySelector(".name").innerHTML;
-    var quantityProduct = quantity;
-    var totalProduct = total.textContent;
     var checkoutProduct = {
       name: nameProduct,
-      quantity: quantityProduct,
-      total: totalProduct,
+      price: price,
+      quantity: quantity,
     };
+
+    
 
     updatedCart.push(checkoutProduct);
   });
+  
   localStorage.setItem("cartProducts", JSON.stringify(updatedCart));
   // Lưu mảng cập nhật vào local storage sau khi đã duyệt qua tất cả sản phẩm
   window.location.href = "index.php?act=checkout";
 }
 const orderTotal = document.querySelector(".order-total");
-const totalPrice = document.querySelectorAll(".priceProduct");
-let total = 0;
-totalPrice.forEach((price) => {
-  total += parseFloat(price.textContent.replace("đ", "").replace(/\./g, ""));
+const listOrder = document.querySelectorAll(".list-order");
+
+    
+let totalPriceProduct = 0;
+listOrder.forEach((item) => {
+  
+  let priceOrder= parseInt(item.querySelector(".priceProduct").textContent.replace("đ", "").replace(/\./g, ""));
+  let qtyOrder= parseInt(item.querySelector('.quantityProduct').textContent);
+  totalPriceProduct += (priceOrder *qtyOrder);
 });
 if (orderTotal) {
-  orderTotal.textContent = formatMoney(total) + "đ";
+  document.querySelector("input[name='total-order']").value=totalPriceProduct;
+  orderTotal.textContent = formatMoney(totalPriceProduct) + "đ";
 }
 //=========== END hàm CHECKOUT sản phẩm==========================
 
@@ -488,12 +501,10 @@ function handleCart() {
   var totalPriceProduct = 0;
 
   cartProducts.forEach((product) => {
-    let price =
-      product
-        .querySelector(".price")
-        .textContent.replace("đ", "").replace(/\./g, "")
-      ;
-
+    let price = product
+      .querySelector(".price")
+      .textContent.replace("đ", "")
+      .replace(/\./g, "");
     let quantity = parseInt(product.querySelector(".quantity-amount").value);
     let total = product.querySelector(".total");
 
@@ -506,11 +517,10 @@ function handleCart() {
   // Lưu mảng cập nhật vào local storage sau khi đã duyệt qua tất cả sản phẩm
   priceTotal.textContent = formatMoney(totalPriceProduct) + "đ";
   subTotal.textContent = formatMoney(totalPriceProduct) + "đ";
-
+  
 }
 handleCart();
 //===========END hàm xử lí trang cart==========================
-
 
 // HÀM ĐỊNH NGHĨA TIỀN TỆ
 function formatMoney(amount) {
@@ -617,12 +627,14 @@ function displayProducts(products) {
                   <p class="product-category">Category</p>
                   <h3 class="product-name"><a href="#">${product.name}</a></h3>
                   <h4 class="product-price">
-                    ${product.price_sale
-        ? formatMoney(product.price_sale) + "đ"
-        : formatMoney(product.price) + "đ"
-      }
-                    <del class="product-old-price">${product.price ? formatMoney(product.price) + "đ" : ""
-      }</del>
+                    ${
+                      product.price_sale
+                        ? formatMoney(product.price_sale) + "đ"
+                        : formatMoney(product.price) + "đ"
+                    }
+                    <del class="product-old-price">${
+                      product.price ? formatMoney(product.price) + "đ" : ""
+                    }</del>
                   </h4>
                   <div class="product-rating">
                   </div>
@@ -645,7 +657,6 @@ function displayProducts(products) {
   // Join the array of HTML strings and insert into the DOM
   document.querySelector("#products").innerHTML = productsHTML;
 }
-
 
 // Lắng nghe sự kiện change cho mỗi checkbox
 // checkboxFilters.forEach(checkbox => {

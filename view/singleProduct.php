@@ -59,7 +59,7 @@
 
             <!-- Product details -->
             <div class="col-md-5">
-                <div class="product-details">
+                <div class="product-details" data-id="<?= $product['id'] ?>">
                     <h2 class="product-name"><?= $product['name'] ?></h2>
                     <div>
                         <div class="product-rating">
@@ -73,8 +73,8 @@
                     </div>
                     <div>
                         <h3 class="product-price">
-                            <?= $product['price_sale'] > 0 ? number_format($product['price_sale'], 0, ',', '.') : number_format($product['price'], 0, ',', '.') ?>
-                            <del class="product-old-price"><?= $product['price_sale'] > 0 ? number_format($product['price'], 0, ',', '.') : '' ?></del>
+                            <?= $product['price_sale'] > 0 ? number_format($product['price_sale'], 0, ',', '.').'đ' : number_format($product['price'], 0, ',', '.').'đ' ?>
+                            <del class="product-old-price"><?= $product['price_sale'] > 0 ? number_format($product['price'], 0, ',', '.').'đ' : '' ?></del>
                             <span class="product-available"><?= $product['quantity'] > 0 ? 'Còn hàng' : 'Hết hàng' ?></span>
                     </div>
                     <?php if (!empty($listProperties)) : ?>
@@ -114,17 +114,15 @@
                     </div> -->
 
                     <div class="add-to-cart">
-                        <form action="index.php?act=addToCartSingle&id=<?= $product['id'] ?>" method="post">
-                            <div class="qty-label">
-                                Số lượng
-                                <div class="input-number">
-                                    <input type="number" name="count" value="1">
-                                    <span class="qty-up">+</span>
-                                    <span class="qty-down">-</span>
-                                </div>
+                        <div class="qty-label">
+                            Số lượng
+                            <div class="input-number">
+                                <input type="number" name="count" value="1">
+                                <span class="qty-up">+</span>
+                                <span class="qty-down">-</span>
                             </div>
-                            <button type="submit" class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to cart</button>
-                        </form>
+                        </div>
+                        <button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to cart</button>
                     </div>
 
                     <!-- <ul class="product-btns">

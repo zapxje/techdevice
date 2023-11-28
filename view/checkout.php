@@ -54,7 +54,7 @@
                                 Create Account?
                             </label>
                             <div class="caption">
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt.</p>
+                                
                                 <input class="input" type="password" name="password" placeholder="Enter Your Password">
                             </div>
                         </div>
@@ -86,16 +86,21 @@
                             const listProductCheckout = document.querySelector('.order-products');
                             const cart = JSON.parse(localStorage.getItem("cartProducts")) || [];
                             cart.forEach(product => {
-                                listProductCheckout.innerHTML += `<div class="order-col">
+                                listProductCheckout.innerHTML += `<div class="order-col list-order">
                                                                     <div class="nameProduct">${product.name}</div>
-                                                                    <span class="quantityProduct">x${product.quantity}</span>
-                                                                    <div class="priceProduct">${product.total}</div>
+                                                                    <span>x<span class="quantityProduct">${product.quantity}</span></span>
+                                                                    <div class="priceProduct">${product.price}</div>
+                                                                    <input type="hidden" name="name" value="${product.name}">
+                                                                    <input type="hidden" name="quantity" value="${product.quantity}">
+                                                                    <input type="hidden" name="price" value="${product.price}">
                                                                 </div>`
                             });
                         </script>
                         <div class="order-col">
+                            <input type="hidden" name="total-order">
                             <div><strong>TOTAL</strong></div>
                             <div><strong class="order-total"></strong></div>
+                            
                         </div>
                     </div>
                     <div class="payment-method">
