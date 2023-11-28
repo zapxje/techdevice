@@ -19,20 +19,24 @@
 <!-- /BREADCRUMB -->
 
 <!-- SECTION -->
-<form class="section">
+<form class="section" method="POST" action="">
     <!-- container -->
     <div class="container">
         <!-- row -->
         <div class="row">
 
             <div class="col-md-7">
+                <?php if($message){echo $message;}?>
                 <!-- Billing Details -->
                 <div class="billing-details">
                     <div class="section-title">
                         <h3 class="title">Billing address</h3>
                     </div>
+                    <?php if ($_SESSION['user']) : ?>
+                        <input type="hidden" name="id_user" value="<?= $_SESSION['user']['id'] ?>">
+                    <?php endif; ?>
                     <div class="form-group">
-                        <input class="input" type="text" name="first-name" placeholder="Họ và tên">
+                        <input class="input" type="text" name="name" placeholder="Họ và tên">
                     </div>
                     <div class="form-group">
                         <input class="input" type="email" name="email" placeholder="Email">
@@ -44,7 +48,7 @@
                         <input class="input" type="text" name="city" placeholder="Thành phố">
                     </div>
                     <div class="form-group">
-                        <input class="input" type="tel" name="tel" placeholder="Số điện thoại">
+                        <input class="input" type="tel" name="phone" placeholder="Số điện thoại">
                     </div>
                     <div class="form-group">
                         <div class="input-checkbox">
@@ -54,7 +58,7 @@
                                 Create Account?
                             </label>
                             <div class="caption">
-                                
+
                                 <input class="input" type="password" name="password" placeholder="Enter Your Password">
                             </div>
                         </div>
@@ -62,11 +66,11 @@
                 </div>
                 <!-- /Billing Details -->
 
-                
+
 
                 <!-- Order notes -->
                 <div class="order-notes">
-                    <textarea class="input" placeholder="Ghi chú đặt hàng"></textarea>
+                    <textarea class="input" name="note" placeholder="Ghi chú đặt hàng"></textarea>
                 </div>
                 <!-- /Order notes -->
             </div>
@@ -85,27 +89,29 @@
                         <script>
                             const listProductCheckout = document.querySelector('.order-products');
                             const cart = JSON.parse(localStorage.getItem("cartProducts")) || [];
-                            cart.forEach(product => {
+                            cart.forEach((product, index) => {
                                 listProductCheckout.innerHTML += `<div class="order-col list-order">
-                                                                    <div class="nameProduct">${product.name}</div>
-                                                                    <span>x<span class="quantityProduct">${product.quantity}</span></span>
-                                                                    <div class="priceProduct">${product.price}</div>
-                                                                    <input type="hidden" name="name" value="${product.name}">
-                                                                    <input type="hidden" name="quantity" value="${product.quantity}">
-                                                                    <input type="hidden" name="price" value="${product.price}">
-                                                                </div>`
+                                                    <div class="nameProduct">${product.name}</div>
+                                                    <span>x<span class="quantityProduct">${product.quantity}</span></span>
+                                                    <div class="priceProduct">${product.price}</div>
+                                                </div>
+                                                <input type="hidden" name="products[${index}][id]" value="${product.id}">
+                                                <input type="hidden" name="products[${index}][name]" value="${product.name}">
+                                                <input type="hidden" name="products[${index}][quantity]" value="${product.quantity}">  
+                                                <input type="hidden" name="products[${index}][price]" value="${parseInt(product.price.replace("đ", "").replace(/\./g, ""))}">`;
                             });
                         </script>
+                        <form action=""></form>
                         <div class="order-col">
                             <input type="hidden" name="total-order">
                             <div><strong>TOTAL</strong></div>
                             <div><strong class="order-total"></strong></div>
-                            
+
                         </div>
                     </div>
                     <div class="payment-method">
                         <div class="input-radio">
-                            <input type="radio" name="payment" id="payment-1">
+                            <input type="radio" name="payment" id="payment-1" value="Chuyển khoản trực tiếp">
                             <label for="payment-1">
                                 <span></span>
                                 Chuyển khoản trực tiếp
@@ -115,7 +121,7 @@
                             </div>
                         </div>
                         <div class="input-radio">
-                            <input type="radio" name="payment" id="payment-2">
+                            <input type="radio" name="payment" id="payment-2" value="Thanh toán khi nhận hàng">
                             <label for="payment-2">
                                 <span></span>
                                 Thanh toán khi nhận hàng
@@ -125,7 +131,7 @@
                             </div>
                         </div>
                         <div class="input-radio">
-                            <input type="radio" name="payment" id="payment-3">
+                            <input type="radio" name="payment" id="payment-3" value="Thanh toán khi nhận hàng">
                             <label for="payment-3">
                                 <span></span>
                                 Paypal System
@@ -142,7 +148,7 @@
                             I've read and accept the <a href="#">terms & conditions</a>
                         </label>
                     </div>
-                    <button type="submit" class="primary-btn order-submit">thanh toán</button>
+                    <button type="submit" name="submit-checkout" class="primary-btn order-submit">thanh toán</button>
                 </div>
                 <!-- /Order Details -->
             </div>

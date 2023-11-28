@@ -457,14 +457,14 @@ function handleCheckout() {
 
   cartProducts.forEach((product) => {
     let price =product.querySelector(".price").innerHTML;
-
+    const id= product.querySelector(".delete").dataset.id;
     let quantity = parseInt(product.querySelector(".quantity-amount").value);
     let total = parseInt(product.querySelector(".total").textContent.replace("đ", "").replace(/\./g, ""));
     totalPriceProduct += total;
 
-
     var nameProduct = product.querySelector(".name").innerHTML;
     var checkoutProduct = {
+      id: id,
       name: nameProduct,
       price: price,
       quantity: quantity,
