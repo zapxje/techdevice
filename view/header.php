@@ -148,7 +148,7 @@ ob_start();
                                         <h5>Tổng tiền: $2940.00</h5>
                                     </div>
                                     <div class="cart-btns">
-                                        <a href="index.php?act=viewCart">View Cart</a>
+                                        <a href="index.php?act=viewCart">Xem Giỏ Hàng</a>
                                         <!-- <a href="index.php?act=checkout">Checkout <i class="fa fa-arrow-circle-right"></i></a> -->
                                     </div>
                                 </div>

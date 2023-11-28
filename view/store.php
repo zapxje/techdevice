@@ -155,7 +155,7 @@
 									<p class="product-category"><?= $product['category_name'] ?> | <?= $product['brand_name'] ?></p>
 									<h3 class="product-name">
 										<a href="index.php?act=singleProduct&id=<?= $product['id'] ?>">
-											<?= mb_strimwidth($product['name'], 0, 40, "...") ?>
+											<?= mb_strimwidth($product['name'], 0, 45, "...") ?>
 										</a>
 									</h3>
 									<h4 class="product-price">

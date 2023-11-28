@@ -286,7 +286,8 @@ function addToCart(x) {
         payload: product,
       });
     } else {
-      let name = document.querySelector(".product-name");
+      let fullname = document.querySelector(".product-name-single").innerText;
+      let name = fullname.slice(0, 40) + "...";
       let img = document.querySelector(".product-preview img").src;
       let qty = parseInt(y.querySelector('input[name="count"]').value);
       const product = {
@@ -319,7 +320,7 @@ function render() {
                         <img src="${product.img}" alt="">
                     </div>
                     <div class="product-body">
-                        <h3 class="product-name"><a href="#">${product.name}</a></h3>
+                        <h3 class="product-name"><a href="index.php?act=singleProduct&id=${product.id}">${product.name}</a></h3>
                         <h4 class="product-price"><span class="qty">${product.count}x</span>${product.price}</h4>
                     </div>
                     <button class="delete" data-id="${product.id}"><i class="fa fa-close"></i></button>
@@ -456,7 +457,7 @@ function handleCheckout() {
   var updatedCart = [];
 
   cartProducts.forEach((product) => {
-    let price =product.querySelector(".price").innerHTML;
+    let price = product.querySelector(".price").innerHTML;
 
     let quantity = parseInt(product.querySelector(".quantity-amount").value);
     let total = parseInt(product.querySelector(".total").textContent.replace("đ", "").replace(/\./g, ""));
@@ -470,11 +471,11 @@ function handleCheckout() {
       quantity: quantity,
     };
 
-    
+
 
     updatedCart.push(checkoutProduct);
   });
-  
+
   localStorage.setItem("cartProducts", JSON.stringify(updatedCart));
   // Lưu mảng cập nhật vào local storage sau khi đã duyệt qua tất cả sản phẩm
   window.location.href = "index.php?act=checkout";
@@ -482,16 +483,16 @@ function handleCheckout() {
 const orderTotal = document.querySelector(".order-total");
 const listOrder = document.querySelectorAll(".list-order");
 
-    
+
 let totalPriceProduct = 0;
 listOrder.forEach((item) => {
-  
-  let priceOrder= parseInt(item.querySelector(".priceProduct").textContent.replace("đ", "").replace(/\./g, ""));
-  let qtyOrder= parseInt(item.querySelector('.quantityProduct').textContent);
-  totalPriceProduct += (priceOrder *qtyOrder);
+
+  let priceOrder = parseInt(item.querySelector(".priceProduct").textContent.replace("đ", "").replace(/\./g, ""));
+  let qtyOrder = parseInt(item.querySelector('.quantityProduct').textContent);
+  totalPriceProduct += (priceOrder * qtyOrder);
 });
 if (orderTotal) {
-  document.querySelector("input[name='total-order']").value=totalPriceProduct;
+  document.querySelector("input[name='total-order']").value = totalPriceProduct;
   orderTotal.textContent = formatMoney(totalPriceProduct) + "đ";
 }
 //=========== END hàm CHECKOUT sản phẩm==========================
@@ -517,7 +518,7 @@ function handleCart() {
   // Lưu mảng cập nhật vào local storage sau khi đã duyệt qua tất cả sản phẩm
   priceTotal.textContent = formatMoney(totalPriceProduct) + "đ";
   subTotal.textContent = formatMoney(totalPriceProduct) + "đ";
-  
+
 }
 handleCart();
 //===========END hàm xử lí trang cart==========================
@@ -627,14 +628,12 @@ function displayProducts(products) {
                   <p class="product-category">Category</p>
                   <h3 class="product-name"><a href="#">${product.name}</a></h3>
                   <h4 class="product-price">
-                    ${
-                      product.price_sale
-                        ? formatMoney(product.price_sale) + "đ"
-                        : formatMoney(product.price) + "đ"
-                    }
-                    <del class="product-old-price">${
-                      product.price ? formatMoney(product.price) + "đ" : ""
-                    }</del>
+                    ${product.price_sale
+        ? formatMoney(product.price_sale) + "đ"
+        : formatMoney(product.price) + "đ"
+      }
+                    <del class="product-old-price">${product.price ? formatMoney(product.price) + "đ" : ""
+      }</del>
                   </h4>
                   <div class="product-rating">
                   </div>
