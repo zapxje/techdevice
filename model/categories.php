@@ -26,3 +26,8 @@ function updateCategory($id, $name, $ordinal_number, $description)
     WHERE id =" . $id;
     return querySql($sql);
 }
+function validateNameCategory($name)
+{
+    $sql = "SELECT * FROM categories WHERE name LIKE '%" . $name . "%'";
+    return getAll($sql);
+}

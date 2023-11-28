@@ -26,29 +26,31 @@
         <div class="row">
 
             <div class="col-md-7">
-                <?php if($message){echo $message;}?>
+                <?php if ($message) {
+                    echo $message;
+                } ?>
                 <!-- Billing Details -->
                 <div class="billing-details">
                     <div class="section-title">
-                        <h3 class="title">Billing address</h3>
+                        <h3 class="title">Thông tin giao hàng</h3>
                     </div>
                     <?php if ($_SESSION['user']) : ?>
                         <input type="hidden" name="id_user" value="<?= $_SESSION['user']['id'] ?>">
                     <?php endif; ?>
                     <div class="form-group">
-                        <input class="input" type="text" name="name" placeholder="Họ và tên">
+                        <input class="input" type="text" name="name" value="<?= $_SESSION['user']['full_name'] ?>" placeholder="Họ và tên">
                     </div>
                     <div class="form-group">
-                        <input class="input" type="email" name="email" placeholder="Email">
+                        <input class="input" type="email" name="email" value="<?= $_SESSION['user']['email'] ?>" placeholder="Email">
                     </div>
                     <div class="form-group">
-                        <input class="input" type="text" name="address" placeholder="Địa chỉ">
+                        <input class="input" type="tel" name="phone" value="<?= $_SESSION['user']['phone'] ?>" placeholder="Số điện thoại">
+                    </div>
+                    <div class="form-group">
+                        <input class="input" type="text" name="address" value="<?= empty($_SESSION['user']['address']) ? '' : $_SESSION['user']['address'] ?>" placeholder="Địa chỉ">
                     </div>
                     <div class="form-group">
                         <input class="input" type="text" name="city" placeholder="Thành phố">
-                    </div>
-                    <div class="form-group">
-                        <input class="input" type="tel" name="phone" placeholder="Số điện thoại">
                     </div>
                     <div class="form-group">
                         <div class="input-checkbox">
@@ -78,12 +80,12 @@
             <!-- Order Details -->
             <div class="col-md-5 order-details">
                 <div class="section-title text-center">
-                    <h3 class="title">Your Order</h3>
+                    <h3 class="title">Chi tiết hóa đơn</h3>
                 </div>
                 <div class="order-summary">
                     <div class="order-col">
-                        <div><strong>PRODUCT</strong></div>
-                        <div><strong>TOTAL</strong></div>
+                        <div><strong>SẢN PHẨM</strong></div>
+                        <div><strong>ĐƠN GIÁ</strong></div>
                     </div>
                     <div class="order-products">
                         <script>
@@ -104,7 +106,7 @@
                         <form action=""></form>
                         <div class="order-col">
                             <input type="hidden" name="total-order">
-                            <div><strong>TOTAL</strong></div>
+                            <div><strong>TỔNG TIỀN</strong></div>
                             <div><strong class="order-total"></strong></div>
 
                         </div>

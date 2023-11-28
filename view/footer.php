@@ -187,16 +187,17 @@
 		</footer>
 		<!-- /FOOTER -->
 
+
 		<!-- jQuery Plugins -->
 		<script>
 			document.querySelector(".send-form").addEventListener("click", (event) => {
 				event.stopPropagation();
 			});
 			// Chuỗi JSON từ PHP
-			var jsonString = '<?php echo $jsonProducts; ?>';
+			var jsonString = '<?= $jsonProducts; ?>';
 
 			// Chuyển đổi chuỗi JSON thành mảng JavaScript
-			var productsArray = JSON.parse(jsonString); 	
+			var productsArray = JSON.parse(jsonString);
 
 			// Hiển thị mảng JavaScript trong console (để kiểm tra)
 		</script>

@@ -32,6 +32,7 @@ if (isset($_REQUEST['act'])) {
                 Hãy nhập số điện thoại
                 </div>';
                     }
+                    return;
                 }
                 if (empty($_POST['payment'])) {
                     $message = '<div class="alert alert-danger" role="alert">
@@ -49,19 +50,19 @@ if (isset($_REQUEST['act'])) {
                         $_POST['payment'],
                         $_POST['total-order']
                     );
-                    
+
                     $list_cart = array();
                     //thêm object cart vào list cart
                     foreach ($_POST['products'] as $product) {
                         $cart = (object)[
-                            "id"=>$product['id'],
+                            "id" => $product['id'],
                             "name" => $product['name'],
                             "quantity" => $product['quantity'],
                             "price" => $product['price'],
                         ];
                         $list_cart[] = $cart;
                     }
-                    $order= getOneOrderLimit();
+                    $order = getOneOrderLimit();
                     if (is_array($list_cart)) {
                         for ($i = 0; $i < count($list_cart); $i++) {
                             // Kiểm tra xem $list_cart[$i] có phải là đối tượng không
@@ -70,7 +71,7 @@ if (isset($_REQUEST['act'])) {
                                 $productName = $list_cart[$i]->name;
                                 $productPrice = $list_cart[$i]->price;
                                 $productQuantity = $list_cart[$i]->quantity;
-                    
+
                                 $product = getOneProduct($list_cart[$i]->id);
                                 // Kiểm tra xem $product có phải là mảng không
                                 if (is_array($product) && isset($product["id"])) {
@@ -94,7 +95,6 @@ if (isset($_REQUEST['act'])) {
                         // Xử lý khi $list_cart không phải là mảng
                         echo "Lỗi: không phải là mảng.";
                     }
-
                 }
             }
 

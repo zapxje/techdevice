@@ -4,13 +4,19 @@ switch ($_REQUEST["act"]) {
     case "addCategory":
         if (isset($_REQUEST['name']) && !empty($_REQUEST['name'])) {
             $name = $_REQUEST['name'];
-            //Nếu không truyền vào thứ tự thì mặc đinh là một
-            $_REQUEST['ordinal_number'] ? $ordinal_number = $_REQUEST['ordinal_number'] : $ordinal_number = 1;
-            //Nếu không truyền vào mô tả thì mặc đinh là rỗng
-            $_REQUEST['description'] ? $description = $_REQUEST['description'] : $description = '';
-            //Gọi hàm thêm danh mục
-            addCategory($name, $ordinal_number, $description);
-            $notification = "successAdd";
+            //Kiểm tra danh mục đã tồn tại chưa
+            if (validateNameCategory($name)) {
+                $notification = 'nameExist';
+                return;
+            } else {
+                //Nếu không truyền vào thứ tự thì mặc đinh là một
+                $_REQUEST['ordinal_number'] ? $ordinal_number = $_REQUEST['ordinal_number'] : $ordinal_number = 1;
+                //Nếu không truyền vào mô tả thì mặc đinh là rỗng
+                $_REQUEST['description'] ? $description = $_REQUEST['description'] : $description = '';
+                //Gọi hàm thêm danh mục
+                addCategory($name, $ordinal_number, $description);
+                $notification = "successAdd";
+            }
         }
         break;
     case "delCategory":
