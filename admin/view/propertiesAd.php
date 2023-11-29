@@ -36,11 +36,11 @@
             <!-- Thông báo  -->
             <div>
                 <?php if (isset($notification)) : ?>
-                    <div class="sufee-alert alert with-close alert-<?= $notification === 'successDel' ? 'warning' : ($notification === 'notExist' || $notification === 'alreadyExist' || $notification === 'failedDel' || $notification === 'failedFormat' ? 'danger' : 'success') ?> alert-dismissible fade show">
-                        <span class="badge badge-pill badge-<?= $notification === 'successDel' ? 'warning' : ($notification === 'notExist' || $notification === 'alreadyExist' || $notification === 'failedDel' || $notification === 'failedFormat' ? 'danger' : 'success') ?>">
-                            <?= $notification === 'successDel' ? 'Warning' : ($notification === 'notExist' || $notification === 'alreadyExist' || $notification === 'failedDel' || $notification === 'failedFormat' ? 'Failed' : 'Success') ?>
+                    <div class="sufee-alert alert with-close alert-<?= $notification === 'successDel' ? 'warning' : ($notification === 'notExist' || $notification === 'alreadyExist' || $notification === 'failedDel' || $notification === 'nameExist' || $notification === 'failedFormat' ? 'danger' : 'success') ?> alert-dismissible fade show">
+                        <span class="badge badge-pill badge-<?= $notification === 'successDel' ? 'warning' : ($notification === 'notExist' || $notification === 'nameExist' || $notification === 'alreadyExist' || $notification === 'failedDel' || $notification === 'failedFormat' ? 'danger' : 'success') ?>">
+                            <?= $notification === 'successDel' ? 'Warning' : ($notification === 'notExist' || $notification === 'nameExist' || $notification === 'alreadyExist' || $notification === 'failedDel' || $notification === 'failedFormat' ? 'Failed' : 'Success') ?>
                         </span>
-                        <?= $notification === 'successAdd' ? 'Thêm thuộc tính thành công !' : ($notification === 'failedFormat' ? 'Định dạng ảnh không phù hợp !' : ($notification === 'notExist' ? 'Thuộc tính không tồn tại' : ($notification === 'alreadyExist' ? 'Logo Thuộc tính đã tồn tại !' : ($notification === 'successDel' ? 'Xóa Thuộc tính thành công !' : ($notification === 'failedDel' ? 'Thuộc tính hiện chứa sản phẩm !' : 'Cập nhật thuộc tính thành công !'))))) ?>
+                        <?= $notification === 'successAdd' ? 'Thêm thuộc tính thành công !' : ($notification === 'failedFormat' ? 'Định dạng ảnh không phù hợp !' : ($notification === 'notExist' ? 'Thuộc tính không tồn tại' : ($notification === 'alreadyExist' ? 'Logo Thuộc tính đã tồn tại !' : ($notification === 'successDel' ? 'Xóa Thuộc tính thành công !' : ($notification === 'nameExist' ? 'Tên thuộc tính đã tồn tại !' : ($notification === 'failedDel' ? 'Thuộc tính hiện chứa sản phẩm !' : 'Cập nhật thuộc tính thành công !')))))) ?>
                         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                             <span aria-hidden="true">×</span>
                         </button>
@@ -70,8 +70,10 @@
                                 <td><?= $property['name'] ?></td>
                                 <td><?= $property['description'] ?></td>
                                 <td class="operation">
-                                    <a class="text-primary" href="index.php?act=properties&id=<?= $product['id'] ?>&idProperty=<?= $property['id'] ?>&status=3"><i class="ti-pencil-alt"></i>Sửa</a>
-                                    <a class="text-danger" href="index.php?act=properties&id=<?= $product['id'] ?>&idProperty=<?= $property['id'] ?>&status=2"><i class="ti-trash"></i>Xóa</a>
+                                    <a class="text-primary" href="index.php?act=properties&id=<?= $product['id'] ?>&idProperty=<?= $property['id'] ?>&status=3">
+                                        <i class="ti-pencil-alt"></i>Sửa</a>
+                                    <a class="text-danger" href="index.php?act=properties&id=<?= $product['id'] ?>&idProperty=<?= $property['id'] ?>&status=2" onclick="return confirm('Bạn có chắc chắn xóa thuộc tính này ?')">
+                                        <i class="ti-trash"></i>Xóa</a>
                                 </td>
                             </tr>
                         <?php $i++;

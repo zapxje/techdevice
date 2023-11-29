@@ -119,7 +119,7 @@
                         <div class="qty-label">
                             Số lượng
                             <div class="input-number">
-                                <input type="number" name="count" value="1">
+                                <input type="number" id="countInput" name="count" value="1">
                                 <span class="qty-up">+</span>
                                 <span class="qty-down">-</span>
                             </div>

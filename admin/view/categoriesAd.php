@@ -37,7 +37,7 @@
                 <?php if (isset($notification)) : ?>
                     <div class="sufee-alert alert with-close alert-<?= $notification === 'successDel' ? 'warning' : ($notification === 'notExist' || $notification === 'nameExist' || $notification === 'failedDel' ? 'danger' : 'success') ?> alert-dismissible fade show">
                         <span class="badge badge-pill badge-<?= $notification === 'successDel' ? 'warning' : ($notification === 'notExist' || $notification === 'nameExist' || $notification === 'failedDel' ? 'danger' : 'success') ?>"><?= $notification === 'successDel' ? 'Warning' : ($notification === 'notExist' || $notification === 'nameExist' || $notification === 'failedDel' ? 'Failed' : 'Success') ?></span>
-                        <?= $notification === 'successAdd' ? 'Thêm danh mục thành công !' : ($notification === 'notExist' ? 'Danh mục không tồn tại' : ($notification === 'successDel' ? 'Xóa danh mục thành công !' : ($notification === 'failedDel' ? 'Danh mục hiện chứa sản phẩm !' : ( $notification === 'nameExist' ? 'Tên danh mục đã tồn tại !' : 'Cập nhật danh mục thành công !')))) ?>
+                        <?= $notification === 'successAdd' ? 'Thêm danh mục thành công !' : ($notification === 'notExist' ? 'Danh mục không tồn tại' : ($notification === 'successDel' ? 'Xóa danh mục thành công !' : ($notification === 'failedDel' ? 'Danh mục hiện chứa sản phẩm !' : ($notification === 'nameExist' ? 'Tên danh mục đã tồn tại !' : 'Cập nhật danh mục thành công !')))) ?>
                         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                             <span aria-hidden="true">×</span>
                         </button>
@@ -66,7 +66,7 @@
                             <td><?= $category['description'] ?></td>
                             <td class="operation">
                                 <a class="text-primary border-left" href="index.php?act=updateCategory&id=<?= $category['id'] ?>"><i class="ti-pencil-alt"></i>Sửa</a>
-                                <a class="text-danger" href="index.php?act=delCategory&id=<?= $category['id'] ?>"><i class="ti-trash"></i>Xóa</a>
+                                <a class="text-danger" href="index.php?act=delCategory&id=<?= $category['id'] ?>" onclick="return confirm('Bạn có chắc chắn xóa danh mục này ?')"><i class="ti-trash"></i>Xóa</a>
                             </td>
                         </tr>
                     <?php $i++;

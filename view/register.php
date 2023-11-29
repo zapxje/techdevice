@@ -29,7 +29,7 @@
                 <?= isset($message) ? $message : '' ?>
                 <div class="form-group">
                     <label for="fullname">Họ và tên</label>
-                    <input type="text" class="form-control" name="full-name" id="fullname" placeholder="Họ và tên">
+                    <input type="text" class="form-control" name="full-name" id="firstInput" placeholder="Họ và tên">
                 </div>
                 <div class="row">
                     <div class="col-lg-6 form-group">

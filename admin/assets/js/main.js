@@ -40,3 +40,8 @@ function showSuggestions() {
 	var suggestionList = document.getElementById('suggestionList');
 	suggestionList.innerHTML = '<li>(0) -> Ẩn danh mục</li><li>(1, 2,...) -> Tương ứng thứ tự</li>';
 }
+
+// Đoạn mã JavaScript để tự động focus vào input khi trang được tải
+document.addEventListener("DOMContentLoaded", function () {
+	document.getElementById("firstInput").focus();
+});

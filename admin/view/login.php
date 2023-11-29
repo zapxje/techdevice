@@ -11,7 +11,7 @@
                     <?= isset($message) ? $message : '' ?>
                     <div class="form-group">
                         <label>Tên đăng nhập</label>
-                        <input type="text" name="username" class="form-control" placeholder="Tên đăng nhập">
+                        <input type="text" name="username" id="firstInput" class="form-control" placeholder="Tên đăng nhập">
                     </div>
                     <div class="form-group">
                         <label>Mặt khẩu</label>

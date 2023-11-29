@@ -27,3 +27,8 @@ function updateProperty($id, $name, $description)
     WHERE id =" . $id;
     return querySql($sql);
 }
+function validateNameProperty($name)
+{
+    $sql = "SELECT * FROM properties WHERE name = '" . $name . "'";
+    return getAll($sql);
+}

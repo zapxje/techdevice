@@ -7,7 +7,6 @@ switch ($_REQUEST["act"]) {
             //Kiểm tra danh mục đã tồn tại chưa
             if (validateNameCategory($name)) {
                 $notification = 'nameExist';
-                return;
             } else {
                 //Nếu không truyền vào thứ tự thì mặc đinh là một
                 $_REQUEST['ordinal_number'] ? $ordinal_number = $_REQUEST['ordinal_number'] : $ordinal_number = 1;

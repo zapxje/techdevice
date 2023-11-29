@@ -34,11 +34,9 @@
             </div>
             <!-- Thông báo  -->
             <div>
-                <?php if (isset($notification)): ?>
-                    <div
-                        class="sufee-alert alert with-close alert-<?= $notification === 'successDel' ? 'warning' : ($notification === 'notExist' || $notification === 'alreadyExist' || $notification === 'failedDel' || $notification === 'failedFormat' ? 'danger' : 'success') ?> alert-dismissible fade show">
-                        <span
-                            class="badge badge-pill badge-<?= $notification === 'successDel' ? 'warning' : ($notification === 'notExist' || $notification === 'alreadyExist' || $notification === 'failedDel' || $notification === 'failedFormat' ? 'danger' : 'success') ?>">
+                <?php if (isset($notification)) : ?>
+                    <div class="sufee-alert alert with-close alert-<?= $notification === 'successDel' ? 'warning' : ($notification === 'notExist' || $notification === 'alreadyExist' || $notification === 'failedDel' || $notification === 'failedFormat' ? 'danger' : 'success') ?> alert-dismissible fade show">
+                        <span class="badge badge-pill badge-<?= $notification === 'successDel' ? 'warning' : ($notification === 'notExist' || $notification === 'alreadyExist' || $notification === 'failedDel' || $notification === 'failedFormat' ? 'danger' : 'success') ?>">
                             <?= $notification === 'successDel' ? 'Warning' : ($notification === 'notExist' || $notification === 'alreadyExist' || $notification === 'failedDel' || $notification === 'failedFormat' ? 'Failed' : 'Success') ?>
                         </span>
                         <?= $notification === 'successAdd' ? 'Thêm thương hiệu thành công !' : ($notification === 'failedFormat' ? 'Định dạng ảnh không phù hợp !' : ($notification === 'notExist' ? 'Thương hiệu không tồn tại' : ($notification === 'alreadyExist' ? 'Logo thương hiệu đã tồn tại !' : ($notification === 'successDel' ? 'Xóa thương hiệu thành công !' : ($notification === 'failedDel' ? 'Thương hiệu hiện chứa sản phẩm !' : 'Cập nhật thương hiệu thành công !'))))) ?>
@@ -61,7 +59,7 @@
                 <tbody>
                     <?php
                     $i = 1;
-                    foreach ($listBrands as $brand): ?>
+                    foreach ($listBrands as $brand) : ?>
                         <tr>
                             <th scope="row">
                                 <?= $i ?>
@@ -71,13 +69,13 @@
                             </td>
                             <td><img height="50px" src="../view/assets/img/brand_image/<?= $brand['image'] ?>"></img></td>
                             <td class="operation">
-                                <a class="text-primary" href="index.php?act=updateBrand&id=<?= $brand['id'] ?>"><i
-                                        class="ti-pencil-alt"></i>Sửa</a>
-                                <a class="text-danger" href="index.php?act=delBrand&id=<?= $brand['id'] ?>"><i
-                                        class="ti-trash"></i>Xóa</a>
+                                <a class="text-primary" href="index.php?act=updateBrand&id=<?= $brand['id'] ?>">
+                                    <i class="ti-pencil-alt"></i>Sửa</a>
+                                <a class="text-danger" href="index.php?act=delBrand&id=<?= $brand['id'] ?>" onclick="return confirm('Bạn có chắc chắn xóa thương hiệu này ?')">
+                                    <i class="ti-trash"></i>Xóa</a>
                             </td>
                         </tr>
-                        <?php $i++;
+                    <?php $i++;
                     endforeach; ?>
                 </tbody>
             </table>
@@ -86,8 +84,7 @@
 </div>
 <!-- Nội Dung -->
 <!-- Modal -->
-<div class="modal fade" id="mediumModal" tabindex="-1" role="dialog" aria-labelledby="mediumModalLabel"
-    aria-hidden="true">
+<div class="modal fade" id="mediumModal" tabindex="-1" role="dialog" aria-labelledby="mediumModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -100,8 +97,7 @@
                 <div class="modal-body">
                     <div class="form-group">
                         <label for="" class="control-label mb-1">Tên thương hiệu</label>
-                        <input name="name" type="text" class="form-control" required
-                            oninvalid="this.setCustomValidity('Nhập tên thương hiệu')" oninput="setCustomValidity('')">
+                        <input name="name" type="text" class="form-control" required oninvalid="this.setCustomValidity('Nhập tên thương hiệu')" oninput="setCustomValidity('')">
                     </div>
                     <div class="form-group">
                         <label for="" class="control-label mb-1">Logo thương hiệu</label>
