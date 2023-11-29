@@ -33,7 +33,7 @@
 				<div class="row coupon">
 					<div class="col-md-12">
 						<label class="text-black h4" for="coupon">Coupon</label>
-						<p>Enter your coupon code if you have one.</p>
+						<p>Nhập mã giảm giá (nếu có).</p>
 					</div>
 					<div class="col-md-8 mb-3 mb-md-0">
 						<input type="text" class="form-control py-3" id="coupon" placeholder="Coupon Code">

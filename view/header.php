@@ -136,16 +136,14 @@ ob_start();
                                 <a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
                                     <i class="fa fa-shopping-cart"></i>
                                     <span>Giỏ Hàng</span>
-                                    <div class="qty"></div>
+                                    <div class="qty">0</div>
                                 </a>
                                 <div class="cart-dropdown">
                                     <div class="cart-list" id="cart-list">
-
-
                                     </div>
                                     <div class="cart-summary">
                                         <small></small>
-                                        <h5>Tổng tiền: $2940.00</h5>
+                                        <h5>Giỏ hàng: Trống</h5>
                                     </div>
                                     <div class="cart-btns">
                                         <a href="index.php?act=viewCart">Xem Giỏ Hàng</a>
