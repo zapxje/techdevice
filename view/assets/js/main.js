@@ -359,7 +359,10 @@ function render() {
     });
     viewCart.innerHTML = productCart;
   }
-
+  if(storedCartState.length == 0) {
+          const table = document.querySelector(".site-blocks-table");
+          table.innerHTML =`<h5 id="message">Chưa có sản phẩm trong giỏ hàng </h5>`;
+        }
   let itemSummary = document.querySelector(".cart-summary small");
   let qty = document.querySelector(".qty");
   if (itemSummary) {
@@ -388,6 +391,7 @@ function render() {
       cartProducts = document.querySelectorAll(".listProduct");
       // Call handleCart to update the displayed cart information
       handleCart();
+      
     });
   });
 }
@@ -493,7 +497,7 @@ listOrder.forEach((item) => {
 });
 if (orderTotal) {
   document.querySelector("input[name='total-order']").value = totalPriceProduct;
-  orderTotal.textContent = formatMoney(totalPriceProduct) + "đ";
+  orderTotal.textContent = totalPriceProduct > 0 ?formatMoney(totalPriceProduct) + "đ":"";
 }
 //=========== END hàm CHECKOUT sản phẩm==========================
 
@@ -516,8 +520,9 @@ function handleCart() {
     return;
   }
   // Lưu mảng cập nhật vào local storage sau khi đã duyệt qua tất cả sản phẩm
-  priceTotal.textContent = formatMoney(totalPriceProduct) + "đ";
-  subTotal.textContent = formatMoney(totalPriceProduct) + "đ";
+
+  priceTotal.textContent =totalPriceProduct > 0 ?formatMoney(totalPriceProduct) + "đ" : '';
+  subTotal.textContent = totalPriceProduct > 0 ?formatMoney(totalPriceProduct) + "đ" : '';
 
 }
 handleCart();
