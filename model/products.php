@@ -83,7 +83,7 @@ function getProductByCategoryRelated($idCategory, $idProduct)
         BETWEEN (SELECT COALESCE(price_sale, price)*0.8 FROM products WHERE id = " . $idProduct . ") 
         AND (SELECT COALESCE(price_sale, price)*1.2 FROM products WHERE id = " . $idProduct . "))
         )
-    AND p.id <> ".$idProduct;
+    AND p.id <> " . $idProduct;
     return getAll($sql);
 }
 //Lấy 3 sản phẩm trong tổng (sản phẩm bán chạy)
@@ -95,4 +95,22 @@ function getProductTopselling()
     LEFT JOIN brands AS br ON br.id = p.id_brand 
     ORDER BY p.number_of_purchases desc LIMIT 3";
     return getAll($sql);
+}
+function isSale($product)
+{
+    if ($product['price_sale'] > 0 && round(($product['price'] - $product['price_sale']) / $product['price'] * 100) > 5) {
+        return 1;
+    } else {
+        return -1;
+    }
+}
+
+function isNew($idCategory, $product)
+{
+    $listProductByCategoryNew = getProductByCategoryNew($idCategory);
+    if (in_array($product, $listProductByCategoryNew)) {
+        return 1;
+    } else {
+        return -1;
+    }
 }
