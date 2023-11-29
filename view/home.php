@@ -92,8 +92,12 @@
                                                 <div class="product-img">
                                                     <img src="view/assets/img/product/<?= $product['image'] ?>" alt="">
                                                     <div class="product-label">
-                                                        <span class="sale">-30%</span>
-                                                        <span class="new">NEW</span>
+                                                        <?php if (isSale($product) == 1) : ?>
+                                                            <span class="sale">-<?= round(($product['price'] - $product['price_sale']) / $product['price'] * 100) ?>%</span>
+                                                        <?php endif; ?>
+                                                        <?php if (isNew($product['id_category'], $product) == 1) : ?>
+                                                            <span class="new">NEW</span>
+                                                        <?php endif; ?>
                                                     </div>
                                                 </div>
                                             </a>
@@ -105,8 +109,8 @@
                                                     </a>
                                                 </h3>
                                                 <h4 class="product-price">
-                                                    <?= $product['price_sale'] > 0 ? number_format($product['price_sale'], 0, ',', '.').'đ' : number_format($product['price'], 0, ',', '.').'đ' ?>
-                                                    <del class="product-old-price"><?= $product['price_sale'] > 0 ? number_format($product['price'], 0, ',', '.').'đ' : '' ?></del>
+                                                    <?= $product['price_sale'] > 0 ? number_format($product['price_sale'], 0, ',', '.') . 'đ' : number_format($product['price'], 0, ',', '.') . 'đ' ?>
+                                                    <del class="product-old-price"><?= $product['price_sale'] > 0 ? number_format($product['price'], 0, ',', '.') . 'đ' : '' ?></del>
                                                 </h4>
                                             </div>
                                             <div class="add-to-cart">
@@ -168,7 +172,7 @@
                     <b class="countdown-nofitication text-danger text-uppercase"></b>
                     <h2 class="text-uppercase">Tuần lễ vàng</h2>
                     <p>Nhiều ưu đãi giảm giá lên đến 50%</p>
-                    <a class="primary-btn cta-btn" href="#">Shop now</a>
+                    <a class="primary-btn cta-btn" href="index.php?act=store">Mua Ngay</a>
                 </div>
             </div>
         </div>
@@ -219,8 +223,12 @@
                                                 <div class="product-img">
                                                     <img src="view/assets/img/product/<?= $product['image'] ?>" alt="">
                                                     <div class="product-label">
-                                                        <span class="sale">-30%</span>
-                                                        <span class="new">NEW</span>
+                                                        <?php if (isSale($product) == 1) : ?>
+                                                            <span class="sale">-<?= round(($product['price'] - $product['price_sale']) / $product['price'] * 100) ?>%</span>
+                                                        <?php endif; ?>
+                                                        <?php if (isNew($product['id_category'], $product) == 1) : ?>
+                                                            <span class="new">NEW</span>
+                                                        <?php endif; ?>
                                                     </div>
                                                 </div>
                                             </a>
@@ -232,8 +240,8 @@
                                                     </a>
                                                 </h3>
                                                 <h4 class="product-price">
-                                                    <?= $product['price_sale'] > 0 ? number_format($product['price_sale'], 0, ',', '.').'đ' : number_format($product['price'], 0, ',', '.').'đ' ?>
-                                                    <del class="product-old-price"><?= $product['price_sale'] > 0 ? number_format($product['price'], 0, ',', '.').'đ' : '' ?></del>
+                                                    <?= $product['price_sale'] > 0 ? number_format($product['price_sale'], 0, ',', '.') . 'đ' : number_format($product['price'], 0, ',', '.') . 'đ' ?>
+                                                    <del class="product-old-price"><?= $product['price_sale'] > 0 ? number_format($product['price'], 0, ',', '.') . 'đ' : '' ?></del>
                                                 </h4>
                                             </div>
                                             <div class="add-to-cart">

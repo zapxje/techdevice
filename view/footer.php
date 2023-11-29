@@ -187,7 +187,6 @@
 		</footer>
 		<!-- /FOOTER -->
 
-
 		<!-- jQuery Plugins -->
 		<script>
 			document.querySelector(".send-form").addEventListener("click", (event) => {

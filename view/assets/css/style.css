@@ -1298,7 +1298,7 @@ textarea.input {
   padding-bottom: 60px;
   margin-bottom: -60px;
 }
-.products-tabs .title-form{
+.products-tabs .title-form {
   margin-top: 10px;
   text-align: center;
   font-size: 2.5rem;
@@ -2052,10 +2052,9 @@ textarea.input {
 }
 
 .order-details .order-submit {
- width: 100%;
+  width: 100%;
   margin-top: 30px;
 }
-
 
 /*=========================================================
 	10 -> NEWSLETTER
@@ -2551,7 +2550,7 @@ textarea.input {
 th.product-name {
   width: 45%;
 }
-#message{
+#message {
   max-width: 300px;
   margin: 50px auto;
 }
@@ -2841,4 +2840,11 @@ button.btn.decrease {
   height: 35px;
   font-size: 1.5rem;
   letter-spacing: 1px;
+}
+/* Table Properties Single Product */
+.table-properties {
+  margin: 10px 0;
+  width: 100%;
+  height: 250px;
+  overflow-y: auto;
 }

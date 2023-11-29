@@ -136,12 +136,10 @@ ob_start();
                                 <a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
                                     <i class="fa fa-shopping-cart"></i>
                                     <span>Giỏ Hàng</span>
-                                    <div class="qty"></div>
+                                    <div class="qty">0</div>
                                 </a>
                                 <div class="cart-dropdown">
                                     <div class="cart-list" id="cart-list">
-
-
                                     </div>
                                     <div class="cart-summary">
                                         <small></small>

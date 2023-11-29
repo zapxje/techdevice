@@ -73,27 +73,29 @@
                     </div>
                     <div>
                         <h3 class="product-price">
-                            <?= $product['price_sale'] > 0 ? number_format($product['price_sale'], 0, ',', '.').'đ' : number_format($product['price'], 0, ',', '.').'đ' ?>
-                            <del class="product-old-price"><?= $product['price_sale'] > 0 ? number_format($product['price'], 0, ',', '.').'đ' : '' ?></del>
+                            <?= $product['price_sale'] > 0 ? number_format($product['price_sale'], 0, ',', '.') . 'đ' : number_format($product['price'], 0, ',', '.') . 'đ' ?>
+                            <del class="product-old-price"><?= $product['price_sale'] > 0 ? number_format($product['price'], 0, ',', '.') . 'đ' : '' ?></del>
                             <span class="product-available"><?= $product['quantity'] > 0 ? 'Còn hàng' : 'Hết hàng' ?></span>
                     </div>
                     <?php if (!empty($listProperties)) : ?>
-                        <table class="table table-striped table-bordered">
-                            <thead>
-                                <tr>
-                                    <th class="col-4">Tên thuộc tính</th>
-                                    <th class="col-8">Thông số</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <?php foreach ($listProperties as $property) : ?>
+                        <div class="table-properties">
+                            <table class="table table-striped table-bordered">
+                                <thead>
                                     <tr>
-                                        <td><?= $property['name'] ?></td>
-                                        <td><?= $property['description'] ?></td>
+                                        <th class="col-4">Tên thuộc tính</th>
+                                        <th class="col-8">Thông số</th>
                                     </tr>
-                                <?php endforeach; ?>
-                            </tbody>
-                        </table>
+                                </thead>
+                                <tbody>
+                                    <?php foreach ($listProperties as $property) : ?>
+                                        <tr>
+                                            <td><?= $property['name'] ?></td>
+                                            <td><?= $property['description'] ?></td>
+                                        </tr>
+                                    <?php endforeach; ?>
+                                </tbody>
+                            </table>
+                        </div>
                     <?php else : ?>
                         <p>Trống</p>
                     <?php endif; ?>

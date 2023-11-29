@@ -146,8 +146,12 @@
 									<div class="product-img">
 										<img src="view/assets/img/product/<?= $product['image'] ?>" alt="">
 										<div class="product-label">
-											<span class="sale">-30%</span>
-											<span class="new">NEW</span>
+											<?php if (isSale($product) == 1) : ?>
+												<span class="sale">-<?= round(($product['price'] - $product['price_sale']) / $product['price'] * 100) ?>%</span>
+											<?php endif; ?>
+											<?php if (isNew($product['id_category'], $product) == 1) : ?>
+												<span class="new">NEW</span>
+											<?php endif; ?>
 										</div>
 									</div>
 								</a>

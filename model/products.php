@@ -66,14 +66,24 @@ function getProductByCategoryTopselling($id)
     ORDER BY p.number_of_purchases desc LIMIT 5";
     return getAll($sql);
 }
-//Lấy 5 sản phẩm theo danh mục (sản phẩm liên quan)
+//Lấy 5 sản phẩm trong tầm giá theo danh mục (sản phẩm liên quan)
 function getProductByCategoryRelated($idCategory, $idProduct)
 {
     $sql = "SELECT p.*, ca.name as category_name, br.name as brand_name 
     FROM products as p 
     LEFT JOIN categories as ca ON ca.id = p.id_category 
     LEFT JOIN brands as br ON br.id = p.id_brand 
-    WHERE ca.id = " . $idCategory . " AND p.id <> " . $idProduct . " LIMIT 4";
+    WHERE ca.id = " . $idCategory . " 
+    AND (
+        (p.price_sale IS NOT NULL AND p.price_sale 
+        BETWEEN (SELECT COALESCE(price_sale, price)*0.8 FROM products WHERE id = " . $idProduct . ") 
+        AND (SELECT COALESCE(price_sale, price)*1.2 FROM products WHERE id = " . $idProduct . "))
+        OR 
+        (p.price_sale IS NULL AND p.price 
+        BETWEEN (SELECT COALESCE(price_sale, price)*0.8 FROM products WHERE id = " . $idProduct . ") 
+        AND (SELECT COALESCE(price_sale, price)*1.2 FROM products WHERE id = " . $idProduct . "))
+        )
+    AND p.id <> " . $idProduct;
     return getAll($sql);
 }
 //Lấy 3 sản phẩm trong tổng (sản phẩm bán chạy)
@@ -85,4 +95,22 @@ function getProductTopselling()
     LEFT JOIN brands AS br ON br.id = p.id_brand 
     ORDER BY p.number_of_purchases desc LIMIT 3";
     return getAll($sql);
+}
+function isSale($product)
+{
+    if ($product['price_sale'] > 0 && round(($product['price'] - $product['price_sale']) / $product['price'] * 100) > 5) {
+        return 1;
+    } else {
+        return -1;
+    }
+}
+
+function isNew($idCategory, $product)
+{
+    $listProductByCategoryNew = getProductByCategoryNew($idCategory);
+    if (in_array($product, $listProductByCategoryNew)) {
+        return 1;
+    } else {
+        return -1;
+    }
 }
