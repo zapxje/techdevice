@@ -5,6 +5,7 @@
 				<div class="site-blocks-table">
 					<table class="table">
 						<thead>
+							<img src="" alt="">
 							<tr>
 								<th class="product-thumbnail">Hình ảnh</th>
 								<th class="product-name">Sản phẩm</th>
