@@ -143,7 +143,7 @@ ob_start();
                                     </div>
                                     <div class="cart-summary">
                                         <small></small>
-                                        <h5>Giỏ hàng: Trống</h5>
+                                        <h5></h5>
                                     </div>
                                     <div class="cart-btns">
                                         <a href="index.php?act=viewCart">Xem Giỏ Hàng</a>

@@ -186,8 +186,19 @@ import { createStore } from "https://cdn.skypack.dev/redux";
 // ==================== Js Main End ==================== //
 // Đoạn mã JavaScript để tự động focus vào input khi trang được tải
 document.addEventListener("DOMContentLoaded", function () {
-  console.log("hello");
   document.getElementById("firstInput").focus();
+});
+
+//Validate input-number
+let countInput = document.getElementById('countInput');
+countInput.addEventListener('input', function () {
+  // Lấy giá trị nhập vào
+  var inputValue = this.value;
+
+  // Kiểm tra nếu giá trị âm, đặt giá trị là 1
+  if (inputValue < 1) {
+    this.value = 1;
+  }
 });
 // ==================== Function Countdown Start ==================== //
 const targetDate = "2023-12-30T00:00:00";
@@ -224,17 +235,7 @@ function countDown() {
 }
 countDown();
 // ==================== Function Countdown End ==================== //
-//Validate input-number
-let countInput = document.getElementById('countInput');
-countInput.addEventListener('input', function () {
-  // Lấy giá trị nhập vào
-  var inputValue = this.value;
 
-  // Kiểm tra nếu giá trị âm, đặt giá trị là 1
-  if (inputValue < 1) {
-    this.value = 1;
-  }
-});
 // ==================== Function View Cart Start ==================== //
 
 //thêm vào giỏ hàng
@@ -374,8 +375,7 @@ function render() {
     viewCart.innerHTML = productCart;
   }
   if (storedCartState.length == 0) {
-    const table = document.querySelector(".site-blocks-table");
-    table.innerHTML = `<h5 id="message">Chưa có sản phẩm trong giỏ hàng </h5>`;
+    emptyCart();
   }
   let itemSummary = document.querySelector(".cart-summary small");
   let qty = document.querySelector(".qty");
@@ -393,7 +393,8 @@ function render() {
     subTotal += qtyProductSummary * priceProductSummary;
   });
   qty.innerHTML = numberProduct;
-  subTotalSummary.innerHTML = "TỔNG TIỀN: " + formatMoney(subTotal) + "đ";
+
+  subTotalSummary.innerHTML = (subTotal) > 0 ? "TỔNG TIỀN: " + formatMoney(subTotal) + "đ" : "TỔNG TIỀN: ";
   const deleToCart = document.querySelectorAll(".delete");
   deleToCart.forEach((item) => {
     item.addEventListener("click", function () {
@@ -411,6 +412,20 @@ function render() {
 }
 render();
 
+function emptyCart() {
+  const ViewCartEmpty = document.querySelector(".before-footer-section")
+  if (ViewCartEmpty) {
+    ViewCartEmpty.innerHTML = `<div class="container">
+                              <div class="row mb-5">
+                                <div class="col-md-12 cart-empty">
+                                  <img src="view/assets/img/empty_cart-removebg-preview.png" alt="">
+                                  <h5>Giỏ hàng chưa có sản phẩm nào</h5>
+                                  <a href="?act=products"><button class="primary-btn order-submit">Tiếp tục mua sắm</button></a>
+                                </div>
+                              </div>
+                            </div>`;
+  }
+}
 // ====================END Function View Cart Start ==================== //
 
 // =========== hàm tăng số lượng sản phẩm==========================
