@@ -127,6 +127,13 @@ import { createStore } from "https://cdn.skypack.dev/redux";
       $input.change();
       updatePriceSlider($this, value);
     });
+
+    // Thêm sự kiện input để lắng nghe thay đổi giá trị trong ô input
+    $input.on("input", function () {
+      var value = parseInt($(this).val());
+      updatePriceSlider($this, value);
+    });
+
   });
 
   var priceInputMax = document.getElementById("price-max"),
@@ -135,21 +142,23 @@ import { createStore } from "https://cdn.skypack.dev/redux";
   if (priceInputMax) {
     priceInputMax.addEventListener("change", function () {
       updatePriceSlider($(this).parent(), this.value);
+      console.log("Giá trị mới:", this.value);
     });
   }
   if (priceInputMin) {
     priceInputMin.addEventListener("change", function () {
       updatePriceSlider($(this).parent(), this.value);
+      console.log("Giá trị mới:", this.value);
     });
   }
 
   function updatePriceSlider(elem, value) {
     if (elem.hasClass("price-min")) {
       console.log("min");
-      priceSlider.noUiSlider.set([value, null]);
+      // priceSlider.noUiSlider.set([value, null]);
     } else if (elem.hasClass("price-max")) {
       console.log("max");
-      priceSlider.noUiSlider.set([null, value]);
+      // priceSlider.noUiSlider.set([null, value]);
     }
   }
 
@@ -171,35 +180,38 @@ import { createStore } from "https://cdn.skypack.dev/redux";
       handle ? (priceInputMax.value = value) : (priceInputMin.value = value);
     });
   }
-  const myAccount = document.querySelector(".my-account");
-  const wrapperAccount = document.querySelector(".wrapper-account");
-  const accountClose = document.querySelector(".my__account-close");
-  if (myAccount) {
-    myAccount.addEventListener("click", function () {
-      wrapperAccount.classList.add("show");
-    });
-    accountClose.addEventListener("click", function () {
-      wrapperAccount.classList.remove("show");
-    });
-  }
 })(jQuery);
 // ==================== Js Main End ==================== //
-// Đoạn mã JavaScript để tự động focus vào input khi trang được tải
+
+// ==================== Focus First Input ==================== //
+// Tự động đặt trọng tâm vào input khi trang được tải
 document.addEventListener("DOMContentLoaded", function () {
-  document.getElementById("firstInput").focus();
-});
+  // Lấy phần tử input có id là "firstInput"
+  let firstInput = document.getElementById("firstInput");
 
-//Validate input-number
-let countInput = document.getElementById('countInput');
-countInput.addEventListener('input', function () {
-  // Lấy giá trị nhập vào
-  var inputValue = this.value;
-
-  // Kiểm tra nếu giá trị âm, đặt giá trị là 1
-  if (inputValue < 1) {
-    this.value = 1;
+  // Kiểm tra xem phần tử có tồn tại không
+  if (firstInput) {
+    // Nếu tồn tại, thực hiện đặt trọng tâm
+    firstInput.focus();
+  } else {
+    // Xử lý trường hợp không tìm thấy phần tử
+    console.error("Không tìm thấy phần tử với ID 'firstInput'");
   }
 });
+// ==================== Focus First Input ==================== //
+
+// ==================== Add To Cart Success ==================== //
+
+function showAlert(message, icon) {
+  Swal.fire({
+    title: message,
+    icon: icon,
+    showCancelButton: false,
+    confirmButtonText: 'OK',
+  });
+}
+// ==================== Add To Cart Success ==================== //
+
 // ==================== Function Countdown Start ==================== //
 const targetDate = "2023-12-30T00:00:00";
 function countDown() {
@@ -263,6 +275,7 @@ const store = createStore(reducer);
 const BtnAddtocart = document.querySelectorAll(".add-to-cart-btn");
 BtnAddtocart.forEach((item) => {
   item.addEventListener("click", (e) => {
+    showAlert("Thêm vào giỏ thành công!", "success");
     addToCart(e.target);
   });
 });
@@ -279,8 +292,13 @@ function addToCart(x) {
   if (hadProduct) {
     // Nếu đã tồn tại sp có cùng id
     const productExisted = storedCartState.find((item) => item.id == id);
-
-    productExisted.count++;
+    //Chố này nếu mà có truyền vào số lượng tức là trang Single thì vẫn += số lượng
+    if (!isImg) {
+      let qty = parseInt(y.querySelector('input[name="count"]').value);
+      productExisted.count += qty;
+    } else {
+      productExisted.count++;
+    }
     store.dispatch({
       type: "updateCart",
       payload: productExisted,
@@ -305,6 +323,7 @@ function addToCart(x) {
       let name = fullname.slice(0, 40) + "...";
       let img = document.querySelector(".product-preview img").src;
       let qty = parseInt(y.querySelector('input[name="count"]').value);
+      console.log(qty);
       const product = {
         name: name,
         price: price,

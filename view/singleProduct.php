@@ -69,14 +69,13 @@
                             <i class="fa fa-star"></i>
                             <i class="fa fa-star-o"></i>
                         </div>
-                        <a class="review-link" href="#">10 Review(s) | Add your review</a>
+                        <a class="review-link" href="#">10 Đánh giá | Add your review</a>
                     </div>
-                    <div>
-                        <h3 class="product-price">
-                            <?= $product['price_sale'] > 0 ? number_format($product['price_sale'], 0, ',', '.') . 'đ' : number_format($product['price'], 0, ',', '.') . 'đ' ?>
-                            <del class="product-old-price"><?= $product['price_sale'] > 0 ? number_format($product['price'], 0, ',', '.') . 'đ' : '' ?></del>
-                            <span class="product-available"><?= $product['quantity'] > 0 ? 'Còn hàng' : 'Hết hàng' ?></span>
-                    </div>
+                    <h3 class="product-price">
+                        <?= $product['price_sale'] > 0 ? number_format($product['price_sale'], 0, ',', '.') . 'đ' : number_format($product['price'], 0, ',', '.') . 'đ' ?>
+                        <del class="product-old-price"><?= $product['price_sale'] > 0 ? number_format($product['price'], 0, ',', '.') . 'đ' : '' ?></del>
+                        <span class="product-available"><?= $product['quantity'] > 0 ? 'Còn hàng' : 'Hết hàng' ?></span>
+                    </h3>
                     <?php if (!empty($listProperties)) : ?>
                         <div class="table-properties">
                             <table class="table table-striped table-bordered">
@@ -124,7 +123,7 @@
                                 <span class="qty-down">-</span>
                             </div>
                         </div>
-                        <button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to cart</button>
+                        <button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> thêm vào giỏ</button>
                     </div>
 
                     <!-- <ul class="product-btns">
@@ -399,14 +398,9 @@
                             </h4>
                             <div class="product-rating">
                             </div>
-                            <div class="product-btns">
-                                <button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span class="tooltipp">add to wishlist</span></button>
-                                <button class="add-to-compare"><i class="fa fa-exchange"></i><span class="tooltipp">add to compare</span></button>
-                                <button class="quick-view"><i class="fa fa-eye"></i><span class="tooltipp">quick view</span></button>
-                            </div>
                         </div>
                         <div class="add-to-cart">
-                            <button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to cart</button>
+                            <button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> thêm vào giỏ</button>
                         </div>
                     </div>
                 </div>
@@ -420,3 +414,16 @@
     <!-- /container -->
 </div>
 <!-- /Section -->
+<script>
+    //Validate input-number
+    let countInput = document.getElementById('countInput');
+    countInput.addEventListener('input', function() {
+        // Lấy giá trị nhập vào
+        var inputValue = this.value;
+
+        // Kiểm tra nếu giá trị âm, đặt giá trị là 1
+        if (inputValue < 1) {
+            this.value = 1;
+        }
+    });
+</script>

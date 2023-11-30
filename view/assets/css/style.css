@@ -1196,6 +1196,10 @@ textarea.input {
   opacity: 1;
   visibility: visible;
 }
+.product .add-to-cart .add-to-cart-btn:active {
+  transform: scale(0.9);
+  transition: all 0.5s ease;
+}
 
 /*----------------------------*\
 	Widget product
@@ -2678,7 +2682,7 @@ button.btn.decrease {
 .cart__total-main {
   margin: 10px;
 }
-.cart-empty{
+.cart-empty {
   border-radius: 10px;
   margin-top: 20px;
   padding: 20px 0;
@@ -2851,7 +2855,7 @@ button.btn.decrease {
 .thankyou-icon {
   position: relative;
   font-size: 75px;
-  color: #3b5d50; 
+  color: #3b5d50;
 }
 .thankyou-icon:before {
   position: absolute;
@@ -2859,5 +2863,5 @@ button.btn.decrease {
   width: 50px;
   height: 50px;
   border-radius: 50%;
-  background: rgba(59, 93, 80, 0.2); 
+  background: rgba(59, 93, 80, 0.2);
 }
