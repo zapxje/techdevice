@@ -239,7 +239,7 @@ countDown();
 // ==================== Function View Cart Start ==================== //
 
 //thêm vào giỏ hàng
-let storedCartState = JSON.parse(localStorage.getItem("cartState")) || [];
+var storedCartState = JSON.parse(localStorage.getItem("cartState")) || [];
 function reducer(state = storedCartState, action) {
   switch (action.type) {
     case "addToCart":

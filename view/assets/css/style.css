@@ -2848,3 +2848,16 @@ button.btn.decrease {
   height: 250px;
   overflow-y: auto;
 }
+.thankyou-icon {
+  position: relative;
+  font-size: 75px;
+  color: #3b5d50; 
+}
+.thankyou-icon:before {
+  position: absolute;
+  content: "";
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: rgba(59, 93, 80, 0.2); 
+}
