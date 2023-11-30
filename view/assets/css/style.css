@@ -1510,7 +1510,9 @@ textarea.input {
   font-weight: 500;
   cursor: default;
 }
-
+.store-pagination li.active a {
+  color: #fff;
+}
 .store-pagination li a {
   display: block;
 }

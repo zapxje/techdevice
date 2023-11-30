@@ -83,14 +83,14 @@ function getProductByCategoryRelated($idCategory, $idProduct)
     WHERE ca.id = " . $idCategory . " 
     AND (
         (p.price_sale IS NOT NULL AND p.price_sale 
-        BETWEEN (SELECT COALESCE(price_sale, price)*0.8 FROM products WHERE id = " . $idProduct . ") 
-        AND (SELECT COALESCE(price_sale, price)*1.2 FROM products WHERE id = " . $idProduct . "))
+        BETWEEN (SELECT COALESCE(price_sale, price)*0.8 FROM products WHERE id = $idProduct) 
+        AND (SELECT COALESCE(price_sale, price)*1.2 FROM products WHERE id = $idProduct))
         OR 
         (p.price_sale IS NULL AND p.price 
-        BETWEEN (SELECT COALESCE(price_sale, price)*0.8 FROM products WHERE id = " . $idProduct . ") 
-        AND (SELECT COALESCE(price_sale, price)*1.2 FROM products WHERE id = " . $idProduct . "))
+        BETWEEN (SELECT COALESCE(price_sale, price)*0.8 FROM products WHERE id = $idProduct) 
+        AND (SELECT COALESCE(price_sale, price)*1.2 FROM products WHERE id = $idProduct))
         )
-    AND p.id <> " . $idProduct;
+    AND p.id <> $idProduct ";
     return getAll($sql);
 }
 //Lấy 3 sản phẩm trong tổng (sản phẩm bán chạy)
@@ -120,4 +120,14 @@ function isNew($idCategory, $product)
     } else {
         return -1;
     }
+}
+
+function getProductByPaging($limit, $offset)
+{
+    $sql = "SELECT p.* , ca.name AS category_name, br.name AS brand_name 
+    FROM products AS p 
+    LEFT JOIN categories AS ca ON ca.id = p.id_category 
+    LEFT JOIN brands AS br ON br.id = p.id_brand 
+    LIMIT $limit OFFSET $offset ";
+    return getAll($sql);
 }
