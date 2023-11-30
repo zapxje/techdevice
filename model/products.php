@@ -36,11 +36,11 @@ function getOneProduct($id)
     WHERE p.id=" . $id;
     return getOne($sql);
 }
-function getListProdductById($idCategory){
+function getListProdductById($idCategory,$idBrand){
     $sql= "SELECT p.*, ca.name AS category_name, br.name AS brand_name FROM products AS p 
     LEFT JOIN categories AS ca ON ca.id = p.id_category 
     LEFT JOIN brands AS br ON br.id = p.id_brand 
-    WHERE id_category IN ($idCategory)";
+    WHERE id_category IN ($idCategory) OR id_brand IN ($idBrand)";
      return getAll($sql);
 }
 

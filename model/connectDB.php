@@ -3,7 +3,7 @@ function connectdb()
 {
     $servername = "localhost";
     $username = "root";
-    $password = "";
+    $password = "khoa0383041383";
     $database = "duanmau1";
 
     try {

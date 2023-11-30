@@ -66,11 +66,11 @@
 				<!-- aside Widget -->
 				<div class="aside">
 					<h3 class="aside-title">Thương hiệu</h3>
-					<div class="checkbox-filter">
+					<div class="checkbox-filter brand ">
 						<?php foreach ($listBrands as $brand) : ?>
 							<div class="input-checkbox">
-								<input type="checkbox" id="brand-1">
-								<label for="brand-1">
+								<input type="checkbox" id="<?= $brand['name'] ?>" value="<?= $brand['id'] ?>">
+								<label for="<?= $brand['name'] ?>">
 									<span></span>
 									<?= $brand['name'] ?>
 									<small>(<?= count(getProductByBrand($brand['id'])) ?>)</small>
