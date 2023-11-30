@@ -36,6 +36,13 @@ function getOneProduct($id)
     WHERE p.id=" . $id;
     return getOne($sql);
 }
+function getListProdductById($idCategory){
+    $sql= "SELECT p.*, ca.name AS category_name, br.name AS brand_name FROM products AS p 
+    LEFT JOIN categories AS ca ON ca.id = p.id_category 
+    LEFT JOIN brands AS br ON br.id = p.id_brand 
+    WHERE id_category IN ($idCategory)";
+     return getAll($sql);
+}
 
 function addProduct($idCategory, $idBrand, $name, $price, $price_sale, $quantity, $description, $image)
 {

@@ -192,5 +192,12 @@ if (isset($_REQUEST['act']) && !empty($_REQUEST['act'])) {
                 include 'view/home.php';
             }
             break;
+        case 'store':
+            if(isset($_REQUEST['attributes_category'])){
+                $idCategory=$_REQUEST['attributes_category'];
+                $listProductsByCategory= getListProdductById($idCategory);
+            }
+            break;
     }
+    
 }

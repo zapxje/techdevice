@@ -615,118 +615,119 @@ if (window.history.replaceState) {
 
 // ==================== Function filter start ==================== //
 
-let arrFilter = productsArray;
+// let arrFilter = productsArray;
 
-const filter = document.querySelector(".filter");
+// const filter = document.querySelector(".filter");
 
-filter.addEventListener("submit", function (e) {
-  e.preventDefault();
-  let valueFilter = e.target.elements;
+// filter.addEventListener("submit", function (e) {
+//   e.preventDefault();
+//   let valueFilter = e.target.elements;
 
-  arrFilter = productsArray.filter((product) => {
-    if (valueFilter.name.value != "") {
-      const filterValue = valueFilter.name.value.toUpperCase(); // Convert filter value to uppercase
-      const productName = product.name.toUpperCase();
-      if (productName.includes(filterValue)) {
-        return true;
-      }
-    }
+//   arrFilter = productsArray.filter((product) => {
+//     if (valueFilter.name.value != "") {
+//       const filterValue = valueFilter.name.value.toUpperCase(); // Convert filter value to uppercase
+//       const productName = product.name.toUpperCase();
+//       if (productName.includes(filterValue)) {
+//         return true;
+//       }
+//     }
 
-    if (valueFilter.category.value != "") {
-      if (product.id_category != valueFilter.category.value) {
-        return false;
-      }
-    }
+//     if (valueFilter.category.value != "") {
+//       if (product.id_category != valueFilter.category.value) {
+//         return false;
+//       }
+//     }
 
-    return true;
-  });
-  displayProducts(arrFilter);
-});
-var productFilter = [];
+//     return true;
+//   });
+//   displayProducts(arrFilter);
+// });
+let checkboxFilters = Array.from(document.querySelectorAll('.categories input'));
+let categoryUrl = [];
 
-const checkboxFilters = document.querySelectorAll(".input-checkbox input");
-checkboxFilters.forEach((checkboxFilter) => {
-  checkboxFilter.addEventListener("click", function () {
-    // Get all checked checkboxes
-    const checkedCheckboxes = Array.from(checkboxFilters).filter(
-      (checkbox) => checkbox.checked
-    );
+// Hàm xử lý khi có sự kiện thay đổi
+function handleChange() {
+  const newValue = this.value;
 
-    if (checkedCheckboxes.length > 0) {
-      // If at least one checkbox is checked
-      productFilter = productsArray.filter((product) => {
-        // Check if the product's category matches any checked checkbox value
-        return checkedCheckboxes.some(
-          (checkbox) => product.id_category == checkbox.value
-        );
-      });
+  // Xử lý thêm/bớt giá trị
+  const index = categoryUrl.indexOf(newValue);
+  if (index !== -1) {
+    // If the value exists in categoryUrl, remove it
+    categoryUrl.splice(index, 1);
+  } else {
+    // Otherwise, add it
+    categoryUrl.push(newValue);
+  }
 
-      displayProducts(productFilter);
-    } else {
-      // If no checkbox is checked, display all products
-      displayProducts(productsArray);
-    }
-  });
-});
-
-function displayProducts(products) {
-  let productsHTML = "";
-  products.forEach((product) => {
-    productsHTML += `<div class="col-md-4 col-xs-6">
-              <div class="product">
-                <div class="product-img">
-                  <img src="view/assets/img/product/${product.image}" alt="">
-                </div>
-                <div class="product-body">
-                  <p class="product-category">Category</p>
-                  <h3 class="product-name"><a href="#">${product.name}</a></h3>
-                  <h4 class="product-price">
-                    ${product.price_sale
-        ? formatMoney(product.price_sale) + "đ"
-        : formatMoney(product.price) + "đ"
-      }
-                    <del class="product-old-price">${product.price ? formatMoney(product.price) + "đ" : ""
-      }</del>
-                  </h4>
-                  <div class="product-rating">
-                  </div>
-                  <div class="product-btns">
-                    <button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span class="tooltipp">add to wishlist</span></button>
-                    <button class="add-to-compare"><i class="fa fa-exchange"></i><span class="tooltipp">add to compare</span></button>
-                    <button class="quick-view"><i class="fa fa-eye"></i><span class="tooltipp">quick
-                        view</span></button>
-                  </div>
-                </div>
-                <div class="add-to-cart">
-                  <button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to cart</button>
-                </div>
-              </div>
-            </div>`;
-  });
-
-  // ==================== Function filter end ==================== //
-
-  // Join the array of HTML strings and insert into the DOM
-  document.querySelector("#products").innerHTML = productsHTML;
+  updateURL(categoryUrl);
 }
 
-// Lắng nghe sự kiện change cho mỗi checkbox
-// checkboxFilters.forEach(checkbox => {
-//     checkbox.addEventListener('change', function() {
-//         // Tạo một mảng để lưu trữ giá trị của các checkbox được chọn
-//         const selectedCategories = [];
+// Hàm cập nhật URL
+function updateURL(categoryUrl) {
+  let currentQueryString = window.location.search;
+  // Kiểm tra xem có checkbox nào được chọn hay không
+  if (categoryUrl.length > 0) {
+    let currentQueryString = window.location.search;
 
-//         // Lặp qua tất cả các checkbox và thêm giá trị vào mảng nếu được chọn
-//         checkboxFilters.forEach(cb => {
-//             if (cb.checked) {
-//                 selectedCategories.push(cb.value);
-//             }
-//         });
+    const categoryIndex = currentQueryString.indexOf('&attributes_category=');
 
-//         // Tạo một URL mới với tham số query là các giá trị của checkbox được chọn
-//         const url = '/duanmau1/?act=store/' + selectedCategories.join(',');
+    if (categoryIndex !== -1) {
+      currentQueryString = currentQueryString.slice(0, categoryIndex) + '&attributes_category=' + categoryUrl.join('%2C');
+    } else {
+      currentQueryString += '&attributes_category=' + categoryUrl.join('%2C');
+    }
+   
+    // Cập nhật URL với query string mới
+    window.history.replaceState({}, '', currentQueryString);
 
-//         // Chuyển hướng đến URL mới
-//         window.location.href = url;
-//     });
-// });
+    // Lưu trạng thái checkbox vào local storage
+    localStorage.setItem('checkboxState', JSON.stringify(categoryUrl));
+    window.location.href = currentQueryString;
+
+    loadCheckbox(categoryUrl);
+  } else { 
+    
+    // If no checkboxes are selected, remove the 'attributes_category' key from local storage
+    localStorage.removeItem('checkboxState');
+    currentQueryString = currentQueryString.replace(/&attributes_category=[^&]*/, '');
+    // Cập nhật URL với query string mới
+    window.history.replaceState({}, '', currentQueryString);
+
+    window.location.href = currentQueryString;
+  }
+}
+
+function loadCheckbox(categoryUrl) {
+  let checkedValues = JSON.parse(localStorage.getItem('checkboxState')) || [];
+
+  // Lọc ra những checkbox đã checked
+  let checkedBoxes = checkboxFilters.filter(checkbox => {
+    return checkedValues.includes(checkbox.value);
+  });
+
+
+  // Set checked = true cho những phần tử được lọc ra
+  checkedBoxes.forEach(checkbox => {
+    checkbox.checked = true;
+  });
+}
+
+// Lấy trạng thái checkbox từ local storage khi trang được tải
+window.addEventListener("load", function () {
+  const storedCheckboxState = localStorage.getItem('checkboxState');
+
+  if (storedCheckboxState) {
+    categoryUrl = JSON.parse(storedCheckboxState);
+    loadCheckbox(categoryUrl);
+  }
+});
+
+// Lắng nghe sự kiện cho checkbox
+checkboxFilters.forEach(checkbox => {
+  checkbox.addEventListener('change', handleChange);
+});
+
+    // ==================== Function filter end ==================== //
+
+    // Join the array of HTML strings and insert into the DOM
+  

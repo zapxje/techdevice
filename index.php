@@ -25,6 +25,8 @@
     if (isset($_REQUEST['act'])) {
         switch ($_GET['act']) {
             case 'store':
+                $listProductsByCategory=[]; 
+                include_once 'model/xl_products.php';
                 include 'view/store.php';
                 break;
 
