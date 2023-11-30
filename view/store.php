@@ -179,13 +179,20 @@
 
 				<!-- store bottom filter -->
 				<div class="store-filter clearfix">
-					<span class="store-qty">Showing 20-100 products</span>
+					<span class="store-qty">Hiện <?= count($listProducts) ?> - <?= count(getAllProducts()) ?> sản phẩm</span>
+					<!-- Số Phân Trang  -->
 					<ul class="store-pagination">
-						<li class="active">1</li>
-						<li><a href="#">2</a></li>
-						<li><a href="#">3</a></li>
-						<li><a href="#">4</a></li>
-						<li><a href="#"><i class="fa fa-angle-right"></i></a></li>
+						<!-- Nút Prev Trang  -->
+						<?php if ($current_page != 1) : ?>
+							<li><a href="index.php?act=store&page=<?= $current_page - 1; ?>"><i class="fa fa-angle-left"></i></a></li>
+						<?php endif; ?>
+						<?php for ($page = 1; $page <= $totalPages; $page++) : ?>
+							<li class="<?= ($page == $current_page) ? 'active' : '' ?>"><a href="index.php?act=store&page=<?= $page ?>"><?= $page ?></a></li>
+						<?php endfor; ?>
+						<!-- Nút Next Trang  -->
+						<?php if ($current_page != $totalPages) : ?>
+							<li><a href="index.php?act=store&page=<?= $current_page + 1; ?>"><i class="fa fa-angle-right"></i></a></li>
+						<?php endif; ?>
 					</ul>
 				</div>
 				<!-- /store bottom filter -->

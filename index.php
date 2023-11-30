@@ -25,6 +25,7 @@
     if (isset($_REQUEST['act'])) {
         switch ($_GET['act']) {
             case 'store':
+                include_once 'model/xl_paging.php';
                 include 'view/store.php';
                 break;
 
@@ -85,12 +86,12 @@
 
             case 'topsel':
                 include 'view/checkout.php';
-
                 break;
+
             case 'thankyou':
                 include_once 'view/thankyou.php';
                 break;
-            
+
             default:
                 include 'view/home.php';
                 break;
