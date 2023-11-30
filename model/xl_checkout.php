@@ -39,8 +39,10 @@ if (isset($_REQUEST['act'])) {
 								Hãy chọn phương thức thanh toán
 							</div>';
                 } else {
+                    $permitted_chars = '0123456789ABCDEFGHJKLMNPQRSTUVWXYZ';
                     addOrder(
                         $_POST['id_user'],
+                        substr(str_shuffle($permitted_chars), 0, 10),
                         $_POST['name'],
                         $_POST['email'],
                         $_POST['address'],
@@ -53,14 +55,16 @@ if (isset($_REQUEST['act'])) {
 
                     $list_cart = array();
                     //thêm object cart vào list cart
-                    foreach ($_POST['products'] as $product) {
-                        $cart = (object)[
-                            "id" => $product['id'],
-                            "name" => $product['name'],
-                            "quantity" => $product['quantity'],
-                            "price" => $product['price'],
-                        ];
-                        $list_cart[] = $cart;
+                    if($_POST['products']){
+                        foreach ($_POST['products'] as $product) {
+                            $cart = (object)[
+                                "id" => $product['id'],
+                                "name" => $product['name'],
+                                "quantity" => $product['quantity'],
+                                "price" => $product['price'],
+                            ];
+                            $list_cart[] = $cart;
+                        }
                     }
                     $order = getOneOrderLimit();
                     if (is_array($list_cart)) {
@@ -80,8 +84,8 @@ if (isset($_REQUEST['act'])) {
                                         $order[0],
                                         $productPrice,
                                         $productQuantity,
-                                        $productName
                                     );
+                                    header('location: index.php?act=thankyou');
                                 } else {
                                     // Xử lý khi $product không phải là mảng hoặc key "id" không tồn tại
                                     echo "Không thể truy cập key 'id' vì biến không phải là mảng hoặc key không tồn tại.";

@@ -87,9 +87,10 @@
                 include 'view/checkout.php';
 
                 break;
-            case 'order':
-
+            case 'thankyou':
+                include_once 'view/thankyou.php';
                 break;
+            
             default:
                 include 'view/home.php';
                 break;
