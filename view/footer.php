@@ -200,6 +200,23 @@
 		<script src="view/assets/js/jquery.zoom.min.js"></script>
 		<script type="module" src="view/assets/js/main.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.10.1/sweetalert2.min.js"></script>
+		<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+
+		<script>
+			$(function() {
+				$("#slider-range").slider({
+					range: true,
+					min: <?= $minPriceProduct ?>,
+					max: <?= $maxPriceProduct ?>,
+					values: [<?= $minPriceProduct ?>, <?= $maxPriceProduct ?>],
+					slide: function(event, ui) {
+						$("#amount").val(ui.values[0] + "đ" + " - " + ui.values[1] + "đ");
+					}
+				});
+				$("#amount").val($("#slider-range").slider("values", 0) + "đ" + " - " +
+						$("#slider-range").slider("values", 1) + "đ");
+			});
+		</script>
 		</body>
 
 		</html>

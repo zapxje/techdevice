@@ -37,6 +37,8 @@ ob_start();
     <!-- Thêm SweetAlert2 CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.10.1/sweetalert2.min.css ">
 
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -89,15 +91,15 @@ ob_start();
                     <!-- SEARCH BAR -->
                     <div class="col-md-6">
                         <div class="header-search">
-                            <form class="filter">
+                            <form action="index.php?act=store&search" method="post">
                                 <select class="input-select" name="category">
                                     <option value="0">Tất cả danh mục</option>
                                     <?php foreach ($listCategories as $category) : ?>
                                         <option value="<?= $category['id'] ?>"><?= $category['name'] ?></option>
                                     <?php endforeach; ?>
                                 </select>
-                                <input class="input" placeholder="Tìm kiếm sản phẩm" name="name">
-                                <button class="search-btn"><i class="fa fa-search"></i></button>
+                                <input id="live-search" class="input" placeholder="Tìm kiếm sản phẩm" name="search">
+                                <button type="submit" class="search-btn"><i class="fa fa-search"></i></button>
                             </form>
                         </div>
                     </div>

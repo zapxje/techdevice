@@ -25,7 +25,7 @@
     if (isset($_REQUEST['act'])) {
         switch ($_GET['act']) {
             case 'store':
-                include_once 'model/xl_paging.php';
+                include_once 'model/xl_store.php';
                 include 'view/store.php';
                 break;
 

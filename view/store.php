@@ -17,6 +17,14 @@
 </div>
 <!-- /BREADCRUMB -->
 
+<!-- ALERT SEARCH -->
+<div class="container">
+	<?php if (isset($keyWord)) : ?>
+		<p>Kết quả tìm kiếm "<?= $keyWord ?>"</p>
+	<?php endif; ?>
+</div>
+<!-- /ALERT SEARCH -->
+
 <!-- SECTION -->
 <div class="section">
 	<!-- container -->
@@ -31,7 +39,7 @@
 					<div class="checkbox-filter ">
 						<?php foreach ($listCategories as $category) : ?>
 							<div class="input-checkbox">
-								<input type="checkbox" id="<?= $category['name'] ?>" value="<?= $category['id'] ?>">
+								<input type="checkbox" id="<?= $category['name'] ?>" value="<?= $category['id'] ?>" onchange="checkedBox(this)">
 								<label for="<?= $category['name'] ?>">
 									<span></span>
 									<?= $category['name'] ?>
@@ -42,11 +50,22 @@
 					</div>
 				</div>
 				<!-- /aside Widget -->
+				<script>
+					function checkBox(checkbox) {
+						if (checkbox.checked) {
+							alert("hello");
+						}
+					}
+				</script>
 
 				<!-- aside Widget -->
-				<!-- <div class="aside">
-					<h3 class="aside-title">Price</h3>
-					<div class="price-filter">
+				<form action="index.php?act=store" method="post">
+					<div class="aside">
+						<h3 class="aside-title">Giá sản phẩm</h3>
+						<input type="text" id="amount" readonly style="border:0; color:#f6931f; font-weight:bold;">
+						<div id="slider-range"></div>
+						<button class="btn btn-main">Lọc</button>
+						<!-- <div class="price-filter">
 						<div id="price-slider"></div>
 						<div class="input-number price-min">
 							<input id="price-min" type="number">
@@ -59,12 +78,13 @@
 							<span class="qty-up">+</span>
 							<span class="qty-down">-</span>
 						</div>
+					</div> -->
 					</div>
-				</div> -->
+				</form>
 				<!-- /aside Widget -->
 
 				<!-- aside Widget -->
-				<div class="aside">
+				<!-- <div class="aside">
 					<h3 class="aside-title">Thương hiệu</h3>
 					<div class="checkbox-filter">
 						<?php foreach ($listBrands as $brand) : ?>
@@ -76,9 +96,9 @@
 									<small>(<?= count(getProductByBrand($brand['id'])) ?>)</small>
 								</label>
 							</div>
-						<?php endforeach; ?>
+						<?php endforeach; ?>	
 					</div>
-				</div>
+				</div> -->
 				<!-- /aside Widget -->
 
 				<!-- aside Widget -->
@@ -179,7 +199,7 @@
 
 				<!-- store bottom filter -->
 				<div class="store-filter clearfix">
-					<span class="store-qty">Hiện <?= count($listProducts) ?> - <?= count(getAllProducts()) ?> sản phẩm</span>
+					<span class="store-qty">Hiện <?= count($listProducts) ?> - <?= $totalItems ?> sản phẩm</span>
 					<!-- Số Phân Trang  -->
 					<ul class="store-pagination">
 						<!-- Nút Prev Trang  -->
