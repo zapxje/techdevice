@@ -203,19 +203,38 @@
 		<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
 
 		<script>
+			$('.price_from').val(<?= $minPriceProduct ?>);
+			$('.price_to').val(<?= $maxPriceProduct / 2 ?>);
 			$(function() {
 				$("#slider-range").slider({
 					range: true,
 					min: <?= $minPriceProduct ?>,
 					max: <?= $maxPriceProduct ?>,
-					values: [<?= $minPriceProduct ?>, <?= $maxPriceProduct ?>],
+					values: [<?= isset($price_from) ? $price_from : $minPriceProduct ?>,
+						<?= isset($price_to) ? $price_to : ($maxPriceProduct  / 2) ?>
+					],
 					slide: function(event, ui) {
-						$("#amount").val(ui.values[0] + "đ" + " - " + ui.values[1] + "đ");
+						$("#amount").val(addPlus(ui.values[0]).toString() + "đ" + " - " + addPlus(ui.values[1]) + "đ");
+						//Khi kéo thì cập nhật giá vào hidden giá
+						$('.price_from').val(ui.values[0]);
+						$('.price_to').val(ui.values[1]);
 					}
 				});
-				$("#amount").val($("#slider-range").slider("values", 0) + "đ" + " - " +
-						$("#slider-range").slider("values", 1) + "đ");
+				$("#amount").val(addPlus($("#slider-range").slider("values", 0)) + "đ" + " - " +
+					addPlus($("#slider-range").slider("values", 1)) + "đ");
 			});
+
+			function addPlus(nStr) {
+				nStr += '';
+				x = nStr.split('.');
+				x1 = x[0];
+				x2 = x.length > 1 ? '.' + x[1] : '';
+				var rgx = /(\d+)(\d{3})/;
+				while (rgx.test(x1)) {
+					x1 = x1.replace(rgx, '$1' + '.' + '$2');
+				}
+				return x1 + x2;
+			}
 		</script>
 		</body>
 

@@ -14,7 +14,7 @@ $offset = ($current_page - 1) * $itemsPerPage;
 
 $currentURL = "index.php?act=store";
 
-//Có sự kiện filter hay không ?
+// ==================== Xử Lí Lọc Theo CheckBox ==================== //
 if (isset($_REQUEST['attributes_category']) || isset($_REQUEST['attributes_brand'])) {
     $idCategory = 0;
     $idBrand = 0;
@@ -45,12 +45,22 @@ if (isset($_REQUEST['attributes_category']) || isset($_REQUEST['attributes_brand
         $messageFilter = "Không tìm thấy kết quả phù hợp !";
         $listProducts = getProductByPaging($itemsPerPage, $offset);
         $totalItems = count(getAllProducts()); //Lấy tổng sản phẩm trong products
-        $currentURL = "index.php?act=store";
     }
+    // ==================== Xử Lí Lọc Theo CheckBox ==================== //
 } else {
     //Nếu không truyền sự kiện Search thì lấy AllProducts
     $listProducts = getProductByPaging($itemsPerPage, $offset);
     $totalItems = count(getAllProducts()); //Lấy tổng sản phẩm trong products
+    // ======= Xử lí lọc theo giá ======= //
+    $minPriceProduct = min(array_column(getAllProducts(), 'price'));
+    $maxPriceProduct = max(array_column(getAllProducts(), 'price'));
+    if (isset($_REQUEST['from']) && isset($_REQUEST['to'])) {
+        $price_from = isset($_REQUEST['from']) ? $_REQUEST['from'] : '';
+        $price_to = isset($_REQUEST['to']) ? $_REQUEST['to'] : '';
+        $listProducts = getProductByPaging($itemsPerPage, $offset, $price_from, $price_to);
+        $totalItems = count(getTotalProductByFilterPrice($price_from, $price_to)); //Lấy tổng sản phẩm trong products
+        $currentURL = "index.php?act=store&from=" . $price_from . "&to=" . $price_to;
+    }
 }
 
 
@@ -62,6 +72,5 @@ $totalPages = ceil($totalItems / $itemsPerPage);
 // ==================== Xử Lí Paging ==================== //
 
 // ==================== Xử Lí Lọc Theo Giá ==================== //
-$minPriceProduct = min(array_column($listProducts, 'price'));
-$maxPriceProduct = max(array_column($listProducts, 'price'));
+
 // ==================== Xử Lí Lọc Theo Giá ==================== //

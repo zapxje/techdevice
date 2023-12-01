@@ -19,7 +19,7 @@
 
 <!-- ALERT SEARCH -->
 <div class="container">
-	<p><?= isset($messageFilter) ? $messageFilter : '' ?></p>
+	<p class="text-center"><?= isset($messageFilter) ? $messageFilter : '' ?></p>
 </div>
 <!-- /ALERT SEARCH -->
 
@@ -31,6 +31,27 @@
 		<div class="row">
 			<!-- ASIDE -->
 			<div id="aside" class="col-md-3">
+
+				<!-- aside Widget -->
+				<form action="<?= $currentURL ?>&filterPrice" method="post">
+					<div class="aside">
+						<h3 class="aside-title">Giá sản phẩm</h3>
+						<div class="row">
+							<div class="col-md-8">
+								<input type="text" id="amount" readonly style="border:0; color:#f6931f; font-weight:bold;">
+								<div id="slider-range"></div>
+								<input type="hidden" class="price_from" name="from">
+								<input type="hidden" class="price_to" name="to">
+							</div>
+							<div class="col-md-4">
+								<button type="submit" class="btn btn-main mb-2">Lọc</button>
+							</div>
+						</div>
+					</div>
+				</form>
+				<!-- /aside Widget -->
+
+
 				<!-- aside Widget -->
 				<div class="aside">
 					<h3 class="aside-title">Danh mục sản phẩm</h3>
@@ -47,38 +68,6 @@
 						<?php endforeach; ?>
 					</div>
 				</div>
-				<!-- /aside Widget -->
-				<script>
-					function checkBox(checkbox) {
-						if (checkbox.checked) {
-							alert("hello");
-						}
-					}
-				</script>
-
-				<!-- aside Widget -->
-				<form action="index.php?act=store" method="post">
-					<div class="aside">
-						<h3 class="aside-title">Giá sản phẩm</h3>
-						<input type="text" id="amount" readonly style="border:0; color:#f6931f; font-weight:bold;">
-						<div id="slider-range"></div>
-						<button class="btn btn-main">Lọc</button>
-						<!-- <div class="price-filter">
-						<div id="price-slider"></div>
-						<div class="input-number price-min">
-							<input id="price-min" type="number">
-							<span class="qty-up">+</span>
-							<span class="qty-down">-</span>
-						</div>
-						<span>-</span>
-						<div class="input-number price-max">
-							<input id="price-max" type="number">
-							<span class="qty-up">+</span>
-							<span class="qty-down">-</span>
-						</div>
-					</div> -->
-					</div>
-				</form>
 				<!-- /aside Widget -->
 
 				<!-- aside Widget -->
@@ -129,7 +118,7 @@
 			<!-- STORE -->
 			<div id="store" class="col-md-9">
 				<!-- store top filter -->
-				<div class="store-filter clearfix">
+				<!-- <div class="store-filter clearfix">
 					<div class="store-sort">
 						<label>
 							Sort By:
@@ -151,7 +140,7 @@
 						<li class="active"><i class="fa fa-th"></i></li>
 						<li><a href="#"><i class="fa fa-th-list"></i></a></li>
 					</ul>
-				</div>
+				</div> -->
 				<!-- /store top filter -->
 
 				<!-- store products -->

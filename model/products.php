@@ -115,16 +115,27 @@ function isNew($idCategory, $product)
     }
 }
 
-function getProductByPaging($limit, $offset)
+function getProductByPaging($limit, $offset, $price_from = null, $price_to = null)
 {
-    $sql = "SELECT p.* , ca.name AS category_name, br.name AS brand_name 
+    $sql = "SELECT p.*, ca.name AS category_name, br.name AS brand_name 
     FROM products AS p 
     LEFT JOIN categories AS ca ON ca.id = p.id_category 
     LEFT JOIN brands AS br ON br.id = p.id_brand 
-    LIMIT $limit OFFSET $offset ";
+    ";
+    // Áp dụng điều kiện giá nếu được truyền vào
+    if ($price_from !== null && $price_to !== null) {
+        $sql .= "WHERE p.price BETWEEN $price_from AND $price_to ";
+    }
+    // Thêm LIMIT và OFFSET vào câu truy vấn
+    $sql .= "LIMIT $limit OFFSET $offset";
     return getAll($sql);
 }
-
+function getTotalProductByFilterPrice($price_from, $price_to)
+{
+    $sql = "SELECT * FROM  products WHERE (price BETWEEN $price_from AND $price_to)
+    OR (price_sale BETWEEN $price_from AND $price_to)";
+    return getAll($sql);
+}
 // ============================== Hàm lấy sản phẩm theo checkbox filter ============================== //
 // function getListProductById($idCategory, $idBrand)
 // {
@@ -179,9 +190,6 @@ function getTotalProductByBothFilter($idCategory, $idBrand)
     return getAll($sql);
 }
 // ============================== Hàm lấy sản phẩm theo checkbox filter ============================== //
-function getMinPriceProduct()
-{
-}
 
 function getProductBySearch($keyWord)
 {

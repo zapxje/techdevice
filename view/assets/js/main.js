@@ -696,10 +696,10 @@ function updateCategoryURL(categoryUrl) {
 
     if (categoryIndex !== -1) {
       currentQueryString = currentQueryString.slice(0, categoryIndex) + '&attributes_category=' + categoryUrl.join('%2C');
-  
+
     } else {
       currentQueryString += '&attributes_category=' + categoryUrl.join('%2C');
-  
+
     }
 
     localStorage.setItem('categoryCheckboxState', JSON.stringify(categoryUrl));
@@ -716,11 +716,11 @@ function updateBrandURL(brandUrl) {
     let brandIndex = currentQueryString.indexOf('&attributes_brand=');
     if (brandIndex !== -1) {
       currentQueryString = currentQueryString.slice(0, brandIndex) + '&attributes_brand=' + brandUrl.join('%2C');
-  
+
     } else {
-      
+
       currentQueryString += '&attributes_brand=' + brandUrl.join('%2C');
-  
+
     }
 
     localStorage.setItem('brandCheckboxState', JSON.stringify(brandUrl));
@@ -731,7 +731,7 @@ function updateBrandURL(brandUrl) {
   }
   updateURL(currentQueryString);
 }
-function updateURL(currentQueryString){
+function updateURL(currentQueryString) {
   // Cập nhật URL với cả hai query strings mới
   window.history.replaceState({}, '', currentQueryString);
   window.location.href = currentQueryString;
@@ -777,7 +777,9 @@ brandFilters.forEach(checkbox => {
   checkbox.addEventListener('change', handleChange);
 });
 
-    // ==================== Function filter end ==================== //
+// ==================== Function filter end ==================== //
 
-    // Join the array of HTML strings and insert into the DOM
-  
+
+
+
+
