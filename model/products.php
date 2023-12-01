@@ -125,8 +125,62 @@ function getProductByPaging($limit, $offset)
     return getAll($sql);
 }
 
-function getMinPriceProduct(){
-    
+// ============================== Hàm lấy sản phẩm theo checkbox filter ============================== //
+// function getListProductById($idCategory, $idBrand)
+// {
+//     $sql = "SELECT p.*, ca.name AS category_name, br.name AS brand_name FROM products AS p 
+//     LEFT JOIN categories AS ca ON ca.id = p.id_category 
+//     LEFT JOIN brands AS br ON br.id = p.id_brand 
+//     WHERE id_category IN ($idCategory) OR id_brand IN ($idBrand)";
+//     return getAll($sql);
+// }
+function getProductByCategoryFilter($idCategory, $limit, $offset)
+{
+    $sql = "SELECT p.*, ca.name AS category_name, br.name AS brand_name FROM products AS p 
+    LEFT JOIN categories AS ca ON ca.id = p.id_category 
+    LEFT JOIN brands AS br ON br.id = p.id_brand 
+    WHERE id_category IN ($idCategory)
+    LIMIT $limit OFFSET $offset";
+    return getAll($sql);
+}
+function getTotalProductByCategoryFilter($idCategory)
+{
+    $sql = "SELECT * FROM products
+    WHERE id_category IN ($idCategory)";
+    return getAll($sql);
+}
+function getProductByBrandFilter($idBrand, $limit, $offset)
+{
+    $sql = "SELECT p.*, ca.name AS category_name, br.name AS brand_name FROM products AS p 
+    LEFT JOIN categories AS ca ON ca.id = p.id_category 
+    LEFT JOIN brands AS br ON br.id = p.id_brand 
+    WHERE id_brand IN ($idBrand)";
+    return getAll($sql);
+}
+function getTotalProductByBrandFilter($idBrand)
+{
+    $sql = "SELECT * FROM products
+    WHERE id_brand IN ($idBrand)";
+    return getAll($sql);
+}
+function getProductByBothFilter($idCategory, $idBrand, $limit, $offset)
+{
+    $sql = "SELECT p.*, ca.name AS category_name, br.name AS brand_name FROM products AS p 
+    LEFT JOIN categories AS ca ON ca.id = p.id_category 
+    LEFT JOIN brands AS br ON br.id = p.id_brand 
+    WHERE id_category IN ($idCategory) AND id_brand IN ($idBrand)
+    LIMIT $limit OFFSET $offset";
+    return getAll($sql);
+}
+function getTotalProductByBothFilter($idCategory, $idBrand)
+{
+    $sql = "SELECT * FROM products
+    WHERE id_category IN ($idCategory) AND id_brand IN ($idBrand)";
+    return getAll($sql);
+}
+// ============================== Hàm lấy sản phẩm theo checkbox filter ============================== //
+function getMinPriceProduct()
+{
 }
 
 function getProductBySearch($keyWord)

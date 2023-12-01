@@ -19,9 +19,7 @@
 
 <!-- ALERT SEARCH -->
 <div class="container">
-	<?php if (isset($keyWord)) : ?>
-		<p>Kết quả tìm kiếm "<?= $keyWord ?>"</p>
-	<?php endif; ?>
+	<p><?= isset($messageFilter) ? $messageFilter : '' ?></p>
 </div>
 <!-- /ALERT SEARCH -->
 
@@ -36,7 +34,7 @@
 				<!-- aside Widget -->
 				<div class="aside">
 					<h3 class="aside-title">Danh mục sản phẩm</h3>
-					<div class="checkbox-filter ">
+					<div class="checkbox-filter categories">
 						<?php foreach ($listCategories as $category) : ?>
 							<div class="input-checkbox">
 								<input type="checkbox" id="<?= $category['name'] ?>" value="<?= $category['id'] ?>" onchange="checkedBox(this)">
@@ -84,21 +82,21 @@
 				<!-- /aside Widget -->
 
 				<!-- aside Widget -->
-				<!-- <div class="aside">
+				<div class="aside">
 					<h3 class="aside-title">Thương hiệu</h3>
-					<div class="checkbox-filter">
+					<div class="checkbox-filter brand ">
 						<?php foreach ($listBrands as $brand) : ?>
 							<div class="input-checkbox">
-								<input type="checkbox" id="brand-1">
-								<label for="brand-1">
+								<input type="checkbox" id="<?= $brand['name'] ?>" value="<?= $brand['id'] ?>">
+								<label for="<?= $brand['name'] ?>">
 									<span></span>
 									<?= $brand['name'] ?>
 									<small>(<?= count(getProductByBrand($brand['id'])) ?>)</small>
 								</label>
 							</div>
-						<?php endforeach; ?>	
+						<?php endforeach; ?>
 					</div>
-				</div> -->
+				</div>
 				<!-- /aside Widget -->
 
 				<!-- aside Widget -->
@@ -204,14 +202,14 @@
 					<ul class="store-pagination">
 						<!-- Nút Prev Trang  -->
 						<?php if ($current_page != 1) : ?>
-							<li><a href="index.php?act=store&page=<?= $current_page - 1; ?>"><i class="fa fa-angle-left"></i></a></li>
+							<li><a href="<?= $currentURL ?>&page=<?= $current_page - 1; ?>"><i class="fa fa-angle-left"></i></a></li>
 						<?php endif; ?>
 						<?php for ($page = 1; $page <= $totalPages; $page++) : ?>
-							<li class="<?= ($page == $current_page) ? 'active' : '' ?>"><a href="index.php?act=store&page=<?= $page ?>"><?= $page ?></a></li>
+							<li class="<?= ($page == $current_page) ? 'active' : '' ?>"><a href="<?= $currentURL ?>&page=<?= $page ?>"><?= $page ?></a></li>
 						<?php endfor; ?>
 						<!-- Nút Next Trang  -->
 						<?php if ($current_page != $totalPages) : ?>
-							<li><a href="index.php?act=store&page=<?= $current_page + 1; ?>"><i class="fa fa-angle-right"></i></a></li>
+							<li><a href="<?= $currentURL ?>&page=<?= $current_page + 1; ?>"><i class="fa fa-angle-right"></i></a></li>
 						<?php endif; ?>
 					</ul>
 				</div>

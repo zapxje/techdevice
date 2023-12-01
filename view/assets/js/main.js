@@ -613,3 +613,171 @@ if (window.history.replaceState) {
 }
 // ==================== Function View Cart End ==================== //
 
+// ==================== Function filter start ==================== //
+
+// let arrFilter = productsArray;
+
+// const filter = document.querySelector(".filter");
+
+// filter.addEventListener("submit", function (e) {
+//   e.preventDefault();
+//   let valueFilter = e.target.elements;
+
+//   arrFilter = productsArray.filter((product) => {
+//     if (valueFilter.name.value != "") {
+//       const filterValue = valueFilter.name.value.toUpperCase(); // Convert filter value to uppercase
+//       const productName = product.name.toUpperCase();
+//       if (productName.includes(filterValue)) {
+//         return true;
+//       }
+//     }
+
+//     if (valueFilter.category.value != "") {
+//       if (product.id_category != valueFilter.category.value) {
+//         return false;
+//       }
+//     }
+
+//     return true;
+//   });
+//   displayProducts(arrFilter);
+// });
+let categoryFilters = Array.from(document.querySelectorAll('.categories input'));
+let brandFilters = Array.from(document.querySelectorAll('.brand input'));
+let categoryUrl = [];
+let brandUrl = [];
+
+// Hàm xử lý khi có sự kiện thay đổi
+function handleChange() {
+  const newValue = this.value;
+
+  // Xử lý thêm/bớt giá trị
+  if (this.parentElement.parentElement.classList.contains('categories')) {
+    handleCategoryChange(newValue);
+    updateCategoryURL(categoryUrl);
+  } else if (this.parentElement.parentElement.classList.contains('brand')) {
+    handleBrandChange(newValue);
+    updateBrandURL(brandUrl);
+  }
+  //updateCategoryURL(categoryUrl, brandUrl);
+}
+
+// Hàm xử lý thay đổi trong category
+function handleCategoryChange(newValue) {
+  const index = categoryUrl.indexOf(newValue);
+  if (index !== -1) {
+    // If the value exists in categoryUrl, remove it
+    categoryUrl.splice(index, 1);
+  } else {
+    // Otherwise, add it
+    categoryUrl.push(newValue);
+  }
+}
+
+// Hàm xử lý thay đổi trong brand
+function handleBrandChange(newValue) {
+  const index = brandUrl.indexOf(newValue);
+  if (index !== -1) {
+    // If the value exists in brandUrl, remove it
+    brandUrl.splice(index, 1);
+  } else {
+    // Otherwise, add it
+    brandUrl.push(newValue);
+  }
+}
+
+// Hàm cập nhật URL
+function updateCategoryURL(categoryUrl) {
+  let currentQueryString = window.location.search;
+
+  // Kiểm tra xem có checkbox nào được chọn hay không
+  if (categoryUrl.length > 0) {
+    let categoryIndex = currentQueryString.indexOf('&attributes_category=');
+
+    if (categoryIndex !== -1) {
+      currentQueryString = currentQueryString.slice(0, categoryIndex) + '&attributes_category=' + categoryUrl.join('%2C');
+  
+    } else {
+      currentQueryString += '&attributes_category=' + categoryUrl.join('%2C');
+  
+    }
+
+    localStorage.setItem('categoryCheckboxState', JSON.stringify(categoryUrl));
+  } else {
+    localStorage.removeItem('categoryCheckboxState');
+    currentQueryString = currentQueryString.replace(/&attributes_category=[^&]*/, '');
+
+  }
+  updateURL(currentQueryString);
+}
+function updateBrandURL(brandUrl) {
+  let currentQueryString = window.location.search;
+  if (brandUrl.length > 0) {
+    let brandIndex = currentQueryString.indexOf('&attributes_brand=');
+    if (brandIndex !== -1) {
+      currentQueryString = currentQueryString.slice(0, brandIndex) + '&attributes_brand=' + brandUrl.join('%2C');
+  
+    } else {
+      
+      currentQueryString += '&attributes_brand=' + brandUrl.join('%2C');
+  
+    }
+
+    localStorage.setItem('brandCheckboxState', JSON.stringify(brandUrl));
+  } else {
+    localStorage.removeItem('brandCheckboxState');
+    currentQueryString = currentQueryString.replace(/&attributes_brand=[^&]*/, '');
+
+  }
+  updateURL(currentQueryString);
+}
+function updateURL(currentQueryString){
+  // Cập nhật URL với cả hai query strings mới
+  window.history.replaceState({}, '', currentQueryString);
+  window.location.href = currentQueryString;
+
+  loadCheckbox(categoryUrl, categoryFilters);
+  loadCheckbox(brandUrl, brandFilters);
+}
+
+function loadCheckbox(checkedValues, filters) {
+  // Lọc ra những checkbox đã checked
+  let checkedBoxes = filters.filter(checkbox => {
+    return checkedValues.includes(checkbox.value);
+  });
+
+  // Set checked = true cho những phần tử được lọc ra
+  checkedBoxes.forEach(checkbox => {
+    checkbox.checked = true;
+  });
+}
+
+// Lấy trạng thái checkbox từ local storage khi trang được tải
+window.addEventListener("load", function () {
+  const storedCategoryCheckboxState = localStorage.getItem('categoryCheckboxState');
+  const storedBrandCheckboxState = localStorage.getItem('brandCheckboxState');
+
+  if (storedCategoryCheckboxState) {
+    categoryUrl = JSON.parse(storedCategoryCheckboxState);
+    loadCheckbox(categoryUrl, categoryFilters);
+  }
+
+  if (storedBrandCheckboxState) {
+    brandUrl = JSON.parse(storedBrandCheckboxState);
+    loadCheckbox(brandUrl, brandFilters);
+  }
+});
+
+// Lắng nghe sự kiện cho checkbox
+categoryFilters.forEach(checkbox => {
+  checkbox.addEventListener('change', handleChange);
+});
+
+brandFilters.forEach(checkbox => {
+  checkbox.addEventListener('change', handleChange);
+});
+
+    // ==================== Function filter end ==================== //
+
+    // Join the array of HTML strings and insert into the DOM
+  
