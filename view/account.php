@@ -105,7 +105,43 @@
                             <!-- /tab 2 -->
                             <!-- tab 3 -->
                             <div id="tab3" class="tab-pane">
-                            <div class="title-form">Chi tiết đơn hàng</div>
+                                <div class="title-form">Danh sách đơn hàng</div>
+                                <div class="col-md-12">
+                                    <div class="card">
+                                        <div class="card-header">
+                                            <strong class="card-title"></strong>
+                                        </div>
+                                        <div class="card-body">
+                                            <table class="table table-orders">
+                                                <thead>
+                                                    <tr>
+                                                        <th scope="col">Mã Đơn Hàng</th>
+                                                        <th scope="col">Tổng Tiền</th>
+                                                        <th scope="col">Trạng Thái</th>
+                                                        <th scope="col">Chi Tiết</th>
+                                                        <th scope="col">Địa Chỉ</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <?php if (empty($listOrders)) : ?>
+                                                        <td>Chưa có đơn hàng nào</td>
+                                                    <?php else : ?>
+                                                        <?php foreach ($listOrders as $order) : ?>
+                                                            <tr>
+                                                                <td><?= $order['code_order'] ?></td>
+                                                                <td><?= number_format($order['total_order'], 0, ',', '.')."đ" ?></td>
+                                                                <td><?= $order['payment_status'] == 0 ? 'Chờ xác nhận' : ($order['payment_status'] == 1 ? 'Đang giao hàng' : 'Đã giao thành công') ?></td>
+                                                                <td><button type="button" class="btn btn-primary">Chi tiết đơn hàng</button></td>
+                                                                <td><button type="button" class="btn btn-primary">Địa chỉ giao hàng</button></td>
+                                                                <td><button type="button" class="btn btn-danger">Hủy</button></td>
+                                                            </tr>
+                                                        <?php endforeach; ?>
+                                                    <?php endif; ?>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                             <!-- /tab 3 -->
                         </div>

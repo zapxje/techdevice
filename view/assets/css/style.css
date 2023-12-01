@@ -2867,3 +2867,7 @@ button.btn.decrease {
   border-radius: 50%;
   background: rgba(59, 93, 80, 0.2);
 }
+/* Table Orders Account */
+.table-orders{
+  margin-top: 25px;
+}

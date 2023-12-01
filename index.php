@@ -20,7 +20,7 @@
     $active = isset($_REQUEST['act']) ? $_REQUEST['act'] : '';
     include 'view/header.php';
 
-
+    getOrderByUser(1);
     // include the content file
     if (isset($_REQUEST['act'])) {
         switch ($_GET['act']) {
@@ -81,8 +81,9 @@
             case 'account':
                 //bắt buộc phải đăng nhập session['user'] mới được vào
                 if (!$_SESSION['user']) {
-                    header('location: index.php');
+                    header('location: index.php?act=login');
                 }
+                include_once 'model/xl_account.php';
                 include_once 'view/account.php';
                 break;
 
