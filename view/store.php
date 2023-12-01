@@ -58,7 +58,7 @@
 					<div class="checkbox-filter categories">
 						<?php foreach ($listCategories as $category) : ?>
 							<div class="input-checkbox">
-								<input type="checkbox" id="<?= $category['name'] ?>" value="<?= $category['id'] ?>" onchange="checkedBox(this)">
+								<input type="checkbox" id="<?= $category['name'] ?>" value="<?= $category['id'] ?>">
 								<label for="<?= $category['name'] ?>">
 									<span></span>
 									<?= $category['name'] ?>
