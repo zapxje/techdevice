@@ -165,7 +165,7 @@
                     <!-- product tab content -->
                     <div class="tab-content">
                         <!-- tab1  -->
-                        <div id="tab1" class="tab-pane fade in active">
+                        <div id="tab1" class="tab-pane fade in">
                             <div class="row">
                                 <div class="col-md-12">
                                     <p><?= $product['description'] ?></p>
@@ -175,10 +175,10 @@
                         <!-- /tab1  -->
 
                         <!-- tab2  -->
-                        <div id="tab2" class="tab-pane fade in">
+                        <div id="tab2" class="tab-pane fade in  active">
                             <div class="row">
                                 <!-- Rating -->
-                                <div class="col-md-4">
+                                <div class="col-md-3">
                                     <div id="rating">
                                         <div class="rating-avg">
                                             <span>4.5</span>
@@ -262,7 +262,7 @@
                                 <!-- /Rating -->
 
                                 <!-- Reviews -->
-                                <div class="col-md-8">
+                                <div class="col-md-6">
                                     <div id="reviews">
                                         <ul class="reviews">
                                             <li>
@@ -313,24 +313,39 @@
                                                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</p>
                                                 </div>
                                             </li>
+                                            <li>
+                                                <div class="review-heading">
+                                                    <h5 class="name">John</h5>
+                                                    <p class="date">27 DEC 2018, 8:0 PM</p>
+                                                    <div class="review-rating">
+                                                        <i class="fa fa-star"></i>
+                                                        <i class="fa fa-star"></i>
+                                                        <i class="fa fa-star"></i>
+                                                        <i class="fa fa-star"></i>
+                                                        <i class="fa fa-star-o empty"></i>
+                                                    </div>
+                                                </div>
+                                                <div class="review-body">
+                                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</p>
+                                                </div>
+                                            </li>
+                                            
                                         </ul>
-                                        <ul class="reviews-pagination">
+                                        <!-- <ul class="reviews-pagination">
                                             <li class="active">1</li>
                                             <li><a href="#">2</a></li>
                                             <li><a href="#">3</a></li>
                                             <li><a href="#">4</a></li>
                                             <li><a href="#"><i class="fa fa-angle-right"></i></a></li>
-                                        </ul>
+                                        </ul> -->
                                     </div>
                                 </div>
                                 <!-- /Reviews -->
 
                                 <!-- Review Form -->
-                                <!-- <div class="col-md-3">
+                                <div class="col-md-3">
                                     <div id="review-form">
                                         <form class="review-form">
-                                            <input class="input" type="text" placeholder="Your Name">
-                                            <input class="input" type="email" placeholder="Your Email">
                                             <textarea class="input" placeholder="Your Review"></textarea>
                                             <div class="input-rating">
                                                 <span>Your Rating: </span>
@@ -345,7 +360,7 @@
                                             <button class="primary-btn">Submit</button>
                                         </form>
                                     </div>
-                                </div> -->
+                                </div>
                                 <!-- /Review Form -->
                             </div>
                         </div>
@@ -393,8 +408,8 @@
                             <p class="product-category"><?= $product['category_name'] ?> | <?= $product['brand_name'] ?></p>
                             <h3 class="product-name"><a href="index.php?act=singleProduct&id=<?= $product['id'] ?>"><?= mb_strimwidth($product['name'], 0, 40, "...") ?></a></h3>
                             <h4 class="product-price">
-                                <?= $product['price_sale'] > 0 ? number_format($product['price_sale'], 0, ',', '.') : number_format($product['price'], 0, ',', '.') ?>
-                                <del class="product-old-price"><?= $product['price_sale'] > 0 ? number_format($product['price'], 0, ',', '.') : '' ?></del>
+                                <?= $product['price_sale'] > 0 ? number_format($product['price_sale'], 0, ',', '.').'đ' : number_format($product['price'], 0, ',', '.').'đ' ?>
+                                <del class="product-old-price"><?= $product['price_sale'] > 0 ? number_format($product['price'], 0, ',', '.').'đ' : '' ?></del>
                             </h4>
                             <div class="product-rating">
                             </div>

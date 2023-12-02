@@ -1868,7 +1868,14 @@ textarea.input {
 }
 
 /*-- Reviews --*/
-
+.reviews {
+  
+  height: 250px;
+  overflow-y: auto;
+}
+.reviews::-webkit-scrollbar{
+  width: 0;
+}
 .reviews li {
   position: relative;
   padding-left: 145px;

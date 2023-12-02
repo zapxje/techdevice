@@ -758,7 +758,7 @@ function updateURL(currentQueryString){
 
   // Cập nhật URL với cả hai query strings mới
   window.history.replaceState({}, '', finalQueryString);
-  window.location.href = currentQueryString;
+  window.location.href = finalQueryString;
 
   loadCheckbox(categoryUrl, categoryFilters);
   loadCheckbox(brandUrl, brandFilters);
