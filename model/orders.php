@@ -1,11 +1,16 @@
 <?php
 
-function addOrder($id_user,$code_order, $name, $email, $address, $city, $phone, $note, $payment_method, $total_order)
+function addOrder($id_user, $code_order, $name, $email, $address, $city, $phone, $note, $payment_method, $total_order)
 {
 	$sql = "INSERT INTO orders(id_user, code_order, name, email, address, city, phone, note, payment_method, total_order)
 	VALUES('$id_user', '$code_order', '$name', '$email', '$address', '$city', '$phone', '$note',  
           '$payment_method', $total_order)";
 	return querySql($sql);
+}
+function getOrderByUser($idUser)
+{
+    $sql = "SELECT * FROM orders WHERE id_user = $idUser";
+    return getAll($sql);
 }
 function getOneOrderLimit()
 {
