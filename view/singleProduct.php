@@ -265,6 +265,26 @@
                                 <div class="col-md-6">
                                     <div id="reviews">
                                         <ul class="reviews">
+                                            <?php foreach($listReviews as $review) : ?>
+                                            <li>
+                                                <div class="review-heading">
+                                                    <h5 class="name"><?=$review['username']?></h5>
+                                                    <p class="date"><?=$review['created_at']?></p>
+                                                    <div class="review-rating">
+                                                    <?php for($i = 0; $i < $review['rating']; $i++): ?>
+                                                        <i class="fa fa-star"></i>
+                                                    <?php endfor; ?>
+
+                                                    <?php for($i = 0; $i < 5 - $review['rating']; $i++): ?>
+                                                        <i class="fa fa-star-o empty"></i>
+                                                    <?php endfor; ?>
+                                                    </div>
+                                                </div>
+                                                <div class="review-body">
+                                                    <p><?=$review['comment']?></p>
+                                                </div>
+                                            </li>
+                                            <?php endforeach; ?>
                                             <li>
                                                 <div class="review-heading">
                                                     <h5 class="name">John</h5>
@@ -343,10 +363,11 @@
                                 <!-- /Reviews -->
 
                                 <!-- Review Form -->
+                                <?php if($_SESSION['user'] && (isset($setCartByIdProduct['id_product'])) == isset($product['id'])):?>
                                 <div class="col-md-3">
                                     <div id="review-form">
-                                        <form class="review-form">
-                                            <textarea class="input" placeholder="Your Review"></textarea>
+                                        <form class="review-form" method="POST" action="">
+                                            <textarea class="input" name="comment" placeholder="Your Review"></textarea>
                                             <div class="input-rating">
                                                 <span>Your Rating: </span>
                                                 <div class="stars">
@@ -357,10 +378,16 @@
                                                     <input id="star1" name="rating" value="1" type="radio"><label for="star1"></label>
                                                 </div>
                                             </div>
-                                            <button class="primary-btn">Submit</button>
+                                            <button type="submit" name="submit-appraise" class="primary-btn">Submit</button>
                                         </form>
                                     </div>
                                 </div>
+                                <?php else:  ?>
+                                    <div class="col-md-3">
+                                        <div id="review-form">
+                                        </div>
+                                     </div>      
+                                <?php endif; ?>
                                 <!-- /Review Form -->
                             </div>
                         </div>

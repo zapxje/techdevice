@@ -27,3 +27,7 @@ function addCart($id_product, $id_order, $price, $quantity)
             VALUES($id_product, $selected_order_id, $price, $quantity)";
 	return querySql($sql);
 }
+function getCartByIdProduct($id_product){
+	$sql="SELECT * FROM carts WHERE id_product = $id_product";
+    return getOne($sql);
+}

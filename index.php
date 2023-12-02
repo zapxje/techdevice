@@ -11,6 +11,7 @@
     include 'model/users.php';
     include 'model/orders.php';
     include_once 'model/xl_cart.php';
+    include 'model/reviews.php';
     $listCategories = getAllCategories();
     $listBrands = getAllBrands();
     $listProducts = getAllProducts();

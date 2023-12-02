@@ -184,6 +184,17 @@ if (isset($_REQUEST['act']) && !empty($_REQUEST['act'])) {
                     $listImagesProduct = getImageByProduct($idProduct);
                     $listProperties = getPropertyByProduct($idProduct);
                     $listProductRelated = getProductByCategoryRelated($product['id_category'], $idProduct);
+                    $listReviews=getReviewsByProduct($idProduct);
+                    $setCartByIdProduct= getCartByIdProduct($idProduct);
+                    if($setCartByIdProduct){
+
+                        if(isset($_POST['submit-appraise'])){
+                            addReview($_SESSION['user']['id'],
+                            $idProduct,
+                            $_POST['comment'],
+                            $_POST['rating']);
+                        }
+                    }
                     include 'view/singleProduct.php';
                 } else {
                     include 'view/home.php';
