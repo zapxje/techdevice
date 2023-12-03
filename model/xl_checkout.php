@@ -41,6 +41,40 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
         return;
     }
+
+    // Tạo SESSTION Chứa Tạm Order //
+    $permitted_chars = '0123456789ABCDEFGHJKLMNPQRSTUVWXYZ';
+    $orderTemp = array(
+        'id_user' => $_POST['id_user'],
+        'code_order' => substr(str_shuffle($permitted_chars), 0, 10),
+        'name' => $_POST['name'],
+        'email' => $_POST['email'],
+        'address' => $_POST['address'],
+        'city' => $_POST['city'],
+        'phone' => $_POST['phone'],
+        'note' => $_POST['note'],
+        'payment_method' => $_POST['payment'],
+        'total_order' => $_POST['total-order']
+    );
+    $_SESSION['orderTemp'][] = $orderTemp;
+
+    // Tạo SESSTION Chứa Tạm Carts //
+    $listCarts = array();
+    if (isset($_REQUEST['products'])) {
+        foreach ($_REQUEST['products'] as $product) {
+            $cartTemp = array(
+                'id' => $product['id'],
+                'quantity' => $product['quantity'],
+                'price' => $product['price'],
+            );
+            $listCarts[] = $cartTemp;
+        }
+    } else {
+        include 'view/home.php';
+        return;
+    }
+    $_SESSION['cartsTemp'] = $listCarts;
+    // Xử lí các trường hợp thanh toán//
     if (isset($_REQUEST['payment'])) {
         if ($_REQUEST['payment'] == 'momoAtm') {
             header('Content-type: text/html; charset=utf-8');
@@ -73,8 +107,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $orderInfo = "Thanh toán qua MoMo ATM";
             $amount = "10000";
             $orderId = time() . "";
-            $redirectUrl = "http://localhost/pro1014/index.php?act=thankyou";
-            $ipnUrl = "http://localhost/pro1014/index.php?act=thankyou";
+            $redirectUrl = "http://localhost/pro1014/index.php?act=redirectCheckout";
+            $ipnUrl = "http://localhost/pro1014/index.php?act=redirectCheckout";
             $extraData = "";
             $requestId = time() . "";
             $requestType = "payWithATM";
@@ -132,8 +166,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $orderInfo = "Thanh toán qua MoMo";
             $amount = "10000";
             $orderId = time() . "";
-            $redirectUrl = "http://localhost/pro1014/index.php?act=thankyou";
-            $ipnUrl = "http://localhost/pro1014/index.php?act=thankyou";
+            $redirectUrl = "http://localhost/pro1014/index.php?act=redirectCheckout";
+            $ipnUrl = "http://localhost/pro1014/index.php?act=redirectCheckout";
             $extraData = "";
             $requestId = time() . "";
             $requestType = "captureWallet";
@@ -162,66 +196,4 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             header('Location: ' . $jsonResult['payUrl']);
         }
     }
-
-
-    // ================== THÊM ORDER VS CART ================== //
-    // $permitted_chars = '0123456789ABCDEFGHJKLMNPQRSTUVWXYZ';
-    // addOrder(
-    //     $_POST['id_user'],
-    //     substr(str_shuffle($permitted_chars), 0, 10),
-    //     $_POST['name'],
-    //     $_POST['email'],
-    //     $_POST['address'],
-    //     $_POST['city'],
-    //     $_POST['phone'],
-    //     $_POST['note'],
-    //     $_POST['payment'],
-    //     $_POST['total-order']
-    // );
-    // $list_cart = array();
-    // //thêm object cart vào list cart
-    // if ($_POST['products']) {
-    //     foreach ($_POST['products'] as $product) {
-    //         $cart = (object)[
-    //             "id" => $product['id'],
-    //             "name" => $product['name'],
-    //             "quantity" => $product['quantity'],
-    //             "price" => $product['price'],
-    //         ];
-    //         $list_cart[] = $cart;
-    //     }
-    // }
-    // $order = getOneOrderLimit();
-    // if (is_array($list_cart)) {
-    //     for ($i = 0; $i < count($list_cart); $i++) {
-    //         // Kiểm tra xem $list_cart[$i] có phải là đối tượng không
-    //         if (is_object($list_cart[$i])) {
-    //             // Truy cập thuộc tính của đối tượng
-    //             $productName = $list_cart[$i]->name;
-    //             $productPrice = $list_cart[$i]->price;
-    //             $productQuantity = $list_cart[$i]->quantity;
-
-    //             $product = getOneProduct($list_cart[$i]->id);
-    //             // Kiểm tra xem $product có phải là mảng không
-    //             if (is_array($product) && isset($product["id"])) {
-    //                 addCart(
-    //                     $product["id"],
-    //                     $order[0],
-    //                     $productPrice,
-    //                     $productQuantity,
-    //                 );
-    //                 header('location: index.php?act=thankyou');
-    //             } else {
-    //                 // Xử lý khi $product không phải là mảng hoặc key "id" không tồn tại
-    //                 echo "Không thể truy cập key 'id' vì biến không phải là mảng hoặc key không tồn tại.";
-    //             }
-    //         } else {
-    //             // Xử lý khi $list_cart[$i] không phải là đối tượng
-    //             echo "Lỗi: $list_cart[$i] không phải là đối tượng.";
-    //         }
-    //     }
-    // } else {
-    //     // Xử lý khi $list_cart không phải là mảng
-    //     echo "Lỗi: không phải là mảng.";
-    // }
 }

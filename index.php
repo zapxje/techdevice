@@ -1,6 +1,8 @@
     <?php
     session_start();
     if (!isset($_SESSION['cart'])) $_SESSION['cart'] = [];
+    if (!isset($_SESSION['orderTemp'])) $_SESSION['orderTemp'] = [];
+    if (!isset($_SESSION['cartsTemp'])) $_SESSION['cartsTemp'] = [];
     // include model file
     include 'model/connectDB.php';
     include 'model/categories.php';
@@ -20,13 +22,13 @@
 
     // include the header file
     $active = isset($_REQUEST['act']) ? $_REQUEST['act'] : '';
-    
+
     include 'view/header.php';
-    if(isset($_POST['submit-search'])){
-                $keyword = $_POST['keyword'];
-                $category= $_POST['category'];
-                header("location: index.php?act=store&search=$keyword&category=$category");
-            }
+    if (isset($_POST['submit-search'])) {
+        $keyword = $_POST['keyword'];
+        $category = $_POST['category'];
+        header("location: index.php?act=store&search=$keyword&category=$category");
+    }
     getOrderByUser(1);
     // include the content file
     if (isset($_REQUEST['act'])) {
@@ -96,6 +98,10 @@
 
             case 'topsel':
                 include 'view/checkout.php';
+                break;
+
+            case 'redirectCheckout':
+                include_once 'model/xl_redirectCheckout.php';
                 break;
 
             case 'sorry':

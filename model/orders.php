@@ -15,7 +15,7 @@ function getOrderByUser($idUser)
 function getOneOrderLimit()
 {
 	$sql = "SELECT * FROM orders ORDER BY id DESC LIMIT 1;";
-	return getAll($sql);
+	return getOne($sql);
 }
 
 function addCart($id_product, $id_order, $price, $quantity)
