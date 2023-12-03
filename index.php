@@ -98,10 +98,6 @@
                 include 'view/checkout.php';
                 break;
 
-            case 'checkoutMomo':
-                include 'model/xl_checkoutMomo.php';
-                break;
-
             case 'sorry':
                 include_once 'view/sorry.php';
                 break;

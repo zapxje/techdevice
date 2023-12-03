@@ -19,7 +19,7 @@
 <!-- /BREADCRUMB -->
 
 <!-- SECTION -->
-<form class="" method="POST" target="" enctype="application/x-www-form-urlencoded" action="index.php?act=checkoutMomo">
+<form class="" method="POST" target="" enctype="application/x-www-form-urlencoded" action="index.php?act=checkout">
     <!-- container -->
     <div class="container">
         <!-- row -->
