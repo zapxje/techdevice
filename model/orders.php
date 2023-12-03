@@ -1,6 +1,6 @@
 <?php
 
-function addOrder($id_user,$code_order, $name, $email, $address, $city, $phone, $note, $payment_method, $total_order)
+function addOrder($id_user, $code_order, $name, $email, $address, $city, $phone, $note, $payment_method, $total_order)
 {
 	$sql = "INSERT INTO orders(id_user, code_order, name, email, address, city, phone, note, payment_method, total_order)
 	VALUES('$id_user', '$code_order', '$name', '$email', '$address', '$city', '$phone', '$note',  
@@ -9,8 +9,8 @@ function addOrder($id_user,$code_order, $name, $email, $address, $city, $phone, 
 }
 function getOrderByUser($idUser)
 {
-    $sql = "SELECT * FROM orders WHERE id_user = $idUser";
-    return getAll($sql);
+	$sql = "SELECT * FROM orders WHERE id_user = $idUser";
+	return getAll($sql);
 }
 function getOneOrderLimit()
 {
@@ -27,4 +27,8 @@ function addCart($id_product, $id_order, $price, $quantity)
             VALUES($id_product, $selected_order_id, $price, $quantity)";
 	return querySql($sql);
 }
-
+function getCartByIdProduct($idProduct)
+{
+	$sql = "SELECT * FROM carts WHERE id_product = $idProduct";
+	return getOne($sql);
+}

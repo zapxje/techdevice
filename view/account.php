@@ -35,7 +35,9 @@
                             <?php endif; ?>
                         </div>
                         <div class="col-md-8 sidebar-username">
-                            <p> <?= $_SESSION['user']['username'] ?></p>
+                            <p>
+                                <?= $_SESSION['user']['username'] ?>
+                            </p>
                         </div>
                     </div>
 
@@ -63,7 +65,7 @@
                     <div class="row">
                         <div class="products-tabs">
                             <!-- tab 1 -->
-                            <div id="tab1" class="tab-pane active">
+                            <div id="tab1" class="tab-pane <?= isset($listCarts) ? '' : 'active' ?>">
                                 <div class="title-form">Thông Tin Tài Khoản</div>
                                 <form action="index.php?act=updateUser&id=<?= $_SESSION['user']['id'] ?>" method="POST" class="form-account" enctype="multipart/form-data">
                                     <div class="form-group row">
@@ -116,10 +118,10 @@
                                                 <thead>
                                                     <tr>
                                                         <th scope="col">Mã Đơn Hàng</th>
-                                                        <th scope="col">Tổng Tiền</th>
                                                         <th scope="col">Trạng Thái</th>
-                                                        <th scope="col">Chi Tiết</th>
                                                         <th scope="col">Địa Chỉ</th>
+                                                        <th scope="col">Tổng Tiền</th>
+                                                        <th scope="col">Chi Tiết</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
@@ -128,12 +130,24 @@
                                                     <?php else : ?>
                                                         <?php foreach ($listOrders as $order) : ?>
                                                             <tr>
-                                                                <td><?= $order['code_order'] ?></td>
-                                                                <td><?= number_format($order['total_order'], 0, ',', '.')."đ" ?></td>
-                                                                <td><?= $order['payment_status'] == 0 ? 'Chờ xác nhận' : ($order['payment_status'] == 1 ? 'Đang giao hàng' : 'Đã giao thành công') ?></td>
-                                                                <td><button type="button" class="btn btn-primary">Chi tiết đơn hàng</button></td>
-                                                                <td><button type="button" class="btn btn-primary">Địa chỉ giao hàng</button></td>
-                                                                <td><button type="button" class="btn btn-danger">Hủy</button></td>
+                                                                <td>
+                                                                    <?= $order['code_order'] ?>
+                                                                </td>
+                                                                <td>
+                                                                    <?= $order['payment_status'] == 0 ? 'Chờ xác nhận' : ($order['payment_status'] == 1 ? 'Đang giao hàng' : 'Đã giao thành công') ?>
+                                                                </td>
+                                                                <td style="width: 180px">
+                                                                    <?= $order['address'] ?>
+                                                                </td>
+                                                                <td>
+                                                                    <?= number_format($order['total_order'], 0, ',', '.') . "đ" ?>
+                                                                </td>
+                                                                <td>
+                                                                    <a href="index.php?act=account&idOrder=<?= $order['id'] ?>"><button type="button" class="btn btn-primary">Chi tiết đơn
+                                                                            hàng</button></a>
+                                                                </td>
+                                                                <td><button type="button" class="btn btn-danger">Hủy</button>
+                                                                </td>
                                                             </tr>
                                                         <?php endforeach; ?>
                                                     <?php endif; ?>
@@ -144,6 +158,58 @@
                                 </div>
                             </div>
                             <!-- /tab 3 -->
+                            <!-- tab CTDH -->
+                            <div id="tabCTDH" class="tab-pane <?= isset($listCarts) ? 'active' : '' ?>">
+                                <div class="title-form">Chi tiết đơn hàng</div>
+                                <div class="col-md-12">
+                                    <div class="card">
+                                        <div class="card-header">
+                                            <strong class="card-title"></strong>
+                                        </div>
+                                        <div class="card-body">
+                                            <table class="table table-orders">
+                                                <thead>
+                                                    <tr>
+                                                        <th scope="col">Thời Gian Đặt</th>
+                                                        <th scope="col">Tên Sản Phẩm</th>
+                                                        <th scope="col">Đơn Giá</th>
+                                                        <th scope="col">Số Lượng</th>
+                                                        <th scope="col">Thành Tiền</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <?php foreach ($listCarts as $cart) : ?>
+                                                        <tr>
+                                                            <td>
+                                                                <?= $cart['created_at'] ?>
+                                                            </td>
+                                                            <td style="width: 300px">
+                                                                <?= mb_strimwidth($cart['product_name'], 0, 70, "...") ?>
+                                                            </td>
+                                                            <td>
+                                                                <?= number_format($cart['price'], 0, ',', '.') . "đ" ?>
+                                                            </td>
+                                                            <td>
+                                                                <?= $cart['quantity'] ?>
+                                                            </td>
+                                                            <td>
+                                                                <?= number_format($cart['price'] * $cart['quantity'], 0, ',', '.') . "đ" ?>
+                                                            </td>
+                                                        </tr>
+                                                    <?php
+                                                        $totalPrice += $cart['price'] * $cart['quantity'];
+                                                    endforeach;
+                                                    ?>
+                                                </tbody>
+                                            </table>
+                                            <div class="card-footer text-right">
+                                                <strong class="card-title">Tổng: <?= number_format($totalPrice, 0, ',', '.') . "đ" ?></strong>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- /tab CTDH -->
                         </div>
                     </div>
                 </div>
