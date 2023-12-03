@@ -20,8 +20,13 @@
 
     // include the header file
     $active = isset($_REQUEST['act']) ? $_REQUEST['act'] : '';
+    
     include 'view/header.php';
-
+    if(isset($_POST['submit-search'])){
+                $keyword = $_POST['keyword'];
+                $category= $_POST['category'];
+                header("location: index.php?act=store&search=$keyword&category=$category");
+            }
     getOrderByUser(1);
     // include the content file
     if (isset($_REQUEST['act'])) {

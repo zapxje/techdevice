@@ -191,12 +191,12 @@ function getTotalProductByBothFilter($idCategory, $idBrand)
 }
 // ============================== Hàm lấy sản phẩm theo checkbox filter ============================== //
 
-function getProductBySearch($keyWord)
+function getProductBySearch($keyWord,$category)
 {
     $sql = "SELECT p.* , ca.name AS category_name, br.name AS brand_name 
     FROM products AS p 
     LEFT JOIN categories AS ca ON ca.id = p.id_category 
     LEFT JOIN brands AS br ON br.id = p.id_brand 
-    WHERE p.name LIKE '%$keyWord%'";
+    WHERE p.name LIKE '%$keyWord%' OR ca.id =$category";
     return getAll($sql);
 }
