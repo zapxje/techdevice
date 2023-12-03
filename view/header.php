@@ -91,15 +91,15 @@ ob_start();
                     <!-- SEARCH BAR -->
                     <div class="col-md-6">
                         <div class="header-search">
-                            <form action="index.php?act=store&search" method="post">
+                            <form action="index.php?act=store" method="POST">
                                 <select class="input-select" name="category">
                                     <option value="0">Tất cả danh mục</option>
                                     <?php foreach ($listCategories as $category) : ?>
                                         <option value="<?= $category['id'] ?>"><?= $category['name'] ?></option>
                                     <?php endforeach; ?>
                                 </select>
-                                <input id="live-search" class="input" placeholder="Tìm kiếm sản phẩm" name="search">
-                                <button type="submit" class="search-btn"><i class="fa fa-search"></i></button>
+                                <input id="live-search" name="keyword" class="input" placeholder="Tìm kiếm sản phẩm" name="search">
+                                <button type="submit" name="submit-search" class="search-btn"><i class="fa fa-search"></i></button>
                             </form>
                         </div>
                     </div>

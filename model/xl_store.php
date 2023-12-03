@@ -73,4 +73,19 @@ $totalPages = ceil($totalItems / $itemsPerPage);
 
 // ==================== Xử Lí Lọc Theo Giá ==================== //
 
-// ==================== Xử Lí Lọc Theo Giá ==================== //
+// ==================== Xử Lí Lọc Theo tìm kiếm ==================== //
+
+if (isset($_REQUEST['act'])) {
+    switch ($_GET['act']) {
+        case 'store':
+
+            if(isset($_GET['search'])){
+                $keyword=$_GET['search'];
+                $category=$_GET['category'];
+                $listProducts=getProductBySearch($keyword,$category);
+            }
+
+            break;
+        }
+    }
+
