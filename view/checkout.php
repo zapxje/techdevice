@@ -19,7 +19,7 @@
 <!-- /BREADCRUMB -->
 
 <!-- SECTION -->
-<form class="section" method="POST" action="">
+<form class="" method="POST" target="" enctype="application/x-www-form-urlencoded" action="index.php?act=checkoutMomo">
     <!-- container -->
     <div class="container">
         <!-- row -->
@@ -103,7 +103,6 @@
                                                 <input type="hidden" name="products[${index}][price]" value="${parseInt(product.price.replace("đ", "").replace(/\./g, ""))}">`;
                             });
                         </script>
-                        <form action=""></form>
                         <div class="order-col">
                             <input type="hidden" name="total-order">
                             <div><strong>TỔNG TIỀN</strong></div>
@@ -112,7 +111,7 @@
                         </div>
                     </div>
                     <div class="payment-method">
-                        <div class="input-radio">
+                        <!-- <div class="input-radio">
                             <input type="radio" name="payment" id="payment-1" value="Chuyển khoản trực tiếp">
                             <label for="payment-1">
                                 <span></span>
@@ -121,42 +120,45 @@
                             <div class="caption">
                                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
                             </div>
-                        </div>
+                        </div> -->
                         <div class="input-radio">
-                            <input type="radio" name="payment" id="payment-2" value="Thanh toán khi nhận hàng">
+                            <input type="radio" name="payment" id="payment-2" value="momoAtm">
                             <label for="payment-2">
                                 <span></span>
-                                Thanh toán khi nhận hàng
+                                Thanh toán bằng Momo ATM
                             </label>
                             <div class="caption">
                                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
                             </div>
                         </div>
                         <div class="input-radio">
-                            <input type="radio" name="payment" id="payment-3" value="Thanh toán khi nhận hàng">
+                            <input type="radio" name="payment" id="payment-3" value="momoQrcode">
                             <label for="payment-3">
                                 <span></span>
-                                Paypal System
+                                Thanh toán bằng Momo QRCode
                             </label>
                             <div class="caption">
                                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
                             </div>
                         </div>
                     </div>
+
                     <div class="input-checkbox">
-                        <input type="checkbox" id="terms">
-                        <label for="terms">
+                        <input type="checkbox" id="agree" name="agree">
+                        <label for="agree">
                             <span></span>
-                            I've read and accept the <a href="#">terms & conditions</a>
+                            Tôi đã đọc và chấp nhận các <a href="#">điều khoản và điều kiện</a>
                         </label>
                     </div>
-                    <button type="submit" name="submit-checkout" class="primary-btn order-submit">thanh toán</button>
+                    <button type="submit" class="primary-btn order-submit">Thanh toán</button>
+                    <!-- name="submit-checkout" -->
                 </div>
-                <!-- /Order Details -->
-            </div>
-            <!-- /row -->
-        </div>
-        <!-- /container -->
-    </div>
 </form>
+
+<!-- /Order Details -->
+</div>
+<!-- /row -->
+</div>
+<!-- /container -->
+</div>
 <!-- /SECTION -->

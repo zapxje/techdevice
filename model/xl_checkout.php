@@ -39,6 +39,10 @@ if (isset($_REQUEST['act'])) {
 								Hãy chọn phương thức thanh toán
 							</div>';
                 } else {
+                    // ============================ THANH TOÁN MOMO ============================ //
+                    if (isset($_POST['payUrl'])) {
+                    } else if ($_POST['payment'] == 'VNPay') {
+                    }
                     $permitted_chars = '0123456789ABCDEFGHJKLMNPQRSTUVWXYZ';
                     addOrder(
                         $_POST['id_user'],
@@ -52,10 +56,9 @@ if (isset($_REQUEST['act'])) {
                         $_POST['payment'],
                         $_POST['total-order']
                     );
-
                     $list_cart = array();
                     //thêm object cart vào list cart
-                    if($_POST['products']){
+                    if ($_POST['products']) {
                         foreach ($_POST['products'] as $product) {
                             $cart = (object)[
                                 "id" => $product['id'],

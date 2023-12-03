@@ -112,21 +112,6 @@
                         <p>Trống</p>
                     <?php endif; ?>
 
-                    <!-- <div class="product-options">
-                        <label>
-                            Size
-                            <select class="input-select">
-                                <option value="0">X</option>
-                            </select>
-                        </label>
-                        <label>
-                            Color
-                            <select class="input-select">
-                                <option value="0">Red</option>
-                            </select>
-                        </label>
-                    </div> -->
-
                     <div class="add-to-cart">
                         <div class="qty-label">
                             Số lượng
@@ -236,7 +221,7 @@
                                                     echo "($review5)"; ?>
                                                 </span>
                                                 <div class="rating-progress">
-                                                    <div style="width: <?= ($review5 / count($listReviews)) * 100 ?>%;">
+                                                    <div style="width: <?= count($listReviews) > 0 ? ($review5 / count($listReviews)) * 100 : 0 ?>%;">
                                                     </div>
                                                 </div>
                                             </li>
@@ -259,7 +244,7 @@
                                                     echo "($review4)"; ?>
                                                 </span>
                                                 <div class="rating-progress">
-                                                    <div style="width: <?= ($review4 / count($listReviews)) * 100 ?>%;">
+                                                    <div style="width: <?= count($listReviews) > 0 ? ($review4 / count($listReviews)) * 100 : 0 ?>%;">
                                                     </div>
                                                 </div>
                                             </li>
@@ -282,7 +267,7 @@
                                                     echo "($review3)"; ?>
                                                 </span>
                                                 <div class="rating-progress">
-                                                    <div style="width: <?= ($review3 / count($listReviews)) * 100 ?>%;">
+                                                    <div style="width: <?= count($listReviews) > 0 ? ($review3 / count($listReviews)) * 100 : 0 ?>%;">
                                                     </div>
                                                 </div>
                                             </li>
@@ -305,7 +290,7 @@
                                                     echo "($review2)"; ?>
                                                 </span>
                                                 <div class="rating-progress">
-                                                    <div style="width: <?= ($review2 / count($listReviews)) * 100 ?>%;">
+                                                    <div style="width: <?= count($listReviews) > 0 ? ($review2 / count($listReviews)) * 100 : 0 ?>%;">
                                                     </div>
                                                 </div>
                                             </li>
@@ -328,7 +313,7 @@
                                                     echo "($review1)"; ?>
                                                 </span>
                                                 <div class="rating-progress">
-                                                    <div style="width: <?= ($review1 / count($listReviews)) * 100 ?>%;">
+                                                    <div style="width: <?= count($listReviews) > 0 ? ($review1 / count($listReviews)) * 100 : 0 ?>%;">
                                                     </div>
                                                 </div>
                                             </li>
@@ -336,7 +321,6 @@
                                     </div>
                                 </div>
                                 <!-- /Rating -->
-
                                 <!-- Reviews -->
                                 <div class="col-md-6">
                                     <div id="reviews">
@@ -378,7 +362,7 @@
                                 <!-- /Reviews -->
 
                                 <!-- Review Form -->
-                                <?php if (isset($_SESSION['user']) && (isset($setCartByIdProduct['id_product'])) == isset($product['id'])) : ?>
+                                <?php if (isset($_SESSION['user']) && $setCartByIdProduct['id_product'] == isset($product['id'])) : ?>
                                     <div class="col-md-3">
                                         <div id="review-form">
                                             <form class="review-form" method="POST" action="">
@@ -405,6 +389,7 @@
                                     </div>
                                 <?php endif; ?>
                                 <!-- /Review Form -->
+
                             </div>
                         </div>
                         <!-- /tab2  -->
