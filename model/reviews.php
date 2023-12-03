@@ -10,6 +10,6 @@ function getReviewsByProduct($id)
 {
 	$sql = "SELECT r.*, u.username FROM reviews AS r
 	LEFT JOIN users as u ON u.id= r.id_user
-	WHERE r.id_product = '$id'";
+	WHERE r.id_product = '$id' ORDER BY r.id desc";
 	return getAll($sql);
 }

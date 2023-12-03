@@ -184,15 +184,21 @@ if (isset($_REQUEST['act']) && !empty($_REQUEST['act'])) {
                     $listImagesProduct = getImageByProduct($idProduct);
                     $listProperties = getPropertyByProduct($idProduct);
                     $listProductRelated = getProductByCategoryRelated($product['id_category'], $idProduct);
-                    $listReviews=getReviewsByProduct($idProduct);
-                    $setCartByIdProduct= getCartByIdProduct($idProduct);
-                    if($setCartByIdProduct){
-
-                        if(isset($_POST['submit-appraise'])){
-                            addReview($_SESSION['user']['id'],
-                            $idProduct,
-                            $_POST['comment'],
-                            $_POST['rating']);
+                    $listReviews = getReviewsByProduct($idProduct);
+                    $setCartByIdProduct = getCartByIdProduct($idProduct);
+                    if ($setCartByIdProduct) {
+                        if (isset($_POST['submit-appraise'])) {
+                            if (empty($_POST['rating'])) {
+                                $messageRating = "Hãy chọn số sao bạn muốn !";
+                            } else {
+                                addReview(
+                                    $_SESSION['user']['id'],
+                                    $idProduct,
+                                    $_POST['comment'],
+                                    $_POST['rating']
+                                );
+                                header("location: index.php?act=singleProduct&id=" . $idProduct . "&reviewted");
+                            }
                         }
                     }
                     include 'view/singleProduct.php';
@@ -203,24 +209,24 @@ if (isset($_REQUEST['act']) && !empty($_REQUEST['act'])) {
                 include 'view/home.php';
             }
             break;
-        // case 'store':
-        //     if (isset($_REQUEST['attributes_category']) || isset($_REQUEST['attributes_brand'])) {
-        //         $idCategory = 0;
-        //         $idBrand = 0;
-        //         if (isset($_REQUEST['attributes_category'])) {
-        //             $idCategory = $_REQUEST['attributes_category'];
-        //             $listProductsByCategory = getProductByCategoryFilter($idCategory);
-        //         }
-        //         if (isset($_REQUEST['attributes_brand'])) {
-        //             $idBrand = $_REQUEST['attributes_brand'];
-        //             $listProductsByCategory = getProductByBrandFilter($idBrand);
-        //         }
-        //         if (isset($_REQUEST['attributes_category']) && isset($_REQUEST['attributes_brand'])) {
-        //             $idCategory = $_REQUEST['attributes_category'];
-        //             $idBrand = $_REQUEST['attributes_brand'];
-        //             $listProductsByCategory = getProductByBothFilter($idCategory, $idBrand);
-        //         }
-        //     }
-        //     break;
+            // case 'store':
+            //     if (isset($_REQUEST['attributes_category']) || isset($_REQUEST['attributes_brand'])) {
+            //         $idCategory = 0;
+            //         $idBrand = 0;
+            //         if (isset($_REQUEST['attributes_category'])) {
+            //             $idCategory = $_REQUEST['attributes_category'];
+            //             $listProductsByCategory = getProductByCategoryFilter($idCategory);
+            //         }
+            //         if (isset($_REQUEST['attributes_brand'])) {
+            //             $idBrand = $_REQUEST['attributes_brand'];
+            //             $listProductsByCategory = getProductByBrandFilter($idBrand);
+            //         }
+            //         if (isset($_REQUEST['attributes_category']) && isset($_REQUEST['attributes_brand'])) {
+            //             $idCategory = $_REQUEST['attributes_category'];
+            //             $idBrand = $_REQUEST['attributes_brand'];
+            //             $listProductsByCategory = getProductByBothFilter($idCategory, $idBrand);
+            //         }
+            //     }
+            //     break;
     }
 }

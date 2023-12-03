@@ -1068,13 +1068,14 @@ textarea.input {
 .product .product-body .product-rating > i {
   position: relative;
   width: 14px;
-  margin-right: -4px;
+  /* margin-right: -4px; */
   background: #fff;
   color: #e4e7ed;
   z-index: 10;
 }
 
-.product .product-body .product-rating > i.fa-star {
+.product .product-body .product-rating > i.fa-star,
+.product .product-body .product-rating > i.fa-star-half {
   color: #ef233c;
 }
 
@@ -1619,10 +1620,12 @@ textarea.input {
 }
 
 .product-details .product-rating > i {
+  margin: 0 2px;
   color: #e4e7ed;
 }
 
-.product-details .product-rating > i.fa-star {
+.product-details .product-rating > i.fa-star,
+.product-details .product-rating > i.fa-star-half {
   color: #d10024;
 }
 
@@ -1834,7 +1837,9 @@ textarea.input {
 }
 
 .rating-avg .rating-stars > i.fa-star,
-.rating .rating-stars > i.fa-star {
+.rating-avg .rating-stars > i.fa-star-half,
+.rating .rating-stars > i.fa-star,
+.rating .rating-stars > i.fa-star-half {
   color: #d10024;
 }
 
@@ -1869,11 +1874,10 @@ textarea.input {
 
 /*-- Reviews --*/
 .reviews {
-  
   height: 250px;
   overflow-y: auto;
 }
-.reviews::-webkit-scrollbar{
+.reviews::-webkit-scrollbar {
   width: 0;
 }
 .reviews li {
@@ -1913,7 +1917,8 @@ textarea.input {
   color: #e4e7ed;
 }
 
-.reviews .review-heading .review-rating > i.fa-star {
+.reviews .review-heading .review-rating > i.fa-star,
+.reviews .review-heading .review-rating > i.fa-star-half {
   color: #d10024;
 }
 
@@ -2875,6 +2880,6 @@ button.btn.decrease {
   background: rgba(59, 93, 80, 0.2);
 }
 /* Table Orders Account */
-.table-orders{
+.table-orders {
   margin-top: 25px;
 }

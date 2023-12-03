@@ -63,13 +63,26 @@
                     <h2 class="product-name product-name-single"><?= $product['name'] ?></h2>
                     <div>
                         <div class="product-rating">
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star-o"></i>
+                            <?php if (count($listReviews) > 0) : ?>
+                                <?php
+                                $averageRate = array_sum(array_column($listReviews, 'rating')) / count($listReviews);
+                                $fullStars = floor($averageRate);
+                                $halfStar = fmod($averageRate, 1) >= 0.1 ? 1 : 0;
+                                $emptyStars = 5 - ($fullStars + $halfStar);
+                                ?>
+                                <?php for ($i = 0; $i < $fullStars + $halfStar; $i++) : ?>
+                                    <i class="fa <?php echo $i < $fullStars ? 'fa-star' : 'fa-star-half'; ?>"></i>
+                                <?php endfor; ?>
+                                <?php for ($i = 0; $i < $emptyStars; $i++) : ?>
+                                    <i class="fa fa-star-o"></i>
+                                <?php endfor; ?>
+                            <?php else : ?>
+                                <?php for ($i = 0; $i < 5; $i++) : ?>
+                                    <i class="fa fa-star-o"></i>
+                                <?php endfor; ?>
+                            <?php endif; ?>
                         </div>
-                        <a class="review-link" href="#">10 Đánh giá | Add your review</a>
+                        <a class="review-link" href="#"><?= count($listReviews) ?> Đánh giá | Add your review</a>
                     </div>
                     <h3 class="product-price">
                         <?= $product['price_sale'] > 0 ? number_format($product['price_sale'], 0, ',', '.') . 'đ' : number_format($product['price'], 0, ',', '.') . 'đ' ?>
@@ -165,7 +178,7 @@
                     <!-- product tab content -->
                     <div class="tab-content">
                         <!-- tab1  -->
-                        <div id="tab1" class="tab-pane fade in">
+                        <div id="tab1" class="tab-pane fade in <?= isset($_REQUEST['reviewted']) ? '' : 'active' ?>">
                             <div class="row">
                                 <div class="col-md-12">
                                     <p><?= $product['description'] ?></p>
@@ -175,19 +188,32 @@
                         <!-- /tab1  -->
 
                         <!-- tab2  -->
-                        <div id="tab2" class="tab-pane fade in  active">
+                        <div id="tab2" class="tab-pane fade in <?= isset($_REQUEST['reviewted']) ? 'active' : '' ?>">
                             <div class="row">
                                 <!-- Rating -->
                                 <div class="col-md-3">
                                     <div id="rating">
                                         <div class="rating-avg">
-                                            <span>4.5</span>
+                                            <span><?= count($listReviews) > 0 ? $fullStars + round(fmod($averageRate, 1), 1) : 0 ?></span>
                                             <div class="rating-stars">
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star-o"></i>
+                                                <?php if (count($listReviews) > 0) : ?>
+                                                    <?php
+                                                    $averageRate = array_sum(array_column($listReviews, 'rating')) / count($listReviews);
+                                                    $fullStars = floor($averageRate);
+                                                    $halfStar = fmod($averageRate, 1) >= 0.1 ? 1 : 0;
+                                                    $emptyStars = 5 - ($fullStars + $halfStar);
+                                                    ?>
+                                                    <?php for ($i = 0; $i < $fullStars + $halfStar; $i++) : ?>
+                                                        <i class="fa <?php echo $i < $fullStars ? 'fa-star' : 'fa-star-half'; ?>"></i>
+                                                    <?php endfor; ?>
+                                                    <?php for ($i = 0; $i < $emptyStars; $i++) : ?>
+                                                        <i class="fa fa-star-o"></i>
+                                                    <?php endfor; ?>
+                                                <?php else : ?>
+                                                    <?php for ($i = 0; $i < 5; $i++) : ?>
+                                                        <i class="fa fa-star-o"></i>
+                                                    <?php endfor; ?>
+                                                <?php endif; ?>
                                             </div>
                                         </div>
                                         <ul class="rating">
@@ -199,10 +225,20 @@
                                                     <i class="fa fa-star"></i>
                                                     <i class="fa fa-star"></i>
                                                 </div>
+                                                <span class="sum">
+                                                    <?php
+                                                    $review5 = 0;
+                                                    foreach ($listReviews as $review) {
+                                                        if ($review['rating'] == 5) {
+                                                            $review5++;
+                                                        }
+                                                    }
+                                                    echo "($review5)"; ?>
+                                                </span>
                                                 <div class="rating-progress">
-                                                    <div style="width: 80%;"></div>
+                                                    <div style="width: <?= ($review5 / count($listReviews)) * 100 ?>%;">
+                                                    </div>
                                                 </div>
-                                                <span class="sum">3</span>
                                             </li>
                                             <li>
                                                 <div class="rating-stars">
@@ -212,10 +248,20 @@
                                                     <i class="fa fa-star"></i>
                                                     <i class="fa fa-star-o"></i>
                                                 </div>
+                                                <span class="sum">
+                                                    <?php
+                                                    $review4 = 0;
+                                                    foreach ($listReviews as $review) {
+                                                        if ($review['rating'] == 4) {
+                                                            $review4++;
+                                                        }
+                                                    }
+                                                    echo "($review4)"; ?>
+                                                </span>
                                                 <div class="rating-progress">
-                                                    <div style="width: 60%;"></div>
+                                                    <div style="width: <?= ($review4 / count($listReviews)) * 100 ?>%;">
+                                                    </div>
                                                 </div>
-                                                <span class="sum">2</span>
                                             </li>
                                             <li>
                                                 <div class="rating-stars">
@@ -225,10 +271,20 @@
                                                     <i class="fa fa-star-o"></i>
                                                     <i class="fa fa-star-o"></i>
                                                 </div>
+                                                <span class="sum">
+                                                    <?php
+                                                    $review3 = 0;
+                                                    foreach ($listReviews as $review) {
+                                                        if ($review['rating'] == 3) {
+                                                            $review3++;
+                                                        }
+                                                    }
+                                                    echo "($review3)"; ?>
+                                                </span>
                                                 <div class="rating-progress">
-                                                    <div></div>
+                                                    <div style="width: <?= ($review3 / count($listReviews)) * 100 ?>%;">
+                                                    </div>
                                                 </div>
-                                                <span class="sum">0</span>
                                             </li>
                                             <li>
                                                 <div class="rating-stars">
@@ -238,10 +294,20 @@
                                                     <i class="fa fa-star-o"></i>
                                                     <i class="fa fa-star-o"></i>
                                                 </div>
+                                                <span class="sum">
+                                                    <?php
+                                                    $review2 = 0;
+                                                    foreach ($listReviews as $review) {
+                                                        if ($review['rating'] == 2) {
+                                                            $review2++;
+                                                        }
+                                                    }
+                                                    echo "($review2)"; ?>
+                                                </span>
                                                 <div class="rating-progress">
-                                                    <div></div>
+                                                    <div style="width: <?= ($review2 / count($listReviews)) * 100 ?>%;">
+                                                    </div>
                                                 </div>
-                                                <span class="sum">0</span>
                                             </li>
                                             <li>
                                                 <div class="rating-stars">
@@ -251,10 +317,20 @@
                                                     <i class="fa fa-star-o"></i>
                                                     <i class="fa fa-star-o"></i>
                                                 </div>
+                                                <span class="sum">
+                                                    <?php
+                                                    $review1 = 0;
+                                                    foreach ($listReviews as $review) {
+                                                        if ($review['rating'] == 1) {
+                                                            $review1++;
+                                                        }
+                                                    }
+                                                    echo "($review1)"; ?>
+                                                </span>
                                                 <div class="rating-progress">
-                                                    <div></div>
+                                                    <div style="width: <?= ($review1 / count($listReviews)) * 100 ?>%;">
+                                                    </div>
                                                 </div>
-                                                <span class="sum">0</span>
                                             </li>
                                         </ul>
                                     </div>
@@ -265,91 +341,30 @@
                                 <div class="col-md-6">
                                     <div id="reviews">
                                         <ul class="reviews">
-                                            <?php foreach ($listReviews as $review) : ?>
-                                                <li>
-                                                    <div class="review-heading">
-                                                        <h5 class="name"><?= $review['username'] ?></h5>
-                                                        <p class="date"><?= $review['created_at'] ?></p>
-                                                        <div class="review-rating">
-                                                            <?php for ($i = 0; $i < $review['rating']; $i++) : ?>
-                                                                <i class="fa fa-star"></i>
-                                                            <?php endfor; ?>
+                                            <?php if (empty($listReviews)) : ?>
+                                                <p class="text-center">Hiện chưa có đánh giá nào!</p>
+                                            <?php else : ?>
+                                                <?php foreach ($listReviews as $review) : ?>
+                                                    <li>
+                                                        <div class="review-heading">
+                                                            <h5 class="name"><?= $review['username'] ?></h5>
+                                                            <p class="date"><?= $review['created_at'] ?></p>
+                                                            <div class="review-rating">
+                                                                <?php for ($i = 0; $i < $review['rating']; $i++) : ?>
+                                                                    <i class="fa fa-star"></i>
+                                                                <?php endfor; ?>
 
-                                                            <?php for ($i = 0; $i < 5 - $review['rating']; $i++) : ?>
-                                                                <i class="fa fa-star-o empty"></i>
-                                                            <?php endfor; ?>
+                                                                <?php for ($i = 0; $i < 5 - $review['rating']; $i++) : ?>
+                                                                    <i class="fa fa-star-o empty"></i>
+                                                                <?php endfor; ?>
+                                                            </div>
                                                         </div>
-                                                    </div>
-                                                    <div class="review-body">
-                                                        <p><?= $review['comment'] ?></p>
-                                                    </div>
-                                                </li>
-                                            <?php endforeach; ?>
-                                            <li>
-                                                <div class="review-heading">
-                                                    <h5 class="name">John</h5>
-                                                    <p class="date">27 DEC 2018, 8:0 PM</p>
-                                                    <div class="review-rating">
-                                                        <i class="fa fa-star"></i>
-                                                        <i class="fa fa-star"></i>
-                                                        <i class="fa fa-star"></i>
-                                                        <i class="fa fa-star"></i>
-                                                        <i class="fa fa-star-o empty"></i>
-                                                    </div>
-                                                </div>
-                                                <div class="review-body">
-                                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</p>
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <div class="review-heading">
-                                                    <h5 class="name">John</h5>
-                                                    <p class="date">27 DEC 2018, 8:0 PM</p>
-                                                    <div class="review-rating">
-                                                        <i class="fa fa-star"></i>
-                                                        <i class="fa fa-star"></i>
-                                                        <i class="fa fa-star"></i>
-                                                        <i class="fa fa-star"></i>
-                                                        <i class="fa fa-star-o empty"></i>
-                                                    </div>
-                                                </div>
-                                                <div class="review-body">
-                                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</p>
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <div class="review-heading">
-                                                    <h5 class="name">John</h5>
-                                                    <p class="date">27 DEC 2018, 8:0 PM</p>
-                                                    <div class="review-rating">
-                                                        <i class="fa fa-star"></i>
-                                                        <i class="fa fa-star"></i>
-                                                        <i class="fa fa-star"></i>
-                                                        <i class="fa fa-star"></i>
-                                                        <i class="fa fa-star-o empty"></i>
-                                                    </div>
-                                                </div>
-                                                <div class="review-body">
-                                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</p>
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <div class="review-heading">
-                                                    <h5 class="name">John</h5>
-                                                    <p class="date">27 DEC 2018, 8:0 PM</p>
-                                                    <div class="review-rating">
-                                                        <i class="fa fa-star"></i>
-                                                        <i class="fa fa-star"></i>
-                                                        <i class="fa fa-star"></i>
-                                                        <i class="fa fa-star"></i>
-                                                        <i class="fa fa-star-o empty"></i>
-                                                    </div>
-                                                </div>
-                                                <div class="review-body">
-                                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</p>
-                                                </div>
-                                            </li>
-
+                                                        <div class="review-body">
+                                                            <p><?= $review['comment'] ?></p>
+                                                        </div>
+                                                    </li>
+                                                <?php endforeach; ?>
+                                            <?php endif; ?>
                                         </ul>
                                         <!-- <ul class="reviews-pagination">
                                             <li class="active">1</li>
@@ -367,9 +382,10 @@
                                     <div class="col-md-3">
                                         <div id="review-form">
                                             <form class="review-form" method="POST" action="">
-                                                <textarea class="input" name="comment" placeholder="Your Review"></textarea>
+                                                <p class="text-danger"><?= isset($messageRating) ? $messageRating : '' ?></p>
+                                                <textarea class="input" name="comment" placeholder="Đánh giá của bạn"></textarea>
                                                 <div class="input-rating">
-                                                    <span>Your Rating: </span>
+                                                    <span>Đánh giá sao: </span>
                                                     <div class="stars">
                                                         <input id="star5" name="rating" value="5" type="radio"><label for="star5"></label>
                                                         <input id="star4" name="rating" value="4" type="radio"><label for="star4"></label>
@@ -439,6 +455,11 @@
                                 <del class="product-old-price"><?= $product['price_sale'] > 0 ? number_format($product['price'], 0, ',', '.') . 'đ' : '' ?></del>
                             </h4>
                             <div class="product-rating">
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
                             </div>
                         </div>
                         <div class="add-to-cart">
