@@ -695,10 +695,10 @@ function updateCategoryURL(categoryUrl) {
 
     if (categoryIndex !== -1) {
       currentQueryString = currentQueryString.slice(0, categoryIndex) + '&attributes_category=' + categoryUrl.join('%2C');
-  
+
     } else {
       currentQueryString += '&attributes_category=' + categoryUrl.join('%2C');
-  
+
     }
 
     localStorage.setItem('categoryCheckboxState', JSON.stringify(categoryUrl));
@@ -713,14 +713,14 @@ function updateBrandURL(brandUrl) {
   let currentQueryString = window.location.search;
   let brandIndex = currentQueryString.indexOf('&attributes_brand=');
   if (brandUrl.length > 0) {
-    
+
     if (brandIndex !== -1) {
       currentQueryString = currentQueryString.slice(0, brandIndex) + '&attributes_brand=' + brandUrl.join('%2C');
-  
+
     } else {
-      
+
       currentQueryString += '&attributes_brand=' + brandUrl.join('%2C');
-  
+
     }
 
     localStorage.setItem('brandCheckboxState', JSON.stringify(brandUrl));
@@ -731,7 +731,7 @@ function updateBrandURL(brandUrl) {
   }
   updateURL(currentQueryString);
 }
-function updateURL(currentQueryString){
+function updateURL(currentQueryString) {
   let finalQueryString = currentQueryString;
   let categoryIndex = currentQueryString.indexOf('&attributes_category=');
   let brandIndex = currentQueryString.indexOf('&attributes_brand=');
@@ -739,7 +739,7 @@ function updateURL(currentQueryString){
   const storedBrandCheckboxState = localStorage.getItem('brandCheckboxState');
   const storedCategoryCheckboxState = localStorage.getItem('categoryCheckboxState');
   const brandUrl = storedBrandCheckboxState ? JSON.parse(storedBrandCheckboxState) : [];
-  const categoryUrl= storedCategoryCheckboxState ? JSON.parse(storedCategoryCheckboxState) :[];
+  const categoryUrl = storedCategoryCheckboxState ? JSON.parse(storedCategoryCheckboxState) : [];
   if (brandUrl.length > 0 && brandIndex === -1) {
     // If brand URL parameter doesn't exist, add it
     finalQueryString += '&attributes_brand=' + brandUrl.join('%2C');
@@ -754,11 +754,11 @@ function updateURL(currentQueryString){
     // If brand URL parameter exists but categoryUrl is empty, remove it
     finalQueryString = finalQueryString.replace(/&attributes_category=[^&]*/, '');
   }
-  
+
 
   // Cập nhật URL với cả hai query strings mới
   window.history.replaceState({}, '', finalQueryString);
-  window.location.href = currentQueryString;
+  window.location.href = finalQueryString;
 
   loadCheckbox(categoryUrl, categoryFilters);
   loadCheckbox(brandUrl, brandFilters);
@@ -801,7 +801,6 @@ brandFilters.forEach(checkbox => {
   checkbox.addEventListener('change', handleChange);
 });
 
-    // ==================== Function filter end ==================== //
+// ==================== Function filter end ==================== //
 
-    // Join the array of HTML strings and insert into the DOM
-  
+// Join the array of HTML strings and insert into the DOM

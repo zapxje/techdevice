@@ -1,6 +1,6 @@
 <?php
 
-function addOrder($id_user, $code_order, $name, $email, $address, $city, $phone, $note, $payment_method, $total_order)
+function addOrder($id_user,$code_order, $name, $email, $address, $city, $phone, $note, $payment_method, $total_order)
 {
 	$sql = "INSERT INTO orders(id_user, code_order, name, email, address, city, phone, note, payment_method, total_order)
 	VALUES('$id_user', '$code_order', '$name', '$email', '$address', '$city', '$phone', '$note',  
@@ -27,3 +27,4 @@ function addCart($id_product, $id_order, $price, $quantity)
             VALUES($id_product, $selected_order_id, $price, $quantity)";
 	return querySql($sql);
 }
+
