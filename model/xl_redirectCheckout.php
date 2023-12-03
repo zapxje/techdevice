@@ -2,23 +2,21 @@
 // TRANG NÀY LÀ XỬ LÝ KHI THANH TOÁN BẰNG VÍ ĐIỆN TỰ SẼ TRẢ VỀ LÀ THÀNH CÔNG HAY THẤT BẠI, RỒI LƯU LẠI 
 // CÁC MÃ GIAO DỊCH CỦA NÓ.
 
-if (isset($_REQUEST['partnerCode'])) {
-    if (isset($_REQUEST['message']) && $_REQUEST['message'] == "Successful.") {
+if (isset($_REQUEST['partnerCode']) || isset($_REQUEST['vnp_TmnCode'])) {
+    if (isset($_REQUEST['message']) && $_REQUEST['message'] == "Successful." || isset($_REQUEST['vnp_TransactionStatus']) && $_REQUEST['vnp_TransactionStatus'] == 00) {
         //Nếu thanh toán thành công thì tạo Order//
-        foreach ($_SESSION['orderTemp'] as $order) {
-            addOrder(
-                $order['id_user'],
-                $order['code_order'],
-                $order['name'],
-                $order['email'],
-                $order['address'],
-                $order['city'],
-                $order['phone'],
-                $order['note'],
-                $order['payment_method'],
-                $order['total_order'],
-            );
-        }
+        addOrder(
+            $_SESSION['orderTemp']['id_user'],
+            $_SESSION['orderTemp']['code_order'],
+            $_SESSION['orderTemp']['name'],
+            $_SESSION['orderTemp']['email'],
+            $_SESSION['orderTemp']['address'],
+            $_SESSION['orderTemp']['city'],
+            $_SESSION['orderTemp']['phone'],
+            $_SESSION['orderTemp']['note'],
+            $_SESSION['orderTemp']['payment_method'],
+            $_SESSION['orderTemp']['total_order'],
+        );
         unset($_SESSION['orderTemp']);
         //Sau đó thêm Carts dựa trên idOrder Mới nhất//
         $newOrder = getOneOrderLimit();

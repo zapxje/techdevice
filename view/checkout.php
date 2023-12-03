@@ -111,34 +111,47 @@
                         </div>
                     </div>
                     <div class="payment-method">
-                        <!-- <div class="input-radio">
-                            <input type="radio" name="payment" id="payment-1" value="Chuyển khoản trực tiếp">
+                        <div class="input-radio">
+                            <input type="radio" name="payment" id="payment-1" value="COD">
                             <label for="payment-1">
                                 <span></span>
-                                Chuyển khoản trực tiếp
+                                Thanh toán khi nhận
                             </label>
-                            <div class="caption">
+                            <!-- <div class="caption">
                                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                            </div>
-                        </div> -->
+                            </div> -->
+                        </div>
                         <div class="input-radio">
-                            <input type="radio" name="payment" id="payment-2" value="momoAtm">
+                            <input type="radio" name="payment" id="payment-2" value="MOMOATM">
                             <label for="payment-2">
                                 <span></span>
-                                Thanh toán bằng Momo ATM
+                                Thanh toán bằng MOMO ATM
                             </label>
                             <div class="caption">
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                                <p>Momo là một dịch vụ thanh toán di động độc đáo tại Việt Nam, cung cấp giải pháp thanh toán nhanh chóng và thuận tiện cho người dùng di động. </p>
                             </div>
                         </div>
                         <div class="input-radio">
-                            <input type="radio" name="payment" id="payment-3" value="momoQrcode">
+                            <input type="radio" name="payment" id="payment-3" value="MOMOQRCode">
                             <label for="payment-3">
                                 <span></span>
-                                Thanh toán bằng Momo QRCode
+                                Thanh toán bằng MOMO QRCode
                             </label>
                             <div class="caption">
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                                <p>
+                                    Momo QR code là một hình thức thanh toán tiện lợi được thực hiện thông qua quét mã QR để thực hiện các giao dịch tài chính.</p>
+                            </div>
+                        </div>
+                        <div class="input-radio">
+                            <input type="radio" name="payment" id="payment-4" value="VNPAY">
+                            <label for="payment-4">
+                                <span></span>
+                                Thanh toán bằng VNPAY
+                            </label>
+                            <div class="caption">
+                                <p>
+                                    VNPAY là một dịch vụ thanh toán điện tử tại Việt Nam, cung cấp các giải pháp thanh toán trực tuyến cho cá nhân và doanh nghiệp.
+                                </p>
                             </div>
                         </div>
                     </div>
