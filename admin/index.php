@@ -97,6 +97,10 @@ if (isset($_SESSION['user']) && !empty($_SESSION['user']) && $_SESSION['user']['
                 include_once("view/productsAd.php");
                 break;
 
+            case 'imagesProduct':
+                include_once("../model/xl_images.php");
+                break;
+
             case 'properties':
                 include_once("../model/xl_products.php");
                 break;

@@ -116,7 +116,7 @@
                                             <img width="50px" height="50px" src="../view/assets/img/product/<?= $product['image'] ?>" alt="">
                                             <?php if (count(getImageByProduct($product['id']))) : ?>
                                                 <div class="count-images-product">
-                                                    <a href="javascript:void(0)">+<?= count(getImageByProduct($product['id'])) ?></a>
+                                                    <a href="index.php?act=imagesProduct&id=<?= $product['id'] ?>">+<?= count(getImageByProduct($product['id'])) ?></a>
                                                 </div>
                                             <?php endif; ?>
                                         </td>
