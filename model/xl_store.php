@@ -81,8 +81,7 @@ if (isset($_REQUEST['act'])) {
 
             if(isset($_GET['search'])){
                 $keyword=$_GET['search'];
-                $category=$_GET['category'];
-                $listProducts=getProductBySearch($keyword,$category);
+                $listProducts=getProductBySearch($keyword);
             }
 
             break;
