@@ -26,8 +26,7 @@
     include 'view/header.php';
     if (isset($_POST['submit-search'])) {
         $keyword = $_POST['keyword'];
-        $category = $_POST['category'];
-        header("location: index.php?act=store&search=$keyword&category=$category");
+        header("location: index.php?act=store&search=$keyword");
     }
     getOrderByUser(1);
     // include the content file

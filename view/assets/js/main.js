@@ -689,6 +689,9 @@ function handleBrandChange(newValue) {
 // Hàm cập nhật URL
 function updateCategoryURL(categoryUrl) {
   let currentQueryString = window.location.search;
+  if(currentQueryString.indexOf('&search=')){
+    currentQueryString= currentQueryString.replace(/&search=[^&]*/, '');
+  }
   // Kiểm tra xem có checkbox nào được chọn hay không
   if (categoryUrl.length > 0) {
     let categoryIndex = currentQueryString.indexOf('&attributes_category=');
@@ -711,6 +714,9 @@ function updateCategoryURL(categoryUrl) {
 }
 function updateBrandURL(brandUrl) {
   let currentQueryString = window.location.search;
+  if(currentQueryString.indexOf('&search=')){
+    currentQueryString= currentQueryString.replace(/&search=[^&]*/, '');
+  }
   let brandIndex = currentQueryString.indexOf('&attributes_brand=');
   if (brandUrl.length > 0) {
 
@@ -758,7 +764,7 @@ function updateURL(currentQueryString) {
 
   // Cập nhật URL với cả hai query strings mới
   window.history.replaceState({}, '', finalQueryString);
-  window.location.href = finalQueryString;
+ window.location.href = finalQueryString;
 
   loadCheckbox(categoryUrl, categoryFilters);
   loadCheckbox(brandUrl, brandFilters);
