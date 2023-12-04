@@ -146,7 +146,9 @@
                                                                     <a href="index.php?act=account&idOrder=<?= $order['id'] ?>"><button type="button" class="btn btn-primary">Chi tiết đơn
                                                                             hàng</button></a>
                                                                 </td>
-                                                                <td><button type="button" class="btn btn-danger">Hủy</button>
+                                                                <td><?= $order['payment_status'] == 0 ? '<button type="button" class="btn btn-danger">Hủy</button>' : ($order['payment_status'] == 1 ? '' : '<a href="index.php?act=account&idOrder='.$order['id'].'"><button type="button" class="btn btn-warning">đánh giá đơn
+                                                                            hàng</button></a>') ?>
+                                                                    
                                                                 </td>
                                                             </tr>
                                                         <?php endforeach; ?>
@@ -194,6 +196,8 @@
                                                             </td>
                                                             <td>
                                                                 <?= number_format($cart['price'] * $cart['quantity'], 0, ',', '.') . "đ" ?>
+                                                            </td>
+                                                            <td><?= $order['payment_status'] == 0 ? '' : ($order['payment_status'] == 1 ? '' : '<a href="index.php?act=singleProduct&id='.$cart['id_product'].'"><button type="button" class="btn btn-warning">đánh giá</button></a>')?>
                                                             </td>
                                                         </tr>
                                                     <?php
