@@ -29,6 +29,9 @@ function addCart($id_product, $id_order, $price, $quantity)
 }
 function getCartByIdProduct($idProduct)
 {
-	$sql = "SELECT * FROM carts WHERE id_product = $idProduct";
+	$sql = "SELECT c.*, od.id_user as order_idUser
+			FROM carts as c
+			LEFT JOIN orders as od ON c.id_order = od.id
+			WHERE c.id_product = $idProduct";
 	return getOne($sql);
 }

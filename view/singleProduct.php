@@ -362,7 +362,7 @@
                                 <!-- /Reviews -->
 
                                 <!-- Review Form -->
-                                <?php if (isset($_SESSION['user']) && $setCartByIdProduct['id_product'] == isset($product['id'])) : ?>
+                                <?php if (isset($_SESSION['user']) && isset($setCartByIdProduct['id_product']) == isset($product['id']) && $_SESSION['user']['id'] == $setCartByIdProduct['order_idUser']) : ?>
                                     <div class="col-md-3">
                                         <div id="review-form">
                                             <form class="review-form" method="POST" action="">

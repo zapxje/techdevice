@@ -83,7 +83,7 @@ function getProductByCategoryRelated($idCategory, $idProduct)
         BETWEEN (SELECT COALESCE(price_sale, price)*0.8 FROM products WHERE id = $idProduct) 
         AND (SELECT COALESCE(price_sale, price)*1.2 FROM products WHERE id = $idProduct))
         )
-    AND p.id <> $idProduct ";
+    AND p.id <> $idProduct LIMIT 4";
     return getAll($sql);
 }
 //Lấy 3 sản phẩm trong tổng (sản phẩm bán chạy)
