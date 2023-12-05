@@ -7,6 +7,11 @@ function addOrder($id_user, $code_order, $name, $email, $address, $city, $phone,
           '$payment_method', $total_order)";
 	return querySql($sql);
 }
+function getOneOrder($idOrder)
+{
+	$sql = "SELECT * FROM orders WHERE id = $idOrder";
+	return getOne($sql);
+}
 function getOrderByUser($idUser)
 {
 	$sql = "SELECT * FROM orders WHERE id_user = $idUser";

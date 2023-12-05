@@ -6384,7 +6384,7 @@ header .form-inline .search-form.close {
 }
 /*================ Css Operation End ================*/
 /*================ Css Count Images Product ================*/
-.images-product-admin {
+.images-product-admin > a {
   display: flex;
   align-items: center;
 }
@@ -6392,13 +6392,15 @@ header .form-inline .search-form.close {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-left: 5px;
+  margin-left: 3px;
   width: 35px;
   height: 35px;
-  background-color: #a9a9a9;
-}
-.count-images-product a {
   color: white;
+  background-color: #a9a9a9;
+  transition: all 0.5s ease;
+}
+.images-product-admin > a:hover .count-images-product{
+  background-color: #d3d3d3;
 }
 /*================ Css Count Images Product ================*/
 

@@ -5,5 +5,6 @@ if (isset($_SESSION['user']) && !empty($_SESSION['user'])) {
 //Lấy danh sách đơn hàng của user
 if (isset($_REQUEST['idOrder']) && !empty($_REQUEST['idOrder'])) {
     $listCarts = getCartByOrder($_REQUEST['idOrder']);
+    $orderAlone = getOneOrder($_REQUEST['idOrder']);
     $totalPrice = 0;
 }
