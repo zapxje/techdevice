@@ -807,6 +807,14 @@ brandFilters.forEach(checkbox => {
   checkbox.addEventListener('change', handleChange);
 });
 
+let currentUrl=window.location.search;
+console.log(currentUrl);
+if(currentUrl == '?act=store'){
+
+  localStorage.removeItem('categoryCheckboxState');
+  localStorage.removeItem('brandCheckboxState');
+}
+
 // ==================== Function filter end ==================== //
 
 // Join the array of HTML strings and insert into the DOM
