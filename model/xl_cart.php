@@ -56,7 +56,15 @@ if (isset($_REQUEST['act']) && !empty($_REQUEST['act'])) {
     }
 }
 //Tổng sản phẩm trong giỏ hàng
-$quantities = array_column($_SESSION['cart'], 4);
+// $quantities = array_column($_SESSION['cart'], 4);
+$quantities = array();
+if (isset($_SESSION['cart']) && is_array($_SESSION['cart'])) {
+    foreach ($_SESSION['cart'] as $item) {
+        if (isset($item[4])) {
+            $quantities[] = $item[4];
+        }
+    }
+}
 $totalQuantity = array_sum($quantities);
 //Tổng giá trong giỏ hàng
 $subtotal = 0;
