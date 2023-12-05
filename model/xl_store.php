@@ -79,12 +79,11 @@ if (isset($_REQUEST['act'])) {
     switch ($_GET['act']) {
         case 'store':
 
-            if(isset($_GET['search'])){
-                $keyword=$_GET['search'];
-                $listProducts=getProductBySearch($keyword);
+            if (isset($_GET['search'])) {
+                $keyword = $_GET['search'];
+                $listProducts = getProductBySearch($keyword);
             }
 
             break;
-        }
     }
-
+}

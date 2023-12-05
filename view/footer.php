@@ -203,8 +203,8 @@
 		<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
 
 		<script>
-			$('.price_from').val(<?= $minPriceProduct ?>);
-			$('.price_to').val(<?= $maxPriceProduct / 2 ?>);
+			$('.price_from').val(<?= isset($minPriceProduct) ? $minPriceProduct : '' ?>);
+			$('.price_to').val(<?= isset($maxPriceProduct) ? $maxPriceProduct / 2 : '' ?>);
 			$(function() {
 				$("#slider-range").slider({
 					range: true,

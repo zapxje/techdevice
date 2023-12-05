@@ -48,6 +48,7 @@
                 break;
 
             case 'contact':
+                include 'mail/sendEmail.php';
                 include 'view/contact.php';
                 break;
 

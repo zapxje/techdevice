@@ -194,8 +194,6 @@ document.addEventListener("DOMContentLoaded", function () {
     // Nếu tồn tại, thực hiện đặt trọng tâm
     firstInput.focus();
   } else {
-    // Xử lý trường hợp không tìm thấy phần tử
-    console.error("Không tìm thấy phần tử với ID 'firstInput'");
   }
 });
 // ==================== Focus First Input ==================== //

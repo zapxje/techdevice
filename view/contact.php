@@ -32,25 +32,30 @@
                         </div>
                         <div class="address col-lg-4">
                             <i class="fa-solid fa-envelope"></i>
-                            <p>infor@example.com</p>
+                            <p>infor@techdevice.online</p>
                         </div>
                         <div class="address col-lg-4">
                             <i class="fa-solid fa-phone"></i>
                             <p>+80 333.666.999</p>
                         </div>
                     </div>
-                    <form class="form-ct">
+                    <?php if ((isset($notification) && !empty($notification)) || (isset($success) && !empty($success))) : ?>
+                        <div class="alert <?php echo isset($success) ? 'alert-success' : 'alert-danger'; ?>" role="alert" bis_skin_checked="1">
+                            <?php echo isset($success) ? $success : $notification; ?>
+                        </div>
+                    <?php endif; ?>
+                    <form class="form-ct" action="" method="post">
                         <div class="form-group">
                             <label for="">Họ và tên</label>
-                            <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Họ và tên">
+                            <input type="text" name="full_name" class="form-control" id="exampleInputEmail1" placeholder="Họ và tên">
                         </div>
                         <div class="form-group">
                             <label for="">Email</label>
-                            <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Địa chỉ email">
+                            <input type="email" name="email" class="form-control" id="exampleInputEmail1" placeholder="Địa chỉ email">
                         </div>
                         <div class="form-group">
                             <label for="message">Tin nhắn</label><br>
-                            <textarea name="massage" rows="5" placeholder="" class="form-control"></textarea>
+                            <textarea name="message" rows="5" placeholder="Nội dung liên hệ" class="form-control"></textarea>
                         </div>
                         <button type="submit" class="btn btn-main">Gửi Tin Nhắn</button>
                     </form>
