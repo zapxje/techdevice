@@ -146,13 +146,18 @@ function getTotalProductByFilterPrice($price_from, $price_to)
 //     WHERE id_category IN ($idCategory) OR id_brand IN ($idBrand)";
 //     return getAll($sql);
 // }
-function getProductByCategoryFilter($idCategory, $limit, $offset)
+function getProductByCategoryFilter($idCategory, $limit, $offset, $price_from = null, $price_to = null)
 {
     $sql = "SELECT p.*, ca.name AS category_name, br.name AS brand_name FROM products AS p 
     LEFT JOIN categories AS ca ON ca.id = p.id_category 
     LEFT JOIN brands AS br ON br.id = p.id_brand 
-    WHERE id_category IN ($idCategory)
-    LIMIT $limit OFFSET $offset";
+    WHERE p.id_category IN ($idCategory) ";
+    // Áp dụng điều kiện giá nếu được truyền vào
+    if ($price_from !== null && $price_to !== null) {
+        $sql .= "AND p.price BETWEEN $price_from AND $price_to ";
+    }
+    // Thêm LIMIT và OFFSET vào câu truy vấn
+    $sql .= "LIMIT $limit OFFSET $offset";
     return getAll($sql);
 }
 function getTotalProductByCategoryFilter($idCategory)
@@ -166,7 +171,8 @@ function getProductByBrandFilter($idBrand, $limit, $offset)
     $sql = "SELECT p.*, ca.name AS category_name, br.name AS brand_name FROM products AS p 
     LEFT JOIN categories AS ca ON ca.id = p.id_category 
     LEFT JOIN brands AS br ON br.id = p.id_brand 
-    WHERE id_brand IN ($idBrand)";
+    WHERE id_brand IN ($idBrand)
+    LIMIT $limit OFFSET $offset";
     return getAll($sql);
 }
 function getTotalProductByBrandFilter($idBrand)
@@ -192,12 +198,19 @@ function getTotalProductByBothFilter($idCategory, $idBrand)
 }
 // ============================== Hàm lấy sản phẩm theo checkbox filter ============================== //
 
-function getProductBySearch($keyWord)
+function getProductBySearch($keyWord, $limit, $offset)
 {
     $sql = "SELECT p.* , ca.name AS category_name, br.name AS brand_name 
     FROM products AS p 
     LEFT JOIN categories AS ca ON ca.id = p.id_category 
     LEFT JOIN brands AS br ON br.id = p.id_brand 
-    WHERE p.name LIKE '%$keyWord%' ";
+    WHERE p.name LIKE '%$keyWord%' 
+    LIMIT $limit OFFSET $offset";
+    return getAll($sql);
+}
+function getTotalProductBySearch($keyWord)
+{
+    $sql = "SELECT * FROM products
+    WHERE name LIKE '%$keyWord%'";
     return getAll($sql);
 }

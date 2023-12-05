@@ -19,7 +19,9 @@
 
 <!-- ALERT SEARCH -->
 <div class="container">
-	<p class="text-center"><?= isset($messageFilter) ? $messageFilter : '' ?></p>
+	<?php if (isset($messageStore) && !empty($messageStore)) : ?>
+		<p class="text-center"><?= $messageStore ?></p>
+	<?php endif; ?>
 </div>
 <!-- /ALERT SEARCH -->
 
@@ -34,20 +36,22 @@
 
 				<!-- aside Widget -->
 				<form action="<?= $currentURL ?>&filterPrice" method="post">
-					<div class="aside">
-						<h3 class="aside-title">Giá sản phẩm</h3>
-						<div class="row">
-							<div class="col-md-8">
-								<input type="text" id="amount" readonly style="border:0; color:#f6931f; font-weight:bold;">
-								<div id="slider-range"></div>
-								<input type="hidden" class="price_from" name="from">
-								<input type="hidden" class="price_to" name="to">
-							</div>
-							<div class="col-md-4">
-								<button type="submit" class="btn btn-main mb-2">Lọc</button>
+					<?php if (isset($minPriceProduct) && isset($maxPriceProduct) && !empty($minPriceProduct)) : ?>
+						<div class="aside">
+							<h3 class="aside-title">Giá sản phẩm</h3>
+							<div class="row">
+								<div class="col-md-8">
+									<input type="text" id="amount" readonly style="border:0; color:#f6931f; font-weight:bold;">
+									<div id="slider-range"></div>
+									<input type="hidden" class="price_from" name="from">
+									<input type="hidden" class="price_to" name="to">
+								</div>
+								<div class="col-md-4">
+									<button type="submit" class="btn btn-main mb-2">Lọc</button>
+								</div>
 							</div>
 						</div>
-					</div>
+					<?php endif; ?>
 				</form>
 				<!-- /aside Widget -->
 
@@ -211,4 +215,3 @@
 	<!-- /container -->
 </div>
 <!-- /SECTION -->
-

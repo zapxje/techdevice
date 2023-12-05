@@ -44,8 +44,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $mail->setFrom('techdevice666@gmail.com', 'Tech Device');
             $mail->addAddress('infor@phamminhgiap.online', 'Tech Infor');
             // $mail->addAddress('ellen@example.com'); 
-            // $mail->addReplyTo('info@example.com', 'Information');
-            $mail->addCC('techdevice666@gmail.com');
+            $mail->addReplyTo('info@example.com', 'Information');
+            // $mail->addCC('techdevice666@gmail.com');
             // $mail->addBCC('bcc@example.com');
 
             // Attachments
