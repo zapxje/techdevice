@@ -25,7 +25,8 @@ function getAllProducts()
     $sql = "SELECT p.* , ca.name AS category_name, br.name AS brand_name 
     FROM products AS p 
     LEFT JOIN categories AS ca ON ca.id = p.id_category 
-    LEFT JOIN brands AS br ON br.id = p.id_brand ";
+    LEFT JOIN brands AS br ON br.id = p.id_brand 
+    ORDER BY p.id desc";
     return getAll($sql);
 }
 function getOneProduct($id)

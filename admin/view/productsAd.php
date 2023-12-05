@@ -113,12 +113,14 @@
                                         <td><?= mb_strimwidth($product['description'], 0, 50, "...") ?></td>
                                         <td><?= $product['number_of_purchases'] ?></td>
                                         <td class="images-product-admin">
-                                            <img width="50px" height="50px" src="../view/assets/img/product/<?= $product['image'] ?>" alt="">
-                                            <?php if (count(getImageByProduct($product['id']))) : ?>
-                                                <div class="count-images-product">
-                                                    <a href="index.php?act=imagesProduct&id=<?= $product['id'] ?>">+<?= count(getImageByProduct($product['id'])) ?></a>
-                                                </div>
-                                            <?php endif; ?>
+                                            <a href="index.php?act=imagesProduct&id=<?= $product['id'] ?>">
+                                                <img width="40px" height="40px" src="../view/assets/img/product/<?= $product['image'] ?>" alt="">
+                                                <?php if (count(getImageByProduct($product['id']))) : ?>
+                                                    <div class="count-images-product">
+                                                        +<?= count(getImageByProduct($product['id'])) ?>
+                                                    </div>
+                                                <?php endif; ?>
+                                            </a>
                                         </td>
                                         <td>
                                             <a href="index.php?act=properties&id=<?= $product['id'] ?>"><button type="button" class="btn btn-outline-primary">Thuộc tính</button></a>
