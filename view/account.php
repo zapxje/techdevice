@@ -65,7 +65,7 @@
                     <div class="row">
                         <div class="products-tabs">
                             <!-- tab 1 -->
-                            <div id="tab1" class="tab-pane <?= isset($listCarts) ? '' : 'active' ?>">
+                            <div id="tab1" class="tab-pane <?= isset($listCarts) || isset($openCancel) ? '' : 'active' ?>">
                                 <div class="title-form">Thông Tin Tài Khoản</div>
                                 <form action="index.php?act=updateUser&id=<?= $_SESSION['user']['id'] ?>" method="POST" class="form-account" enctype="multipart/form-data">
                                     <div class="form-group row">
@@ -146,8 +146,14 @@
                                                                     <a href="index.php?act=account&idOrder=<?= $order['id'] ?>"><button type="button" class="btn btn-primary">Chi tiết đơn
                                                                             hàng</button></a>
                                                                 </td>
-                                                                <td><?= $order['payment_status'] == 0 ? '<button type="button" class="btn btn-danger">Hủy</button>' : ($order['payment_status'] == 1 ? '' : '<a href="index.php?act=account&idOrder=' . $order['id'] . '"><button type="button" class="btn btn-warning">Đánh giá sản phẩm</button></a>') ?>
-
+                                                                <td>
+                                                                    <?php if ($order['payment_status'] == 0) : ?>
+                                                                        <a href="index.php?act=account&idOrder=<?= $order['id'] ?>&cancel"><button type="button" class="btn btn-danger">Hủy</button></a>
+                                                                    <?php elseif ($order['payment_status'] == 1) : ?>
+                                                                        <a href="index.php?act=account&idOrder=<?= $order['id'] ?>&confirm"><button style="width: 130px" type="button" class="btn btn-warning" onclick="return confirm('Bạn có chắc đã nhận được hàng !')">Xác nhận giao</button></a>
+                                                                    <?php else : ?>
+                                                                        <a href="index.php?act=account&idOrder=<?= $order['id'] ?>"><button style="width: 130px" type="button" class="btn btn-success">Đánh giá</button></a>
+                                                                    <?php endif; ?>
                                                                 </td>
                                                             </tr>
                                                         <?php endforeach; ?>
@@ -196,7 +202,7 @@
                                                             <td>
                                                                 <?= number_format($cart['price'] * $cart['quantity'], 0, ',', '.') . "đ" ?>
                                                             </td>
-                                                            <td><?= $order['payment_status'] == 0 ? '' : ($order['payment_status'] == 1 ? '' : '<a href="index.php?act=singleProduct&id='.$cart['id_product'].'"><button type="button" class="btn btn-warning">đánh giá</button></a>')?>
+                                                            <td><?= $orderAlone['payment_status'] == 0 ? '' : ($orderAlone['payment_status'] == 1 ? '' : '<a href="index.php?act=singleProduct&id=' . $cart['id_product'] . '"><button type="button" class="btn btn-success">Đánh giá</button></a>') ?>
                                                             </td>
                                                         </tr>
                                                     <?php
@@ -213,6 +219,27 @@
                                 </div>
                             </div>
                             <!-- /tab CTDH -->
+                            <!-- tab CANCEL -->
+                            <div id="tabCTDH" class="tab-pane <?= isset($openCancel) ? 'active' : '' ?>">
+                                <div class="title-form">Hủy đơn hàng</div>
+                                <div class="col-md-12">
+                                    <div class="card">
+                                        <div class="card-header">
+                                            <strong class="card-title"></strong>
+                                        </div>
+                                        <div class="card-body">
+                                            <form action="" method="POST" class="form-account" enctype="multipart/form-data">
+                                                <div class="form-group">
+                                                    <label for="">Lý do bạn hủy là:</label>
+                                                    <textarea style="width: 100%; padding: 10px; outline: none;" name="reason" id="" rows="5" placeholder="Nhập lý do hủy đơn"></textarea>
+                                                </div>
+                                                <button type="submit" name="submit-updateUser" class="btn btn-main">Hủy đơn</button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- /tab CANCEL -->
                         </div>
                     </div>
                 </div>

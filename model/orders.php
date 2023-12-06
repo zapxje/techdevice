@@ -14,7 +14,7 @@ function getOneOrder($idOrder)
 }
 function getOrderByUser($idUser)
 {
-	$sql = "SELECT * FROM orders WHERE id_user = $idUser";
+	$sql = "SELECT * FROM orders WHERE id_user = $idUser AND payment_status >= 0 ORDER BY payment_status asc";
 	return getAll($sql);
 }
 function getOneOrderLimit()
@@ -38,5 +38,27 @@ function getCartByIdProduct($idProduct)
 			FROM carts as c
 			LEFT JOIN orders as od ON c.id_order = od.id
 			WHERE c.id_product = $idProduct";
-	return getOne($sql);
+	return getAll($sql);
+}
+function getCartByUser($idUser){
+	$sql = "SELECT c.*, us.id as id_user
+	FROM carts as c
+	LEFT JOIN orders as od ON c.id_order = od.id
+	LEFT JOIN users as us on us.id = od.id_user
+	WHERE us.id = $idUser AND od.payment_status = 2";
+	return getAll($sql);
+}
+function cancelOrder($idOrder, $reason)
+{
+	$sql = "UPDATE orders
+    SET payment_status = -1, note = '" . $reason . "'
+    WHERE id =" . $idOrder;
+	return querySql($sql);
+}
+function confirmOrder($idOrder)
+{
+	$sql = "UPDATE orders
+    SET payment_status = 2
+    WHERE id =" . $idOrder;
+	return querySql($sql);
 }

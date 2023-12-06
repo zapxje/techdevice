@@ -362,7 +362,14 @@
                                 <!-- /Reviews -->
 
                                 <!-- Review Form -->
-                                <?php if (isset($_SESSION['user']) && isset($setCartByIdProduct['id_product']) == isset($product['id'])) : ?>
+                                <?php
+                                    $listCartByUser = getCartByUser($_SESSION['user']['id']);
+                                    $listProductCartByUser = array();
+                                    foreach($listCartByUser as $cart){
+                                        $listProductCartByUser[] = $cart['id_product'];
+                                    }
+                                ?>
+                                <?php if (isset($_SESSION['user']) && in_array($product['id'], $listProductCartByUser )) : ?>
                                     <div class="col-md-3">
                                         <div id="review-form">
                                             <form class="review-form" method="POST" action="">
@@ -378,7 +385,7 @@
                                                         <input id="star1" name="rating" value="1" type="radio"><label for="star1"></label>
                                                     </div>
                                                 </div>
-                                                <button type="submit" name="submit-appraise" class="primary-btn">Submit</button>
+                                                <button type="submit" name="submit-appraise" class="primary-btn">Đánh giá</button>
                                             </form>
                                         </div>
                                     </div>
