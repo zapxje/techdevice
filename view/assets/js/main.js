@@ -598,12 +598,7 @@ if (messenger) {
     messengerBody.classList.add("show");
     chatBox.classList.remove("show");
   };
-  if (btnMessenger) {
-    btnMessenger.onclick = () => {
-      messengerBody.classList.remove("show");
-      chatBox.classList.add("show");
-    };
-  }
+
 }
 
 if (window.history.replaceState) {

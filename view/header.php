@@ -56,9 +56,9 @@ ob_start();
         <div id="top-header">
             <div class="container">
                 <ul class="header-links pull-left">
-                    <li><a href="#"><i class="fa fa-phone"></i> +021-95-51-84</a></li>
+                    <li><a href="tel:+05890000111"><i class="fa fa-phone"></i> +066-666-6666</a></li>
                     <li><a href="#"><i class="fa fa-envelope-o"></i> infor@techdevice.shop</a></li>
-                    <li><a href="#"><i class="fa fa-map-marker"></i> 1734 Stonecoal Road</a></li>
+                    <li><a href="#"><i class="fa fa-map-marker"></i> Công Viên Phâm Mềm Quang Trung</a></li>
                 </ul>
                 <ul class="header-links pull-right">
                     <?php if (isset($_SESSION['user']) && !empty($_SESSION['user'])) : ?>

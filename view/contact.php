@@ -36,7 +36,7 @@
                         </div>
                         <div class="address col-lg-4">
                             <i class="fa-solid fa-phone"></i>
-                            <p>+80 333.666.999</p>
+                            <p>+066-666-6666</p>
                         </div>
                     </div>
                     <?php if ((isset($notification) && !empty($notification)) || (isset($success) && !empty($success))) : ?>

@@ -12,7 +12,7 @@
                     </div>
                     <div class="shop-body">
                         <h3>Các sản phẩm<br>Laptop</h3>
-                        <a href="#" class="cta-btn">Mua ngay <i class="fa fa-arrow-circle-right"></i></a>
+                        <a href="index.php?act=store" class="cta-btn">Mua ngay <i class="fa fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
             </div>
@@ -26,7 +26,7 @@
                     </div>
                     <div class="shop-body">
                         <h3>Chuột máy tính<br>& Bàn phím</h3>
-                        <a href="#" class="cta-btn">Mua ngay <i class="fa fa-arrow-circle-right"></i></a>
+                        <a href="index.php?act=store" class="cta-btn">Mua ngay <i class="fa fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
             </div>
@@ -40,7 +40,7 @@
                     </div>
                     <div class="shop-body">
                         <h3>Các sản phẩm<br>Tai nghe</h3>
-                        <a href="#" class="cta-btn">Mua ngay <i class="fa fa-arrow-circle-right"></i></a>
+                        <a href="index.php?act=store" class="cta-btn">Mua ngay <i class="fa fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
             </div>

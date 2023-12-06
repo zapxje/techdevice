@@ -6,23 +6,23 @@
 				<div class="row">
 					<div class="col-md-12">
 						<div class="newsletter">
-							<p>Sign Up for the <strong>NEWSLETTER</strong></p>
+							<p>Đăng Kí Để Nhận <strong>NHIỀU ƯU ĐÃI</strong></p>
 							<form>
-								<input class="input" type="email" placeholder="Enter Your Email">
-								<button class="newsletter-btn"><i class="fa fa-envelope"></i> Subscribe</button>
+								<input class="input" type="email" placeholder="Nhập email của bạn">
+								<button class="newsletter-btn"><i class="fa fa-envelope"></i> ĐĂNG KÍ</button>
 							</form>
 							<ul class="newsletter-follow">
 								<li>
-									<a href="#"><i class="fa fa-facebook"></i></a>
+									<a href="https://www.facebook.com/profile.php?id=61554166256497" target="_blank"><i class="fa fa-facebook"></i></a>
 								</li>
 								<li>
-									<a href="#"><i class="fa fa-twitter"></i></a>
+									<a href="https://www.youtube.com/channel/UC48YEeHA277PJpdZhLTJIwQ" target="_blank"><i class="fa fa-youtube"></i></a>
 								</li>
 								<li>
 									<a href="#"><i class="fa fa-instagram"></i></a>
 								</li>
 								<li>
-									<a href="#"><i class="fa fa-pinterest"></i></a>
+									<a href="https://www.tiktok.com/@devicetech_666" target="_blank"><i class="fa fa-tiktok"></i></a>
 								</li>
 							</ul>
 						</div>
@@ -54,40 +54,12 @@
 						<p>Xin chào! Chúng tôi ở đây để giúp bạn. Cần gì hôm nay?</p>
 
 						<div class="messenger-last">
-							<button class="btn-messenger">Bắt đầu chat</button>
+							<a href="https://www.facebook.com/profile.php?id=61554166256497" target="_blank">
+								<button class="btn-messenger">Bắt đầu chat</button>
+							</a>
 						</div>
 					</div>
-					<div class="chat-box">
-						<div class="form-messenger">
-							<div class="chat outgoing">
-								<div class="chat-detail">
-									<p>wwwwwwwwwwwwwwwdám,dakjdfdasiudaskjksd</p>
-								</div>
-							</div>
-							<div class="chat incoming">
-								<img src="view/assets/img/logo/logo_y.png" alt="">
-								<div class="chat-detail">
-									<p>wwwwwwwwwwwwwwwwwwwwwwwwwwwww</p>
-								</div>
-							</div>
-							<div class="chat outgoing">
-								<div class="chat-detail">
-									<p>wwwwwwwwwwwwwwwdám,dakjdfdasiudaskjksd</p>
-								</div>
-							</div>
-							<div class="chat incoming">
-								<img src="view/assets/img/logo/logo_y.png" alt="">
-								<div class="chat-detail">
-									<p>wwwwwwwwwwwwwwwwwwwwwwwwwwwww</p>
-								</div>
-							</div>
 
-						</div>
-						<form action="" class="send-form">
-							<input type="text">
-							<i class="fa-brands fa-telegram"></i>
-						</form>
-					</div>
 				</div>
 				<!-- end messeger -->
 			</div>
@@ -101,9 +73,9 @@
 							<div class="footer">
 								<h5 class="footer-title">Về chúng tôi</h5>
 								<ul class="footer-links">
-									<li><a href="#"><i class="fa fa-map-marker"></i>1734 Stonecoal Road</a></li>
-									<li><a href="#"><i class="fa fa-phone"></i>+021-95-51-84</a></li>
-									<li><a href="#"><i class="fa fa-envelope-o"></i>email@email.com</a></li>
+									<li><a href="#"><i class="fa fa-map-marker"></i>Phần Mềm Quang Trung</a></li>
+									<li><a href="#"><i class="fa fa-phone"></i>+066-666-6666</a></li>
+									<li><a href="#"><i class="fa fa-envelope-o"></i>infor@techdevice.online</a></li>
 								</ul>
 								<div class="certification">
 									<img id="logo-congthuong" src="view/assets/img/logo-da-thong-bao-bo-cong-thuong-mau-xanh.png" alt="">
