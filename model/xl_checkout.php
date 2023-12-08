@@ -109,8 +109,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $orderInfo = "Thanh toán qua MoMo ATM";
             $amount = "10000";
             $orderId = time() . "";
-            $redirectUrl = "http://localhost/pro1014/index.php?act=redirectCheckout";
-            $ipnUrl = "http://localhost/pro1014/index.php?act=redirectCheckout";
+            $redirectUrl = "https://techdevice.online/index.php?act=redirectCheckout";
+            $ipnUrl = "https://techdevice.online/index.php?act=redirectCheckout";
             $extraData = "";
             $requestId = time() . "";
             $requestType = "payWithATM";
@@ -169,8 +169,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $orderInfo = "Thanh toán qua MoMo";
             $amount = $_SESSION['orderTemp']['total_order'];
             $orderId = time() . "";
-            $redirectUrl = "http://localhost/pro1014/index.php?act=redirectCheckout";
-            $ipnUrl = "http://localhost/pro1014/index.php?act=redirectCheckout";
+            $redirectUrl = "https://techdevice.online/index.php?act=redirectCheckout";
+            $ipnUrl = "https://techdevice.online/index.php?act=redirectCheckout";
             $extraData = "";
             $requestId = time() . "";
             $requestType = "captureWallet";

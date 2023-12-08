@@ -66,7 +66,6 @@ if (isset($_REQUEST['attributes_category']) || isset($_REQUEST['attributes_brand
 if (isset($_REQUEST['act'])) {
     switch ($_GET['act']) {
         case 'store':
-
             if (isset($_GET['search'])) {
                 $keyword = $_GET['search'];
                 $messageStore = 'Kết quả tìm kiếm "' . $keyword . '"';

@@ -363,13 +363,13 @@
 
                                 <!-- Review Form -->
                                 <?php
-                                    $listCartByUser = getCartByUser($_SESSION['user']['id']);
-                                    $listProductCartByUser = array();
-                                    foreach($listCartByUser as $cart){
-                                        $listProductCartByUser[] = $cart['id_product'];
-                                    }
+                                $listCartByUser = getCartByUser(isset($_SESSION['user']['id']) ? $_SESSION['user']['id'] : -1);
+                                $listProductCartByUser = array();
+                                foreach ($listCartByUser as $cart) {
+                                    $listProductCartByUser[] = $cart['id_product'];
+                                }
                                 ?>
-                                <?php if (isset($_SESSION['user']) && in_array($product['id'], $listProductCartByUser )) : ?>
+                                <?php if (isset($_SESSION['user']) && in_array($product['id'], $listProductCartByUser)) : ?>
                                     <div class="col-md-3">
                                         <div id="review-form">
                                             <form class="review-form" method="POST" action="">

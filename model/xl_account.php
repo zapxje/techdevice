@@ -20,4 +20,5 @@ if (isset($_REQUEST['idOrder']) && !empty($_REQUEST['idOrder']) && isset($_REQUE
 if (isset($_REQUEST['idOrder']) && !empty($_REQUEST['idOrder']) && isset($_REQUEST['confirm'])) {
     $idOrder = $_REQUEST['idOrder'];
     confirmOrderDone($idOrder);
+    header('location: index.php?act=account');
 }

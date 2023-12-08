@@ -174,14 +174,18 @@
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.10.1/sweetalert2.min.js"></script>
 		<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
 
+		<?php
+		$minPriceProduct = isset($minPriceProduct) ? $minPriceProduct : '';
+		$maxPriceProduct = isset($maxPriceProduct) ? $maxPriceProduct : '';
+		?>
 		<script>
-			$('.price_from').val(<?= isset($minPriceProduct) ? $minPriceProduct : '' ?>);
-			$('.price_to').val(<?= isset($maxPriceProduct) ? $maxPriceProduct / 2 : '' ?>);
+			$('.price_from').val(<?= isset($price_from) ? $price_from : $minPriceProduct ?>);
+			$('.price_to').val(<?= isset($price_to) ? $price_to : $maxPriceProduct / 2 ?>);
 			$(function() {
 				$("#slider-range").slider({
 					range: true,
-					min: <?= $minPriceProduct ?>,
-					max: <?= $maxPriceProduct ?>,
+					min: <?= isset($minPriceProduct) ? $minPriceProduct : '' ?>,
+					max: <?= isset($maxPriceProduct) ? $maxPriceProduct : '' ?>,
 					values: [<?= isset($price_from) ? $price_from : $minPriceProduct ?>,
 						<?= isset($price_to) ? $price_to : ($maxPriceProduct  / 2) ?>
 					],
