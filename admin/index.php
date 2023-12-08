@@ -9,6 +9,8 @@ include_once("../model/products.php");
 include_once("../model/images.php");
 include_once("../model/properties.php");
 include_once("../model/users.php");
+include_once("../model/orders.php");
+include_once("../model/carts.php");
 
 //include the header file
 include_once("view/header.php");
@@ -105,7 +107,13 @@ if (isset($_SESSION['user']) && !empty($_SESSION['user']) && $_SESSION['user']['
                 include_once("../model/xl_products.php");
                 break;
 
+            case 'ordersWait':
+                include_once("../model/xl_orders.php");
+                break;
 
+            case 'ordersHandle':
+                include_once("../model/xl_orders.php");
+                break;
 
             default:
                 include_once("view/main.php");

@@ -43,7 +43,7 @@
                 </div>
                 <div class="form-group">
                     <label for="email">Email</label>
-                    <input type="text" class="form-control" name="email" id="email" placeholder="Địa chỉ email">
+                    <input type="email" class="form-control" name="email" id="email" placeholder="Địa chỉ email">
                 </div>
                 <div class="form-group">
                     <label for="numberphone">Số điện thoại</label>

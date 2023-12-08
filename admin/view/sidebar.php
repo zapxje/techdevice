@@ -29,8 +29,8 @@
                 <li class="menu-item-has-children dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-laptop"></i>Đơn hàng</a>
                     <ul class="sub-menu children dropdown-menu">
-                        <li><i class="ti-reload"></i><a href="index.php?act=order-wait">Chờ xác nhận</a></li>
-                        <li><i class="ti-package"></i><a href="index.php?act=order-delivering">Đang xử lí</a></li>
+                        <li><i class="ti-reload"></i><a href="index.php?act=ordersWait">Chờ xác nhận</a></li>
+                        <li><i class="ti-package"></i><a href="index.php?act=ordersHandle">Đang xử lí</a></li>
                         <li><i class="ti-check-box"></i><a href="index.php?act=order-done">Đã hoàn thành</a></li>
                     </ul>
                 </li>

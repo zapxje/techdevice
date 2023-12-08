@@ -1,5 +1,17 @@
 <?php
 
+function getAllOrdersWait()
+{
+	$sql = "SELECT * FROM orders WHERE payment_status = 0 ORDER BY id desc";
+	return getAll($sql);
+}
+
+function getAllOrdersHandle()
+{
+	$sql = "SELECT * FROM orders WHERE payment_status = 1 ORDER BY id desc";
+	return getAll($sql);
+}
+
 function addOrder($id_user, $code_order, $name, $email, $address, $city, $phone, $note, $payment_method, $total_order)
 {
 	$sql = "INSERT INTO orders(id_user, code_order, name, email, address, city, phone, note, payment_method, total_order)
@@ -40,7 +52,8 @@ function getCartByIdProduct($idProduct)
 			WHERE c.id_product = $idProduct";
 	return getAll($sql);
 }
-function getCartByUser($idUser){
+function getCartByUser($idUser)
+{
 	$sql = "SELECT c.*, us.id as id_user
 	FROM carts as c
 	LEFT JOIN orders as od ON c.id_order = od.id
@@ -56,6 +69,14 @@ function cancelOrder($idOrder, $reason)
 	return querySql($sql);
 }
 function confirmOrder($idOrder)
+{
+	$sql = "UPDATE orders
+    SET payment_status = 1
+    WHERE id =" . $idOrder;
+	return querySql($sql);
+}
+
+function confirmOrderDone($idOrder)
 {
 	$sql = "UPDATE orders
     SET payment_status = 2
