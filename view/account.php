@@ -185,30 +185,32 @@
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-                                                    <?php foreach ($listCarts as $cart) : ?>
-                                                        <tr>
-                                                            <td>
-                                                                <?= $cart['created_at'] ?>
-                                                            </td>
-                                                            <td style="width: 300px">
-                                                                <?= mb_strimwidth($cart['product_name'], 0, 70, "...") ?>
-                                                            </td>
-                                                            <td>
-                                                                <?= number_format($cart['price'], 0, ',', '.') . "đ" ?>
-                                                            </td>
-                                                            <td>
-                                                                <?= $cart['quantity'] ?>
-                                                            </td>
-                                                            <td>
-                                                                <?= number_format($cart['price'] * $cart['quantity'], 0, ',', '.') . "đ" ?>
-                                                            </td>
-                                                            <td><?= $orderAlone['payment_status'] == 0 ? '' : ($orderAlone['payment_status'] == 1 ? '' : '<a href="index.php?act=singleProduct&id=' . $cart['id_product'] . '"><button type="button" class="btn btn-success">Đánh giá</button></a>') ?>
-                                                            </td>
-                                                        </tr>
-                                                    <?php
-                                                        $totalPrice += $cart['price'] * $cart['quantity'];
-                                                    endforeach;
-                                                    ?>
+                                                    <?php if (isset($listCarts)) : ?>
+                                                        <?php foreach ($listCarts as $cart) : ?>
+                                                            <tr>
+                                                                <td>
+                                                                    <?= $cart['created_at'] ?>
+                                                                </td>
+                                                                <td style="width: 300px">
+                                                                    <?= mb_strimwidth($cart['product_name'], 0, 70, "...") ?>
+                                                                </td>
+                                                                <td>
+                                                                    <?= number_format($cart['price'], 0, ',', '.') . "đ" ?>
+                                                                </td>
+                                                                <td>
+                                                                    <?= $cart['quantity'] ?>
+                                                                </td>
+                                                                <td>
+                                                                    <?= number_format($cart['price'] * $cart['quantity'], 0, ',', '.') . "đ" ?>
+                                                                </td>
+                                                                <td><?= $orderAlone['payment_status'] == 0 ? '' : ($orderAlone['payment_status'] == 1 ? '' : '<a href="index.php?act=singleProduct&id=' . $cart['id_product'] . '"><button type="button" class="btn btn-success">Đánh giá</button></a>') ?>
+                                                                </td>
+                                                            </tr>
+                                                        <?php
+                                                            $totalPrice += $cart['price'] * $cart['quantity'];
+                                                        endforeach;
+                                                        ?>
+                                                    <?php endif; ?>
                                                 </tbody>
                                             </table>
                                             <div class="card-footer text-right">
