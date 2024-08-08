@@ -211,7 +211,7 @@ function showAlert(message, icon) {
 // ==================== Add To Cart Success ==================== //
 
 // ==================== Function Countdown Start ==================== //
-const targetDate = "2023-12-30T00:00:00";
+const targetDate = "2024-08-12T00:00:00";
 function countDown() {
   const targetTime = new Date(targetDate).getTime();
   const timeInterval = setInterval(() => {

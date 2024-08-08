@@ -35,17 +35,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $mail->isSMTP(); // gửi mail SMTP
             $mail->Host = 'smtp.gmail.com'; // Set the SMTP server to send through
             $mail->SMTPAuth = true; // Enable SMTP authentication
-            $mail->Username = 'techdevice666@gmail.com'; // SMTP username
-            $mail->Password = 'fhlo apma jccr bwgs'; // SMTP password
+            $mail->Username = 'giapgg6066@gmail.com'; // SMTP username
+            $mail->Password = 'qrig qlcx cjjy jeln'; // SMTP password
             $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS; // Enable TLS encryption; `PHPMailer::ENCRYPTION_SMTPS` also accepted
             $mail->Port = 587; // TCP port to connect to
 
             //Recipients
-            $mail->setFrom('techdevice666@gmail.com', 'Tech Device');
+            $mail->setFrom('giapgg6066@gmail.com', 'Tech Device');
             $mail->addAddress('minhgiap1357@gmail.com', 'Tech Infor');
             // $mail->addAddress('ellen@example.com'); 
             // $mail->addReplyTo('info@example.com', 'Information');
-            $mail->addCC('techdevice666@gmail.com');
+            $mail->addCC('giapgg6066@gmail.com');
             // $mail->addBCC('bcc@example.com');
 
             // Attachments
